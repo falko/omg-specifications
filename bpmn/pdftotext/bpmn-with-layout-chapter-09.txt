@@ -1,8 +1,10 @@
 9        Collaboration
-Note – The contents of this chapter are REQUIRED for BPMN Choreography Modeling Conformance, BPMN Process
-Modeling Conformance, or for BPMN Complete Conformance. However, this chapter is NOT REQUIRED for, BPMN
+
+9.1      General
+NOTE: The contents of this clause are REQUIRED for BPMN Choreography Modeling Conformance, BPMN Process
+Modeling Conformance, or for BPMN Complete Conformance. However, this clause is NOT REQUIRED for BPMN
 Process Execution Conformance or BPMN BPEL Process Execution Conformance. For more information about BPMN
-conformance types, see page 2.
+conformance types, see page 1.
 
 The Collaboration package contains classes that are used for modeling Collaborations, which is a collection of
 Participants shown as Pools, their interactions as shown by Message Flows, and MAY include Processes within the
@@ -12,147 +14,150 @@ Collaboration. When a Collaboration is defined it is contained in Definitions.
 
 
 
-Figure 9.1 - Classes in the Collaboration package
+Business Process Model and Notation (BPMN), v2.0.2                                                         107
+Figure 9.1 – Classes in the Collaboration package
 
-
-Business Process Model and Notation, v2.0                                                                  109
 The Collaboration element inherits the attributes and model associations of BaseElement (see Table 8.5) through its
 relationship to RootElement. Table 9.1 presents the additional attributes and model associations for the Collaboration
 element.
 
-Table 9.1 - Collaboration Attributes and Model Associations
+Table 9.1 – Collaboration Attributes and Model Associations
 
  Attribute Name                      Description/Usage
-
  name: string                        Name is a text description of the Collaboration.
 
- choreographyRef:                    The choreographyRef model association defines the Choreographies that
- Choreography [0..*]                 can be shown between the Pools of the Collaboration. A Choreography
-                                     specifies a business contract (or the order in which messages will be
-                                     exchanged) between interacting Participants. See page 315 for more details
-                                     on Choreography.
-                                     The participantAssociations (see below) are used to map the
-                                     Participants of the Choreography to the Participants of the Collaboration.
-                                     The MessageFlowAssociations (see below) are used to map the
-                                     Message Flows of the Choreography to the Message Flows of the
-                                     Collaboration.
-                                     The conversationAssociations (see below) are used to map the
-                                     Conversations of the Choreography to the Conversations of the
-                                     Collaboration.
-                                     Note that this attribute is not applicable for Choreography or
-                                     GlobalConversation which are a subtypes of Collaboration. Thus, a
-                                     Choreography cannot reference another Choreography.
 
- correlationKeys:                    This association specifies CorrelationKeys used to associate Messages
- CorrelationKey [0..*]               to a particular Collaboration.
 
- conversationAssociations:           This attribute provides a list of mappings from the Conversations of a
- ConversationAssociation [0..*]      referenced Collaboration to the Conversations of another Collaboration.
-                                     It is used when:
-                                         • When a Choreography is referenced by a Collaboration.
 
- conversations:                      The conversations model aggregation relationship allows a
- ConversationNode [0..*]             Collaboration to contain Conversation elements, in order to group
-                                     Message Flows of the Collaboration and associate correlation information,
-                                     as is REQUIRED for the definitional Collaboration of a Process model. The
-                                     Conversation elements will be visualized if the Collaboration is a
-                                     Collaboration, but not for a Choreography.
+108                                                                Business Process Model and Notation (BPMN), v2.0.2
+Table 9.1 – Collaboration Attributes and Model Associations
 
- conversationLinks:                  This provides the Conversation Links that are used in the Collaboration.
+ choreographyRef:                   The choreographyRef model association defines the Choreographies that
+ Choreography [0..*]
+                                    can be shown between the Pools of the Collaboration. A Choreography
+                                    specifies a business contract (or the order in which messages will be
+                                    exchanged) between interacting Participants. See page 315 for more details
+                                    on Choreography.
+                                    The participantAssociations (see below) are used to map the
+                                    Participants of the Choreography to the Participants of the Collaboration.
+                                    The MessageFlowAssociations (see below) are used to map the
+                                    Message Flows of the Choreography to the Message Flows of the
+                                    Collaboration.
+                                    The conversationAssociations (see below) are used to map the
+                                    Conversations of the Choreography to the Conversations of the
+                                    Collaboration.
+                                    Note that this attribute is not applicable for Choreography or
+                                    GlobalConversation which are a subtypes of Collaboration. Thus, a
+                                    Choreography cannot reference another Choreography.
+ correlationKeys:                   This association specifies CorrelationKeys used to associate Messages
+ CorrelationKey [0..*]
+                                    to a particular Collaboration.
+ conversationAssociations:          This attribute provides a list of mappings from the Conversations of a
+ ConversationAssociation [0..*]
+                                    referenced Collaboration to the Conversations of another Collaboration.
+                                    It is used when:
+                                          • When a Choreography is referenced by a Collaboration.
+
+ conversations:                     The conversations model aggregation relationship allows a
+ ConversationNode [0..*]
+                                    Collaboration to contain Conversation elements, in order to group
+                                    Message Flows of the Collaboration and associate correlation information,
+                                    as is REQUIRED for the definitional Collaboration of a Process model. The
+                                    Conversation elements will be visualized if the Collaboration is a
+                                    Collaboration, but not for a Choreography.
+ conversationLinks:                 This provides the Conversation Links that are used in the Collaboration.
  ConversationLink [0..*]
 
 
- artifacts: Artifact [0..*]          This attribute provides the list of Artifacts that are contained within the
-                                     Collaboration.
+ artifacts: Artifact [0..*]         This attribute provides the list of Artifacts that are contained within the
+                                    Collaboration.
+ participants: Participant [0..*]   This provides the list of Participants that are used in the Collaboration.
+                                    Participants are visualized as Pools in a Collaboration and as Participant
+                                    Bands in Choreography Activities in a Choreography.
 
 
 
 
-110                                                                          Business Process Model and Notation, v2.0
-Table 9.1 - Collaboration Attributes and Model Associations
+Business Process Model and Notation (BPMN), v2.0.2                                                                109
+Table 9.1 – Collaboration Attributes and Model Associations
 
- participants: Participant [0..*]    This provides the list of Participants that are used in the Collaboration.
-                                     Participants are visualized as Pools in a Collaboration and as Participant
-                                     Bands in Choreography Activities in a Choreography.
-
- participantAssociations:            This attribute provides a list of mappings from the Participants of a
- ParticipantAssociations [0..*]      referenced Collaboration to the Participants of another Collaboration. It is
-                                     used in the following situations
-                                            • When a Choreography is referenced by the Collaboration.
-                                            • When a definitional Collaboration for a Process is referenced through
-                                              a Call Activity (and mapped to definitional Collaboration of the
-                                              calling Process).
-
- messageFlow: Message Flow           This provides the list of Message Flows that are used in the Collaboration.
- [0..*]                              Message Flows are visualized in Collaboration (as dashed line) and
-                                     hidden in Choreography.
-
- messageFlowAssociations:            This attribute provides a list of mappings for the Message Flows of the
- Message Flow Association            Collaboration to Message Flows of a referenced model. It is used in the
- [0..*]                              following situation:
-                                            • When a Choreography is referenced by a Collaboration. This allows
-                                              the "wiring up" of the Collaboration Message Flows to the
-                                              appropriate Choreography Activities.
-
- IsClosed: boolean = false           A boolean value specifying whether Message Flows not modeled in the
-                                     Collaboration can occur when the Collaboration is carried out.
-                                            • If the value is true, they MAY NOT occur.
-                                            • If the value is false, they MAY occur.
+ participantAssociations:             This attribute provides a list of mappings from the Participants of a
+ ParticipantAssociations [0..*]
+                                      referenced Collaboration to the Participants of another Collaboration. It is
+                                      used in the following situations
+                                          • When a Choreography is referenced by the Collaboration.
+                                          • When a definitional Collaboration for a Process is referenced through
+                                            a Call Activity (and mapped to definitional Collaboration of the
+                                            calling Process).
+ messageFlow: Message Flow            This provides the list of Message Flows that are used in the Collaboration.
+ [0..*]
+                                      Message Flows are visualized in Collaboration (as dashed line) and
+                                      hidden in Choreography.
+ messageFlowAssociations:             This attribute provides a list of mappings for the Message Flows of the
+ Message Flow Association [0..*]
+                                      Collaboration to Message Flows of a referenced model. It is used in the
+                                      following situation:
+                                           • When a Choreography is referenced by a Collaboration. This allows
+                                             the "wiring up" of the Collaboration Message Flows to the
+                                             appropriate Choreography Activities.
+ IsClosed: boolean = false            A boolean value specifying whether Message Flows not modeled in the
+                                      Collaboration can occur when the Collaboration is carried out.
+                                          • If the value is true, they MAY NOT occur.
+                                          • If the value is false, they MAY occur.
 
 A set of Messages Flow of a particular Collaboration MAY belong to a Conversation. A Conversation is a set of
-Message Flows that share a particular purpose—i.e., they all relate to the handling of a single order (see page 124 for
+Message Flows that share a particular purpose (i.e., they all relate to the handling of a single order - see page 123 for
 more information about Conversations).
 
 
-9.1      Basic Collaboration Concepts
+9.2      Basic Collaboration Concepts
 A Collaboration usually contains two or more Pools, representing the Participants in the Collaboration. The
 Message exchange between the Participants is shown by a Message Flow that connects two Pools (or the objects
-within the Pools). The Messages associated with the Message Flows MAY also be shown. See Figure 9.3, Figure
-9.4, and Figure 9.5 for examples of Collaborations.
+within the Pools). The Messages associated with the Message Flows MAY also be shown. See 9.3, 9.4, and 9.5 for
+examples of Collaborations.
 
 A Pool MAY be empty, a “black box,” or MAY show a Process within. Choreographies MAY be shown “in
 between” the Pools as they bisect the Message Flows between the Pools. All combinations of Pools, Processes,
 and a Choreography are allowed in a Collaboration.
 
-
-
-
-Business Process Model and Notation, v2.0                                                                          111
-9.1.1     Use of BPMN Common Elements
+9.2.1    Use of BPMN Common Elements
 
 Some BPMN elements are common to both Process and Choreography, as well as Collaboration; they are used in
-these diagrams. The next few sections will describe the use of Messages, Message Flows, Participants, Sequence
-Flows, Artifacts, Correlations, Expressions, and Services in Choreography.
+these diagrams. The next few sub clauses will describe the use of Messages, Message Flows, Participants,
+Sequence Flows, Artifacts, Correlations, Expressions, and Services in Choreography.
 
 
-9.2       Pool and Participant
-A Pool is the graphical representation of a Participant in a Collaboration. A Participant (see page 114) can be a
+
+
+110                                                                  Business Process Model and Notation (BPMN), v2.0.2
+9.3      Pool and Participant
+A Pool is the graphical representation of a Participant in a Collaboration. A Participant (see page 113) can be a
 specific PartnerEntity (e.g., a company) or can be a more general PartnerRole (e.g., a buyer, seller, or
 manufacturer). A Pool MAY or MAY NOT reference a Process. A Pool is NOT REQUIRED to contain a Process,
 i.e., it can be a “black box.”
-          A Pool is a square-cornered rectangle that MUST be drawn with a solid single line (see Figure 9.2).
-              The label for the Pool MAY be placed in any location and direction within the Pool, but MUST be separated
-              from the contents of the Pool by a single line.
+         A Pool is a square-cornered rectangle that MUST be drawn with a solid single line (see Figure 9.2).
+             The label for the Pool MAY be placed in any location and direction within the Pool, but MUST be separated
+             from the contents of the Pool by a single line.
                   If the Pool is a black box (i.e., does not contain a Process), then the label for the Pool MAY be placed
                   anywhere within the Pool without a single line separator.
-              One, and only one, Pool in a diagram MAY be presented without a boundary. If there is more than one Pool in
-              the diagram, then the remaining Pools MUST have a boundary.
+             One, and only one, Pool in a diagram MAY be presented without a boundary. If there is more than one Pool in
+             the diagram, then the remaining Pools MUST have a boundary.
 
-The use of text, color, size, and lines for a Pool MUST follow the rules defined in Section “Use of Text, Color, Size, and
-Lines in a Diagram” on page 41.
-   Name
-
-
+The use of text, color, size, and lines for a Pool MUST follow the rules defined in “Use of Text, Color, Size, and Lines
+in a Diagram” on page 39.
+  Name
 
 
-Figure 9.2 - A Pool
+
+
+Figure 9.2 – A Pool
 
 To help with the clarity of the Diagram, a Pool extends the entire length of the Diagram, either horizontally or vertically.
 However, there is no specific restriction to the size and/or positioning of a Pool. Modelers and modeling tools can use
 Pools in a flexible manner in the interest of conserving the “real estate” of a Diagram on a screen or a printed page.
 
 A Pool acts as the container for the Sequence Flows between Activities (of a contained Process). The Sequence
-Flows can cross the boundaries between Lanes of a Pool (see page 305 for more details on Lanes), but cannot cross
+Flows can cross the boundaries between Lanes of a Pool (see page 304 for more details on Lanes), but cannot cross
 the boundaries of a Pool. That is, a Process is fully contained within the Pool. The interaction between Pools is
 shown through Message Flows.
 
@@ -162,55 +167,61 @@ Sequence Flows are associated with a “Black Box” Pool, but Message Flows can
 Figure 9.3).
 
 
-112                                                                               Business Process Model and Notation, v2.0
-  Institution
-   Financial
+
+
+Business Process Model and Notation (BPMN), v2.0.2                                                                      111
+ Institution
+  Financial
 
 
 
 
-                                    Credit Request                 Credit Response
-      Manufacturer
+                                  Credit Request                 Credit Response
+    Manufacturer
 
 
 
 
-Figure 9.3 - Message Flows connecting to the boundaries of two Pools
+Figure 9.3 – Message Flows connecting to the boundaries of two Pools
 
 For a “White Box” Pool, the Activities within are organized by Sequence Flows. Message Flows can cross the
 Pool boundary to attach to the appropriate Activity (see Figure 9.4).
-  Institution
-   Financial
+ Institution
 
 
 
 
-                                           Credit Card
-                                            Authori-
-                                             zation
-                     Distribution
+                                         Credit Card
+ Financial
 
 
 
 
-                                                                       Pack Goods    Ship Goods
-     Supplier
+                                          Authori-
+                                           zation
+                   Distribution
 
 
 
 
-                                            Authorize    Process
-                     Sales
+                                                                     Pack Goods    Ship Goods
+   Supplier
 
 
 
 
-                                            Payment       Order
+                                          Authorize    Process
+                   Sales
 
 
 
 
-Figure 9.4 - Message Flows connecting to Flow Objects within two Pools
+                                          Payment       Order
+
+
+
+
+Figure 9.4 – Message Flows connecting to Flow Objects within two Pools
 
 A Collaboration can contain two (2) or more Pools (i.e., Participants). However, a Process that represents the work
 performed from the point of view of the modeler or the modeler’s organization can be considered “internal” and is NOT
@@ -220,35 +231,35 @@ boundary (see Figure 9.5).
 
 
 
-Business Process Model and Notation, v2.0                                                                        113
-                                      F in a n c ia l In s titu tio n
+112                                                                        Business Process Model and Notation (BPMN), v2.0.2
+                                       F in a n c ia l In s titu tio n
 
 
 
 
-             A u th o riz e        P ro c e s s
-                                    O rd e r             P ack G oods         S h ip G o o d s
-             P aym ent
+             A u th o r iz e        P ro c e s s
+                                     O rd e r             P ack G oods         S h ip G o o d s
+             Paym ent
 
 
 
-Figure 9.5 - Main (Internal) Pool without boundaries
+Figure 9.5 – Main (Internal) Pool without boundaries
 
 BPMN specifies a marker for Pools: a multi-instance marker May be displayed for a Pool (see Figure 9.6). The marker
-is used if the Participant defined for the Pool is a multi-instance Participant. See page 117 for more information on
+is used if the Participant defined for the Pool is a multi-instance Participant. See page 116 for more information on
 Participant multiplicity.
          The marker for a Pool that is a multi-instance MUST be a set of three vertical lines in parallel.
          The marker, if used, MUST be centered at the bottom of the shape.
 
 
-                   S u p p lie r                              S u p p lie r
+                    S u p p lie r                              S u p p lie r
 
 
 
 
-Figure 9.6 - Pools with a Multi-Instance Participant Markers
+Figure 9.6 – Pools with a Multi-Instance Participant Markers
 
-9.2.1    Participants
+9.3.1    Participants
 
 A Participant represents a specific PartnerEntity (e.g., a company) and/or a more general PartnerRole (e.g., a
 buyer, seller, or manufacturer) that are Participants in a Collaboration. A Participant is often responsible for the
@@ -260,8 +271,8 @@ GlobalConversation, or GlobalChoreographyTask.
 
 
 
-114                                                                                    Business Process Model and Notation, v2.0
-Figure 9.7 - The Participant Class Diagram
+Business Process Model and Notation (BPMN), v2.0.2                                                                  113
+Figure 9.7 – The Participant Class Diagram
 
 The Participant element inherits the attributes and model associations of BaseElement (see Table 8.5). Table 9.2
 presents the additional attributes and model associations for the Participant element.
@@ -269,45 +280,38 @@ presents the additional attributes and model associations for the Participant el
 
 
 
-Business Process Model and Notation, v2.0                                                                          115
+114                                                                Business Process Model and Notation (BPMN), v2.0.2
  Table 9.2 – Participant attributes and model associations
 
- Attribute Name                             Description/Usage
-
- name: string [0..1]                        Name is a text description of the Participant. The name of the
-                                            Participant can be displayed directly or it can be substituted by the
-                                            associated PartnerRole or PartnerEntity. Potentially, both the
-                                            PartnerEntity name and PartnerRole name can be displayed for
-                                            the Participant.
-
- processRef: Process [0..1]                 The processRef attribute identifies the Process that the
-                                            Participant uses in the Collaboration. The Process will be
-                                            displayed within the Participant’s Pool.
-
- partnerRoleRef: PartnerRole [0..*]         The partnerRoleRef attribute identifies a PartnerRole that the
-                                            Participant plays in the Collaboration. Both a PartnerRole and a
-                                            PartnerEntity MAY be defined for the Participant. This attribute is
-                                            derived from the participantRefs of PartnerRole.
-
- partnerEntityRef: PartnerEntity [0..*]     The partnerEntityRef attribute identifies a PartnerEntity that
-                                            the Participant plays in the Collaboration. Both a PartnerRole and a
-                                            PartnerEntity MAY be defined for the Participant.This attribute is
-                                            derived from the participantRefs of PartnerEntity.
-
- interfaceRef: Interface [0..*]             This association defines Interfaces that a Participant supports. The
-                                            definition of Interfaces is provided on page 104.
-
- participantMultiplicity: participant-      The participantMultiplicityRef model association is used to
- Multiplicity [0..1]                        define Participants that represent more than one (1) instance of the
-                                            Participant for a given interaction. See the next section for more details
-                                            on ParticipantMultiplicity.
-
- endPointRefs: EndPoint [0..*]              This attribute is used to specify the address (or endpoint reference) of
-                                            concrete services realizing the Participant.
+ Attribute Name                              Description/Usage
+ name: string [0..1]                         Name is a text description of the Participant. The name of the
+                                             Participant can be displayed directly or it can be substituted by the
+                                             associated PartnerRole or PartnerEntity. Potentially, both the
+                                             PartnerEntity name and PartnerRole name can be displayed for
+                                             the Participant.
+ processRef: Process [0..1]                  The processRef attribute identifies the Process that the
+                                             Participant uses in the Collaboration. The Process will be
+                                             displayed within the Participant’s Pool.
+ partnerRoleRef: PartnerRole [0..*]          The partnerRoleRef attribute identifies a PartnerRole that the
+                                             Participant plays in the Collaboration. Both a PartnerRole and a
+                                             PartnerEntity MAY be defined for the Participant. This attribute is
+                                             derived from the participantRefs of PartnerRole.
+ partnerEntityRef: PartnerEntity [0..*]      The partnerEntityRef attribute identifies a PartnerEntity that
+                                             the Participant plays in the Collaboration. Both a PartnerRole and a
+                                             PartnerEntity MAY be defined for the Participant.This attribute is
+                                             derived from the participantRefs of PartnerEntity.
+ interfaceRef: Interface [0..*]              This association defines Interfaces that a Participant supports. The
+                                             definition of Interfaces is provided on page 102.
+ participantMultiplicity:                    The participantMultiplicityRef model association is used to
+ participantMultiplicity [0..1]              define Participants that represent more than one (1) instance of the
+                                             Participant for a given interaction. See the next sub clause for more
+                                             details on ParticipantMultiplicity.
+ endPointRefs: EndPoint [0..*]               This attribute is used to specify the address (or endpoint reference) of
+                                             concrete services realizing the Participant.
 
 
 PartnerEntity
-A PartnerEntity is one of the possible types of Participant (see the section above).
+A PartnerEntity is one of the possible types of Participant (see above).
 
 The PartnerEntity element inherits the attributes and model associations of BaseElement (see Figure 8.5). Table
 9.3 presents the additional attributes and model associations for the PartnerEntity element.
@@ -315,18 +319,16 @@ The PartnerEntity element inherits the attributes and model associations of Base
 
  Table 9.3 – PartnerEntity attributes
 
- Attribute Name                          Description/Usage
-
- name: string                            Name is a text description of the PartnerEntity.
-
- participantRef: Participant [0..*]      Specifies how the PartnerEntity participates in Collaborations and
-                                         Choreographies.
+ Attribute Name                           Description/Usage
+ name: string                             Name is a text description of the PartnerEntity.
+ participantRef: Participant [0..*]       Specifies how the PartnerEntity participates in Collaborations and
+                                          Choreographies.
 
 
 
-116                                                                           Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2                                                                 115
 PartnerRole
-A PartnerRole is one of the possible types of Participant (see the section above).
+A PartnerRole is one of the possible types of Participant (see above).
 
 The PartnerRole element inherits the attributes and model associations of BaseElement (see Figure 8.5). Table 9.4
 presents the additional attributes and model associations for the PartnerRole element.
@@ -335,9 +337,7 @@ presents the additional attributes and model associations for the PartnerRole el
  Table 9.4 – PartnerRole attributes
 
  Attribute Name                        Description/Usage
-
  name: string                          Name is a text description of the PartnerRole.
-
  participantRef: Participant [0..*]    Specifies how the PartnerRole participates in Collaborations and
                                        Choreographies.
 
@@ -347,33 +347,33 @@ ParticipantMultiplicity is used to define the multiplicity of a Participant.
 For example, a manufacturer can request a quote from multiple suppliers in a Collaboration.
 
 
-        Manufacturer
+         Manufacturer
 
 
 
 
-   Request for    Quote
+   Request for      Quote
      Quote
 
 
-           Supplier
+            Supplier
 
 
 
 
-Figure 9.8 - A Pool with a Multiple Participant
+Figure 9.8 – A Pool with a Multiple Participant
 
 The following figure shows the Participant class diagram.
 
 
 
 
-Figure 9.9 - The Participant Multiplicity class diagram
+Figure 9.9 – The Participant Multiplicity class diagram
 
 
 
 
-Business Process Model and Notation, v2.0                                                                    117
+116                                                               Business Process Model and Notation (BPMN), v2.0.2
 The multi-instance marker will be displayed in bottom center of the Pool (Participant - see Figure 9.9, above), or the
 Participant Band of a Choreography Activity (see page 321), when the ParticipantMultiplicity is
 associated with the Participant, and the maximum attribute is either not set, or has a value of two or more.
@@ -383,25 +383,22 @@ Table 9.5 presents the attributes for the ParticipantMultiplicity element.
 
  Table 9.5 – ParticipantMultiplicity attributes
 
- Attribute Name                      Description/Usage
-
- minimum: integer = 0                The minimum attribute defines minimum number of Participants that
-                                     MUST be involved in the Collaboration. If a value is specified in the
-                                     maximum attribute, it MUST be greater or equal to this minimum value.
-
- maximum: integer [0..1] = 1         The maximum attribute defines maximum number of Participants that MAY
-                                     be involved in the Collaboration. The value of maximum MUST be one or
-                                     greater, AND MUST be equal or greater than the minimum value.
+ Attribute Name                     Description/Usage
+ minimum: integer = 0               The minimum attribute defines minimum number of Participants that
+                                    MUST be involved in the Collaboration. If a value is specified in the
+                                    maximum attribute, it MUST be greater or equal to this minimum value.
+ maximum: integer [0..1] = 1        The maximum attribute defines maximum number of Participants that MAY
+                                    be involved in the Collaboration. The value of maximum MUST be one or
+                                    greater, AND MUST be equal or greater than the minimum value.
 
 Table 9.6 presents the Instance attributes of the ParticipantMultiplicity element.
 
 
  Table 9.6 – ParticipantMultiplicity Instance attributes
 
- Attribute Name                          Description/Usage
-
- numParticipants: integer [0..1]         The current number of the multiplicity of the Participant for this
-                                         Choreography or Collaboration Instance.
+ Attribute Name                         Description/Usage
+ numParticipants: integer [0..1]        The current number of the multiplicity of the Participant for this
+                                        Choreography or Collaboration Instance.
 
 ParticipantAssociation
 These elements are used to do mapping between two elements that both contain Participants. There are situations where
@@ -411,27 +408,27 @@ represent the same thing. The ParticipantAssociation provides the mechanism to m
 A ParticipantAssociation is used when an (outer) diagram with Participants contains an (inner) diagram that
 also has Participants. There are four usages of ParticipantAssociation. It is used when:
 
-      1.   A Collaboration references a Choreography for inclusion between the Collaboration’s Pools (Participants).
-           The Participants of the Choreography (the inner diagram) need to be mapped to the Participants of the
-           Collaboration (the outer diagram).
+    1.   A Collaboration references a Choreography for inclusion between the Collaboration’s Pools (Participants).
+         The Participants of the Choreography (the inner diagram) need to be mapped to the Participants of the
+         Collaboration (the outer diagram).
 
-      2.   A Call Conversation references a Collaboration or GlobalConversation. Thus, the Participants of the
-           Collaboration or GlobalConversation (the inner diagram) need to be mapped to the Participants referenced
-           by the Call Conversation (the outer element). Each Call Conversation contains its own set of
-           ParticipantAssociations.
+    2.   A Call Conversation references a Collaboration or GlobalConversation. Thus, the Participants of the
+         Collaboration or GlobalConversation (the inner diagram) need to be mapped to the Participants referenced
+         by the Call Conversation (the outer element). Each Call Conversation contains its own set of
+         ParticipantAssociations.
 
-      3.   A Call Choreography references a Choreography or GlobalChoreographyTask. Thus, the Participants
-           of the Choreography or GlobalChoreographyTask (the inner diagram) need to be mapped to the
-           Participants referenced by the Call Choreography (the outer element). Each Call Choreography contains its
-           own set of ParticipantAssociations.
+    3.   A Call Choreography references a Choreography or GlobalChoreographyTask. Thus, the Participants of
+         the Choreography or GlobalChoreographyTask (the inner diagram) need to be mapped to the Participants
+         referenced by the Call Choreography (the outer element). Each Call Choreography contains its own set of
+         ParticipantAssociations.
 
 
 
-118                                                                            Business Process Model and Notation, v2.0
-    4.   A Call Activity within a Process that has a definitional Collaboration references another Process that also
-         has a definitional Collaboration. The Participants of the definitional Collaboration of the called Process (the
-         inner diagram) need to be mapped to the Participants of the definitional Collaboration of the calling Process (the
-         outer diagram).
+Business Process Model and Notation (BPMN), v2.0.2                                                                  117
+      4.   A Call Activity within a Process that has a definitional Collaboration references another Process that also has
+           a definitional Collaboration. The Participants of the definitional Collaboration of the called Process (the inner
+           diagram) need to be mapped to the Participants of the definitional Collaboration of the calling Process (the outer
+           diagram).
 
 A ParticipantAssociation can be owned by the outer diagram or one its elements. Figure 9.10 shows the class
 diagram for the ParticipantAssociation element.
@@ -439,7 +436,7 @@ diagram for the ParticipantAssociation element.
 
 
 
-Figure 9.10 - ParticipantAssociation class diagram
+Figure 9.10 – ParticipantAssociation class diagram
 
 The ParticipantAssociation element inherits the attributes and model associations of BaseElement (see Table
 8.5). Table 9.7 presents the additional model associations for the ParticipantAssociation element.
@@ -447,50 +444,49 @@ The ParticipantAssociation element inherits the attributes and model association
 
 
 
-Business Process Model and Notation, v2.0                                                                              119
+118                                                                     Business Process Model and Notation (BPMN), v2.0.2
  Table 9.7 – ParticipantAssociation model associations
 
  Attribute Name                        Description/Usage
-
  innerParticipantRef: Participant      This attribute defines the Participant of the referenced element (e.g., a
                                        Choreography to be used in a Collaboration) that will be mapped to the
                                        parent element (e.g., the Collaboration).
-
  outerParticipantRef: Participant      This attribute defines the Participant of the parent element (e.g., a
                                        Collaboration references a Choreography) that will be mapped to the
                                        referenced element (e.g., the Choreography).
 
 
-9.2.2    Lanes
+9.3.2    Lanes
+
 A Lane is a sub-partition within a Process (often within a Pool) and will extend the entire length of the Process level,
-either vertically (see Figure 10.123) or horizontally (see Figure 10.124). See page 305 for more information on Lanes.
+either vertically (see Figure 10.123) or horizontally (see Figure 10.124). See page 304 for more information on Lanes.
 
 
-9.3      Message Flow
+9.4      Message Flow
 A Message Flow is used to show the flow of Messages between two Participants that are prepared to send and
 receive them.
          A Message Flow MUST connect two separate Pools. They connect either to the Pool boundary or to Flow
          Objects within the Pool boundary. They MUST NOT connect two objects within the same Pool.
 
-         A Message Flow is a line with an open circle line start and an open arrowhead line end that MUST be drawn with
-         a dashed single line (see Figure 9.11).
-             The use of text, color, size, and lines for a Message Flow MUST follow the rules defined in Section “Use of
-             Text, Color, Size, and Lines in a Diagram” on page 41.
+        A Message Flow is a line with an open circle line start and an open arrowhead line end that MUST be drawn with
+        a dashed single line (see Figure 9.11).
+             The use of text, color, size, and lines for a Message Flow MUST follow the rules defined in “Use of
+             Text, Color, Size, and Lines in a Diagram” on page 39.
 
 
 
 
-Figure 9.11 - A Message Flow
+Figure 9.11 – A Message Flow
 
-In Collaboration Diagrams (the view showing the Choreography Process Combined with Orchestration
-Processes), a Message Flow can be extended to show the Message that is passed from one Participant to
-another (see Figure 9.12).
-
-
+In Collaboration Diagrams (the view showing the Choreography Process Combined with Orchestration Processes),
+a Message Flow can be extended to show the Message that is passed from one Participant to another (see Figure
+9.12).
 
 
-120                                                                            Business Process Model and Notation, v2.0
-                    Customer
+
+
+Business Process Model and Notation (BPMN), v2.0.2                                                                  119
+                   Customer
 
 
 
@@ -500,50 +496,50 @@ another (see Figure 9.12).
 
 
 
-                                   Confirmation
+                                 Confirmation
 
 
 
-                     Supplier
+                   Supplier
 
 
-Figure 9.12 - A Message Flow with an Attached Message
+Figure 9.12 – A Message Flow with an Attached Message
 
 If a Choreography is included in the Collaboration, then the Message Flow will “pass-through” a Choreography
 Task as it connects from one Participant to another (see Figure 9.13).
 
 
 
-                    Customer
+                  Customer
 
 
 
 
-          Order
+         Order
 
 
 
 
-                                Continued...
-                    Place
-                    Order
+                              Continued...
+                  Place
+                  Order
 
 
 
 
-                             Confirmation
+                          Confirmation
 
 
 
-                     Supplier
+                   Supplier
 
 
-Figure 9.13 - A Message Flow passing through a Choreography Task
+Figure 9.13 – A Message Flow passing through a Choreography Task
 
 
 
 
-Business Process Model and Notation, v2.0                                                               121
+120                                                           Business Process Model and Notation (BPMN), v2.0.2
 Figure 9.14 displays the class diagram of a Message Flow and its relationships to other BPMN elements. When a
 Message Flow is defined it is contained either within a Collaboration, a Choreography, or a
 GlobalChoreographyTask.
@@ -551,7 +547,7 @@ GlobalChoreographyTask.
 
 
 
-Figure 9.14 - The Message Flow Class Diagram
+Figure 9.14 – The Message Flow Class Diagram
 
 The Message Flow element inherits the attributes and model associations of BaseElement (see Table 8.5). Table 9.8
 presents the additional attributes and model associations for the Message Flow element.
@@ -559,38 +555,34 @@ presents the additional attributes and model associations for the Message Flow e
 
 
 
-122                                                                       Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2                                                              121
  Table 9.8 – Message Flow attributes and model associations
 
  Attribute Name                       Description/Usage
-
  name: string                         Name is a text description of the Message Flow.
-
  sourceRef: InteractionNode           The InteractionNode that the Message Flow is connecting from. Of
                                       the types of InteractionNode, only Pools/Participants, Activities, and
                                       Events can be the source of a Message Flow.
-
  targetRef: InteractionNode           The InteractionNode that the Message Flow is connecting to. Of the
                                       types of InteractionNode, only Pools/Participants, Activities, and
                                       Events can be the target of a Message Flow.
-
  messageRef: Message [0..1]           The messageRef model association defines the Message that is passed
-                                      via the Message Flow (see page 93 for more details).
+                                      via the Message Flow (see page 91 for more details).
 
 
-9.3.1     Interaction Node
+9.4.1     Interaction Node
 
 The InteractionNode element is used to provide a single element as the source and target Message Flow
 associations (see Figure 9.14, above) instead of the individual associations of the elements that can connect to Message
-Flows (see the section above). Only the Pool/Participant, Activity, and Event elements can connect to Message
-Flows. The InteractionNode element is also used to provide a single element for source and target of
-Conversation Links, see page 132.
+Flows (see above). Only the Pool/Participant, Activity, and Event elements can connect to Message Flows. The
+InteractionNode element is also used to provide a single element for source and target of Conversation Links, see
+page 131.
 
 The InteractionNode element does not have any attributes or model associations and does not inherit from any other
 BPMN element. Since Pools/Participants, Activities, and Events have their own attributes, model associations, and
 inheritances, additional attributes and model associations for the InteractionNode element are not necessary.
 
-9.3.2     Message Flow Associations
+9.4.2     Message Flow Associations
 
 These elements are used to do mapping between two elements that both contain Message Flows. The
 MessageFlowAssociation provides the mechanism to match up the Message Flows.
@@ -598,29 +590,28 @@ MessageFlowAssociation provides the mechanism to match up the Message Flows.
 A MessageFlowAssociation is used when an (outer) diagram with Message Flows contains an (inner) diagram
 that also has Message Flows. It is used when:
 
-    • A Collaboration references a Choreography for inclusion between the Collaboration’s Pools (Participants).
+      • A Collaboration references a Choreography for inclusion between the Collaboration’s Pools (Participants).
         The Message Flows of the Choreography (the inner diagram) need to be mapped to the Message Flows of the
         Collaboration (the outer diagram).
 
-    • A Collaboration references a Conversation that contains Message Flows. The Message Flows of the
+      • A Collaboration references a Conversation that contains Message Flows. The Message Flows of the
         Conversation can serve as a partial requirement for the Collaboration. Thus, the Message Flows of the
         Conversation (the inner diagram) need to be mapped to the Message Flows of the Collaboration (the outer
         diagram).
 
-    • A Choreography references a Conversation that contains Message Flows. The Message Flows of the
+      • A Choreography references a Conversation that contains Message Flows. The Message Flows of the
         Conversation can serve as a partial requirement for the Choreography. Thus, the Message Flows of the
         Conversation (the inner diagram) need to be mapped to the Message Flows of the Choreography (the outer
         diagram).
 
 
-
-Business Process Model and Notation, v2.0                                                                           123
+122                                                                  Business Process Model and Notation (BPMN), v2.0.2
 Figure 9.15 shows the class diagram for the MessageFlowAssociation element.
 
 
 
 
-Figure 9.15 - MessageFlowAssociation class diagram
+Figure 9.15 – MessageFlowAssociation class diagram
 
 The MessageFlowAssociation element inherits the attributes and model associations of BaseElement (see Table
 8.5). Table 9.9 presents the additional model associations for the MessageFlowAssociation element.
@@ -629,18 +620,16 @@ The MessageFlowAssociation element inherits the attributes and model association
  Table 9.9 – MessageFlowAssociation attributes and model associations
 
  Attribute Name                               Description/Usage
-
  innerMessageFlowRef: Message Flow            This attribute defines the Message Flow of the referenced
                                               element (e.g., a Choreography to be used in a Collaboration)
                                               that will be mapped to the parent element (e.g., the
                                               Collaboration).
-
  outerMessageFlowRef: Message Flow            This attribute defines the Message Flow of the parent element
                                               (e.g., a Collaboration references a Choreography) that will be
                                               mapped to the referenced element (e.g., the Choreography).
 
 
-9.4        Conversations
+9.5      Conversations
 The Conversation diagram is particular usage of and an informal description of a Collaboration diagram. In general,
 it is a simplified version of Collaboration, but Conversation diagrams do maintain all the features of a
 Collaboration. In particular, Processes can appear within the Participants (Pools) of Conversation diagrams, to
@@ -648,15 +637,15 @@ show how Conversation and Activities are related.
 
 The view includes two additional graphical elements that do not exist in other BPMN views:
 
-      1.   Conversation Node elements (Conversation, Sub-Conversation, and Call Conversation)
+    1.   Conversation Node elements (Conversation, Sub-Conversation, and Call Conversation)
 
-      2.   A Conversation Link
+    2.   A Conversation Link
 
 
-124                                                                         Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2                                                             123
 A Conversation is a logical grouping of Message exchanges (Message Flows) that can share a Correlation. A
 Conversation is the logical relation of Message exchanges. The logical relation, in practice, often concerns a business
-object(s) of interest, e.g, “Order,” “Shipment and Delivery,” and “Invoice.” Hence, a Conversation is associated with a
+object(s) of interest, e.g., “Order,” “Shipment and Delivery,” and “Invoice.” Hence, a Conversation is associated with a
 set of name-value pairs, or a Correlation Key (e.g., “Order Identifier,” “Delivery Identifier”), which is recorded in
 the Messages that are exchanged. In this way, a Message can be routed to the specific Process instance responsible
 for receiving and processing the Message.
@@ -665,14 +654,14 @@ Figure 9.16 shows a simple example of a Conversation diagram.
 
 
 
-     Participant A                                    Participant B
+      Participant A                                   Participant B
 
                                Conversation
 
 
 
 
-Figure 9.16 - A Conversation diagram
+Figure 9.16 – A Conversation diagram
 
 Figure 9.17 shows a variation of the example above where the Conversation node has been expanded into its
 component Message Flows. Note that the diagram looks the same as a simple Collaboration diagram (as in Figure
@@ -685,58 +674,58 @@ component Message Flows. Note that the diagram looks the same as a simple Collab
 
 
 
-Figure 9.17 - A Conversation diagram where the Conversation is expanded into Message Flows
+Figure 9.17 – A Conversation diagram where the Conversation is expanded into Message Flows
 
 Message exchanges are related to each other and reflect distinct business scenarios. The relation is sometimes simple,
-e.g., a request followed by a response (and can be described as part of a structural interface of a service, e.g., as a WSDL
-operation definition). However for commercial business transactions managed through Business Processes, the
-relation can be complex, involving long-running, reciprocal Message exchanges, and that could extend beyond bilateral
-to complex, multilateral Collaborations. For example, in logistics, stock replenishments involve the following types
-scenarios: creation of sales orders; assignment of carriers for shipments combining different sales orders; crossing
-customs/quarantine; processing payment and investigating exceptions.
+for example, a request followed by a response, and can be described as part of a structural interface of a service (e.g., as
+a WSDL operation definition). However for commercial business transactions managed through Business Processes,
+the relation can be complex, involving long-running, reciprocal Message exchanges, and that could extend beyond
+bilateral to complex, multilateral Collaborations. For example, in logistics, stock replenishments involve the following
+types scenarios: creation of sales orders, assignment of carriers for shipments combining different sales orders, crossing
+customs/quarantine, processing payment, and investigating exceptions.
 
 
 
 
-Business Process Model and Notation, v2.0                                                                               125
-In addition to an orchestration Process, Conversations are relevant to a Choreography, but the Conversations
-are not visualized in a Choreography. The difference is that a Choreography provides a multi-party perspective of a
+124                                                                    Business Process Model and Notation (BPMN), v2.0.2
+In addition to an orchestration Process, Conversations are relevant to a Choreography, but the Conversations are
+not visualized in a Choreography. The difference is that a Choreography provides a multi-party perspective of a
 Conversation. This is because the Message exchanges modeled using Choreography Activities concern multiple
 Participants, unlike an orchestration Process where the Message sending and receiving elements relate to one
 Participant only. Other than the difference in perspective, the notion of Conversation remains the same across
-Choreography and orchestration - and the Message exchanges of a Conversation will ultimately to be executed
-through an orchestration Process.
+Choreography and orchestration, and the Message exchanges of a Conversation will be executed ultimately through
+an orchestration Process.
 
 Since Collaboration provides a top-down, design-time modeling perspective for Message exchanges and their
 Conversations, an abstracted view of the all Conversations pertaining to a domain being modeled is available
 through a Conversation diagram. A Conversation diagram, as depicted in Figure 9.18, shows Conversations (as
-hexagons) between Participants. This provides a “bird’s eye” perspective of the different Conversations which relate
-to the domain.
+hexagons) between Participants. This provides a “bird’s eye” perspective of the different Conversations that relate to
+the domain.
 
 
-                                                                Delivery                                                   Supplier
-        Retailer                                               Negotiations
-
-
-
-
-                     Delivery / Dispatch                       Consignee                           Shipment Schedule
-                            Plan
+                                                               Delivery                                                   Supplier
+        Retailer                                              Negotiations
 
 
 
 
-                                                                                                                                      Delivery
+                    Delivery / Dispatch                       Consignee                           Shipment Schedule
+                           Plan
+
+
+
+
+                                                                                                                                     Delivery
  Delivery
-                                                                                                                                      Planning
+                                                                                                                                     Planning
 Monitoring
-                                                             Detailed Shipment
-                                                                 Schedule
-                     Delivery / Dispatch
-                            Plan                                                                    Carrier Planning       Shipper
-      Consolidator
-                                                               Carrier
-                                                       (Land, Sea, Rail, or Air)
+                                                            Detailed Shipment
+                                                                Schedule
+                    Delivery / Dispatch
+                                                                                                   Carrier Planning
+     Consolidator          Plan                                                                                           Shipper
+                                                              Carrier
+                                                      (Land, Sea, Rail, or Air)
 
 
 
@@ -744,26 +733,26 @@ Clearance
 Monitoring
 
 
-                       Clearance Pre-                                                                   Coverage
-      Customs/           Notification                                                                   Notification       Insurance
+                      Clearance Pre-                                                                   Coverage
+      Customs/          Notification                                                                   Notification       Insurance
       Quarantine
 
 
 
-                     Breakdown                                                                          Locative Service
-                       Service
-                                           Truck Breakdown     Arrival/Pickup    Traffic Optimization
-                                               Provision       Confirmation            Guidance
+                    Breakdown                                                                          Locative Service
+                     Service
+                                          Truck Breakdown     Arrival/Pickup    Traffic Optimization
+                                              Provision       Confirmation           Guidance
 
-Figure 9.18 - Conversation diagram depicting several conversations between Participants in a related domain
+Figure 9.18 – Conversation diagram depicting several conversations between Participants in a related domain
 
-Figure 9.18, above, depicts 13 distinct Conversations between collaborating Participants in a logistics domain. As
-examples, Retailer and Supplier are involved in a Delivery Negotiations Conversation, and Consignee converses with
-Retailer and Supplier through Delivery/Dispatch Plan and Shipment Schedule Conversations respectively. More than
-two participants MAY be involved in a Conversation, e.g., Consignee, Consolidator and Shipper in Detailed Shipment
+Figure 9.18 depicts 13 distinct Conversations between collaborating Participants in a logistics domain. As examples,
+Retailer and Supplier are involved in a Delivery Negotiations Conversation, and Consignee converses with Retailer and
+Supplier through Delivery/Dispatch Plan and Shipment Schedule Conversations respectively. More than two
+participants MAY be involved in a Conversation, e.g., Consignee, Consolidator and Shipper in Detailed Shipment
 
 
-126                                                                                                              Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2                                                                                              125
 Schedule. The association of Participants to a Conversation are constrained to indicate whether one or many of
 Participants are involved. For example, one instance of Retailer converses with one instance of Supplier for Deliver
 Negotiations. However, one instance of Shipper converses with multiple instances of Carrier (indicated by the multi-
@@ -772,9 +761,9 @@ diagrams means one or more (not zero or more).
 
 The behavior of different Conversations is modeled through separate Choreographies, detailing the Message
 exchange sequences. In practice, Conversations which are closely related could be combined in the same
-Choreography models – e.g., a Message exchange in the Delivery Negotiation leads to Shipment Schedule, Delivery
-Planning and Delivery/Dispatch Conversations and these could be combined together in the same Choreography.
-Alternatively, they could be separated in different models.
+Choreography models. For example, a Message exchange in the Delivery Negotiation leads to Shipment Schedule,
+Delivery Planning, and Delivery/Dispatch Conversations and these could be combined together in the same
+Choreography. Alternatively, they could be separated in different models.
 
 Figure 9.19 shows a subset of the larger Conversation diagram of Figure 9.18, above. Figure 9.20 and Figure 9.21 show
 the drill down into the “Delivery Negotiations” Sub-Conversation. This expands the Conversation with the
@@ -792,14 +781,14 @@ Message Flows also require Variation Id (for dealing with shipment variations on
 
 
 
-Figure 9.19 - An example of a Sub-Conversation
+Figure 9.19 – An example of a Sub-Conversation
 
 Figure 9.20 shows how the Sub-Conversation of Figure 9.19, above, is expanded into a set of Message Flows and a
 lower-level Conversation.
 
 
 
-        R e t a ile r                                                                        S u p p lie r
+        R e t a ile r                                                                             S u p p lie r
                                                     V a r ia t io n s
                                                  ( V a r ia t io n I D )
 
@@ -812,16 +801,16 @@ lower-level Conversation.
 
 
 
-Figure 9.20 - An example of a Sub-Conversation expanded to a Conversation and Message Flow
+Figure 9.20 – An example of a Sub-Conversation expanded to a Conversation and Message Flow
 
 
 
 
-Business Process Model and Notation, v2.0                                                                          127
-Figure 9.21 shows a how the Conversation of Figure 9.20, above, is also expanded into a set of Message Flows,
-combined with the previous Message Flows. Note that the newly exposed Message Flows of the lower-level
-Conversation will be correlated by the CorrelationKey of both the lower-level Conversation (Variation Id) and
-the higher-level Sub-Conversations (Order Id).
+126                                                                             Business Process Model and Notation (BPMN), v2.0.2
+Figure 9.21 shows how the Conversation of Figure 9.20 is also expanded into a set of Message Flows, combined with
+the previous Message Flows. Note that the newly exposed Message Flows of the lower-level Conversation will be
+correlated by the CorrelationKey of both the lower-level Conversation (Variation Id) and the higher-level Sub-
+Conversations (Order Id).
 
 
 
@@ -835,19 +824,19 @@ the higher-level Sub-Conversations (Order Id).
                               Updated PO and Delivery Schedule Order
 
 
-Figure 9.21 - An example of a Sub-Conversation that is fully expanded
+Figure 9.21 – An example of a Sub-Conversation that is fully expanded
 
-In Figure 9.19, above, a hierarchical structure of Conversations can be seen with one set of Message Flows
-occurring within another in a parent-child relationship. In particular, after Planned Order Variations (keyed on Order Id)
-at the parent, a number of Message Flows of the child follow till Retailer Order and Delivery Variations Ack (keyed on
-Variation Id and Order Id). The remaining Message Flows (keyed on Order Id) are at the parent level. The child
-Conversation, as such, is part of the parent Conversation. Nesting is indicated graphically on a Conversation
-symbol (by a “+”), indicating a Sub-Conversation or a Call Conversation calling a Collaboration. Nesting can go
-to an arbitrary number of levels.
+In Figure 9.19 a hierarchical structure of Conversations can be seen with one set of Message Flows occurring within
+another in a parent-child relationship. In particular, after Planned Order Variations (keyed on Order Id) at the parent, a
+number of Message Flows of the child follow till Retailer Order and Delivery Variations Ack (keyed on Variation Id
+and Order Id). The remaining Message Flows (keyed on Order Id) are at the parent level. The child Conversation, as
+such, is part of the parent Conversation. Nesting is indicated graphically on a Conversation symbol (by a “+”),
+indicating a Sub-Conversation or a Call Conversation calling a Collaboration. Nesting can go to an arbitrary
+number of levels.
 
 A common dependency between Conversations is overlap. Overlap occurs when two or more Conversations have
-some Message exchanges in common but not others. As an example in Figure 9.18, above, a Message is sent as part
-of Detailed Shipment Schedule (keyed on Carrier Schedule Id) to trigger Delivery Monitoring (keyed on Shipment Id).
+some Message exchanges in common but not others. As an example in Figure 9.18, a Message is sent as part of
+Detailed Shipment Schedule (keyed on Carrier Schedule Id) to trigger Delivery Monitoring (keyed on Shipment Id).
 During Delivery Monitoring, Message could be sent to Detailed Shipment Schedule (to request modifications when
 transportation exceptions occur).
 
@@ -860,16 +849,16 @@ Conversation and no further Message exchanges occur in the original Conversation
 are finalized. The generalization of a split and join is a Conversation refactor where Conversations are split into
 parallel Conversations and then are merged at a later point in time.
 
-9.4.1    Conversation Node
+9.5.1    Conversation Node
 
 ConversationNode is the abstract super class for all elements that can comprise the Conversation elements of a
-Collaboration diagram, which are Conversation (see page 130), Sub-Conversation (see page 130), and Call
-Conversation (see page 131).
+Collaboration diagram, which are Conversation (see page 129), Sub-Conversation (see page 129), and Call
+Conversation (see page 130).
 
-128                                                                             Business Process Model and Notation, v2.0
-Figure 9.22 - Metamodel of ConversationNode Related Elements
+Business Process Model and Notation (BPMN), v2.0.2                                                                    127
+Figure 9.22 – Metamodel of ConversationNode Related Elements
 
-ConversationNodes are linked to and from Participants using Conversation Links (see page 132).
+ConversationNodes are linked to and from Participants using Conversation Links (see page 131).
 
 The ConversationNode element inherits the attributes and model associations of BaseElement (see Table 8.5).
 Table 9.10 presents the additional attributes and model associations for the ConversationNode element.
@@ -877,30 +866,29 @@ Table 9.10 presents the additional attributes and model associations for the Con
 
 
 
-Business Process Model and Notation, v2.0                                                                 129
+128                                                            Business Process Model and Notation (BPMN), v2.0.2
  Table 9.10 – ConversationNode Model Associations
 
- Attribute Name                 Description/Usage
+ Attribute Name                  Description/Usage
+ name: string [0..1]             Name is a text description of the ConversationNode element.
+ participantRefs: Participant    This provides the list of Participants that are used in the ConversationNode
+ [2..*]
+                                 from the list provided by the ConversationNode’s parent Conversation. This
+                                 reference is visualized through a Conversation Link (see page 131).
+ messageFlowRefs:                A reference to all Message Flows (and consequently Messages) grouped by a
+ MessageFlow [0..*]
+                                 Conversation element.
+ correlationKeys:                This is a list of the ConversationNode’s CorrelationKeys, which are used to
+ CorrelationKey [0..*]
+                                 group Message Flows for the ConversationNode.
 
- name: string [0..1]            Name is a text description of the ConversationNode element.
 
- participantRefs: Partici-      This provides the list of Participants that are used in the ConversationNode
- pant [2..*]                    from the list provided by the ConversationNode’s parent Conversation. This
-                                reference is visualized through a Conversation Link (see page 132).
-
- messageFlowRefs:               A reference to all Message Flows (and consequently Messages) grouped by a
- MessageFlow [0..*]             Conversation element.
-
- correlationKeys:               This is a list of the ConversationNode’s CorrelationKeys, which are used to
- CorrelationKey [0..*]          group Message Flows for the ConversationNode.
-
-
-9.4.2   Conversation
+9.5.2    Conversation
 
 A Conversation is an atomic element for a Conversation (Collaboration) diagram. It represents a set of Message
 Flows grouped together based on a concept and/or a CorrelationKey. A Conversation will involve two or more
 Participants.
-        A Conversation is a hexagon that MUST be drawn with a single thin line (see Figure 9.23).
+         A Conversation is a hexagon that MUST be drawn with a single thin line (see Figure 9.23).
 
 
 
@@ -910,20 +898,20 @@ Figure 9.23 – A Communication element
 The Conversation element inherits the attributes and model associations of ConversationNode (see Table 9.10),
 but does not contain any additional attributes or model associations.
 
-9.4.3   Sub-Conversation
+9.5.3    Sub-Conversation
 
 A Sub-Conversation is a ConversationNode that is a hierarchical division within the parent Collaboration. A
-Sub-Conversation is a graphical object within a Collaboration, but it also can be “opened up” to show the lower-
-level details of the Conversation, which consist of Message Flows, Conversations, and/or other Sub-
-Conversations. The Sub-Conversation shares the Participants of its parent Conversation.
-        A Sub-Conversation is a hexagon that MUST be drawn with a single thin line (see Figure 9.24).
-            The Sub- Conversation marker MUST be a small square with a plus sign (+) inside. The square MUST be
-            positioned at the bottom center of the shape.
+Sub-Conversation is a graphical object within a Collaboration, but it also can be “opened up” to show the lower-level
+details of the Conversation, which consist of Message Flows, Conversations, and/or other Sub-Conversations.
+The Sub-Conversation shares the Participants of its parent Conversation.
+         A Sub-Conversation is a hexagon that MUST be drawn with a single thin line (see Figure 9.24).
+              The Sub- Conversation marker MUST be a small square with a plus sign (+) inside. The square MUST be
+              positioned at the bottom center of the shape.
 
 
 
 
-130                                                                          Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2                                                               129
 Figure 9.24 – A compound Conversation element
 
 The Sub-Conversation element inherits the attributes and model associations of ConversationNode (see Table
@@ -932,21 +920,21 @@ The Sub-Conversation element inherits the attributes and model associations of C
 
  Table 9.11 – Sub-Conversation Model Associations
 
- Attribute Name                   Description/Usage
+ Attribute Name                  Description/Usage
+ conversationNodes:              The ConversationNodes model aggregation relationship allows a Sub-
+ ConversationNode [0..*]
+                                 Conversation to contain other ConversationNodes, in order to group
+                                 Message Flows of the Sub-Conversation and associate correlation
+                                 information.
 
- conversationNodes:               The ConversationNodes model aggregation relationship allows a Sub-
- ConversationNode [0..*]          Conversation to contain other ConversationNodes, in order to group
-                                  Message Flows of the Sub-Conversation and associate correlation
-                                  information.
-
-9.4.4    Call Conversation
+9.5.4    Call Conversation
 
 A Call Conversation identifies a place in the Conversation (Collaboration) where a global Conversation or a
 GlobalConversation is used.
-         If the Call Conversation calls a GlobalConversation, then the shape will be the same as a Conversation,
-         but the boundary of the shape will MUST have a thick line (see Figure 9.25).
-         If the Call Conversation calls a Collaboration, then the shape will be the same as a Sub-Conversation, but
-         the boundary of the shape will MUST have a thick line (see Figure 9.26).
+        If the Call Conversation calls a GlobalConversation, then the shape will be the same as a Conversation,
+        but the boundary of the shape will MUST have a thick line (see Figure 9.25).
+        If the Call Conversation calls a Collaboration, then the shape will be the same as a Sub-Conversation, but
+        the boundary of the shape will MUST have a thick line (see Figure 9.26).
 
 
 
@@ -964,23 +952,24 @@ The Call Conversation element inherits the attributes and model associations of 
 
 
 
-Business Process Model and Notation, v2.0                                                                      131
+130                                                              Business Process Model and Notation (BPMN), v2.0.2
  Table 9.12 – Call Conversation Model Associations
 
  Attribute Name                              Description/Usage
-
  calledCollaborationRef:                     The element to be called, which MAY be either a Collaboration or a
- Collaboratioin [0..1]                       GlobalConversation. The called element MUST NOT be a
+ Collaboration [0..1]
+                                             GlobalConversation. The called element MUST NOT be a
                                              Choreography or a GlobalChoreographyTask (which are sub-
                                              types of Collaboration)
-
  participantAssociations: Participant        This attribute provides a list of mappings from the Participants of a
- Association [0..*]                          referenced GlobalConversation or Conversation to the
+ Association [0..*]
+                                             referenced GlobalConversation or Conversation to the
                                              Participants of the parent Conversation.
 
-Note - The ConversationNode attribute messageFlowRef doesn’t apply to Call Conversations.
+NOTE: The ConversationNode attribute messageFlowRef doesn’t apply to Call Conversations.
 
-9.4.5      Global Conversation
+
+9.5.5      Global Conversation
 
 A GlobalConversation is a reusable, atomic Conversation definition that can be called from within any
 Collaboration by a Call Conversation.
@@ -996,7 +985,7 @@ MessageFlowAssociations, ParticipantAssociations, or ConversationAssociations or
 It is basically a set of Participants, Message Flows, and CorrelationKeys intended for reuse. Also, the
 Collaboration attribute choreographyRef is not applicable to GlobalConversation.
 
-9.4.6      Conversation Link
+9.5.6      Conversation Link
 
 Conversation Links are used to connect ConversationNodes to and from Participants (Pools -- see Figure 9.27).
           Conversation Links MUST be drawn with double thin lines.
@@ -1017,7 +1006,7 @@ Figure 9.27 – A Conversation Link element
 
 
 
-132                                                                             Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2                                                                   131
 Processes can appear in the Participants (Pools) of Conversation diagrams, as shown in Figure 9.28. The invoicing
 and ordering Conversations have links into Activities and Events of the Process in the Order Processor. The other
 two Conversations do not have their links “expanded.” Conversation Links into Activities that are not Send or
@@ -1025,48 +1014,48 @@ Receive Tasks indicate that the Activity will send or receive Messages of the Co
 nesting.
 
 
-                                                         Invoicer
+                                                            Invoicer
 
 
-                                                                     Invoicing
-
-
-
-
-                                                                                    Price                  Process
-                                     Initiate Price                              Calculations
-                                     Calculations                                                          Invoice
-                                                                                  Complete
- Order Processor
+                                                                        Invoicing
 
 
 
 
-                   Receive                            Request                     Process                       Send Shipping   Send
-                    Order           Assignment
-                                                      Shipping                    Schedule                        Schedule      Invoice
+                                                                                       Price                    Process
+                                        Initiate Price                              Calculations
+                                        Calculations                                                            Invoice
+                                                                                     Complete
+    Order Processor
 
 
 
 
-                                    Scheduling
-                                     Product
-                                     Request
+                      Receive                            Request                     Process                         Send Shipping     Send
+                       Order           Assignment
+                                                         Shipping                    Schedule                          Schedule        Invoice
 
 
 
 
-                             Sheduling                                                          Shipping
-
-
-
-                                   Scheduler                                                          Shipper
-                                                                 Ordering
+                                       Scheduling
+                                        Product
+                                        Request
 
 
 
 
-                                                            Customer
+                                Sheduling                                                            Shipping
+
+
+
+                                      Scheduler                                                            Shipper
+                                                                    Ordering
+
+
+
+
+                                                               Customer
 
 
 Figure 9.28 – Conversation links to Activities and Events
@@ -1074,35 +1063,32 @@ Figure 9.28 – Conversation links to Activities and Events
 
 
 
-Business Process Model and Notation, v2.0                                                                                                 133
-Figure 9.29 - Metamodel of Conversation Links related elements
+132                                                                                                Business Process Model and Notation (BPMN), v2.0.2
+Figure 9.29 – Metamodel of Conversation Links related elements
 
-The Conversation Link element inherits the attributes and model associations of BaseElement (see Table 8.5).
-Table 9.13 presents the additional attributes and model associations for the Conversation Link element.
+The Conversation Link element inherits the attributes and model associations of BaseElement (see Table 8.5). Table
+9.13 presents the additional attributes and model associations for the Conversation Link element.
 
  Table 9.13 – Conversation Link Attributes and Model Associations
 
- Attribute Name                           Description/Usage
-
- name: string [0..1]                      This attribute specifies the name of the Conversation Link.
-
- sourceRef: InteractionNode               The InteractionNode that the Conversation Link is connecting
-                                          from. A Conversation Link MUST connect to exactly one
-                                          ConversationNode. If the sourceRef is not a
-                                          ConversationNode, then the targetRef MUST be a
-                                          ConversationNode.
-
- targetRef: InteractionNode              The InteractionNode that the Conversation Link is connecting
-                                         to. A Conversation Link MUST connect to exactly one
-                                         ConversationNode. If the targetRef is not a
-                                         ConversationNode, then the sourceRef MUST be a
-                                         ConversationNode.
+ Attribute Name                            Description/Usage
+ name: string [0..1]                       This attribute specifies the name of the Conversation Link.
+ sourceRef: InteractionNode                The InteractionNode that the Conversation Link is connecting
+                                           from. A Conversation Link MUST connect to exactly one
+                                           ConversationNode. If the sourceRef is not a
+                                           ConversationNode, then the targetRef MUST be a
+                                           ConversationNode.
+ targetRef: InteractionNode                The InteractionNode that the Conversation Link is connecting
+                                           to. A Conversation Link MUST connect to exactly one
+                                           ConversationNode. If the targetRef is not a
+                                           ConversationNode, then the sourceRef MUST be a
+                                           ConversationNode.
 
 Conversation Links for Call Conversations show the names of Participants in nested Collaboration or global
 Collaborations, as identified by ParticipantAssociations. For example, Figure 9.30 has a Collaboration on
 the left with a Call Conversations to a Collaboration on the right. The Conversation Links on the left indicate
 
-134                                                                       Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2                                                            133
 which Participants in the called Collaboration on the right correspond to which Participants in the calling
 Collaboration on the left. For example, the Credit Agency Participants on the right corresponds to the Financial
 Company Participant on the left. ParticipantAssociations (not shown) tie each Participant in the
@@ -1110,7 +1096,7 @@ Collaboration on the left to a Participant in the Collaboration on the right. Th
 Participants in nested Collaboration or global Collaborations.
 
 
-         Financial                               Credit Agency
+         Financial                                Credit Agency
          Com pany
 
 
@@ -1121,16 +1107,16 @@ Participants in nested Collaboration or global Collaborations.
  Score                                Credit
                                                                    Response
 Purchase                             Request
-              Buyer
+               Buyer
 
-          Retailer                                    Buyer
+          Retailer                                     Buyer
 
 
 
 
 Figure 9.30 – Call Conversation Links
 
-9.4.7     Conversation Association
+9.5.7     Conversation Association
 
 A ConversationAssociation is used within Collaborations and Choreographies to apply a reusable
 Conversation to the Message Flows of those diagrams.
@@ -1138,15 +1124,15 @@ Conversation to the Message Flows of those diagrams.
 A ConversationAssociation is used when a diagram references a Conversation to provide Message
 correlation information and/or to logically group Message Flows. It is used when:
 
-    • A Collaboration references a Choreography for inclusion between the Collaboration's Pools (Participants).
+      • A Collaboration references a Choreography for inclusion between the Collaboration’s Pools (Participants).
         The ConversationNodes of the Choreography (the inner diagram) need to be mapped to the
         ConversationNodes of the Collaboration (the outer diagram).
 
 
 
 
-Business Process Model and Notation, v2.0                                                                       135
-Figure 9.31 - The ConversationAssociation class diagram
+134                                                               Business Process Model and Notation (BPMN), v2.0.2
+Figure 9.31 – The ConversationAssociation class diagram
 
 The ConversationAssociation element inherits the attributes and model associations of BaseElement (see
 Table 8.5). Table 9.14 presents the additional model associations for the ConversationAssociation element.
@@ -1155,38 +1141,36 @@ Table 8.5). Table 9.14 presents the additional model associations for the Conver
  Table 9.14 – ConversationAssociation Model Associations
 
  Attribute Name                             Description/Usage
-
  innerConversationNodeRef:                  This attribute defines the ConversationNodes of the referenced
  ConversationNode [0..1]                    element (e.g., a Choreography to be used in a Collaboration) that will
                                             be mapped to the parent element (e.g., the Collaboration).
-
  outerConversationNodeRef:                  This attribute defines the ConversationNodes of the parent element
  ConversationNode [0..*]                    (e.g., a Collaboration references a Choreography) that will be mapped
                                             to the referenced element (e.g., the Choreography).
 
 
-9.4.8      Correlations
+9.5.8     Correlations
 
 Correlations are the mechanism that is used to assign the Messages to the proper Process instance, and can be defined
 for the Message Flows that belong to the Conversation. Correlations can be used to specify Conversations between
 Processes that follow a fairly simple Conversation pattern in the sense that:
 
-      • The conceptual data of the Conversation is well known and defined by the participating Processes. However this
+    • The conceptual data of the Conversation is well known and defined by the participating Processes. However this
         doesn’t mandate that underlying type systems are identical. It is sufficient that the data is known “conceptually” on a
         (potentially very high) business level.
 
-      • A Conversation takes place by means of simple Message exchange between Processes, no additional
+    • A Conversation takes place by means of simple Message exchange between Processes, no additional
         agreements MUST be considered.
 
-      • There exists send and receive Tasks accepting the conceptual data of the Conversation. (An Order send by a Task
+    • There exists send and receive Tasks accepting the conceptual data of the Conversation. (An Order send by a Task
         of a Process should be received by at least one Task of the participating Process).
 
 
 
-136                                                                                 Business Process Model and Notation, v2.0
-    • The correlation itself is defined in terms of correlation fields, which denote a subset of the conceptual data that should
-      be used for the correlation. (For example, if the conceptual data comprises an order, then the correlation field might be
-      denoted by the order ID).
+Business Process Model and Notation (BPMN), v2.0.2                                                                          135
+      • The correlation itself is defined in terms of correlation fields, which denote a subset of the conceptual data that should
+        be used for the correlation. (For example, if the conceptual data comprises an order, then the correlation field might be
+        denoted by the order ID).
 
 In some applications it is useful to allow more Messages to be sent between Participants when a Collaboration is
 carried out than are contained in the Collaboration model. This enables Participants to exchange other Messages as
@@ -1200,15 +1184,15 @@ of the Participants MAY send Messages to each other under other Choreographies, 
 Conversations.
 
 
-9.5      Process within Collaboration
+9.6        Process within Collaboration
 Processes can be included in a Collaboration diagram. A Participant/Pool within the Collaboration can contain a
-Process (but they are NOT REQUIRED). An example of this is shown in Figure 9.4, above.
+Process (but they are NOT REQUIRED). An example of this is shown in Figure 9.4.
 
 When a Lane (in a Process) represents a Conversation, the Flow Elements in the Lane (or elements nested or called
 in them) that send or receive Messages MUST do so as part of the Conversation represented by the Lane.
 
 
-9.6      Choreography within Collaboration
+9.7        Choreography within Collaboration
 Choreographies can be included in a Collaboration diagram. A Collaboration specifies how the Participants and
 Message Flows in the Choreography are matched up with the Participants and Message Flows in the
 Collaboration. A Collaboration uses ParticipantAssociations and MessageFlowAssociations for this
@@ -1223,7 +1207,7 @@ Choreography to the Pools in the Collaboration. Thus, the names in the Participa
 
 
 
-Business Process Model and Notation, v2.0                                                                                   137
+136                                                                        Business Process Model and Notation (BPMN), v2.0.2
  Credit Agency
 
 
@@ -1246,14 +1230,14 @@ Business Process Model and Notation, v2.0                                       
 
 
                  Customer
-                                                                                                Customer
-                   Info                 Credit ID                                                  Info
+                                                                                              Customer
+                   Info                 Credit ID                                                Info
  Seller
 
 
 
 
-                                                                                                [Updated]
+                                                                                              [Updated]
                                                                                     Update
                             Generate             Request             Receive
                                                                                    Customer
@@ -1263,7 +1247,7 @@ Business Process Model and Notation, v2.0                                       
 
 
 
-Figure 9.32 - An example of a Choreography within a Collaboration
+Figure 9.32 – An example of a Choreography within a Collaboration
 
 To handle Message Flows, the innerMessageFlow of a MessageFlowAssociation refers to a Message Flow
 in the Choreography, while the outerMessageFlow refers to a Message Flow in the Collaboration containing
@@ -1281,11 +1265,12 @@ a MessageFlowAssociation, if only one Message Flow has that Message.
 
 
 
-138                                                                                 Business Process Model and Notation, v2.0
-Figure 9.33 - Choreography within Collaboration class diagram
+Business Process Model and Notation (BPMN), v2.0.2                                                          137
+                                                                                              
+Figure 9.33 – Choreography within Collaboration class diagram
 
 
-9.7      Collaboration Package XML Schemas
+9.8      Collaboration Package XML Schemas
 
 Table 9.15 – Call Conversation XML schema
 
@@ -1302,9 +1287,6 @@ Table 9.15 – Call Conversation XML schema
 </xsd:complexType>
 
 
-
-
-Business Process Model and Notation, v2.0                                                              139
 Table 9.16 – Collaboration XML schema
 
 <xsd:element name="collaboration" type="tCollaboration" substitutionGroup="rootElement"/>
@@ -1312,7 +1294,10 @@ Table 9.16 – Collaboration XML schema
     <xsd:complexContent>
         <xsd:extension base="tRootElement">
             <xsd:sequence>
-                 <xsd:element name="choreography" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element name="choreography" minOccurs="0" maxOccurs="unbounded"/>
+
+
+138                                                              Business Process Model and Notation (BPMN), v2.0.2
                  <xsd:element ref="participant" minOccurs="0" maxOccurs="unbounded"/>
                  <xsd:element ref="messageFlow" minOccurs="0" maxOccurs="unbounded"/>
                  <xsd:element ref="artifact" minOccurs="0" maxOccurs="unbounded"/>
@@ -1355,10 +1340,7 @@ Table 9.19 – ConversationAssociation XML schema
 
 <xsd:element name="conversationLink" type="tConversationLink"/>
 <xsd:complexType name="tConversationLink">
-   <xsd:complexContent>
-
-
-140                                                                       Business Process Model and Notation, v2.0
+    <xsd:complexContent>
         <xsd:extension base="tBaseElement">
             <xsd:attribute name="name" type="xsd:string" use="optional"/>
             <xsd:attribute name="sourceRef" type="xsd:QName" use="required"/>
@@ -1367,6 +1349,9 @@ Table 9.19 – ConversationAssociation XML schema
     </xsd:complexContent>
 </xsd:complexType>
 
+
+
+Business Process Model and Notation (BPMN), v2.0.2                                                           139
 Table 9.20 – ConversationNode XML schema
 
 <xsd:element name="conversation" type="tConversation" substitutionGroup="rootElement"/>
@@ -1403,14 +1388,10 @@ Table 9.21 – Conversation Node XML schema
     </xsd:complexContent>
 </xsd:complexType>
 
-
 Table 9.22 – Global Conversation XML schema
 
 <xsd:element name="globalConversation" type="tGlobalConversation" substitutionGroup="collaboration"/>
 <xsd:complexType name="tGlobalConversation">
-
-
-Business Process Model and Notation, v2.0                                                               141
     <xsd:complexContent>
         <xsd:extension base="tCollaboration"/>
     </xsd:complexContent>
@@ -1420,8 +1401,10 @@ Table 9.23 – MessageFlow XML schema
 
 <xsd:element name="messageFlow" type="tMessageFlow"/>
 <xsd:complexType name="tMessageFlow">
-    <xsd:complexContent>
+   <xsd:complexContent>
         <xsd:extension base="tBaseElement">
+
+140                                                          Business Process Model and Notation (BPMN), v2.0.2
             <xsd:attribute name="name" type="xsd:string" use="optional"/>
             <xsd:attribute name="sourceRef" type="xsd:QName" use="required"/>
             <xsd:attribute name="targetRef" type="xsd:QName" use="required"/>
@@ -1461,21 +1444,21 @@ Table 9.25 – Participant XML schema
     </xsd:complexContent>
 </xsd:complexType>
 
-
-
-142                                                                  Business Process Model and Notation, v2.0
 Table 9.26 – ParticipantAssociation XML schema
 
 <xsd:element name="participantAssociation" type="tParticipantAssociation"/>
 <xsd:complexType name="tParticipantAssociation">
-    <xsd:complexContent>
+   <xsd:complexContent>
         <xsd:extension base="tBaseElement">
             <xsd:sequence>
                 <xsd:element name="innerParticipantRef" type="xsd:QName" use="required"/>
                 <xsd:element name="outerParticipantRef" type="xsd:QName" use="required"/>
             </xsd:sequence>
         </xsd:extension>
-    </xsd:complexContent>
+   </xsd:complexContent>
+
+
+Business Process Model and Notation (BPMN), v2.0.2                                                141
 </xsd:complexType>
 
 Table 9.27 – ParticipantMultiplicity XML schema
@@ -1489,6 +1472,7 @@ Table 9.27 – ParticipantMultiplicity XML schema
         </xsd:extension>
     </xsd:complexContent>
 </xsd:complexType>
+
 
 Table 9.28 – PartnerEntity XML schema
 
@@ -1513,12 +1497,9 @@ Table 9.29 – PartnerRole XML schema
 </xsd:complexType>
 
 
-
-
-Business Process Model and Notation, v2.0                                                   143
 Table 9.30 – Sub-Conversation XML schema
 
-<xsd:element name="subConversation" type="tSubConversation" substituti onGroup="conversationNode"/>
+<xsd:element name="subConversation" type="tSubConversation" substitutionGroup="conversationNode"/>
 <xsd:complexType name="tSubConversation">
     <xsd:complexContent>
         <xsd:extension base="tConversationNode">
@@ -1532,4 +1513,4 @@ Table 9.30 – Sub-Conversation XML schema
 
 
 
-144                                                                 Business Process Model and Notation, v2.0
+142                                                               Business Process Model and Notation (BPMN), v2.0.2

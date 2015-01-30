@@ -1,22 +1,24 @@
-8                 BPMN Core Structure
-Note – The content of this chapter is REQUIRED for all BPMN conformance types. For more information about BPMN
-conformance types, see page 2.
+8             BPMN Core Structure
+
+8.1           General
+NOTE: The content of this clause is REQUIRED for all BPMN conformance types. For more information about BPMN
+conformance types, see page 1.
 
 The technical structuring of BPMN is based on the concept of extensibility layers on top of a basic series of simple
-elements identified as Core Elements of the specification. From this core set of constructs, layering is used to describe
-additional elements of the specification that extend and add new constructs to the specification and relies on clear
+elements identified as Core Elements of the International Standard. From this core set of constructs, layering is used to
+describe additional elements that extend and add new constructs to the International Standard and relies on clear
 dependency paths for resolution. The XML Schema model lends itself particularly well to the structuring model with
 formalized import and resolution mechanics that remove ambiguities in the definitions of elements in the outer layers of
-the specification.
+the International Standard.
 
 
 
-                                                   Co
-                                                      n   ve
-                                                               rs a
-                                                                      tio
-                                                                            ns
-                                      Collaboration
+                                                Co
+                                                   n   ve
+                                                            rs a
+                                                                   tio
+                                                                         ns
+                                     Collaboration
       n
 
 
@@ -28,122 +30,125 @@ the specification.
 
 
 
-                                        ur
+                                       tur
     Hu m
 
 
 
 
-                                         t
+                                                 Com nt s
+                                    uc
 
 
 
-
-                                                    Com nt s
-                                      uc
-
-
-
-                                                    Ele m
-                                 s tr
+                                                 Ele m
+                               str
 
 
 
 
                                          BPMN
-                                                         mon
-                                 ra
+                                                      mon
+                               ra
 
 
 
 
-                                                          e
-                             Inf
-                  P roc
+                                                       e
+                           Inf
 
 
 
 
                                          Core
-                                                                         hy
-                                                                      ap
-                    e ss
+                  P roc
 
 
 
 
-                                     Ser v
-                                          i c es
-                                                               gr
-                                                             eo
+                                                                      hy
+                                                                   ap
+                   e ss
+
+
+
+
+                                S er v
+                                      i c es
+                                                            gr
+                                                          eo
        Da
 
 
 
 
-                                                           or
+                                                        or
              ta
 
 
 
 
-                                                          Ch
+                                                       Ch
 
 
 
 
-                           A ct iv
-                                     ities
+                          A ct iv
+                                    ities
 
 
 
-Figure 8.1 - A representation of the BPMN Core and Layer Structure
+Figure 8.1 – A representation of the BPMN Core and Layer Structure
 
 Figure 8.1 shows the basic principles of layering that can be composed in well defined ways. The approach uses
 formalization constructs for extensibility that are applied consistently to the definition.
 
 The additional effect of layering is that compatibility layers can be built, allowing for different levels of compliance
 among vendors, and also enabling vendors to add their own layers in support of different vertical industries or target
-audiences. In addition, it provides mechanism for the redefinition of previously existing concepts without affecting
-backwards compatibility, but defining two or more non-composable layers, the level of compliance with the specification
-and backwards compatibility can be achieved without compromising clarity.
-
-The BPMN specification is structured in layers, where each layer builds on top of and extends lower layers. Included is a
-Core or kernel that includes the most fundamental elements of BPMN, which are REQUIRED for constructing BPMN
-diagrams: Process, Choreography, and Collaboration. The Core is intended to be simple, concise, and extendable
-with well defined behavior.
+audiences. In addition, it provides a mechanism for the redefinition of previously existing concepts without affecting
+backwards compatibility, but defining two or more non-composable layers, the level of compliance with the International
+Standard and backwards compatibility can be achieved without compromising clarity.
 
 
 
 
-Business Process Model and Notation, v2.0                                                                              49
-The Core contains three sub-packages (see Figure 8.2):
+Business Process Model and Notation (BPMN), v2.0.2                                                                    47
+The BPMN International Standard is structured in layers, where each layer builds on top of and extends lower layers.
+Included is a Core or kernel that includes the most fundamental elements of BPMN, which are REQUIRED for
+constructing BPMN diagrams: Process, Choreography, and Collaboration. The Core is intended to be simple,
+concise, and extendable with well defined behavior.
 
-     1.   Foundation: The fundamental constructs needed for BPMN modeling.
+The Core contains four sub-packages (see Figure 8.2):
 
-     2.   Service: The fundamental constructs needed for modeling services and interfaces.
+     1.   Infrastructure: Two elements that are used for both abstract syntax models and diagram models.
 
-     3.   Common: Those classes which are common to the layers of Process, Choreography, and Collaboration.
+     2.   Foundation: The fundamental constructs needed for BPMN modeling.
+
+     3.   Service: The fundamental constructs needed for modeling services and interfaces.
+
+     4.   Common: Those classes which are common to the layers of Process, Choreography, and Collaboration.
 
 
 
 
-Figure 8.2 - Class diagram showing the core packages
+Figure 8.2 – Class diagram showing the core packages
+
+NOTE: To simplify the diagram, the Infrastructure package is not shown in Figure 8.2.
 
 Figure 8.3 displays the organization of the main set of BPMN core model elements.
 
 
 
 
-50                                                                             Business Process Model and Notation, v2.0
-Figure 8.3 - Class diagram showing the organization of the core BPMN elements
+48                                                                    Business Process Model and Notation (BPMN), v2.0.2
+Figure 8.3 – Class diagram showing the organization of the core BPMN elements
 
 
-8.1      Infrastructure
+8.2      Infrastructure
 The BPMN Infrastructure package contains two elements that are used for both abstract syntax models and diagram
 models.
 
-8.1.1    Definitions
+8.2.1    Definitions
 
 The Definitions class is the outermost containing object for all BPMN elements. It defines the scope of visibility and the
 namespace for all contained elements. The interchange of BPMN files will always be through one or more Definitions.
@@ -151,62 +156,51 @@ namespace for all contained elements. The interchange of BPMN files will always 
 
 
 
-Business Process Model and Notation, v2.0                                                                              51
-Figure 8.4 - Definitions class diagram
+Business Process Model and Notation (BPMN), v2.0.2                                                                     49
+Figure 8.4 – Definitions class diagram
 
 The Definitions element inherits the attributes and model associations of BaseElement (see Table 8.5). Table 8.1 presents
 the additional attributes and model associations of the Definitions element.
 
+Table 8.1 – Definitions attributes and model association
+
+ Attribute Name                           Description/Usage
+ name: string                             The name of the Definition.
+ targetNamespace: string                  This attribute identifies the namespace associated with the
+                                          Definition and follows the convention established by XML Schema.
+ expressionLanguage: string [0..1]        This attribute identifies the formal Expression language used in
+                                          Expressions within the elements of this Definition. The Default is
+                                          “http://www.w3.org/1999/XPath”. This value MAY be overridden on
+                                          each individual formal Expression. The language MUST be specified
+                                          in a URI format.
 
 
 
-52                                                                             Business Process Model and Notation, v2.0
-Table 8.1 - Definitions attributes and model associations
+50                                                                   Business Process Model and Notation (BPMN), v2.0.2
+Table 8.1 – Definitions attributes and model association
 
+ typeLanguage: string [0..1]              This attribute identifies the type system used by the elements of this
+                                          Definition. Defaults to http://www.w3.org/2001/XMLSchema. This
+                                          value can be overridden on each individual ItemDefinition. The
+                                          language MUST be specified in a URI format.
+ rootElements: RootElement [0..*]         This attribute lists the root elements that are at the root of this
+                                          Definitions. These elements can be referenced within this
+                                          Definitions and are visible to other Definitions.
+ diagrams: BPMNDiagram [0..*]             This attribute lists the BPMNDiagrams that are contained within this
+                                          Definitions (see page 367 for more information on
+                                          BPMNDiagrams).
+ imports: Import [0..*]                   This attribute is used to import externally defined elements and make
+                                          them available for use by elements within this Definitions.
+ extensions: Extension [0..*]             This attribute identifies extensions beyond the attributes and model
+                                          associations in the base BPMN International Standard. See page 55 for
+                                          additional information on extensibility.
+ relationships: Relationship [0..*]       This attribute enables the extension and integration of BPMN models
+                                          into larger system/development Processes.
+ exporter: string [0..1]                  This attribute identifies the tool that is exporting the bpmn model file.
+ exporterVersion: string [0..1]           This attribute identifies the version of the tool that is exporting the bpmn
+                                          model file.
 
- Attribute Name                             Description/Usage
-
- name: string                               The name of the Definition.
-
- targetNamespace: string                    This attribute identifies the namespace associated with the
-                                            Definition and follows the convention established by XML Schema.
-
- expressionLanguage: string [0..1]          This attribute identifies the formal Expression language used in
-                                            Expressions within the elements of this Definition. The Default is
-                                            “http://www.w3.org/1999/XPath”. This value MAY be overridden on
-                                            each individual formal Expression. The language MUST be specified
-                                            in a URI format.
-
- typeLanguage: string [0..1]                This attribute identifies the type system used by the elements of this
-                                            Definition. Defaults to http://www.w3.org/2001/XMLSchema. This
-                                            value can be overridden on each individual ItemDefinition. The
-                                            language MUST be specified in a URI format.
-
- rootElements: RootElement [0..*]           This attribute lists the root elements that are at the root of this
-                                            Definitions. These elements can be referenced within this
-                                            Definitions and are visible to other Definitions.
-
- diagrams: BPMNDiagram [0..*]               This attribute lists the BPMNDiagrams that are contained within this
-                                            Definitions (see page 367 for more information on
-                                            BPMNDiagrams).
-
- imports: Import [0..*]                     This attribute is used to import externally defined elements and make
-                                            them available for use by elements within this Definitions.
-
- extensions: Extension [0..*]               This attribute identifies extensions beyond the attributes and model
-                                            associations in the base BPMN specification. See page 57 for
-                                            additional information on extensibility.
-
- relationships: Relationship [0..*]         This attribute enables the extension and integration of BPMN models
-                                            into larger system/development Processes.
-
- exporter: string [0..1]                    This attribute identifies the tool that is exporting the bpmn model file.
-
- exporterVersion: string [0..1]             This attribute identifies the version of the tool that is exporting the bpmn
-                                            model file.
-
-
-8.1.2    Import
+8.2.2     Import
 
 The Import class is used when referencing external element, either BPMN elements contained in other BPMN
 Definitions or non-BPMN elements. Imports MUST be explicitly defined.
@@ -216,25 +210,22 @@ Table 8.2 presents the attributes of Import.
 
 
 
-Business Process Model and Notation, v2.0                                                                               53
+Business Process Model and Notation (BPMN), v2.0.2                                                                    51
  Table 8.2 – Import attributes
 
  Attribute Name              Description/Usage
-
  importType: string          Identifies the type of document being imported by providing an absolute URI that
                              identifies the encoding language used in the document.The value of the importType
                              attribute MUST be set to http://www.w3.org/2001/XMLSchema when importing XML
-                             Schema 1.0 documents, to http://www.w3.org/TR/wsdl20/ when importing WSDL
-                             2.0 documents, and http://www.omg.org/spec/BPMN/20100524/MODEL when
-                             importing BPMN 2.0 documents. Other types of documents MAY be supported.
+                             Schema 1.0 documents, to http://www.w3.org/TR/wsdl20/ when importing WSDL 2.0
+                             documents, and http://www.omg.org/spec/BPMN/20100524/MODEL when importing
+                             BPMN 2.0 documents. Other types of documents MAY be supported.
                              Importing Xml Schema 1.0, WSDL 2.0 and BPMN 2.0 types MUST be supported.
-
  location: string [0..1]     Identifies the location of the imported element.
-
  namespace: string           Identifies the namespace of the imported element.
 
 
-8.1.3    Infrastructure Package XML Schemas
+8.2.3     Infrastructure Package XML Schemas
 
 
  Table 8.3 – Definitions XML schema
@@ -262,7 +253,7 @@ Business Process Model and Notation, v2.0                                       
 
 
 
-54                                                                          Business Process Model and Notation, v2.0
+52                                                                 Business Process Model and Notation (BPMN), v2.0.2
  Table 8.4 – Import XML schema
 
  <xsd:element name="import" type="tImport"/>
@@ -274,53 +265,48 @@ Business Process Model and Notation, v2.0                                       
 
 
 
-8.2      Foundation
+8.3      Foundation
 The Foundation package contains classes that are shared among other packages in the Core (see Figure 8.5) of an
 abstract syntax model.
 
 
 
 
-Figure 8.5 - Classes in the Foundation package
+Figure 8.5 – Classes in the Foundation package
 
 
 
 
-Business Process Model and Notation, v2.0                                                                         55
-8.2.1    Base Element
+Business Process Model and Notation (BPMN), v2.0.2                                                                53
+8.3.1     Base Element
 
 BaseElement is the abstract super class for most BPMN elements. It provides the attributes id and documentation, which
 other elements will inherit.
 
 Table 8.5 presents the attributes and model associations for the BaseElement.
 
-
  Table 8.5 – BaseElement attributes and model associations
 
- Attribute Name                  Description/Usage
-
- id: string                      This attribute is used to uniquely identify BPMN elements. The id is
-                                 REQUIRED if this element is referenced or intended to be referenced by
-                                 something else. If the element is not currently referenced and is never intended
-                                 to be referenced, the id MAY be omitted.
-
- documentation:                  This attribute is used to annotate the BPMN element, such as descriptions and
- Documentation [0..*]            other documentation.
-
- extensionDefinitions:           This attribute is used to attach additional attributes and associations to any
- ExtensionDefinition [0..*]      BaseElement. This association is not applicable when the XML schema
-                                 interchange is used, since the XSD mechanisms for supporting anyAttribute
-                                 and any element already satisfy this requirement. See page 57 for additional
-                                 information on extensibility.
-
- extensionValues: Exten-         This attribute is used to provide values for extended attributes and model
- sionAttributeValue [0..*]       associations. This association is not applicable when the XML schema
-                                 interchange is used, since the XSD mechanisms for supporting anyAttribute
-                                 and any element already satisfy this requirement. See page 57 for additional
-                                 information on extensibility.
+ Attribute Name                         Description/Usage
+ id: string                             This attribute is used to uniquely identify BPMN elements. The id is
+                                        REQUIRED if this element is referenced or intended to be referenced by
+                                        something else. If the element is not currently referenced and is never
+                                        intended to be referenced, the id MAY be omitted.
+ documentation:                         This attribute is used to annotate the BPMN element, such as descriptions
+ Documentation [0..*]                   and other documentation.
+ extensionDefinitions:                  This attribute is used to attach additional attributes and associations to any
+ ExtensionDefinition [0..*]             BaseElement. This association is not applicable when the XML schema
+                                        interchange is used, since the XSD mechanisms for supporting
+                                        anyAttribute and any element already satisfy this requirement. See page
+                                        57 for additional information on extensibility.
+ extensionValues:                       This attribute is used to provide values for extended attributes and model
+ ExtensionAttributeValue [0..*]         associations. This association is not applicable when the XML schema
+                                        interchange is used, since the XSD mechanisms for supporting
+                                        anyAttribute and any element already satisfy this requirement. See page
+                                        55 for additional information on extensibility.
 
 
-8.2.2    Documentation
+8.3.2     Documentation
 
 All BPMN elements that inherit from the BaseElement will have the capability, through the Documentation
 element, to have one (1) or more text descriptions of that element.
@@ -328,24 +314,23 @@ element, to have one (1) or more text descriptions of that element.
 The Documentation element inherits the attributes and model associations of BaseElement (see Table 8.5). Table
 8.6 presents the additional attributes of the Documentation element.
 
+
  Table 8.6 – Documentation attributes
 
- Attribute Name               Description/Usage
-
- text: string                 This attribute is used to capture the text descriptions of a BPMN element.
-
- textFormat: string           This attribute identifies the format of the text. It MUST follow the mime-type
-                              format. The default is "text/plain."
-
+ Attribute Name                   Description/Usage
+ text: string                     This attribute is used to capture the text descriptions of a BPMN element.
+ textFormat: string               This attribute identifies the format of the text. It MUST follow the mime-type
+                                  format. The default is "text/plain."
 
 In the BPMN schema, the tDocumentation complexType does not contain a text attribute or element. Instead, the
 documentation text is expected to appear in the body of the documentation element. For example:
 
 
-56                                                                           Business Process Model and Notation, v2.0
+
+54                                                                     Business Process Model and Notation (BPMN), v2.0.2
 <documentation>An example of how the documentation text is entered.</documentation>
 
-8.2.3    Extensibility
+8.3.3    Extensibility
 
 The BPMN metamodel is aimed to be extensible. This allows BPMN adopters to extend the specified metamodel in a
 way that allows them to be still BPMN-compliant.
@@ -359,19 +344,21 @@ understood by other BPMN adopters. It’s only the additional attributes and ele
 
 
 
-Figure 8.6 - Extension class diagram
+Figure 8.6 – Extension class diagram
 
 A BPMN Extension basically consists of four different elements:
 
     1.   Extension
+
     2.   ExtensionDefinition
+
     3.   ExtensionAttributeDefinition
+
     4.   ExtensionAttributeValue
 
 
 
-
-Business Process Model and Notation, v2.0                                                                             57
+Business Process Model and Notation (BPMN), v2.0.2                                                                    55
 The core elements of an Extension are the ExtensionDefinition and ExtensionAttributeDefinition. The
 latter defines a list of attributes that can be attached to any BPMN element. The attribute list defines the name and type
 of the new attribute. This allows BPMN adopters to integrate any meta model into the BPMN meta model and reuse
@@ -402,11 +389,9 @@ Table 8.7 presents the attributes and model associations for the Extension eleme
  Table 8.7 – Extension attributes and model associations
 
  Attribute Name                       Description/Usage
-
- mustUnderstand: boolean              This flag defines if the semantics defined by the extension definition and its
- [0..1] = False                       attribute definition MUST be understood by the BPMN adopter in order to
+ mustUnderstand: boolean [0..1] =     This flag defines if the semantics defined by the extension definition and its
+ False                                attribute definition MUST be understood by the BPMN adopter in order to
                                       process the BPMN model correctly. Defaults to False.
-
  definition: ExtensionDefinition      Defines the content of the extension.
                                       Note that in the XML schema, this definition is provided by an external XML
                                       schema file and is simply referenced by QName.
@@ -421,16 +406,15 @@ Table 8.8 presents the attributes and model associations for the ExtensionDefini
 
 
 
-58                                                                              Business Process Model and Notation, v2.0
+56                                                                    Business Process Model and Notation (BPMN), v2.0.2
  Table 8.8 – ExtensionDefinition attributes and model associations
 
- Attribute Name                               Description/Usage
-
- name: string                                 The name of the extension. This is used as a namespace to
-                                              uniquely identify the extension content.
-
- extensionAttributeDefinitions:               The specific attributes that make up the extension.
+ Attribute Name                             Description/Usage
+ name: string                               The name of the extension. This is used as a namespace to
+                                            uniquely identify the extension content.
+ extensionAttributeDefinitions:             The specific attributes that make up the extension.
  ExtensionAttributeDefinition [0..*]
+
 
 ExtensionAttributeDefinition
 The ExtensionAttributeDefinition defines new attributes. This type is not applicable when the XML schema
@@ -439,15 +423,12 @@ requirement.
 
 Table 8.9 presents the attributes for the ExtensionAttributeDefinition element.
 
-Table 8.9 - ExtensionAttributeDefinition attributes
+Table 8.9- ExtensionAttributeDefinition attributes
 
- Attribute Name                               Description/Usage
-
- name: string                                 The name of the extension attribute.
-
- type: string                                 The type that is associated with the attribute.
-
- isReference: boolean [0..1] = False          Indicates if the attribute value will be referenced or contained.
+ Attribute Name                             Description/Usage
+ name: string                               The name of the extension attribute.
+ type: string                               The type that is associated with the attribute.
+ isReference: boolean [0..1] = False        Indicates if the attribute value will be referenced or contained.
 
 ExtensionAttributeValue
 The ExtensionAttributeValue contains the attribute value. This type is not applicable when the XML schema
@@ -458,24 +439,22 @@ Table 8.10 presents the model associations for the ExtensionAttributeValue eleme
 
  Table 8.10 – ExtensionAttributeValue model associations
 
- Attribute Name                             Description/Usage
-
- value: [Element [0..1]                     The contained attribute value, used when the associated
-                                            ExtensionAttributeDefinition.isReference is false.
-                                            The type of this Element MUST conform to the type specified in the
-                                            associated ExtensionAttributeDefinition.
-
- valueRef: [Element [0..1]                  The referenced attribute value, used when the associated
-                                            ExtensionAttributeDefinition.isReference is true.
-                                            The type of this Element MUST conform to the type specified in the
-                                            associated ExtensionAttributeDefinition.
-
- extensionAttributeDefinition:              Defines the extension attribute for which this value is being
- ExtensionAttributeDefinition               provided.
+ Attribute Name                           Description/Usage
+ value: [Element [0..1]                   The contained attribute value, used when the associated
+                                          ExtensionAttributeDefinition.isReference is false.
+                                          The type of this Element MUST conform to the type specified in the
+                                          associated ExtensionAttributeDefinition.
+ valueRef: [Element [0..1]                The referenced attribute value, used when the associated
+                                          ExtensionAttributeDefinition.isReference is true.
+                                          The type of this Element MUST conform to the type specified in the
+                                          associated ExtensionAttributeDefinition.
+ extensionAttributeDefinition:            Defines the extension attribute for which this value is being
+ ExtensionAttributeDefinition             provided.
 
 
 
-Business Process Model and Notation, v2.0                                                                         59
+
+Business Process Model and Notation (BPMN), v2.0.2                                                                57
 Extensibility XML Schemas
 
 
@@ -511,7 +490,7 @@ Core.
 
 
 
-60                                                                        Business Process Model and Notation, v2.0
+58                                                               Business Process Model and Notation (BPMN), v2.0.2
  Table 8.13 – Example Extension XML schema
 
  <xsd:schema …>
@@ -548,42 +527,42 @@ Core.
  </bpmn:definitions>
 
 
-8.2.4    External Relationships
+8.3.4    External Relationships
 
-It is the intention of this specification to cover the basic elements necessary for the construction of semantically rich and
-syntactically valid Process models to be used in the description of Processes, Choreographies and business
-operations in multiple levels of abstraction. As the specification indicates, extension capabilities enable the enrichment of
-the information described in BPMN and supporting models to be augmented to fulfill particularities of a given usage
-model. These extensions intention is to extend the semantics of a given BPMN Artifact to provide specialization of
-intent or meaning.
+It is the intention of this International Standard to cover the basic elements necessary for the construction of semantically
+rich and syntactically valid Process models to be used in the description of Processes, Choreographies, and
+business operations in multiple levels of abstraction. As the International Standard indicates, extension capabilities enable
+the enrichment of the information described in BPMN and supporting models to be augmented to fulfill particularities of
+a given usage model. These extensions’ intention is to extend the semantics of a given BPMN Artifact to provide
+specialization of intent or meaning.
 
-Business Process Model and Notation, v2.0                                                                                 61
+Business Process Model and Notation (BPMN), v2.0.2                                                                        59
 Process models do not exist in isolation and generally participate in larger, more complex business and system
-development Processes. The intention of the following specification element is to enable BPMN Artifacts to be
-integrated in these development Processes via the specification of a non-intrusive identity/relationship model between
-BPMN Artifacts and elements expressed in any other addressable domain model.
+development Processes. The intention of the following element is to enable BPMN Artifacts to be integrated in
+these development Processes via the specification of a non-intrusive identity/relationship model between BPMN
+Artifacts and elements expressed in any other addressable domain model.
 
-The ‘identity/relationship’ model it is reduced to the creation of families of typed relationships that enable BPMN and
-non-BPMN Artifacts to be related in non intrusive manner. By simply defining ‘relationship types’ that can be
-associated with elements in the BPMN Artifacts and arbitrary elements in a given addressable domain model, it
-enables the extension and integration of BPMN models into larger system/development Processes.
+The ‘identity/relationship’ model is reduced to the creation of families of typed relationships that enable BPMN and non-
+BPMN Artifacts to be related in non intrusive manner. By simply defining ‘relationship types’ that can be associated
+with elements in the BPMN Artifacts and arbitrary elements in a given addressable domain model, it enables the
+extension and integration of BPMN models into larger system/development Processes.
 
 It is that these extensions will enable, for example, the linkage of ‘derivation’ or ‘definition’ relationships between UML
 artifacts and BPMN Artifacts in novel ways. So, a UML use case could be related to a Process element in the
-BPMN specification without affecting the nature of the Artifacts themselves, but enabling different integration
-models that traverse specialized relationships.
+BPMN International Standard without affecting the nature of the Artifacts themselves, but enabling different
+integration models that traverse specialized relationships.
 
 Simply, the model enables the external specification of augmentation relationships between BPMN Artifacts and
 arbitrary relationship classification models, these external models, via traversing relationships declared in the external
 definition allow for linkages between BPMN elements and other structured or non-structured metadata definitions.
 
-The UML model for this specification follow a simple extensible pattern as shown below; where named relationships can
-be established by referencing objects that exist in their given namespaces.
+The UML model for this International Standard follows a simple extensible pattern as shown below; where named
+relationships can be established by referencing objects that exist in their given namespaces.
 
 
 
 
-Figure 8.7 - External Relationship Metamodel
+Figure 8.7 – External Relationship Metamodel
 
 The Relationship element inherits the attributes and model associations of BaseElement (see Table 8.5). Table
 8.15 presents the additional attributes for the Relationship element.
@@ -591,24 +570,21 @@ The Relationship element inherits the attributes and model associations of BaseE
 
 
 
-62                                                                                Business Process Model and Notation, v2.0
+60                                                                     Business Process Model and Notation (BPMN), v2.0.2
  Table 8.15 – Relationship attributes
 
- Attribute Name                             Description/Usage
+ Attribute Name                               Description/Usage
+ type: string                                 The descriptive name of the element.
+ direction: RelationshipDirection {None |     This attribute specifies the direction of the relationship.
+ Forward | Backward | Both}
 
- type: string                               The descriptive name of the element.
+ sources: [Element [1..*]                     This association defines artifacts that are augmented by the
+                                              relationship.
+ targets: [Element[1..*]                      This association defines artifacts used to extend the semantics of the
+                                              source element(s).
 
- direction: RelationshipDirection           This attribute specifies the direction of the relationship.
- {None | Forward | Backward | Both}
-
- sources: [Element [1..*]                   This association defines artifacts that are augmented by the
-                                            relationship.
-
- targets: [Element[1..*]                    This association defines artifacts used to extend the semantics of the
-                                            source element(s).
-
-In this manner, you can, for example, create relationships between different artifacts that enable external annotations used
-for (for example) traceability, derivation, arbitrary classifications, etc.
+In this manner you can, for example, create relationships between different artifacts that enable external annotations used
+for traceability, derivation, arbitrary classifications, etc.
 
 An example where the ‘reengineer’ relationship is shown between elements in a Visio ™ artifact and a BPMN
 Artifact.
@@ -644,8 +620,8 @@ Artifact.
 
 
 
-Business Process Model and Notation, v2.0                                                                                63
-8.2.5    Root Element
+Business Process Model and Notation (BPMN), v2.0.2                                                                      61
+8.3.5    Root Element
 
 RootElement is the abstract super class for all BPMN elements that are contained within Definitions. When
 contained within Definitions, these elements have their own defined life-cycle and are not deleted with the deletion
@@ -659,8 +635,7 @@ the Process.
 The RootElement element inherits the attributes and model associations of BaseElement (see Table 8.5), but does
 not have any further attributes or model associations.
 
-
-8.2.6    Foundation Package XML Schemas
+8.3.6    Foundation Package XML Schemas
 
 Table 8.17 – BaseElement XML schema
 
@@ -692,10 +667,9 @@ Table 8.17 – BaseElement XML schema
 </xsd:complexType>
 
 <xsd:element name="documentation" type="tDocumentation"/>
-
-
-64                                                                          Business Process Model and Notation, v2.0
 <xsd:complexType name="tDocumentation" mixed="true">
+
+62                                                                Business Process Model and Notation (BPMN), v2.0.2
     <xsd:sequence>
         <xsd:any namespace="##any" processContents="lax" minOccurs="0"/>
     </xsd:sequence>
@@ -740,21 +714,21 @@ Table 8.19 – Relationship XML schema
 
 
 
-Business Process Model and Notation, v2.0                                                           65
-8.3      Common Elements
-The following sections define BPMN elements that MAY be used in more than one type of diagram (e.g., Process,
+Business Process Model and Notation (BPMN), v2.0.2                                                  63
+8.4      Common Elements
+The following sub clauses define BPMN elements that MAY be used in more than one type of diagram (e.g., Process,
 Collaboration, and Choreography).
 
-8.3.1    Artifacts
+8.4.1    Artifacts
 
 BPMN provides modelers with the capability of showing additional information about a Process that is not directly
 related to the Sequence Flows or Message Flows of the Process.
 
 At this point, BPMN provides three standard Artifacts: Associations, Groups, and Text Annotations.
-Additional Artifacts MAY be added to the BPMN specification in later versions. A modeler or modeling tool MAY
-extend a BPMN diagram and add new types of Artifacts to a Diagram. Any new Artifact MUST follow the
-Sequence Flow and Message Flow connection rules (listed below). Associations can be used to link Artifacts
-to Flow Objects (see page 67).
+Additional Artifacts MAY be added to the BPMN International Standard in later versions. A modeler or modeling
+tool MAY extend a BPMN diagram and add new types of Artifacts to a Diagram. Any new Artifact MUST
+follow the Sequence Flow and Message Flow connection rules (listed below). Associations can be used to link
+Artifacts to Flow Objects (see page 67).
 
 Figure 8.8 shows the Artifacts class diagram. When an Artifact is defined it is contained within a Collaboration
 or a FlowElementsContainer (a Process or Choreography).
@@ -762,22 +736,22 @@ or a FlowElementsContainer (a Process or Choreography).
 
 
 
-Figure 8.8 - Artifacts Metamodel
+Figure 8.8 – Artifacts Metamodel
 
 Common Artifact Definitions
-The following sections provide definitions that are common to all Artifacts.
+The following sub clauses provide definitions that are common to all Artifacts.
 
 Artifact Sequence Flow Connections
-See “Sequence Flow Connections Rules” on page 42 for the entire set of objects and how they MAY be source or targets
+See “Sequence Flow Connections Rules” on page 40 for the entire set of objects and how they MAY be source or targets
 of a Sequence Flow.
 
 
-66                                                                          Business Process Model and Notation, v2.0
+64                                                                Business Process Model and Notation (BPMN), v2.0.2
          An Artifact MUST NOT be a target for a Sequence Flow.
          An Artifact MUST NOT be a source for a Sequence Flow.
 
 Artifact Message Flow Connections
-See “Message Flow Connection Rules” on page 43 for the entire set of objects and how they MAY be source or targets of
+See “Message Flow Connection Rules” on page 41 for the entire set of objects and how they MAY be source or targets of
 a Message Flow.
          An Artifact MUST NOT be a target for a Message Flow.
          An Artifact MUST NOT be a source for a Message Flow.
@@ -785,31 +759,31 @@ a Message Flow.
 Association
 An Association is used to associate information and Artifacts with Flow Objects. Text and graphical non-Flow
 Objects can be associated with the Flow Objects and Flow. An Association is also used to show the Activity used for
-compensation. More information about compensation can be found on page 302.
+compensation. More information about compensation can be found on page 300.
          An Association is line that MUST be drawn with a dotted single line (see Figure 8.9).
         The use of text, color, size, and lines for an Association MUST follow the rules defined in “Use of Text, Color, Size,
-        and Lines in a Diagram” on page 41.
+        and Lines in a Diagram” on page 39.
 
 
 
 
-Figure 8.9 - An Association
+Figure 8.9 – An Association
 
 
 
 
-Figure 8.10 - The Association Class Diagram
+Figure 8.10 – The Association Class Diagram
 
 If there is a reason to put directionality on the Association then:
          A line arrowhead MAY be added to the Association line (see Figure 8.11).
              The directionality of the Association can be in one (1) direction or in both directions.
 
 
-Business Process Model and Notation, v2.0                                                                                  67
-Figure 8.11 - A Directional Association
+Business Process Model and Notation (BPMN), v2.0.2                                                                         65
+Figure 8.11 – A Directional Association
 
 Note that directional Associations were used in BPMN 1.2 to show how Data Objects were inputs or outputs to
-Activities. In BPMN 2.0, a Data Association connector is used to show inputs and outputs (see page 221). A Data
+Activities. In BPMN 2.0.2, a Data Association connector is used to show inputs and outputs (see page 220). A Data
 Association uses the same notation as a directed Association (as in Figure 8.11, above).
 
 An Association is used to connect user-defined text (an Annotation) with a Flow Object (see Figure 8.12).
@@ -825,7 +799,7 @@ An Association is used to connect user-defined text (an Annotation) with a Flow 
             Issues — through e-
                  mail or calls
 
-Figure 8.12 - An Association of Text Annotation
+Figure 8.12 – An Association of Text Annotation
 
 The Association element inherits the attributes and model associations of BaseElement (see Table 8.5). Table 8.20
 presents the additional attributes and model associations for an Association.
@@ -834,15 +808,12 @@ presents the additional attributes and model associations for an Association.
  Table 8.20 – Association attributes and model associations
 
  Attributes                            Description
-
  associationDirection:                 associationDirection is an attribute that defines whether or not the
- AssociationDirection = None           Association shows any directionality with an arrowhead. The default is
- {None | One | Both}                   None (no arrowhead). A value of One means that the arrowhead SHALL
+ AssociationDirection = None {None |   Association shows any directionality with an arrowhead. The default is
+ One | Both}                           None (no arrowhead). A value of One means that the arrowhead SHALL
                                        be at the Target Object. A value of Both means that there SHALL be an
                                        arrowhead at both ends of the Association line.
-
  sourceRef: BaseElement                The BaseElement that the Association is connecting from.
-
  targetRef: BaseElement                The BaseElement that the Association is connecting to.
 
 
@@ -850,20 +821,20 @@ Group
 The Group object is an Artifact that provides a visual mechanism to group elements of a diagram informally. The
 grouping is tied to the CategoryValue supporting element. That is, a Group is a visual depiction of a single
 CategoryValue. The graphical elements within the Group will be assigned the CategoryValue of the Group.
-(Note -- CategoryValues can be highlighted through other mechanisms, such as color, as defined by a modeler or a
+(NOTE - CategoryValues can be highlighted through other mechanisms, such as color, as defined by a modeler or a
 modeling tool).
          A Group is a rounded corner rectangle that MUST be drawn with a solid dashed line (as seen in Figure 8.13).
 
 
 
-68                                                                             Business Process Model and Notation, v2.0
-                               The use of text, color, size, and lines for a Group MUST follow the rules defined in “Use of Text, Color, Size,
-                               and Lines in a Diagram” on page 41.
+66                                                                   Business Process Model and Notation (BPMN), v2.0.2
+                             The use of text, color, size, and lines for a Group MUST follow the rules defined in “Use of Text, Color, Size,
+                             and Lines in a Diagram” on page 39.
 
 
 
 
-Figure 8.13 - A Group Artifact
+Figure 8.13 – A Group Artifact
 
 As an Artifact, a Group is not an Activity or any Flow Object, and, therefore, cannot connect to Sequence
 Flows or Message Flows. In addition, Groups are not constrained by restrictions of Pools and Lanes. This means
@@ -872,48 +843,48 @@ identify Activities that exist within a distributed business-to-business transac
 
 
 
-                                                                                                H a n d le M e d icin e
-   Patient
+                                                                                                   H a n d le M e d ic in e
+  Patient
 
 
 
 
-                                                                                          Send                        R e ce ive
-                                   S e n d D o c to r           R e c e iv e
-                                                                                        M e d icin e                  M e d ic in e
-                                      R equest                   A p p t.
-                  Illn es s                                                             R equest
-                  O c c u rs
+                                                                                             Send                         R e ce iv e
+                                 S e n d D o c to r              R e c e ive
+                                                                                           M e d icin e                   M e d icin e
+                                    R equest                      A p p t.
+                 Illn e ss                                                                 R e q u e st
+                 O cc u rs
 
 
-                                I w a nt to s e e d o cto r   G o se e do c to r   I ne e d m y m ed ic in e   H ere is y ou r m ed ic in e
-   Receptionist
-
-
-
-
-                                      R e c e iv e                                       R e ce iv e
-                                                                                                                        Send
-                                       D o c to r             S e n d A p p t.            D o cto r
-                                                                                                                      M e d ic in e
-                                      R equest                                           R equest
+                              I w a n t to s e e d o c to r   G o s e e d o c to r   I n e e d m y m e d ic in e   H e re is y o u r m e d ic in e
+  Receptionist
 
 
 
 
-Figure 8.14 - A Group around Activities in different Pools
+                                     R e c e ive                                           R e c e ive
+                                                                                                                            Send
+                                      D o cto r               S e n d A p p t.              D o cto r
+                                                                                                                          M e d icin e
+                                     R equest                                              R e q u e st
 
-Groups are often used to highlight certain sections of a Diagram without adding additional constraints for performance-
--as a Sub-Process would. The highlighted (grouped) section of the Diagram can be separated for reporting and analysis
-purposes. Groups do not affect the flow of the Process.
+
+
+
+Figure 8.14 – A Group around Activities in different Pools
+
+Groups are often used to highlight certain sub clauses of a Diagram without adding additional constraints for
+performance, as a Sub-Process would. The highlighted (grouped) sub clause of the Diagram can be separated for
+reporting and analysis purposes. Groups do not affect the flow of the Process.
 
 Figure 8.15 shows the Group class diagram.
 
 
 
 
-Business Process Model and Notation, v2.0                                                                                                     69
-Figure 8.15 - The Group class diagram
+Business Process Model and Notation (BPMN), v2.0.2                                                                                                   67
+Figure 8.15 – The Group class diagram
 
 The Group element inherits the attributes and model associations of BaseElement (see Table 8.5), through its
 relationship to Artifact. Table 8.21 presents the additional model associations for a Group.
@@ -921,14 +892,14 @@ relationship to Artifact. Table 8.21 presents the additional model associations 
 
  Table 8.21 – Group model associations
 
- Attributes                          Description
-
- categoryValueRef: Category-         The categoryValueRef attribute specifies the CategoryValue that
- Value [0..1]                        the Group represents. (Further details about the definition of a Category
-                                     and CategoryValue can be found on page 70.) The name of the
-                                     Category and the value of the CategoryValue separated by delineator
-                                     "." provides the label for the Group. The graphical elements within the
-                                     boundaries of the Group will be assigned the CategoryValue.
+ Attributes                               Description
+ categoryValueRef: CategoryValue [0..1]   The categoryValueRef attribute specifies the CategoryValue
+                                          that the Group represents. (Further details about the definition of a
+                                          Category and CategoryValue can be found on page 70.) The
+                                          name of the Category and the value of the CategoryValue
+                                          separated by delineator "." provides the label for the Group. The
+                                          graphical elements within the boundaries of the Group will be
+                                          assigned the CategoryValue.
 
 
 Category
@@ -939,38 +910,37 @@ Activities per Category can be calculated.
 Groups are one way in which Categories of objects can be visually displayed on the diagram. That is, a Group is a
 visual depiction of a single CategoryValue. The graphical elements within the Group will be assigned the
 CategoryValue of the Group. The value of the CategoryValue, optionally prepended by the Category name
-and delineator ":", appears on the diagram as the Group label. (Note -- Categories can be highlighted through other
+and delineator ":", appears on the diagram as the Group label. (NOTE - Categories can be highlighted through other
 mechanisms, such as color, as defined by a modeler or a modeling tool). A single Category can be used for multiple
 Groups in a diagram.
 
+
+
+68                                                                Business Process Model and Notation (BPMN), v2.0.2
 The Category element inherits the attributes and model associations of BaseElement (see Table 8.5) through its
 relationship to RootElement. Table 8.22 displays the additional model associations of the Category element.
 
-70                                                                         Business Process Model and Notation, v2.0
- Table 8.22 –Category model associations
 
- Attributes                             Description
+ Table 8.22 – Category model associations
 
- name: string                           The descriptive name of the element.
-
- categoryValue: CategoryValue           The categoryValue attribute specifies one or more values of the
- [0..*]                                 Category. For example, the Category is “Region” then this Category
-                                        could specify values like “North,” “South,” “West,” and “East.”
+ Attributes                                   Description
+ name: string                                 The descriptive name of the element.
+ categoryValue: CategoryValue [0..*]          The categoryValue attribute specifies one or more values of the
+                                              Category. For example, the Category is “Region” then this
+                                              Category could specify values like “North,” “South,” “West,” and
+                                              “East.”
 
 The CategoryValue element inherits the attributes and model associations of BaseElement (see Table 8.5). Table
 8.23 displays the attributes and model associations of the CategoryValue element.
 
 
- Table 8.23 –CategoryValue attributes and model associations
+ Table 8.23 – CategoryValue attributes and model associations
 
  Attributes                             Description
-
  value: string                          This attribute provides the value of the CategoryValue element.
-
  category: Category [0..1]              The category attribute specifies the Category representing the
                                         Category as such and contains the CategoryValue (Further details
                                         about the definition of a Category can be found on page 70).
-
  categorizedFlowElements:               The FlowElements attribute identifies all of the elements (e.g., Events,
  FlowElement [0..*]                     Activities, Gateways, and Artifacts) that are within the
                                         boundaries of the Group.
@@ -980,7 +950,7 @@ Text Annotation
 Text Annotations are a mechanism for a modeler to provide additional information for the reader of a BPMN Diagram.
          A Text Annotation is an open rectangle that MUST be drawn with a solid single line (as seen in Figure 8.16).
               The use of text, color, size, and lines for a Text Annotation MUST follow the rules defined in “Use of Text,
-              Color, Size, and Lines in a Diagram” on page 41.
+              Color, Size, and Lines in a Diagram” on page 39.
 
 The Text Annotation object can be connected to a specific object on the Diagram with an Association, but does not
 affect the flow of the Process. Text associated with the Annotation can be placed within the bounds of the open
@@ -993,25 +963,25 @@ rectangle.
                   a modeler to provide
                  additional information
 
-Figure 8.16 - A Text Annotation
+Figure 8.16 – A Text Annotation
 
+
+
+Business Process Model and Notation (BPMN), v2.0.2                                                                      69
 The Text Annotation element inherits the attributes and model associations of BaseElement (see Table 8.5). Table
 8.24 presents the additional attributes for a Text Annotation.
 
-
-Business Process Model and Notation, v2.0                                                                               71
  Table 8.24 –Text Annotation attributes
 
- Attributes                          Description
-
- text: string                        Text is an attribute that is text that the modeler wishes to communicate
-                                     to the reader of the Diagram.
-
- textFormat: string                  This attribute identifies the format of the text. It MUST follow the mime-
-                                     type format. The default is "text/plain."
+ Attributes                         Description
+ text: string                       Text is an attribute that is text that the modeler wishes to communicate
+                                    to the reader of the Diagram.
+ textFormat: string                 This attribute identifies the format of the text. It MUST follow the mime-
+                                    type format. The default is "text/plain."
 
 
 XML Schema for Artifacts
+
 
 Table 8.25 – Artifact XML schema
 
@@ -1047,10 +1017,9 @@ Table 8.26 – Association XML schema
 Table 8.27 – Category XML schema
 
 <xsd:element name="category" type="tCategory" substitutionGroup="rootElement"/>
+
+70                                                               Business Process Model and Notation (BPMN), v2.0.2
 <xsd:complexType name="tCategory">
-
-
-72                                                                          Business Process Model and Notation, v2.0
     <xsd:complexContent>
         <xsd:extension base="tRootElement">
             <xsd:sequence>
@@ -1083,7 +1052,7 @@ Table 8.29 – Group XML schema
     </xsd:complexContent>
 </xsd:complexType>
 
-Table 8.30 – Text Annotation XML schema
+Table 8.30– Text Annotation XML schema
 
 <xsd:element name="textAnnotation" type="tTextAnnotation" substitutionGroup="artifact"/>
 <xsd:complexType name="tTextAnnotation">
@@ -1100,7 +1069,7 @@ Table 8.30 – Text Annotation XML schema
 
 
 
-Business Process Model and Notation, v2.0                                                  73
+Business Process Model and Notation (BPMN), v2.0.2                                         71
 <xsd:element name="text" type="tText"/>
 <xsd:complexType name="tText" mixed="true">
     <xsd:sequence>
@@ -1108,7 +1077,7 @@ Business Process Model and Notation, v2.0                                       
     </xsd:sequence>
 </xsd:complexType>
 
-8.3.2     Correlation
+8.4.2     Correlation
 
 Business Processes typically can run for days or even months, requiring asynchronous communication via
 Message. Also, many instances of a particular Process will typically run in parallel, e.g., many instances of an order
@@ -1132,38 +1101,39 @@ There are two, non-exclusive correlation mechanisms in place:
      1.   In plain, key-based correlation, Messages that are exchanged within a Conversation are logically correlated by
           means of one or more common CorrelationKeys. That is, any Message that is sent or received within this
           Conversation needs to carry the value of at least one of these CorrelationKey instances within its payload. A
-          CorrelationKey basically defines a (composite) key. The first Message that is initially sent or received initial-
-          izes one or more CorrelationKey instances associated with the Conversation, i.e., assigns values to its
-          CorrelationProperty instances which are the fields (partial keys) of the CorrelationKey. A
-          CorrelationKey is only considered valid for use, if the Message has resulted in all CorrelationProp-
-          erty fields within the key being populated with a value. If a follow-up Message derives a CorrelationKey
-          instance, where that CorrelationKey had previously been initialized within the Conversation, then the
-          CorrelationKey value in the Message and Conversation MUST match. If the follow-up Message derives
-          a CorrelationKey instance associated with the Conversation, that had not previously been initialized, then the
-          CorrelationKey value will become associated with the Conversation. As a Conversation can comprise dif-
-          ferent Messages that can be differently structured, each CorrelationProperty comes with as many extrac-
-          tion rules (CorrelationPropertyRetrievalExpression) for the respective partial key as there are
-          different Messages.
-
-     2.   In context-based correlation, the Process context (i.e., its Data Objects and Properties) can dynamically
-          influence the matching criterion. That is, a CorrelationKey can be complemented by a Process-specific
+          CorrelationKey basically defines a (composite) key. The first Message that is initially sent or received
+          initializes one or more CorrelationKey instances associated with the Conversation, i.e., assigns values to its
+          CorrelationProperty instances that are the fields (partial keys) of the CorrelationKey. A
+          CorrelationKey is only considered valid for use, if the Message has resulted in all
+          CorrelationProperty fields within the key being populated with a value. If a follow-up Message derives a
+          CorrelationKey instance, where that CorrelationKey had previously been initialized within the
+          Conversation, then the CorrelationKey value in the Message and Conversation MUST match. If the
+          follow-up Message derives a CorrelationKey instance associated with the Conversation, that had not
+          previously been initialized, then the CorrelationKey value will become associated with the Conversation. As
+          a Conversation can comprise different Messages that can be differently structured, each
+          CorrelationProperty comes with as many extraction rules
+          (CorrelationPropertyRetrievalExpression) for the respective partial key as there are different
+          Messages.
 
 
-1.   All references to Send or Receive Tasks in this section also include message catch or throw Events -- they behave identically with
-     respect to correlation.
 
-74                                                                                      Business Process Model and Notation, v2.0
-        CorrelationSubscription. A CorrelationSubscription aggregates as many
-        CorrelationPropertyBindings as there are CorrelationProperties in the CorrelationKey. A
-        CorrelationPropertyBinding relates to a specific CorrelationProperty and also links to a
-        FormalExpression that denotes a dynamic extraction rule atop the Process context. At runtime, the
-        CorrelationKey instance for a particular Conversation is populated (and dynamically updated) from the
-        Process context using these FormalExpressions. In that sense, changes in the Process context can alter the
-        correlation condition.
+     1. All references to Send or Receive Tasks in this sub clause also include message catch or throw Events; they
+        behave identically with respect to correlation.
 
-Correlation can be applied to Message Flows in Collaboration and Choreography, as described in Chapters 9,
-Collaboration and 11, Choreography. The keys applying to a Message Flow are the keys of containers or groupings of
-the Message Flow, such as Collaborations, Choreographies, and Conversation Nodes, and Choreography
+72                                                                   Business Process Model and Notation (BPMN), v2.0.2
+    2.   In context-based correlation, the Process context (i.e., its Data Objects and Properties) can dynamically
+         influence the matching criterion. That is, a CorrelationKey can be complemented by a Process-specific
+         CorrelationSubscription. A CorrelationSubscription aggregates as many
+         CorrelationPropertyBindings as there are CorrelationProperties in the CorrelationKey. A
+         CorrelationPropertyBinding relates to a specific CorrelationProperty and also links to a
+         FormalExpression that denotes a dynamic extraction rule atop the Process context. At runtime, the
+         CorrelationKey instance for a particular Conversation is populated (and dynamically updated) from the
+         Process context using these FormalExpressions. In that sense, changes in the Process context can alter the
+         correlation condition.
+
+Correlation can be applied to Message Flows in Collaboration and Choreography, as described in Clause 9,
+’Collaboration’ and 11, ’Choreography’. The keys applying to a Message Flow are the keys of containers or groupings
+of the Message Flow, such as Collaborations, Choreographies, and Conversation Nodes, and Choreography
 Activities. This might result in multiple CorrelationKeys applying to the same Message Flow, perhaps due to
 multiple layers of containment. In particular, calls of Collaborations and Choreographies are special kinds of
 Conversation Nodes and Choreography Activities, respectively, and are considered a kind of containment for the
@@ -1173,13 +1143,13 @@ Collaboration or Choreography.
 
 
 
-Business Process Model and Notation, v2.0                                                                       75
-Figure 8.17 - The Correlation Class Diagram
+Business Process Model and Notation (BPMN), v2.0.2                                                              73
+Figure 8.17 – The Correlation Class Diagram
 
 CorrelationKey
 A CorrelationKey represents a composite key out of one or many CorrelationProperties that essentially
 specify extraction Expressions atop Messages. As a result, each CorrelationProperty acts as a partial key
-for the correlation. For each Message that is exhanged as part of a particular Conversation, the
+for the correlation. For each Message that is exchanged as part of a particular Conversation, the
 CorrelationProperties need to provide a CorrelationPropertyRetrievalExpression which
 references a FormalExpression to the Message payload. That is, for each Message (that is used in a
 Conversation) there is an Expression, which extracts portions of the respective Message’s payload.
@@ -1189,15 +1159,13 @@ The CorrelationKey element inherits the attributes and model associations of Bas
 
 
 
-76                                                                       Business Process Model and Notation, v2.0
+74                                                             Business Process Model and Notation (BPMN), v2.0.2
  Table 8.31 – CorrelationKey model associations
 
- Attribute Name                    Description/Usage
-
- name: string [0..1]               Specifies the name of the CorrelationKey.
-
- correlationPropertyRef:           The CorrelationProperties, representing the partial keys of this
- CorrelationProperty [0..*]        CorrelationKey.
+ Attribute Name                      Description/Usage
+ name: string [0..1]                 Specifies the name of the CorrelationKey.
+ correlationPropertyRef:             The CorrelationProperties, representing the partial keys of this
+ CorrelationProperty [0..*]          CorrelationKey.
 
 
 Key-based Correlation
@@ -1225,16 +1193,13 @@ CorrelationProperty element.
 
  Table 8.32 – CorrelationProperty model associations
 
- Attribute Name                                   Description/Usage
-
- name: string [0..1]                              Specifies the name of the CorrelationProperty.
-
- type: string [0..1]                              Specifies the type of the CorrelationProperty.
-
- correlationPropertyRetrieval-                    The CorrelationPropertyRetrievalExpressions for
- Expression: CorrelationPropertyRetrieval-        this CorrelationProperty, representing the associations of
- Expression [1..*]                                FormalExpressions (extraction paths) to specific Messages
-                                                  occurring in this Conversation.
+ Attribute Name                                  Description/Usage
+ name: string [0..1]                             Specifies the name of the CorrelationProperty.
+ type: string [0..1]                             Specifies the type of the CorrelationProperty.
+ correlationPropertyRetrieval-                   The CorrelationPropertyRetrievalExpressions for
+ Expression:                                     this CorrelationProperty, representing the associations of
+ CorrelationPropertyRetrievalExpression [1..*]   FormalExpressions (extraction paths) to specific Messages
+                                                 occurring in this Conversation.
 
 
 The CorrelationPropertyRetrievalExpression element inherits the attributes and model associations of
@@ -1243,14 +1208,12 @@ CorrelationPropertyRetrievalExpression element.
 
 
 
-Business Process Model and Notation, v2.0                                                                        77
+Business Process Model and Notation (BPMN), v2.0.2                                                               75
  Table 8.33 – CorrelationPropertyRetrievalExpression model associations
 
  Attribute Name                          Description/Usage
-
  messagePath: FormalExpression           The FormalExpression that defines how to extract a
                                          CorrelationProperty from the Message payload.
-
  messageRef: Message                     The specific Message the FormalExpression extracts the
                                          CorrelationProperty from.
 
@@ -1276,10 +1239,8 @@ Table 8.5). Table 8.34 displays the additional model associations of the Correla
  Table 8.34 – CorrelationSubscription model associations
 
  Attribute Name                            Description/Usage
-
  correlationKeyRef: CorrelationKey         The CorrelationKey this CorrelationSubscription refers
                                            to.
-
  correlationPropertyBinding:               The bindings to specific CorrelationProperties and
  CorrelationPropertyBinding [0..*]         FormalExpressions (extraction rules atop the Process context).
 
@@ -1289,14 +1250,12 @@ Table 8.5). Table 8.35 displays the additional model associations of the Correla
 
 
 
-78                                                                         Business Process Model and Notation, v2.0
+76                                                               Business Process Model and Notation (BPMN), v2.0.2
  Table 8.35 – CorrelationPropertyBinding model associations
 
  Attribute Name                    Description/Usage
-
  dataPath: FormalExpression        The FormalExpression that defines the extraction rule atop the Process
                                    context.
-
  correlationPropertyRef:           The specific CorrelationProperty, this
  CorrelationProperty               CorrelationPropertyBinding refers to.
 
@@ -1305,7 +1264,7 @@ instances of all Conversations are initialized with some initial values that spe
 for these Conversations. A SubscriptionProperty is updated whenever any of the Data Objects or
 Properties changes that are referenced from the respective FormalExpression. As a result, incoming Messages
 are matched against the now populated CorrelationKey instance. Later in the Process run, the
-SubscriptionProperties can, again, change and implicitly change the correlation criterion. Alternatively, the
+SubscriptionProperties can again change and implicitly change the correlation criterion. Alternatively, the
 established mechanism of having the first Send Task or Receive Task populate the CorrelationKey instance
 applies.
 
@@ -1332,15 +1291,15 @@ Table 8.37 – Correlation Property XML schema
 <xsd:complexType name="tCorrelationProperty">
    <xsd:complexContent>
         <xsd:extension base="tRootElement">
-           <xsd:sequence>
-               <xsd:element ref="correlationPropertyRetrievalExpression" minOccurs="1" maxOc-
-                        curs="unbounded"/>
-           </xsd:sequence>
-           <xsd:attribute name="name" type="xsd:String" use="optional"/>
-           <xsd:attribute name="type" type="xsd:QName"/>
-
-Business Process Model and Notation, v2.0                                                                          79
+            <xsd:sequence>
+                <xsd:element ref="correlationPropertyRetrievalExpression" minOccurs="1" maxOc-
+                         curs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute name="name" type="xsd:String" use="optional"/>
+            <xsd:attribute name="type" type="xsd:QName"/>
         </xsd:extension>
+
+Business Process Model and Notation (BPMN), v2.0.2                                                                 77
     </xsd:complexContent>
 </xsd:complexType>
 
@@ -1391,8 +1350,8 @@ Table 8.40 – Correlation Subscription XML schema
 
 
 
-80                                                                    Business Process Model and Notation, v2.0
-8.3.3    Error
+78                                                            Business Process Model and Notation (BPMN), v2.0.2
+8.4.3    Error
 
 An Error represents the content of an Error Event or the Fault of a failed Operation. An ItemDefinition is
 used to specify the structure of the Error. An Error is generated when there is a critical problem in the processing of
@@ -1401,7 +1360,7 @@ an Activity or when the execution of an Operation failed.
 
 
 
-Figure 8.18 - Error class diagram
+Figure 8.18 – Error class diagram
 
 The Error element inherits the attributes and model associations of BaseElement (see Table 8.5), through its
 relationship to RootElement. Table 8.41 presents the additional attributes and model associations of the Error
@@ -1410,32 +1369,29 @@ element.
 
 
 
-Business Process Model and Notation, v2.0                                                                           81
+Business Process Model and Notation (BPMN), v2.0.2                                                                  79
  Table 8.41 – Error attributes and model associations
 
- Attribute Name                             Description/Usage
-
- structureRef : ItemDefinition [0..1]       An ItemDefinition is used to define the “payload” of the Error.
-
- name : string                              The descriptive name of the Error.
-
- errorCode: string                          For an End Event:
-                                              If the result is an Error, then the errorCode MUST be supplied
-                                              (if the processType attribute of the Process is set to execut-
-                                              able) This “throws” the Error.
-                                            For an Intermediate Event within normal flow:
-                                              If the trigger is an Error, then the errorCode MUST be entered
-                                              (if the processType attribute of the Process is set to execut-
-                                              able). This “throws” the Error.
-                                            For an Intermediate Event attached to the boundary of an Activity:
-                                              If the trigger is an Error, then the errorCode MAY be entered.
-                                              This Event “catches” the Error. If there is no errorCode, then
-                                              any error SHALL trigger the Event. If there is an errorCode, then
-                                              only an Error that matches the errorCode SHALL trigger the
-                                              Event.
+ Attribute Name                            Description/Usage
+ structureRef : ItemDefinition [0..1]      An ItemDefinition is used to define the “payload” of the Error.
+ name : string                             The descriptive name of the Error.
+ errorCode: string                         For an End Event:
+                                            If the result is an Error, then the errorCode MUST be supplied
+                                            (if the processType attribute of the Process is set to execut-
+                                            able) This “throws” the Error.
+                                           For an Intermediate Event within normal flow:
+                                            If the trigger is an Error, then the errorCode MUST be entered
+                                            (if the processType attribute of the Process is set to execut-
+                                            able). This “throws” the Error.
+                                           For an Intermediate Event attached to the boundary of an Activity:
+                                             If the trigger is an Error, then the errorCode MAY be entered.
+                                             This Event “catches” the Error. If there is no errorCode, then
+                                             any error SHALL trigger the Event. If there is an errorCode, then
+                                             only an Error that matches the errorCode SHALL trigger the
+                                             Event.
 
 
-8.3.4   Escalation
+8.4.4    Escalation
 
 An Escalation identifies a business situation that a Process might need to react to. An ItemDefinition is used
 to specify the structure of the Escalation.
@@ -1443,60 +1399,58 @@ to specify the structure of the Escalation.
 
 
 
-Figure 8.19 - Escalation class diagram
+Figure 8.19 – Escalation class diagram
 
 
 
-82                                                                        Business Process Model and Notation, v2.0
+
+80                                                              Business Process Model and Notation (BPMN), v2.0.2
 The Escalation element inherits the attributes and model associations of BaseElement (see Table 8.5), through its
 relationship to RootElement. Table 8.41 presents the additional model associations of the Error element.
 
- Table 8.42 – Esclation attributes and model associations
+ Table 8.42 – Escalation attributes and model associations
 
- Attribute Name                              Description/Usage
-
- structureRef : ItemDefinition [0..1]         An ItemDefinition is used to define the “payload” of the
-                                              Escalation.
-
- name : string                                The descriptive name of the Escalation.
-
- escalationCode: string                       For an End Event:
-                                               If the Result is an Escalation, then the escalationCode
-                                               MUST be supplied (if the processType attribute of the Process
-                                               is set to executable). This “throws” the Escalation.
-                                              For an Intermediate Event within normal flow:
-                                               If the trigger is an Escalation, then the escalationCode
-                                               MUST be entered (if the processType attribute of the Process is
-                                               set to executable). This “throws” the Escalation.
-                                              For an Intermediate Event attached to the boundary of an Activity:
-                                               If the trigger is an Escalation, then the escalationCode MAY
-                                               be entered. This Event “catches” the Escalation. If there is no
-                                               escalationCode, then any Escalation SHALL trigger the
-                                               Event. If there is an escalationCode, then only an Escala-
-                                               tion that matches the escalationCode SHALL trigger the
-                                               Event.
+ Attribute Name                                Description/Usage
+ structureRef : ItemDefinition [0..1]          An ItemDefinition is used to define the “payload” of the
+                                               Escalation.
+ name : string                                 The descriptive name of the Escalation.
+ escalationCode: string                        For an End Event:
+                                                If the Result is an Escalation, then the escalationCode
+                                                MUST be supplied (if the processType attribute of the Process
+                                                is set to executable). This “throws” the Escalation.
+                                               For an Intermediate Event within normal flow:
+                                                If the trigger is an Escalation, then the escalationCode
+                                                MUST be entered (if the processType attribute of the Process is
+                                                set to executable). This “throws” the Escalation.
+                                               For an Intermediate Event attached to the boundary of an Activity:
+                                                 If the trigger is an Escalation, then the escalationCode MAY
+                                                 be entered. This Event “catches” the Escalation. If there is no
+                                                 escalationCode, then any Escalation SHALL trigger the
+                                                 Event. If there is an escalationCode, then only an Escala-
+                                                 tion that matches the escalationCode SHALL trigger the
+                                                 Event.
 
 
-8.3.5    Events
+8.4.5    Events
 
-An Event is something that “happens” during the course of a Process. These Events affect the flow of the Process
-and usually have a cause or an impact. The term “event” is general enough to cover many things in a Process. The start
-of an Activity, the end of an Activity, the change of state of a document, a Message that arrives, etc., all could be
-considered Events. However, BPMN has restricted the use of Events to include only those types of Events that will
-affect the sequence or timing of Activities of a Process.
+An Event is something that happens during the course of a Process. These Events affect the flow of the Process and
+usually have a cause or an impact. The term event is general enough to cover many things in a Process. The start of an
+Activity, the end of an Activity, the change of state of a document, a Message that arrives, etc., all could be considered
+Events. However, BPMN has restricted the use of Events to include only those types of Events that will affect the
+sequence or timing of Activities of a Process.
 
 
 
 
-Business Process Model and Notation, v2.0                                                                          83
-Figure 8.20 - Event class diagram
+Business Process Model and Notation (BPMN), v2.0.2                                                                     81
+Figure 8.20 – Event class diagram
 
 The Event element inherits the attributes and model associations of FlowElement (see Table 8.44), but adds no
 additional attributes or model associations.
 
-The details for the types of Events (Start, Intermediate, and End) are defined in “Event Definitions” on page 260.
+The details for the types of Events (Start, Intermediate, and End) are defined in “Event Definitions” on page 258.
 
-8.3.6    Expressions
+8.4.6    Expressions
 
 The Expression class is used to specify an Expression using natural-language text. These Expressions are not
 executable. The natural language text is captured using the documentation attribute, inherited from BaseElement.
@@ -1507,7 +1461,7 @@ attributes or model associations.
 
 
 
-84                                                                          Business Process Model and Notation, v2.0
+82                                                                Business Process Model and Notation (BPMN), v2.0.2
 Expressions are used in many places within BPMN to extract information from the different elements, normally data
 elements. The most common usage is when modeling decisions, where conditional Expressions are used to direct the
 flow along specific paths based on some criteria.
@@ -1519,7 +1473,7 @@ language.
 
 
 
-Figure 8.21 - Expression class diagram
+Figure 8.21 – Expression class diagram
 
 Expression
 The Expression class is used to specify an Expression using natural-language text. These Expressions are not
@@ -1547,22 +1501,20 @@ FormalExpression.
 
 
 
-Business Process Model and Notation, v2.0                                                                           85
+Business Process Model and Notation (BPMN), v2.0.2                                                                 83
  Table 8.43 – FormalExpression attributes and model associations
 
  Attribute Name               Description/Usage
-
  language: string [0..1]      Overrides the Expression language specified in the Definitions. The language
                               MUST be specified in a URI format.
-
  body: Element                The body of the Expression.
                               Note that this attribute is not relevant when the XML Schema is used for
                               interchange. Instead, the FormalExpression complex type supports mixed
                               content. The body of the Expression would be specified as element content.
                               For example:
                               <formalExpression id=“ID_2">
-                                 count(../dataObject[id="CustomerRecord_1"]/emailAddress) > 0
-                                 <evaluatesToType id="ID_3" typeRef=“xsd:boolean"/>
+                                count(../dataObject[id="CustomerRecord_1"]/emailAddress) > 0
+                                <evaluatesToType id="ID_3" typeRef=“xsd:boolean"/>
                               </formalExpression>
 
  evaluatesToTypeRef:          The type of object that this Expression returns when evaluated. For example,
@@ -1570,19 +1522,18 @@ Business Process Model and Notation, v2.0                                       
 
 
 
-
-8.3.7   Flow Element
+8.4.7    Flow Element
 
 FlowElement is the abstract super class for all elements that can appear in a Process flow, which are FlowNodes
-(see page 99, which consist of Activities (see page 151), Choreography Activities (see page 321) Gateways (see
-page 287), and Events (see page 233), Data Objects (see page 205), Data Associations (see page 221), and
+(see page 99, which consist of Activities (see page 149), Choreography Activities (see page 319) Gateways (see
+page 285), and Events (see page 231), Data Objects (see page 204), Data Associations (see page 220), and
 Sequence Flows (see page 97).
 
 
 
 
-86                                                                       Business Process Model and Notation, v2.0
-Figure 8.22 - FlowElement class diagram
+84                                                              Business Process Model and Notation (BPMN), v2.0.2
+Figure 8.22 – FlowElement class diagram
 
 The FlowElement element inherits the attributes and model associations of BaseElement (see Table 8.5). Table 8.44
 presents the additional attributes and model associations of the FlowElement element.
@@ -1590,29 +1541,25 @@ presents the additional attributes and model associations of the FlowElement ele
 
 
 
-Business Process Model and Notation, v2.0                                                                      87
+Business Process Model and Notation (BPMN), v2.0.2                                                             85
  Table 8.44 – FlowElement attributes and model associations
 
- Attribute Name                   Description/Usage
-
- name: string [0..1]              The descriptive name of the element.
-
- categoryValueRef: Category-      A reference to the Category Values that are associated with this Flow
- Value [0..*]                     Element.
-
- auditing: Auditing [0..1]        A hook for specifying audit related properties. Auditing can only be
-                                  defined for a Process.
-
- monitoring: Monitoring [0..1]    A hook for specifying monitoring related properties. Monitoring can only
-                                  be defined for a Process.
+ Attribute Name                    Description/Usage
+ name: string [0..1]               The descriptive name of the element.
+ categoryValueRef: CategoryValue   A reference to the Category Values that are associated with this Flow
+ [0..*]                            Element.
+ auditing: Auditing [0..1]         A hook for specifying audit related properties. Auditing can only be
+                                   defined for a Process.
+ monitoring: Monitoring [0..1]     A hook for specifying monitoring related properties. Monitoring can only
+                                   be defined for a Process.
 
 
-8.3.8   Flow Elements Container
+8.4.8    Flow Elements Container
 
 FlowElementsContainer is an abstract super class for BPMN diagrams (or views) and defines the superset of
 elements that are contained in those diagrams. Basically, a FlowElementsContainer contains FlowElements,
-which are Events (see page 233), Gateways (see page 287), Sequence Flows (see page 97), Activities (see page
-151), and Choreography Activities (see page 321).
+which are Events (see page 231), Gateways (see page 285), Sequence Flows (see page 97), Activities (see page
+149), and Choreography Activities (see page 319).
 
 There are four (4) types of FlowElementsContainers (see Figure 8.23): Process, Sub-Process,
 Choreography, and Sub-Choreography.
@@ -1620,38 +1567,36 @@ Choreography, and Sub-Choreography.
 
 
 
-88                                                                       Business Process Model and Notation, v2.0
-Figure 8.23 - FlowElementContainers class diagram
+86                                                             Business Process Model and Notation (BPMN), v2.0.2
+Figure 8.23 – FlowElementContainers class diagram
 
 The FlowElementsContainer element inherits the attributes and model associations of BaseElement (see Table
 8.5). Table 8.45 presents the additional model associations of the FlowElementsContainer element.
 
  Table 8.45 – FlowElementsContainer model associations
 
- Attribute Name               Description/Usage
-
- flowElements: Flow           This association specifies the particular flow elements contained in a
- Element [0..*]               FlowElementContainer. Flow elements are Events, Gateways, Sequence
-                              Flows, Activities, Data Objects, Data Associations, and Choreography
-                              Activities.
-                              Note that:
-                                • Choreography Activities MUST NOT be included as a flowElement for a
-                                  Process.
-                                • Activities, Data Associations, and Data Objects MUST NOT be included as
-                                  a flowElement for a Choreography.
-
- laneSets: LaneSet [0..*]     This attribute defines the list of LaneSets used in the FlowElementsContainer
-                              LaneSets are not used for Choreographies or Sub-Choreographies.
+ Attribute Name              Description/Usage
+ flowElements: Flow          This association specifies the particular flow elements contained in a
+ Element [0..*]              FlowElementContainer. Flow elements are Events, Gateways, Sequence
+                             Flows, Activities, Data Objects, Data Associations, and Choreography
+                             Activities.
+                             Note that:
+                               • Choreography Activities MUST NOT be included as a flowElement for a
+                                 Process.
+                               • Activities, Data Associations, and Data Objects MUST NOT be included as
+                                 a flowElement for a Choreography.
+ laneSets: LaneSet [0..*]    This attribute defines the list of LaneSets used in the FlowElementsContainer
+                             LaneSets are not used for Choreographies or Sub-Choreographies.
 
 
 
 
-Business Process Model and Notation, v2.0                                                                   89
-8.3.9    Gateways
+Business Process Model and Notation (BPMN), v2.0.2                                                         87
+8.4.9    Gateways
 
 Gateways are used to control how the Process flows (how Tokens flow) through Sequence Flows as they converge
 and diverge within a Process. If the flow does not need to be controlled, then a Gateway is not needed. The term
-“gateway” implies that there is a gating mechanism that either allows or disallows passage through the Gateway--that is,
+“gateway” implies that there is a gating mechanism that either allows or disallows passage through the Gateway; that is,
 as tokens arrive at a Gateway, they can be merged together on input and/or split apart on output as the Gateway
 mechanisms are invoked.
 
@@ -1667,12 +1612,12 @@ then to diverge the Sequence Flows.
 
 
 
-Figure 8.24 - Gateway class diagram
+Figure 8.24 – Gateway class diagram
 
 The details for the types of Gateways (Exclusive, Inclusive, Parallel, Event-Based, and Complex) is defined on
-page 287 for Processes and on page 344 for Choreographies.
+page 285 for Processes and on page 342 for Choreographies.
 
-90                                                                             Business Process Model and Notation, v2.0
+88                                                                   Business Process Model and Notation (BPMN), v2.0.2
 The Gateway class is an abstract type. Its concrete subclasses define the specific semantics of individual Gateway
 types, defining how the Gateway behaves in different situations.
 
@@ -1682,23 +1627,25 @@ presents the additional attributes of the Gateway element.
 
  Table 8.46 – Gateway attributes
 
- Attribute Name                                   Description/Usage
+ Attribute Name                                     Description/Usage
+ gatewayDirection: GatewayDirection =               An attribute that adds constraints on how the Gateway MAY be
+ Unspecified
+                                                    used.
+ { Unspecified | Converging | Diverging | Mixed }
+                                                      • Unspecified: There are no constraints. The Gateway MAY
+                                                        have any number of incoming and outgoing Sequence
+                                                        Flows.
+                                                      • Converging: This Gateway MAY have multiple incoming
+                                                        Sequence Flows but MUST have no more than one (1)
+                                                        outgoing Sequence Flow.
+                                                      • Diverging: This Gateway MAY have multiple outgoing
+                                                        Sequence Flows but MUST have no more than one (1)
+                                                        incoming Sequence Flow.
+                                                      • Mixed: This Gateway contains multiple outgoing and
+                                                        multiple incoming Sequence Flows.
 
- gatewayDirection: GatewayDirection =             An attribute that adds constraints on how the Gateway MAY be
- Unspecified                                      used.
- { Unspecified | Converging | Diverging |           • Unspecified: There are no constraints. The Gateway MAY
- Mixed }                                              have any number of incoming and outgoing Sequence Flows.
-                                                    • Converging: This Gateway MAY have multiple incoming
-                                                      Sequence Flows but MUST have no more than one (1)
-                                                      outgoing Sequence Flow.
-                                                    • Diverging: This Gateway MAY have multiple outgoing
-                                                      Sequence Flows but MUST have no more than one (1)
-                                                      incoming Sequence Flow.
-                                                    • Mixed: This Gateway contains multiple outgoing and multiple
-                                                      incoming Sequence Flows.
 
-
-8.3.10 Item Definition
+8.4.10 Item Definition
 
 BPMN elements, such as DataObjects and Messages, represent items that are manipulated, transferred,
 transformed, or stored during Process flows. These items can be either physical items, such as the mechanical part of a
@@ -1724,7 +1671,7 @@ An ItemDefinition element can specify an import reference where the proper defin
 
 
 
-Business Process Model and Notation, v2.0                                                                                 91
+Business Process Model and Notation (BPMN), v2.0.2                                                                        89
 In cases where the data structure represents a collection, the multiplicity can be projected into the attribute
 isCollection. If this attribute is set to “true,” but the actual type is not a collection type, the model is considered as
 invalid. BPMN compliant tools might support an automatic check for these inconsistencies and report this as an error.
@@ -1738,7 +1685,7 @@ Definitions.
 
 
 
-Figure 8.25 - ItemDefinition class diagram
+Figure 8.25 – ItemDefinition class diagram
 
 The ItemDefinition element inherits the attributes and model associations BaseElement (see Table 8.5) through
 its relationship to RootElement. Table 8.47 presents the additional attributes and model associations for the
@@ -1747,40 +1694,35 @@ ItemDefinition element.
  Table 8.47 – ItemDefinition attributes & model associations
 
  Attribute Name                            Description/Usage
-
  itemKind: ItemKind = Information          This defines the nature of the Item. Possible values are physical or
-                                           information. The default value is information.
- { Information | Physical }
-
+ { Information | Physical }                information. The default value is information.
  structureRef: [Element [0..1]             The concrete data structure to be used.
-
  import: Import [0..1]                     Identifies the location of the data structure and its format. If the
                                            importType attribute is left unspecified, the typeLanguage specified
                                            in the Definitions that contains this ItemDefinition is assumed.
-
  isCollection: boolean = False             Setting this flag to true indicates that the actual data type is a
                                            collection.
 
 
 
 
-92                                                                              Business Process Model and Notation, v2.0
-8.3.11 Message
+90                                                                    Business Process Model and Notation (BPMN), v2.0.2
+8.4.11 Message
 
-A Message represents the content of a communication between two Participants. In BPMN 2.0, a Message is a
+A Message represents the content of a communication between two Participants. In BPMN 2.0.2, a Message is a
 graphical decorator (it was a supporting element in BPMN 1.2). An ItemDefinition is used to specify the
 Message structure.
 
 When displayed in a diagram:
         In a Message is a rectangle with converging diagonal lines in the upper half of the rectangle to give the appearance
         of an envelope (see Figure 8.26). It MUST be drawn with a single thin line.
-            The use of text, color, size, and lines for a Message MUST follow the rules defined in Section “Use of Text,
-            Color, Size, and Lines in a Diagram” on page 41.
+            The use of text, color, size, and lines for a Message MUST follow the rules defined in “Use of Text, Color,
+            Size, and Lines in a Diagram” on page 39.
 
 
 
 
-Figure 8.26 - A Message
+Figure 8.26 – A Message
 
 In addition, when used in a Choreography Diagram more than one Message MAY be used for a single
 Choreography Task. In this case, it is important to know the first (initiating) Message of the interaction. For return
@@ -1789,7 +1731,7 @@ Choreography Task. In this case, it is important to know the first (initiating) 
 
 
 
-Figure 8.27 - A non-initiating Message
+Figure 8.27 – A non-initiating Message
 
          Any Message sent by the non-initiating Participant or Sub-Choreography MUST be shaded with a light fill.
 
@@ -1800,7 +1742,7 @@ details). The Message can be optionally depicted as a graphical decorator on a M
 
 
 
-Business Process Model and Notation, v2.0                                                                                93
+Business Process Model and Notation (BPMN), v2.0.2                                                                        91
                     Customer
 
 
@@ -1818,9 +1760,9 @@ Business Process Model and Notation, v2.0                                       
                      Supplier
 
 
-Figure 8.28 - Messages Association overlapping Message Flows
+Figure 8.28 – Messages Association overlapping Message Flows
 
-In a Choreography, the communication is represented by a Choreography Task (see page 323). The Message can
+In a Choreography, the communication is represented by a Choreography Task (see page 321). The Message can
 be depicted as a decorator with a Choreography Task in a Choreography (see Figure 8.29).
 
 
@@ -1839,15 +1781,15 @@ be depicted as a decorator with a Choreography Task in a Choreography (see Figur
 
   Confirmation
 
-Figure 8.29 - Messages shown Associated with a Choreography Task
+Figure 8.29 – Messages shown Associated with a Choreography Task
 
 Figure 8.30 displays the class diagram showing the attributes and model associations for the Message element.
 
 
 
 
-94                                                                          Business Process Model and Notation, v2.0
-Figure 8.30 - The Message class diagram
+92                                                                 Business Process Model and Notation (BPMN), v2.0.2
+Figure 8.30 – The Message class diagram
 
 The Message element inherits the attributes and model associations of BaseElement (see Table 8.5) through its
 relationship to RootElement. Table 8.48 presents the additional attributes and model associations for the Message
@@ -1856,15 +1798,13 @@ element.
 
  Table 8.48 – Message attributes and model associations
 
- Attribute Name                             Description/Usage
-
- name: string                               Name is a text description of the Message.
-
- itemRef : ItemDefinition [0..1]            An ItemDefinition is used to define the “payload” of the
-                                            Message.
+ Attribute Name                           Description/Usage
+ name: string                             Name is a text description of the Message.
+ itemRef : ItemDefinition [0..1]          An ItemDefinition is used to define the “payload” of the
+                                          Message.
 
 
-8.3.12 Resources
+8.4.12 Resources
 
 The Resource class is used to specify resources that can be referenced by Activities. These Resources can be
 Human Resources as well as any other resource assigned to Activities during Process execution time.
@@ -1875,7 +1815,7 @@ user IDs are associated at runtime. Multiple Activities can utilize the same Res
 
 
 
-Business Process Model and Notation, v2.0                                                                           95
+Business Process Model and Notation (BPMN), v2.0.2                                                                 93
 Every Resource can define a set of ResourceParameters. These parameters can be used at runtime to define
 query e.g., into an Organizational Directory. Every Activity referencing a parameterized Resource can bind values
 available in the scope of the Activity to these parameters.
@@ -1883,7 +1823,7 @@ available in the scope of the Activity to these parameters.
 
 
 
-Figure 8.31 - Resource class diagram
+Figure 8.31 – Resource class diagram
 
 The Resource element inherits the attributes and model associations of BaseElement (see Table 8.5) through its
 relationship to RootElement. Table 8.51 presents the additional model associations for the Resource element.
@@ -1892,9 +1832,7 @@ relationship to RootElement. Table 8.51 presents the additional model associatio
  Table 8.49 – Resource attributes and model associations
 
  Attribute Name                             Description/Usage
-
  name: string                               This attribute specifies the name of the Resource.
-
  resourceParameters:                        This model association specifies the definition of the parameters
  ResourceParameter [0..*]                   needed at runtime to resolve the Resource.
 
@@ -1908,34 +1846,31 @@ ResourceParameter element.
 
 
 
-96                                                                         Business Process Model and Notation, v2.0
+94                                                               Business Process Model and Notation (BPMN), v2.0.2
  Table 8.50 – ResourceParameter attributes and model associations
 
- Attribute Name                       Description/Usage
-
- name: string                         Specifies the name of the query parameter.
-
- type: ItemDefinition                 Specifies the type of the query parameter.
-
- isRequired: boolean                  Specifies, if a parameter is optional or mandatory.
+ Attribute Name                        Description/Usage
+ name: string                          Specifies the name of the query parameter.
+ type: ItemDefinition                  Specifies the type of the query parameter.
+ isRequired: boolean                   Specifies, if a parameter is optional or mandatory.
 
 
-8.3.13 Sequence Flow
+8.4.13 Sequence Flow
 
 A Sequence Flow is used to show the order of Flow Elements in a Process or a Choreography. Each
 Sequence Flow has only one source and only one target. The source and target MUST be from the set of the following
 Flow Elements: Events (Start, Intermediate, and End), Activities (Task and Sub-Process; for Processes),
 Choreography Activities (Choreography Task and Sub-Choreography; for Choreographies), and
 Gateways.
-        A Sequence Flow is line with a solid arrowhead that MUST be drawn with a solid single line (as seen in Figure
-        8.32).
-            The use of text, color, size, and lines for a Sequence Flow MUST follow the rules defined in Section “Use of
-            Text, Color, Size, and Lines in a Diagram” on page 41.
+         A Sequence Flow is line with a solid arrowhead that MUST be drawn with a solid single line (as seen in Figure
+         8.32).
+             The use of text, color, size, and lines for a Sequence Flow MUST follow the rules defined in “Use of Text,
+             Color, Size, and Lines in a Diagram” on page 39.
 
 
 
 
-Figure 8.32 - A Sequence Flow
+Figure 8.32 – A Sequence Flow
 
 A Sequence Flow can optionally define a condition Expression, indicating that the token will be passed down the
 Sequence Flow only if the Expression evaluates to true. This Expression is typically used when the source of
@@ -1951,12 +1886,12 @@ the Sequence Flow is a Gateway or an Activity.
 
 
 
-Figure 8.33 - A Conditional Sequence Flow
+Figure 8.33 – A Conditional Sequence Flow
 
 
 
 
-Business Process Model and Notation, v2.0                                                                            97
+Business Process Model and Notation (BPMN), v2.0.2                                                                    95
 A Sequence Flow that has an Exclusive, Inclusive, or Complex Gateway or an Activity as its source can also be
 defined with as default. Such a Sequence Flow will have a marker to show that it is a default flow. The default
 Sequence Flow is taken (a token is passed) only if all the other outgoing Sequence Flows from the Activity or
@@ -1967,12 +1902,12 @@ Gateway are not valid (i.e., their condition Expressions are false).
 
 
 
-Figure 8.34 - A Default Sequence Flow
+Figure 8.34 – A Default Sequence Flow
 
 
 
 
-Figure 8.35 - SequenceFlow class diagram
+Figure 8.35 – SequenceFlow class diagram
 
 The Sequence Flow element inherits the attributes and model associations of FlowElement (see Table 8.44). Table
 8.51 presents the additional attributes and model associations of the Sequence Flow element.
@@ -1980,48 +1915,44 @@ The Sequence Flow element inherits the attributes and model associations of Flow
 
 
 
-98                                                                         Business Process Model and Notation, v2.0
+96                                                               Business Process Model and Notation (BPMN), v2.0.2
  Table 8.51 – SequenceFlow attributes and model associations
 
  Attribute Name              Description/Usage
-
  sourceRef: FlowNode         The FlowNode that the Sequence Flow is connecting from.
                              For a Process: Of the types of FlowNode, only Activities, Gateways, and Events
                              can be the source. However, Activities that are Event Sub-Processes are not
                              allowed to be a source.
                              For a Choreography: Of the types of FlowNode, only Choreography Activities,
                              Gateways, and Events can be the source.
-
  targetRef: FlowNode         The FlowNode that the Sequence Flow is connecting to.
                              For a Process: Of the types of FlowNode, only Activities, Gateways, and Events
                              can be the target. However, Activities that are Event Sub-Processes are not
                              allowed to be a target.
                              For a Choreography: Of the types of FlowNode, only Choreography Activities,
                              Gateways, and Events can be the target.
-
  conditionExpression:        An optional boolean Expression that acts as a gating condition. A token will only
  Expression [0..1]           be placed on this Sequence Flow if this conditionExpression evaluates to
                              true.
-
  isImmediate: boolean        An optional boolean value specifying whether Activities or Choreography
  [0..1]                      Activities not in the model containing the Sequence Flow can occur between the
                              elements connected by the Sequence Flow. If the value is true, they MAY NOT
                              occur. If the value is false, they MAY occur. Also see the isClosed attribute on
                              Process, Choreography, and Collaboration. When the attribute has no value, the
                              default semantics depends on the kind of model containing Sequence Flows:
-                                • For non-executable Processes (public Processes and non-executable private
-                                  Processes) and Choreographies no value has the same semantics as if the
-                                  value were false.
-                                • For an executable Processes no value has the same semantics as if the value
-                                  were true.
-                                • For executable Processes, the attribute MUST NOT be false.
+                               • For non-executable Processes (public Processes and non-executable private
+                                 Processes) and Choreographies no value has the same semantics as if the
+                                 value were false.
+                               • For an executable Processes no value has the same semantics as if the value
+                                 were true.
+                               • For executable Processes, the attribute MUST NOT be false.
 
 
 Flow Node
 The FlowNode element is used to provide a single element as the source and target Sequence Flow associations (see
-Figure 8.35) instead of the individual associations of the elements that can connect to Sequence Flows (see the section
-above). Only the Gateway, Activity, Choreography Activity, and Event elements can connect to Sequence Flows
-and thus, these elements are the only ones that are sub-classes of FlowNode.
+Figure 8.35) instead of the individual associations of the elements that can connect to Sequence Flows (see above).
+Only the Gateway, Activity, Choreography Activity, and Event elements can connect to Sequence Flows and
+thus, these elements are the only ones that are sub-classes of FlowNode.
 
 Since Gateway, Activity, Choreography Activity, and Event have their own attributes, model associations, and
 inheritances; the FlowNode element does not inherit from any other BPMN element. Table 8.52 presents the additional
@@ -2030,18 +1961,16 @@ model associations of the FlowNode element.
 
 
 
-Business Process Model and Notation, v2.0                                                                           99
+Business Process Model and Notation (BPMN), v2.0.2                                                               97
  Table 8.52 – FlowNode model associations
 
  Attribute Name                      Description/Usage
-
  incoming: Sequence Flow [0..*]      This attribute identifies the incoming Sequence Flow of the FlowNode.
-
  outgoing: Sequence Flow [0..*]      This attribute identifies the outgoing Sequence Flow of the FlowNode.
                                      This is an ordered collection.
 
 
-8.3.14 Common Package XML Schemas
+8.4.14 Common Package XML Schemas
 
 Table 8.53 – Error XML schema
 
@@ -2083,7 +2012,7 @@ Table 8.55 – Expression XML schema
 
 
 
-100                                                                      Business Process Model and Notation, v2.0
+98                                                              Business Process Model and Notation (BPMN), v2.0.2
 Table 8.56 – FlowElement XML schema
 
 <xsd:element name="flowElement" type="tFlowElement"/>
@@ -2117,7 +2046,7 @@ Table 8.57 – FlowNode XML schema
 </xsd:complexType>
 
 
-Table 8.58 – FormalExpression XML schema
+Table 8.58– FormalExpression XML schema
 
 <xsd:element name="formalExpression" type="tFormalExpression" substitutionGroup="expression"/>
 <xsd:complexType name="tFormalExpression">
@@ -2130,16 +2059,15 @@ Table 8.58 – FormalExpression XML schema
 </xsd:complexType>
 
 
-
-
-Business Process Model and Notation, v2.0                                                        101
 Table 8.59 – InputOutputBinding XML schema
 
 <xsd:element name="ioBinding" type="tinputOutputBinding"/>
 <xsd:complexType name="tinputOutputBinding">
-    <xsd:complexContent>
+   <xsd:complexContent>
         <xsd:extension base="tBaseElement">
-            <xsd:attribute name=”inputDataRef" type="xsd:IDREF"/>
+           <xsd:attribute name=”inputDataRef" type="xsd:IDREF"/>
+
+Business Process Model and Notation (BPMN), v2.0.2                                                99
             <xsd:attribute name=”outputDataRef" type="xsd:IDREF"/>
             <xsd:attribute name=”operationRef" type="xsd:QName"/>
         </xsd:extension>
@@ -2185,19 +2113,21 @@ Table 8.61 – Message XML schema
 Table 8.62 – Resources XML schema
 
 <xsd:element name="resource" type="tResource" substitutionGroup="rootElement"/>
-
-
-102                                                                     Business Process Model and Notation, v2.0
 <xsd:complexType name="tResource">
-    <xsd:complexContent>
+   <xsd:complexContent>
         <xsd:extension base="tRootElement">
             <xsd:sequence>
                 <xsd:element ref="resourceParameter" minOccurs="0" maxOccurs="unbounded"/>
             </xsd:sequence>
             <xsd:attribute name="name" type="xsd:string" use="required"/>
         </xsd:extension>
+
+
+100                                                            Business Process Model and Notation (BPMN), v2.0.2
     </xsd:complexContent>
 </xsd:complexType>
+
+
 Table 8.63 – ResourceParameter XML schema
 
 <xsd:element name="resourceParameter" type="tResourceParameter" />
@@ -2229,18 +2159,16 @@ Table 8.64 – SequenceFlow XML schema
 </xsd:complexType>
 
 
-
-
-Business Process Model and Notation, v2.0                                                            103
-8.4      Services
+8.5      Services
 The Service package contains constructs necessary for modeling services, interfaces, and operations.
 
 
 
 
-Figure 8.36 - The Service class diagram
+Business Process Model and Notation (BPMN), v2.0.2                                                     101
+Figure 8.36 – The Service class diagram
 
-8.4.1    Interface
+8.5.1    Interface
 
 An Interface defines a set of operations that are implemented by Services.
 
@@ -2250,24 +2178,20 @@ to RootElement. Table 8.65 presents the additional attributes and model associat
 
 
 
-104                                                                           Business Process Model and Notation, v2.0
+102                                                               Business Process Model and Notation (BPMN), v2.0.2
  Table 8.65 – Interface attributes and model associations
 
  Attribute Name                                 Description/Usage
-
  name: string                                   The descriptive name of the element.
-
  operations: Operation [1..*]                   This attribute specifies operations that are defined as part of the
                                                 Interface. An Interface has at least one Operation.
-
  callableElements: CallableElement [0..*]       The CallableElements that use this Interface.
-
  implementationRef: Element [0..1]              This attribute allows to reference a concrete artifact in the underly-
                                                 ing implementation technology representing that interface, such
                                                 as a WSDL porttype.
 
 
-8.4.2    EndPoint
+8.5.2    EndPoint
 
 The actual definition of the service address is out of scope of BPMN 2.0. The EndPoint element is an extension point
 and extends from RootElement. The EndPoint element MAY be extended with endpoint reference definitions
@@ -2275,7 +2199,7 @@ introduced in other specifications (e.g., WS-Addressing).
 
 EndPoints can be specified for Participants.
 
-8.4.3    Operation
+8.5.3    Operation
 
 An Operation defines Messages that are consumed and, optionally, produced when the Operation is called. It can
 also define zero or more errors that are returned when operation fails. The Operation inherits the attributes and model
@@ -2285,27 +2209,24 @@ of the Operation.
 
 
 
-Business Process Model and Notation, v2.0                                                                          105
+Business Process Model and Notation (BPMN), v2.0.2                                                                 103
  Table 8.66 – Operation attributes and model associations
 
- Attribute Name                  Description/Usage
-
- name: string                    The descriptive name of the element.
-
- inMessageRef: Message           This attribute specifies the input Message of the Operation. An Operation
-                                 has exactly one input Message.
-
- outMessageRef: Message          This attribute specifies the output Message of the Operation. An Operation
- [0..1]                          has at most one input Message.
-
- errorRef: Error [0..*]          This attribute specifies errors that the Operation may return. An Operation
-                                 MAY refer to zero or more Error elements.
-
- implementationRef: Ele-         This attribute allows to reference a concrete artifact in the underlying implemen-
- ment [0..1]                     tation technology representing that operation, such as a WSDL operation.
+ Attribute Name                 Description/Usage
+ name: string                   The descriptive name of the element.
+ inMessageRef: Message          This attribute specifies the input Message of the Operation. An Operation
+                                has exactly one input Message.
+ outMessageRef: Message         This attribute specifies the output Message of the Operation. An Operation
+ [0..1]
+                                has at most one input Message.
+ errorRef: Error [0..*]         This attribute specifies errors that the Operation may return. An Operation
+                                MAY refer to zero or more Error elements.
+ implementationRef: Element     This attribute allows to reference a concrete artifact in the underlying implemen-
+ [0..1]
+                                tation technology representing that operation, such as a WSDL operation.
 
 
-8.4.4    Service Package XML Schemas
+8.5.4     Service Package XML Schemas
 
 Table 8.67 – Interface XML schema
 
@@ -2329,16 +2250,16 @@ Table 8.68 – Operation XML schema
 <xsd:complexType name="tOperation">
    <xsd:complexContent>
         <xsd:extension base="tBaseElement">
-           <xsd:sequence>
+            <xsd:sequence>
         <xsd:element name="inMessageRef" type="xsd:QName" minOccurs="1" maxOccurs="1"/>
         <xsd:element name="outMessageRef" type="xsd:QName" minOccurs="0" maxOccurs="1"/>
         <xsd:element name="errorRef" type="xsd:QName" minOccurs="0" maxOccurs="unbounded"/>
-           </xsd:sequence>
-           <xsd:attribute name="name" type="xsd:string" use="required"/>
-           <xsd:attribute name="implementationRef" type="xsd:QName" use="optional"/>
-
-106                                                                        Business Process Model and Notation, v2.0
+            </xsd:sequence>
+            <xsd:attribute name="name" type="xsd:string" use="required"/>
+            <xsd:attribute name="implementationRef" type="xsd:QName" use="optional"/>
         </xsd:extension>
+
+104                                                              Business Process Model and Notation (BPMN), v2.0.2
     </xsd:complexContent>
 </xsd:complexType>
 
@@ -2355,5 +2276,5 @@ Table 8.69 – EndPoint XML schema
 
 
 
-Business Process Model and Notation, v2.0         107
-108   Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2   105
+106   Business Process Model and Notation (BPMN), v2.0.2

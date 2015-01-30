@@ -1,10 +1,12 @@
 14       Mapping BPMN Models to WS-BPEL
-Note – The contents of this chapter is REQUIRED for BPMN BPEL Process Execution Conformance or for BPMN
-Complete Conformance. However, this chapter is NOT REQUIRED for BPMN Process Modeling Conformance, BPMN
-Process Choreography Conformance, or BPMN Process Execution Conformance. For more information about BPMN
-conformance types, see page 2.
 
-This chapter covers a mapping of a BPMN model to WS-BPEL that is derived by analyzing the BPMN objects and the
+14.1 General
+NOTE: The contents of this clause is REQUIRED for BPMN BPEL Process Execution Conformance or for BPMN Complete
+Conformance. However, this clause is NOT REQUIRED for BPMN Process Modeling Conformance, BPMN Process
+Choreography Conformance, or BPMN Process Execution Conformance. For more information about BPMN conformance
+types, see page 1.
+
+This clause covers a mapping of a BPMN model to WS-BPEL that is derived by analyzing the BPMN objects and the
 relationships between these objects.
 
 A Business Process Diagram can be made up of a set of (semi-) independent components, which are shown as
@@ -32,22 +34,22 @@ a certain structure (or pattern) that provides the basis for defining the BPEL m
 
 
 
-Business Process Model and Notation, v2.0                                                                              445
-Figure 14.1 - A BPMN orchestration process and its block hierarchy
+Business Process Model and Notation (BPMN), v2.0.2                                                                     445
+Figure 14.1 – A BPMN orchestration process and its block hierarchy
 
-The following sections define a syntactical BPEL mapping prescribing the resulting BPEL model at the syntactical level,
-and a semantic BPEL mapping prescribing the resulting BPEL model in terms of its observable behavior. The syntactical
-BPEL mapping is defined for a subset of BPMN models based on certain patterns of BPMN blocks, whereas the
-semantical BPEL mapping (which extends the syntactical mapping) does not enforce block patterns, allowing for the
+The following sub clauses define a syntactical BPEL mapping prescribing the resulting BPEL model at the syntactical
+level, and a semantic BPEL mapping prescribing the resulting BPEL model in terms of its observable behavior. The
+syntactical BPEL mapping is defined for a subset of BPMN models based on certain patterns of BPMN blocks, whereas
+the semantical BPEL mapping (which extends the syntactical mapping) does not enforce block patterns, allowing for the
 mapping of a larger class of BPMN models without prescribing the exact syntactical representation in BPEL.
 
 
-14.1 Basic BPMN-BPEL Mapping
-This section introduces a partial mapping function from BPMN orchestration Process models to WS-BPEL executable
-Process models by recursively defining the mapping for elementary BPMN constructs such as Tasks and Events, and
-for blocks following the patterns described here. Mapping a BPMN block to WS-BPEL includes mapping all of its
-associated attributes. The observable behavior of a WS-BPEL process resulting from a BPEL mapping is the same as that
-of the original BPMN orchestration Process.
+14.2 Basic BPMN-BPEL Mapping
+This sub clause introduces a partial mapping function from BPMN orchestration Process models to WS-BPEL
+executable Process models by recursively defining the mapping for elementary BPMN constructs such as Tasks and
+Events, and for blocks following the patterns described here. Mapping a BPMN block to WS-BPEL includes mapping
+all of its associated attributes. The observable behavior of a WS-BPEL process resulting from a BPEL mapping is the
+same as that of the original BPMN orchestration Process.
 
 We use the notation [BPMN construct] to denote the WS-BPEL construct resulting from mapping the BPMN construct.
 
@@ -60,14 +62,14 @@ which says that a BPMN Service Task is mapped to a WS-BPEL Invoke Activity, or
 
 
 
-446                                                                           Business Process Model and Notation, v2.0
+446                                                                Business Process Model and Notation (BPMN), v2.0.2
            p1                  G1                                   <i f><cond iti on>[p1]</co ndi tio n>
-                                                                     [G1]
 
 
 
 
  [                                                 ]
+                                                                     [G1]
                                                                     <el se if><cond iti on>[p2]</co ndi tio n>
                                                                      [G2]
                      p2        G2                           =       </el se if>
@@ -80,10 +82,10 @@ which says that a BPMN Service Task is mapped to a WS-BPEL Invoke Activity, or
 
 which says that the data-based exclusive choice controlled by the two predicates p1 and p2, containing the three BPMN
 blocks G1, G2, and G3 is mapped to the WS-BPEL on the right hand side, which recursively uses the mappings of those
-predicates and those sub-graphs. Note that we use the “waved rectangle” symbol throughout this section to denote BPMN
-blocks.
+predicates and those sub-graphs. Note that we use the “waved rectangle” symbol throughout this sub clause to denote
+BPMN blocks.
 
-14.1.1 Process
+14.2.1 Process
 
 The following figure describes the mapping of a Process, represented by its defining Collaboration, to WS-BPEL.
 The process itself is described by a contained graph G of flow elements to WS-BPEL. The Process interacts with
@@ -92,37 +94,36 @@ Participants Q1…Qn via Conversations C1…Cm:
 
                                           <process name="[P-n ame]"
                                              targetNamespace="[targetNamespace ]"
+                                             e xp ressi onLa ngua ge="[expression Lang uage]"
                 Q2
 
 
 
 
-                                             e xp ressi onLa ngua ge="[expression Lang uage]"
                                              sup pressJoi nFai lure="yes"
                                              xmlns="http://d ocs.o asis-op en.org /wsbpel/2.0/p rocess/executabl e">
+
+
+
+
+ [                                  ]
                       C2
                                            <pa rtnerL inks>
-
-
-
-
- [                         G
-
-                                    ]   =
                                              [ {P-In terfa ce s} UNION {Qi-Inte rfaces } ]
                                            </p artne rLin ks>
+                           G            =
+                                           <varia bles>
        P
 
 
 
 
-                                           <varia bles>
                                              [ {data Obje cts} UNION {prop erti es} ]
                                            </vari abl es>
                           C1               <correla tio nSe ts>
                                              [ {Ci-Co rre lation Keys} ]
                                            </correl ati onS ets>
-                     Q1
+                 Q1
 
 
 
@@ -139,15 +140,15 @@ with a “myRole” specification, each interface of each other Participant Qi i
 
 
 
-Business Process Model and Notation, v2.0                                                                              447
+Business Process Model and Notation (BPMN), v2.0.2                                                                     447
 The variables of the corresponding WS-BPEL process are derived from the set “{dataObjects}” of all Data Objects
 occurring within G, united with the set “{properties}” of all properties occurring within G, without Data Objects or
 properties contained in nested Sub-Processes. See “Handling Data” on page 465 for more details of this mapping.
 
 The correlation sets of the corresponding WS-BPEL process are derived from the CorrelationKeys of the
-set of Conversations C1…Cn.. See page 450 for more details of this mapping.
+set of Conversations C1…Cn (see page 452 for more details of this mapping).
 
-14.1.2 Activities
+14.2.2 Activities
 
 Common Activity Mappings
 
@@ -165,9 +166,10 @@ The following table displays a set of mappings of general BPMN Activity attribut
 
 Task Mappings
 
-The following sections contain the mappings of the variations of a Task to WS-BPEL.
+The following sub clauses contain the mappings of the variations of a Task to WS-BPEL.
 
 Service Task
+
 The following figure shows the mapping of a Service Task to WS-BPEL.
 
 
@@ -186,7 +188,7 @@ The following figure shows the mapping of a Service Task to WS-BPEL.
 
 
 The partner link associated with the WS-BPEL invoke is derived from both the participant Q that the Service Task is
-connected to by Mesage Flows, and from the interface referenced by the operation of the Service Task.
+connected to by Message Flows, and from the interface referenced by the operation of the Service Task.
 
 Receive Task
 
@@ -195,13 +197,13 @@ The following figure shows the mapping of a Receive Task to WS-BPEL.
 
 
 
-448                                                                                 Business Process Model and Notation, v2.0
+448                                                                       Business Process Model and Notation (BPMN), v2.0.2
  [ ]
                                 <recei ve name="[Task-n ame]"
                                  createInsta nce ="[insta nti ate ? 'yes':'no ']"
-          Recei ve               pa rtnerL ink="[Task-opera tio n-interface ]"
+         Recei ve                pa rtnerL ink="[Task-opera tio n-interface ]"
                               =
-           Task                  po rtTyp e="[Task-opera tio n-interfa ce ]"
+          Task                   po rtTyp e="[Task-opera tio n-interfa ce ]"
                                  op erati on="[Ta sk- ope rati on]">
                                 </recei ve>
 
@@ -217,13 +219,13 @@ The following figure shows the mapping of a Send Task to WS-BPEL.
 
 
  [ ]
-            Se nd
-            Task            <i nvoke na me ="[Task-na me ]"
+           Se nd
+           Task             <i nvoke na me ="[Task-na me ]"
                              p artne rLink="[Q , Task- opera tio n- interfa ce ]"
                            = p ortType="[Task-ope rati on-in terfa ce ]"
                              o peration="[Task-op eration]">
                             </i nvoke>
-        Q
+       Q
 
 
 
@@ -257,7 +259,7 @@ mapping to WS-BPEL, using WSDL 1.1.
 
 
 
-Business Process Model and Notation, v2.0                                                                          449
+Business Process Model and Notation (BPMN), v2.0.2                                                                 449
  [                                                         ]
         <Me ssag e name="msg -name">
          <Structure Defi niti on typeL angu age=                    <wsdl:messa ge n ame="[msg -na me ]">
@@ -272,19 +274,20 @@ The top-level child elements of the XML schema defining the structure of the BPM
 WSDL’s message’s parts.
 
 Interface and Operation
+
 The following figure shows the mapping of a BPMN interface with its operations to WS-BPEL, using WSDL 1.1.
 
 
       <In terfa ce name="if- na me">
                                                              <wsdl:p ortType na me ="[if-n ame]">
        <Operation s>
-                                                              <ope rati on na me ="[op1-n ame]">
-         <Opera tio n name="op1- name">
 
 
 
 
  [                                                   ]
+                                                              <ope rati on na me ="[op1-n ame]">
+         <Opera tio n name="op1- name">
                                                                   <wsdl:i nput messa ge="[msg1 i- na me]" />
              <i nMessa geRef ref="msg 1i-na me "/>
                                                                   <wsdl:ou tpu t messag e="[msg1 o-name]" />
@@ -304,6 +307,7 @@ The following figure shows the mapping of a BPMN interface with its operations t
 
 
 Conversations and Correlation
+
 For those BPMN nodes sending or receiving Messages (i.e., Message Events, Service, send or Receive Tasks)
 that have an associated key-based Correlation Key, the mapping of that key-based Correlation Key is as
 follows.
@@ -311,41 +315,41 @@ follows.
 
 
 
-450                                                                              Business Process Model and Notation, v2.0
-                                                                  < v prop:prop erty nam e=" [k -n am e1]" typ e ="[k- ty pe1 ]" />
-                                                                  ...
-                                                                  < v prop:prop erty nam e=" [k -n am eN ]" />
+450                                                                   Business Process Model and Notation (BPMN), v2.0.2
+                                                                   < v prop:prop erty nam e=" [k -n am e1]" typ e ="[k- ty pe1 ]" />
+                                                                   ...
+                                                                   < v prop:prop erty nam e=" [k -n am eN ]" />
        < Key Ba se dC orrel ati onS et na me= "c -s et">
-                                                                 < v prop:prop erty Al ias pro perty N am e= "[k N am e1 ]"
+                                                                   < v prop:prop erty Al ias pro perty N am e= "[k N am e1 ]"
          <Ke y nam e=" k -na me1 " ty pe=" k -ty pe1"
-                                                                      m es sa geT y pe=" [m s g-n am e1]"
-                   m es sa geR ef=" ms g-na me1 ">
-                                                                      pa rt= "[ex pr1 -part]" >
-             < M es sa geK ey Ex pres s ion
+                                                                        m es sa geT y pe=" [m s g-n am e1]"
 
 
 
 
  [                                                         ]
-                                                                   < vp rop:qu ery que ryL angu age= "[lang1]">
-                   ex pres s ion Lan guag e=" lang 1">
-                                                                      [ex pr1]
+                   m es sa geR ef=" ms g-na me1 ">
+                                                                        pa rt= "[ex pr1 -part]" >
+             < M es sa geK ey Ex pres s ion
+                                                                     < vp rop:qu ery que ryL angu age= "[lang1]">
+                    ex pres s ion Lan guag e=" lang 1">
+                                                                        [ex pr1]
                  e xp r1
-                                                               =   < /vp ro p:q uery >
+                                                               =     < /vp ro p:q uery >
              < /M es s ageK ey Ex pre ss io n>
-                                                                 < /v prop :pro perty A lia s>
+                                                                   < /v prop :pro perty A lia s>
          </Key >
-                                                                 ...
+                                                                   ...
          ...
-                                                                 < v prop:prop erty Al ias pro perty N am e= "[k N am eN]" />
+                                                                   < v prop:prop erty Al ias pro perty N am e= "[k N am eN]" />
          <Ke y nam e=" k -na meN " />
              ...
-                                                                  < c orrela tio nSe ts>
+                                                                   < c orrela tio nSe ts>
        < /Key Ba se dC orrel ati onS et>
-                                                                   < co rre lation Set nam e=" [c -se t]"
-                                                                        prop erti es ="[k -nam e1 ] ... [ k-n am eN ]" />
-                                                                   ...
-                                                                  < /c orrel ati onS ets >
+                                                                    < co rre lation Set nam e=" [c -se t]"
+                                                                         prop erti es ="[k -nam e1 ] ... [ k-n am eN ]" />
+                                                                    ...
+                                                                   < /c orrel ati onS ets >
 
 
 The messageType of the BPEL property alias is appropriately derived from the itemDefinition of the Message
@@ -358,12 +362,12 @@ case of a Service Task with an associated key-based Correlation Key.
 
 
                                 <in vo ke name="[Ta sk-name]"
-                                 p artn erLin k="[Q, Task-ope ratio n-in terfa ce ]"
 
 
 
 
  [ ]
+                                 p artn erLin k="[Q, Task-ope ratio n-in terfa ce ]"
                                  p ortType ="[Task-o pera tion -interface]"
                                  o peration ="[Ta sk- ope rati on]">
          S ervice
@@ -379,6 +383,7 @@ Flow initiates the associated Conversations, or participates in an already exist
 CorrelationKeys associated with the Conversation, multiple correlation elements are used.
 
 Sub-Process Mappings
+
 The following table displays the mapping of an embedded Sub-Process with Adhoc=”False” to a WS-BPEL scope.
 (This extends the mappings that are defined for all Activities--see page 448).
 
@@ -387,7 +392,7 @@ The following figure shows the mapping of a BPMN Sub-Process without an Event Su
 
 
 
-Business Process Model and Notation, v2.0                                                                                             451
+Business Process Model and Notation (BPMN), v2.0.2                                                                                     451
 The following figure shows the mapping of a BPMN Sub-Process with an Event Sub-Process. (Event Sub-
 Processes could also be added to a top-level Process, in which case their mapping extends correspondingly.)
 
@@ -395,10 +400,10 @@ Processes could also be added to a top-level Process, in which case their mappin
 
 
 [                                 ]
-      S ubp ro ce ss
-                                          <scop e>
+       S ubp ro ce ss
+                                          < sc op e>
                                       =    [G]
-                 G                        </sco pe>
+                  G                       < /s co pe>
 
 
 
@@ -415,13 +420,13 @@ Non-interrupting Message Event Sub-Processes are mapped to WS-BPEL event handler
 
 
 
-[                                          ]
-         Message Handler                          <eventHa ndl ers>
-                                                    <onE vent partnerLi nk="[e -opera tio n-interfa ce]"
-                                                =       ope ratio n="[e- op erati on]">
-                              G                       <scope >[G]</scope >
-            e                                       </on Event>
-                                                  </eventHa ndl ers>
+[                                         ]
+         Message Handler                         <eventHa ndl ers>
+                                                  <onE vent partnerLi nk="[e -opera tio n-interfa ce]"
+                                              =       ope ratio n="[e- op erati on]">
+                              G                     <scope >[G]</scope >
+            e                                     </on Event>
+                                                </eventHa ndl ers>
 
 
 Timer Event Sub-Processes are mapped to WS-BPEL event handlers as follows.
@@ -429,13 +434,13 @@ Timer Event Sub-Processes are mapped to WS-BPEL event handlers as follows.
 
 
 
-[                                         ]
-         Timeout Handler                          <even tHan dle rs>
-                                                    <on Al arm>[timer- sp ec]
-                                                =     <scope >[G]</scope >
+[                                     ]
+         Timeout Handler                        <even tHan dle rs>
+                                                  <on Al arm>[timer- sp ec]
+                                              =     <scope >[G]</scope >
                               G
-                                                    </on Al arm>
-           e                                      </eventHa ndl ers>
+                                                  </on Al arm>
+           e                                    </eventHa ndl ers>
 
 
 
@@ -444,28 +449,28 @@ Error Event Sub-Processes are mapped to WS-BPEL fault handlers as follows.
 
 
 
-[                                          ]
-          Erro r H a ndle r                        < fau l tH an d le rs>
-                                                      <c a tc h fa u lt N a m e =" [e-fa u lt ] ">
-                                                =       [G]
+[                                         ]
+          Erro r H a ndle r                      < fa u l tH a n d le rs>
+                                                    <c a tc h fa u lt N a m e =" [e -fa u lt ] ">
+                                              =        [G]
                               G
-                                                      </c a tc h >
-            e                                     < / fau l tH an d le rs>
+                                                    </c a tc h >
+            e                                   < / fa u l tH a n d le rs>
 
 
 
 
-452                                                                                          Business Process Model and Notation, v2.0
+452                                                                          Business Process Model and Notation (BPMN), v2.0.2
 A Compensation Event Sub-Process is mapped to a WS-BPEL compensation handler as follows.
 
 
 
 
-[                                           ]
-          Compensation
+[                                          ]
+         Compensation
                                                        <co mpe nsati onHan dle r>
                                                    =     [G ]
-                             G
+                            G
                                                        </co mpe nsati onHan dle r>
 
 
@@ -488,7 +493,7 @@ A standard loop with testTime= “Before” maps to WS-BPEL as follows, where p 
 
 
 
-[           T as k
+[          T as k
                        ]         =
                                          < w h i le>
                                           < c o n d iti o n > [p ] < / c o n d i tio n>
@@ -503,11 +508,11 @@ A standard loop with testTime= “After” maps as follows, where p denotes the 
 
 
 
-[ ]        Task              =
+[ ]       Task               =
                                      < repe atUn til>
                                       [Task]
                                       < con diti on>[n ot p ]< /cond iti on>
-                                     < /re peatU nti l>
+                                     < /re peatUnti l>
 
 
 
@@ -519,7 +524,7 @@ counter.
 
 
 
-Business Process Model and Notation, v2.0                                                                        453
+Business Process Model and Notation (BPMN), v2.0.2                                                               453
 A standard loop with testTime=“Before” and a LoopMaximum attribute maps to WS-BPEL as follows (again, p denotes
 the loopCondition).
 
@@ -531,12 +536,12 @@ the loopCondition).
                                     <from><li tera l>0</l itera l></from >
                                     <to va riab le="[co unter]"/>
                                               </cop y>
-                               </a ssig n>
 
 
 
 
 [ ]
+                               </a ssig n>
                                <wh ile>
                                  <co ndition>[p] a nd $ [co unter] &l t; [Loo pMa xi mu m]</condi tio n>
           Task              =
@@ -547,7 +552,7 @@ the loopCondition).
                                         <fro m expre ssio n="$[cou nter]+1"/>
                                         <to varia ble="[co unte r]" />
                                       </co py>
-                                    </assi gn>
+                                   </assi gn>
                                  </seque nce>
                                </wh ile>
                              </sequ ence>
@@ -562,32 +567,32 @@ A standard loop with testTime=“After” and a LoopMaximum attribute maps as fo
                             <se quen ce >
                               <assign>
                                 <co py>
-                                  <from><li tera l>0</literal></from>
-                                  <to vari able="[coun ter]"/>
+                                   <from><li tera l>0</literal></from>
+                                   <to vari able="[coun ter]"/>
                                              </copy>
-                              </a ssig n>
 
 
 
 
 [ ]
+                              </a ssig n>
                               <repe atUn til>
                                 <se quen ce >
           Task              =
-                                  [G]
-                                  <assi gn>
+                                   [G]
+                                   <assi gn>
                                      <cop y>
-                                       <fro m expressi on="$[co unter]+1" />
+                                       <fro m expressi on="$[co unter]+1"/>
                                        <to vari abl e="[coun ter]" />
                                      </cop y>
-                                  </assign>
+                                   </assign>
                                 </seq uen ce>
                                 <co ndition>[n ot p ] or $[cou nter] &gt; [L oopMaximum]</con dition >
                               </rep eatUnti l>
                             </se quen ce>
 
 
-454                                                                                 Business Process Model and Notation, v2.0
+454                                                                      Business Process Model and Notation (BPMN), v2.0.2
 (The notation [counter] denotes the unique name of a variable used to hold the counter value; the actual name is
 immaterial.)
 
@@ -598,12 +603,12 @@ follows.
 
 
                            <varia ble na me ="[co unter]" type ="xsd:integer"/>
-                           ...
 
 
 
 
 [ ]
+                           ...
                            <fo rEach co unte rName="[co unte r]" p aral lel="[isS eque nti al? 'n o':'yes' ]">
                              <startCo unterVal ue>1</startCoun terV alue >
           Task            = <fin alCo unterVal ue>[con dition]</fi nal CounterVa lue>
@@ -615,28 +620,26 @@ follows.
 (The notation [counter] denotes the unique name of a variable used to hold the counter value; the actual name is
 immaterial.)
 
-14.1.3 Events
+14.2.3 Events
 
 Start Event Mappings
 
-The following sections detail the mapping of Start Events to WS-BPEL.
+The following sub clauses detail the mapping of Start Events to WS-BPEL.
 
 Message Start Events
+
 A Message Start Event is mapped to WS-BPEL as shown in the following figure.
 
 
 
+
+        [ ]
                                      <recei ve name="[e-n ame ]"
-
-
-
-
-        [ ]          e
-                                   =
                                       createInsta nce ="yes"
                                       pa rtnerL ink="[e-o peration -i nte rfac e]"
+                                   =
                                       po rtTyp e="[e-o peration -in terface]"
-                                      op erati on="[e -opera tio n]" >
+                     e                op erati on="[e -opera tio n]">
                                      </recei ve>
 
 
@@ -645,17 +648,17 @@ Message Start Event.
 
 Error Start Events
 
-An Error Start Event can only occur in Event Sub-Processes. This mapping is described on page 452.
+An Error Start Event can only occur in Event Sub-Processes. This mapping is described on page 455.
 
 Compensation Start Events
 
-A Compensation Start Event can only occur in Event Sub-Processes. This mapping is described page 452.
+A Compensation Start Event can only occur in Event Sub-Processes. This mapping is described on page 455.
 
 
-Business Process Model and Notation, v2.0                                                                          455
+Business Process Model and Notation (BPMN), v2.0.2                                                                 455
 Intermediate Event Mappings (Non-boundary)
 
-The following sections detail the mapping of intermediate non-boundary Events to WS-BPEL.
+The following sub clauses detail the mapping of intermediate non-boundary Events to WS-BPEL.
 
 Message Intermediate Events (Non-boundary)
 
@@ -667,17 +670,14 @@ The following figure describes the mapping of Message Intermediate Events to WS-
 
 
 
+
+        [ ]
                                       <recei ve name="[e-n ame ]"
-
-
-
-
-        [ ]         e
-                                    =
                                        createInsta nce ="n o"
                                        pa rtnerL ink="[e-o peration -i nte rface ]"
+                                    =
                                        po rtTyp e="[e-o peration -in terface]"
-                                       op erati on="[e -opera tio n]" >
+                    e                  op erati on="[e -opera tio n]">
                                       </recei ve>
 
 
@@ -712,7 +712,7 @@ Event Sub-Process triggered through an error or through compensation, is mapped 
 
 
 
-456                                                                                   Business Process Model and Notation, v2.0
+456                                                                        Business Process Model and Notation (BPMN), v2.0.2
 [ ]        e
                           =
                               <comp ensate/>
@@ -727,7 +727,7 @@ otherwise.
 
 End Event Mappings
 
-The following sections detail the mapping of End Events to WS-BPEL.
+The following sub clauses detail the mapping of End Events to WS-BPEL.
 
 None End Events
 
@@ -752,12 +752,12 @@ A Message Start Event is mapped to WS-BPEL as shown in the following figure.
 
 
 [ ]
+                           <i nvoke na me ="[e- name]"
        Q
 
 
 
 
-                           <i nvoke na me ="[e- name]"
                             p artne rLink="[Q , e-o peration -interface]"
                           = p ortType="[e -op eration-i nte rface]"
                             o peration="[e-ope rati on]">
@@ -774,7 +774,7 @@ An Error End Event is mapped to WS-BPEL as shown in the following figure.
 
 
 
-Business Process Model and Notation, v2.0                                                                    457
+Business Process Model and Notation (BPMN), v2.0.2                                                           457
 [ ]        e
                          =
                              <throw faul tName="[e -n ame ]">
@@ -821,30 +821,30 @@ A Terminate End Event is mapped to WS-BPEL as shown in the following figure.
 Boundary Intermediate Events
 
 Message Boundary Events
+
 A BPMN Activity with a non-interrupting Message boundary Event is mapped to a WS-BPEL scope with an event
 handler as follows.
 
 
 
 
-458                                                                              Business Process Model and Notation, v2.0
-                                         <scop e>
-
-                        Q
-                                          <eventHand lers>
+458                                                                    Business Process Model and Notation (BPMN), v2.0.2
+                                          <scop e>
 
 
 
 
-[                                 ]
-       A ctivity                            <onE ve nt partn erLin k="[Q, e -opera tio n-interfa ce ]"
-                                                 op eration="[e-ope ra tio n]">
-                                       =      <scop e>[G]</scop e>
+[                                  ]
+                         Q
+                                           <eventHand lers>
+       A ctivity                             <onE ve nt partn erLin k="[Q, e -opera tio n-interfa ce ]"
+                                                  op eration="[e-ope ra tio n]">
+                                        =      <scop e>[G]</scop e>
             e
-                                            </onE ven t>
-                                          </e ve ntHan dle rs>
-                G                         [Activity]
-                                         </sco pe>
+                                             </onE ven t>
+                                           </e ve ntHan dle rs>
+                G                          [Activity]
+                                          </sco pe>
 
 The partner link associated with the WS-BPEL onEvent is derived from the interface referenced by the operation of the
 boundary Message Event.
@@ -856,49 +856,49 @@ Error Boundary Events
 A BPMN Activity with a boundary Error Event according to the following pattern is mapped as shown.
 
 
-                                                           <fl ow>
-                                                            <li nks>
-                                                               <lin k na me ="[l 1]"/>
-                                                               ...
-                                                               <lin k na me ="[l 4]"/>
-                                                            </l inks>
-                                                            <sco pe>
-                                                               <so urces><so urce li nkName="[l1]"/></sou rce s>
-                                                               <fau ltHa ndle rs>
-                                                                   <catch faul tName="[e -erro r]" >
-                                                                     <emp ty>
-                                                                       <sources><source lin kNa me="[l3 ]"/></sources>
-                                                                     </empty >
-                                                                   </catch >
-
-
-
-
-[                                                 ]
-                        l1        G1         l2
-        A ctivity                                              </fa ultHandl ers>
-                                                               [Acti vi ty]
-                                                         =
-                                                            </scope >
                                                             <fl ow>
-                   l3        G2                                <targ ets><targe t li nkName="[l 1]"/></targe ts>
-                                        l4                     <so urces><so urce li nkName="[l2]"/></sou rce s>
-                                                               [G1]
+                                                             <li nks>
+                                                                <lin k na me ="[l 1]"/>
+                                                                ...
+                                                                <lin k na me ="[l 4]"/>
+                                                             </l inks>
+                                                             <sco pe>
+                                                                <so urces><so urce li nkName="[l1]"/></sou rce s>
+                                                                <fau ltHa ndle rs>
+                                                                    <catch faul tName="[e -erro r]">
+                                                                      <emp ty>
+                                                                        <sources><source lin kNa me="[l3 ]"/></sources>
+
+
+
+
+[                                                  ]
+                                                                      </empty >
+                         l1        G1         l2
+                                                                    </catch >
+        A ctivity                                               </fa ultHandl ers>
+                                                                [Acti vi ty]
+                                                          =
+                                                             </scope >
+                                                             <fl ow>
+                    l3        G2                                <targ ets><targe t li nkName="[l 1]"/></targe ts>
+                                         l4                     <so urces><so urce li nkName="[l2]"/></sou rce s>
+                                                                [G1]
+                                                             </flow>
+                                                             <fl ow>
+                                                                <targ ets><targe t li nkName="[l 3]"/></targe ts>
+                                                                <so urces><so urce li nkName="[l4]"/></sou rce s>
+                                                                [G2]
+                                                             </flow>
+                                                             <empty>
+                                                                <so urces><so urce li nkName="[l2]"/>
+                                                                <so urce lin kNa me="[l4]"/></sou rce s>
+                                                             </e mp ty>
                                                             </flow>
-                                                            <fl ow>
-                                                               <targ ets><targe t li nkName="[l 3]"/></targe ts>
-                                                               <so urces><so urce li nkName="[l4]"/></sou rce s>
-                                                               [G2]
-                                                            </flow>
-                                                            <empty>
-                                                               <so urces><so urce li nkName="[l2]"/>
-                                                               <so urce lin kNa me="[l4]"/></sou rce s>
-                                                            </e mp ty>
-                                                           </flow>
 
 
 
-Business Process Model and Notation, v2.0                                                                                459
+Business Process Model and Notation (BPMN), v2.0.2                                                                        459
 Note that the case where the error handling path doesn’t join the main control flow again, is still mapped using this
 pattern, by applying the following model equivalence.
 
@@ -910,7 +910,7 @@ pattern, by applying the following model equivalence.
 
 
 
-       G2                                                              G2
+       G2                                                               G2
 
 
 
@@ -921,13 +921,9 @@ A BPMN Activity with a boundary Compensation Event is similarly mapped as shown.
 
 
 
-                                       <scop e n ame ="[A ctivity-na me ]">
-
-
-
 
 [                              ]
-        A ctivity
+        A ctivity                      <scop e n ame ="[A ctivity-na me ]">
                                         <compensation Handl er>
                                           [G]
                                      =
@@ -953,7 +949,7 @@ Intermediate Event.
 
 
 
-460                                                                                Business Process Model and Notation, v2.0
+460                                                                   Business Process Model and Notation (BPMN), v2.0.2
                                                                 <fl ow>
                                                                  <l inks>
                                                                      <li nk na me ="[l1]"/>
@@ -971,25 +967,24 @@ Intermediate Event.
     S ubp rocess                                                     </faultHand lers>
                  G                                                   <comp ensationHa ndl er>
                                                                          [G3]
-       Handler
-                                l1    G1        l2                   </compen sa tion Hand ler>
 
 
 
 
 [                                                         ]
+       Handler
+                               l1    G1         l2                   </compen sa tion Hand ler>
                      G’
                                                                      <whil e>
                                                                          <con dition>[p]</condi ti on>
                                                               =          <scope >
-                                     G2              l4
-                                                                           [Hand ler]
-                           l3
+                                    G2               l4                    [Hand ler]
+                          l3
                                                                            [G]
                                                                          </scope>
                                                                      </whi le>
                                                                  </scope >
-                                G3
+                               G3
                                                                  <flow>
                                                                      <targ ets ><targe t li nkName="[l 1]"/></targ ets>
                                                                      <sources><so urce l inkName="[l2]"/></sources>
@@ -1007,7 +1002,7 @@ Intermediate Event.
                                                                 </flow>
 
 
-14.1.4 Gateways and Sequence Flows
+14.2.4 Gateways and Sequence Flows
 
 The mapping of BPMN Gateways and Sequence Flows is described using BPMN blocks following particular
 patterns.
@@ -1019,14 +1014,14 @@ An exclusive data-based decision is mapped as follows.
 
 
 
-Business Process Model and Notation, v2.0                                                                       461
+Business Process Model and Notation (BPMN), v2.0.2                                                              461
         p1              G1                                      <i f><cond iti on>[p1]</co ndi tio n>
-                                                                 [G1]
 
 
 
 
 [                                               ]
+                                                                 [G1]
                                                                 <el se if><cond iti on>[p2]</co ndi tio n>
                                                                  [G2]
               p2        G2                               =      </el se if>
@@ -1046,26 +1041,21 @@ An Event Gateway is mapped as follows.
                                                                   <o nMe ssag e p artne rLink="[e1-o peration- inte rface]"
                                                                          o peration ="[e1- ope ra tio n]">
                                         G1
+
+
+
+
+        [                                                ]
                                                                      [G 1]
                           e1                                      </onMessa ge>
-
-
-
-
-        [                 e2            G2
-
-
-
-
-                                        G3
-                                                         ]     =
                                                                   <o nMe ssag e p artne rLink="[e2-o peration- inte rface]"
                                                                          o peration ="[e2- ope ra tio n]">
+                          e2            G2                     =
                                                                      [G 2]
                                                                   </onMessa ge>
                                                                   <o nAl arm>
                                                                      [ti me r-spec]
-                                                                     [G 3]
+                                        G3                           [G 3]
                         timer                                     </onA larm>
                                                                  </p ick>
 
@@ -1082,26 +1072,26 @@ An inclusive decision pattern without an otherwise gate is mapped as follows:
 
 
 
-462                                                                               Business Process Model and Notation, v2.0
-                                                       <flow>
+462                                                                   Business Process Model and Notation (BPMN), v2.0.2
+                                                       <flo w>
                                                         <li nks>
-                                                          <l ink n ame="[li nk1]"/>
-                                                          ...
-                                                          <l ink n ame="[li nk6]"/>
+                                                           <l ink n ame="[li nk1]"/>
+                                                           ...
+                                                           <l ink n ame="[li nk6]"/>
                                                         </l inks>
 
                                                         <empty>
-                                                          <sou rces>
+                                                          <sou rce s>
                                                             <source l inkName="[lin k1]">
-                                                              <transitionCondi tio n>[p1])</tran si tio nCondition>
+                                                              <transitionCo ndi tio n>[p1])</tran si tio nCon dition>
                                                             </source>
                                                             <source l inkName="[lin k2]">
-                                                              <transitionCondi tio n>[p2])</tran si tio nCondition>
+                                                              <transitionCo ndi tio n>[p2])</tran si tio nCon dition>
                                                             </source>
                                                             <source l inkName="[lin k3]">
-                                                              <transitionCondi tio n>[p3])</tran si tio nCondition>
+                                                              <transitionCo ndi tio n>[p3])</tran si tio nCon dition>
                                                             </source>
-                                                          </source s>
+                                                          </sou rce s>
        p1             G1                                </empty>
              link1              link4
 
@@ -1110,20 +1100,20 @@ An inclusive decision pattern without an otherwise gate is mapped as follows:
 
 [                                           ]
                                                         <fl ow>
-                                                          <targe ts><target linkNa me="[li nk1]"/></targets>
-               p2     G2                          =       <sou rces><sou rce li nkName="[l ink4]"/></sources>
+                                                          <targe ts><target lin kNa me="[li nk1]"/></targ ets>
+               p2     G2                          =       <sou rce s><sou rce li nkName="[l ink4 ]"/></sources>
              link2              link5                     [G1]
                                                         </flow>
 
         p3            G3                                <fl ow>
-             link3              link6                     <targe ts><target linkNa me="[li nk2]"/></targets>
-                                                          <sou rces><sou rce li nkName="[l ink5]"/></sources>
+             link3              link6                     <targe ts><target lin kNa me="[li nk2]"/></targ ets>
+                                                          <sou rce s><sou rce li nkName="[l ink5 ]"/></sources>
                                                           [G2]
                                                         </flow>
 
                                                         <fl ow>
-                                                          <targe ts><target linkNa me="[li nk3]"/></targets>
-                                                          <sou rces><sou rce li nkName="[l ink6]"/></sources>
+                                                          <targe ts><target lin kNa me="[li nk3]"/></targ ets>
+                                                          <sou rce s><sou rce li nkName="[l ink6 ]"/></sources>
                                                           [G3]
                                                         </flow>
 
@@ -1144,7 +1134,7 @@ appending a unique suffix. This is capture by the [linkName] notation.
 
 
 
-Business Process Model and Notation, v2.0                                                                             463
+Business Process Model and Notation (BPMN), v2.0.2                                                                      463
 Parallel Pattern
 
 A parallel fork-join pattern is mapped as follows.
@@ -1203,14 +1193,14 @@ A BPMN block consisting of a structured loop of the following pattern is mapped 
 
 
 
-464                                                                               Business Process Model and Notation, v2.0
-[                                                   ]
+464                                                                    Business Process Model and Notation (BPMN), v2.0.2
+[                                                 ]
                             p
-                                                               <rep eatUnti l>
-                                                                [G]
-                                                         =
-                         G                                      <con dition>[not p ]</cond iti on>
-                                                               </re pea tUntil>
+                                                                <rep eatUnti l>
+                                                                 [G]
+                                                          =
+                         G                                       <con dition>[not p ]</cond iti on>
+                                                                </re pea tUntil>
 
 
 
@@ -1225,12 +1215,12 @@ A while loop has the following structure in BPMN and is mapped as shown.
 
 
 
-[              p         G
-                                            ]   =
-                                                    <wh ile>
-                                                     <co ndi tion>[p ]</cond iti on>
-                                                     [G]
-                                                    </wh ile>
+[              p        G
+                                        ]     =
+                                                     <wh ile>
+                                                      <co ndi tion>[p ]</cond iti on>
+                                                      [G]
+                                                     </wh ile>
 
 
 
@@ -1239,33 +1229,34 @@ A repeat loop has the following structure in BPMN and is mapped as shown.
 
 
 
-[                                               ]
+[                                            ]
                         p
-                                                      <rep eatUnti l>
-                                                       [G]
-                                                    =
-                        G                              <con dition>[no t p ]</condi tio n>
-                                                      </rep eatU ntil>
+                                                       <rep eatUnti l>
+                                                        [G]
+                                                     =
+                       G                                <con dition>[no t p ]</condi tio n>
+                                                       </rep eatU ntil>
 
 
 
 
-14.1.5 Handling Data
+14.2.5 Handling Data
 
 Data Objects
+
 BPMN Data Objects are mapped to WS-BPEL variables. The itemDefinition of the Data Object determines the
 XSD type of that variable.
 
 Data Objects occur in the context of a Process or Sub-Process. For the associated WS-BPEL process or WS-
-BPEL scope, a variable is added for each Data Object in the corresponding WS-BPEL variables section, as
+BPEL scope, a variable is added for each Data Object in the corresponding WS-BPEL variables sub clause, as
 follows:
 
 
 
 
-Business Process Model and Notation, v2.0                                                                     465
+Business Process Model and Notation (BPMN), v2.0.2                                                            465
 [ ]      D1
-                       =   <vari abl e name="[D1- na me]" type="[D1 -structu reDefini tion ]"/>
+                       =   <vari abl e name=" [D1- na me]" type="[D1 -structu reDefini tion ]"/>
 
 
 
@@ -1310,7 +1301,7 @@ The structure of the WSDL message is defined by the itemDefinitions of the data 
 
 
 
-466                                                                                  Business Process Model and Notation, v2.0
+466                                                                        Business Process Model and Notation (BPMN), v2.0.2
 [                                                       ]
      <in putS et name="iset">
                                                                 <wsd l:me ssag e name="[i se t- name]">
@@ -1329,48 +1320,42 @@ For the data outputs of the output set, the WSDL message looks as follows.
 
 
 [                                                       ]
-     <outputSet na me =" oset">
-                                                                <wsd l:me ssag e name= "[o se t-name]">
-      < data Outp ut name="ou tput1">
-          <structu reDefinition structure ="type3 "/>            <pa rt name="[o utp ut1-name]" type ="[type 3]"/>
+     <outputSet na me ="oset">
+                                                                <wsd l:me ssag e name="[o se t-name]">
+      <data Outp ut name="ou tput1">
+          <structu reDefinition structure ="type3 "/>            <pa rt name="[o utp ut1-name]" type =" [type 3]"/>
                                                             =
-      < /data Outp ut>                                           ...
+      </data Outp ut>                                            ...
       ...                                                       </wsdl:me ssag e>
      </o utpu tSe t>
 
 
 Data Associations
 
-In this section, we assume that the input set of the Service Task has the same structure as its referenced input
+In this sub clause, we assume that the input set of the Service Task has the same structure as its referenced input
 Message, and the output set of the Service Task has the same structure as its reference output Message. If this is not
-the case, assignments are needed, and the mapping is as described in the next section.
+the case, assignments are needed, and the mapping is as described in the next sub clause.
 
 Data associations to and from a Service Task are mapped as follows.
 
                                                               <i nvoke ... >
                                                                <toP arts>
-                                                                  <toPa rt part=" [d ataInpu t1-name]"
+                                                                  <toPa rt part="[d ataInpu t1-name]"
+
+
+
+
+[                                                       ]
                                                                      fromVa riab le="[D1 -name]"/>
-                          A                                       <toPa rt part=" [d ataInpu t2-name]"
-
-
-
-
-[    D1
-
-              D2
-                                         D3
-
-
-                                                  D4
-                                                        ]   =
+                          A                                       <toPa rt part="[d ataInpu t2-name]"
                                                                      fromVa riab le="[D2 -name]"/>
                                                                </to Parts>
+                                                            =
                                                                <fromParts>
                                                                   <fro mP art part="[d ata Outpu t1-name]"
-                                                                     fromVa riab le="[D3 -name]"/>
+     D1                                  D3                          fromVa riab le="[D3 -name]"/>
                                                                   <formP art part="[d ata Outpu t2-name]"
-                                                                     fromVa riab le="[D4 -name]"/>
+              D2                                  D4                 fromVa riab le="[D4 -name]"/>
                                                                </fromP arts>
                                                               </invoke>
 
@@ -1379,47 +1364,41 @@ Data associations from a Receive Task are mapped as follows.
 
 
 
-Business Process Model and Notation, v2.0                                                                            467
+Business Process Model and Notation (BPMN), v2.0.2                                                                    467
                                           <receive>
+
+
+
+
+[                                   ]
           A                                <fro mP arts >
-
-
-
-
-[                     D3
-
-
-                               D4
-                                    ]   =
                                              <fromPa rt p art="[dataOutput1 -na me]"
                                                 fro mV ariab le="[D3- name]"/>
+                                        =
                                              <formPa rt p art="[dataOutput2 -na me]"
                                                 fro mV ariab le="[D4- name]"/>
-                                           </fromParts>
+                      D3                   </fromParts>
                                           </receive>
-
+                               D4
 
 Data associations to a Send Task are mapped as follows.
 
 
                                           <invoke>
+
+
+
+
+[                                   ]
                            A               <to Parts>
-
-
-
-
-[       D1
-
-                D2
-                                    ]   =
                                              <toP art p art="[dataIn put1-n ame ]"
                                                 fro mV ariab le="[D1- name]"/>
+                                        =
                                              <toP art p art="[dataIn put2-n ame ]"
                                                 fro mV ariab le="[D2- name]"/>
-                                           </toP arts>
+        D1                                 </toP arts>
                                           </invoke>
-
-
+                D2
 
 Expressions
 
@@ -1431,16 +1410,14 @@ The BPMN XPath functions for accessing context from the perspective of the curre
 XPath functions for context access as shown in the following table. This is possible because the arguments MUST be
 literal strings.
 
-Table 14.2 - Expressions mapping to WS-BPEL
+Table 14.2 – Expressions mapping to WS-BPEL
 
  BPMN context access                                     BPEL context access
-
-
  getDataobject(dataObjectName)                           $[dataObjectName]
 
 
- getProcessProperty(propertyName)                        $[{processName}.propertyName] where the right process-
-                                                         Name is statistically derived.
+ getProcessProperty(propertyName)                        $[{processName}.propertyName] where the right pro-
+                                                         cessName is statistically derived.
  getActivityProperty(activityName, propertyName)         $[activityName.propertyName]
 
 
@@ -1449,7 +1426,7 @@ Table 14.2 - Expressions mapping to WS-BPEL
 
 
 
-468                                                                             Business Process Model and Notation, v2.0
+468                                                                  Business Process Model and Notation (BPMN), v2.0.2
 Assignments
 
 For a Service Task with assignments, the WS-BPEL mapping results in a sequence of an assign activity, an invoke
@@ -1457,9 +1434,9 @@ activity and another assign activity. The first assign deals with creating the s
 of the Task, the second assign deals with creating the data outputs of the Task from the service response Message.
 
 
-14.2 Extended BPMN-BPEL Mapping
+14.3 Extended BPMN-BPEL Mapping
 Additional sound BPMN Process models whose block hierarchy contains blocks that have not been addressed in the
-previous section can be mapped to WS-BPEL. For such BPMN Process models, in many cases there is no preferred
+previous sub clause can be mapped to WS-BPEL. For such BPMN Process models, in many cases there is no preferred
 single mapping of a particular block, but rather, multiple WS-BPEL patterns are possible to map that block to. Also,
 additional BPMN constructs can be mapped by using capabilities not available at the time of producing this specification,
 such as the upcoming OASIS BPEL4People standard to map BPMN User Tasks, or other WS-BPEL extensions.
@@ -1467,9 +1444,9 @@ such as the upcoming OASIS BPEL4People standard to map BPMN User Tasks, or other
 Rather than describing or even mandating the mapping of such BPMN blocks, this specification allows for a semantic
 mapping of a BPMN Process model to an executable WS-BPEL process: The observable behavior of the target WS-
 BPEL process MUST match the operational semantics of the mapped BPMN Process. Also, the mappings described in
-Section 15.1 SHOULD be used where applicable.
+sub clause 15.1 SHOULD be used where applicable.
 
-14.2.1 End Events
+14.3.1 End Events
 
 End Events can be combined with other BPMN objects to complete the merging or joining of the paths of a WSBPEL
 structured element (see Figure 7.3).
@@ -1477,15 +1454,15 @@ structured element (see Figure 7.3).
 
 
 
-Figure 14.2 - An example of distributed token recombination
+Figure 14.2 – An example of distributed token recombination
 
-14.2.2 Loop/Switch Combinations From a Gateway
+14.3.2 Loop/Switch Combinations From a Gateway
 
 This type of loop is created by a Gateway that has three or more outgoing Sequence Flows. One Sequence Flow
 loops back upstream while the others continue downstream (see Figure 14.3). Note that there might be intervening
 Activities prior to when the Sequence Flow loops back upstream.
 
-Business Process Model and Notation, v2.0                                                                              469
+Business Process Model and Notation (BPMN), v2.0.2                                                                     469
       • This maps to both a WSBPEL while and a switch. Both activities will be placed within a sequence, with the
         while preceding the switch.
 
@@ -1500,9 +1477,9 @@ Business Process Model and Notation, v2.0                                       
 
 
 
-Figure 14.3 - An example of a loop from a decision with more than two alternative paths
+Figure 14.3 – An example of a loop from a decision with more than two alternative paths
 
-14.2.3 Interleaved Loops
+14.3.3 Interleaved Loops
 
 This is a situation where there are at least two loops involved and they are not nested (see Figure 14.4). Multiple looping
 situations can map, as described above, if they are in a sequence or are fully nested (e.g., one while inside another
@@ -1512,8 +1489,8 @@ while cannot be used to handle the situation. Also, since a flow is acyclic, it 
 
 
 
-470                                                                                Business Process Model and Notation, v2.0
-Figure 14.4 - An example of interleaved loops
+470                                                                     Business Process Model and Notation (BPMN), v2.0.2
+Figure 14.4 – An example of interleaved loops
 
 To handle this type of behavior, parts of the WSBPEL process will have to be separated into one or more derived
 processes that are spawned from the main process and will also spawn or call each other (note that the examples
@@ -1536,8 +1513,8 @@ provide the same behavior that is shown through a set of cycles in a single BPMN
 
 
 
-Business Process Model and Notation, v2.0                                                                               471
-Figure 14.5 - An example of the WSBPEL pattern for substituting for the derived Process
+Business Process Model and Notation (BPMN), v2.0.2                                                                      471
+Figure 14.5 – An example of the WSBPEL pattern for substituting for the derived Process
 
 For each location in the Process where a Sequence Flow connects upstream, there will be a separate derived
 WSBPEL process.
@@ -1545,7 +1522,7 @@ WSBPEL process.
       • The name of the derived process will be in the form of:
            • “[(loop target)activity.Name]_Derived_Process”
 
-      • All Gateways in this section will be mapped to switch elements, instead of while elements (see Figure below).
+      • All Gateways in this sub clause will be mapped to switch elements, instead of while elements (see Figure below).
 
       • Each time there is a Sequence Flow that loops back upstream, the Activity for the switch case will be a (one-
         way) invoke that will spawn the appropriate derived process, even if the invoke spawns the same process
@@ -1562,13 +1539,13 @@ WSBPEL process.
 
 
 
-Figure 14.6 - An example of a WSBPEL pattern for the derived Process
+Figure 14.6 – An example of a WSBPEL pattern for the derived Process
 
 
 
 
-472                                                                             Business Process Model and Notation, v2.0
-14.2.4 Infinite Loops
+472                                                                    Business Process Model and Notation (BPMN), v2.0.2
+14.3.4 Infinite Loops
 
 This type of loop is created by a Sequence Flow that loops back without an intervening Gateway to create alternative
 paths (see Figure 14.7). While this can be a modeling error most of the time, there can be situations where this type of
@@ -1585,13 +1562,13 @@ loop is desired, especially if it is placed within a larger Activity that will e
 
 
 
-Figure 14.7 - An example – An infinite loop
+Figure 14.7 – An example: An infinite loop
 
-14.2.5 BPMN Elements that Span Multiple WSBPEL Sub-Elements
+14.3.5 BPMN Elements that Span Multiple WSBPEL Sub-Elements
 
-Figure 14.8 below illustrates how BPMN objects can exist in two separate sub-elements of a WSBPEL structured element
-at the same time. Since BPMN allows free form connections of Activities and Sequence Flows, it is possible that two
-(or more) Sequence Flows will merge before all the Sequence Flows that map to a WSBPEL structure element have
+Figure 14.8 illustrates how BPMN objects can exist in two separate sub-elements of a WSBPEL structured element at the
+same time. Since BPMN allows free form connections of Activities and Sequence Flows, it is possible that two (or
+more) Sequence Flows will merge before all the Sequence Flows that map to a WSBPEL structure element have
 merged. The sub-elements of a WSBPEL structured elements are also self-contained and there is no cross sub-element
 flow. For example, the cases of a switch cannot interact; that is, they cannot share activities. Thus, one BPMN
 Activity will need to appear in two (or more) WSBPEL structured elements. There are two possible mechanisms to deal
@@ -1607,7 +1584,7 @@ with the situation:
 
 
 
-Business Process Model and Notation, v2.0                                                                                473
+Business Process Model and Notation (BPMN), v2.0.2                                                                       473
 Figure 14.8 displays this issue with an example. In that example, two Sequence Flows merge into the “Include History
 of Transactions” Task. However, the Decision that precedes the Task has three alternatives. Thus, the Decision maps to
 a WSBPEL switch with three cases. The three cases are not closed until the “Include Standard Text” Task,
@@ -1620,9 +1597,9 @@ always be available for use in these situations, particularly if a WSBPEL pick i
 
 
 
-Figure 14.8 - An example - Activity that spans two paths of a WSBPEL structured element
+Figure 14.8 – An example: Activity that spans two paths of a WSBPEL structured element
 
 
 
 
-474                                                                            Business Process Model and Notation, v2.0
+474                                                                   Business Process Model and Notation (BPMN), v2.0.2

@@ -1,57 +1,70 @@
-2.5       Summary of BPMN Conformance Types
+2.6       Summary of BPMN Conformance Types
 Table 2.5 summarizes the requirements for BPMN Conformance.
 
-Table 2.5 - Types of BPMN Conformance
+Table 2.5 – Types of BPMN Conformance
 
- Category                  Process Modeling              Process           BPEL Process       Choreography
-                           Conformance                   Execution         Execution          Conformance
-                                                         Conformance       Conformance
- Visual representation     Process diagram types         N/A               N/A                Choreography diagram
- of BPMN Diagram           and                                                                types
- Types                     Collaboration diagram                                              and
-                           types depicting                                                    Collaboration diagram
-                           collaborations among                                               types depicting
-                           Process diagram types.                                             collaboration among
-                                                                                              Choreography diagram
-                                                                                              types.
- BPMN Diagram              All Task types, embedded      N/A               N/A                Message, Choreography
- Elements that need to     Sub-Process, Call Activity,                                        Task, Global Choreography
- be supported.             all Event types, all                                               Task, Sub-Choreography
-                           Gateway types, Pool,                                               (expanded and collapsed),
-                           Lane, Data Object                                                  certain types of Start,
-                           (including DataInput and                                           Intermediate, and End
-                           DataOutput), Message,                                              Events, Gateways, Pools
-                           Group, Artifacts, markers                                          and Message Flow.
-                           for Tasks and Sub-
-                           Processes, Sequence
-                           Flow, Associations, and
-                           Message Flow.
- Import/Export of          Yes for Process and           Yes for Process   Yes for Process    Yes for Choreography and
- diagram types             Collaboration diagrams        diagrams          diagrams           Collaboration diagrams
-                           that depict Process within                                         depicting choreography
-                           Collaboration.                                                     within Collaboration.
- Support for Graphical     Process and Collaboration     N/A               N/A                Choreography and
- syntax and semantics      diagrams that depict                                               Collaboration diagrams
-                           Process within                                                     depicting Choreography
-                           Collaboration.                                                     within Collaboration.
-
- Support for Execution     N/A                           Yes for Process   Yes for Process    Choreography execution
- Semantics                                               diagrams          diagrams           semantics
+ Category                     Process Modeling                Process                BPEL Process      Choreography
+                              Conformance                     Execution              Execution         Conformance
+                                                              Conformance            Conformance
+ Visual representation of     Process diagram types           N/A                    N/A               Choreography diagram types
+ BPMN Diagram Types           and                                                                      and
+                              Collaboration diagram types                                              Collaboration diagram types
+                              depicting collaborations                                                 depicting collaboration among
+                              among Process diagram                                                    Choreography diagram types.
+                              types.
+ BPMN Diagram Elements        All Task types, embedded        N/A                    N/A               Message, Choreography Task,
+ that need to be supported.   Sub-Process, Call Activity,                                              Global Choreography Task,
+                              all Event types, all Gateway                                             Sub-Choreography
+                              types, Pool, Lane, Data                                                  (expanded and collapsed),
+                              Object (including DataInput                                              certain types of Start,
+                              and DataOutput), Message,                                                Intermediate, and End Events,
+                              Group, Artifacts, markers for                                            Gateways, Pools and Message
+                              Tasks and Sub-Processes,                                                 Flow.
+                              Sequence Flow, Associations,
+                              and Message Flow.
+ Import/Export of diagram     Yes for Process and             Yes for Process        Yes for Process   Yes for Choreography and
+ types                        Collaboration diagrams that     diagrams               diagrams          Collaboration diagrams
+                              depict Process within                                                    depicting choreography within
+                              Collaboration.                                                           Collaboration.
+ Support for Graphical        Process and Collaboration       N/A                    N/A               Choreography and
+ syntax and semantics         diagrams that depict Process                                             Collaboration diagrams
+                              within Collaboration.                                                    depicting Choreography
+                                                                                                       within Collaboration.
+ Support for Execution        N/A                             Yes for Process        Yes for Process   Choreography execution
+ Semantics                                                    diagrams               diagrams          semantics
 
 
 
 3         Normative References
-3.1       Normative
+
+3.1       General
+The following referenced documents are indispensable for the application of this document. For dated references, only the
+edition cited applies. For undated references, the latest edition of the referenced document (including any amendments)
+applies.
+
+
+
+
+12                                                                              Business Process Model and Notation (BPMN), v2.0.2
+3.2      Normative
+
+OMG UML
+    • OMG Unified Modeling Language (OMG UML), Superstructure, V2.1.2 -
+      http://www.omg.org/spec/UML/2.1.2/Superstructure
+
+OMG MOF
+    • Object Management Group - Meta Object Facility (MOF) Core Specification, V2.0
+      http://www.omg.org/spec/MOF/2.0
 
 RFC-2119
-     • Key words for use in RFCs to Indicate Requirement Levels, S. Bradner, IETF RFC 2119, March 1997
-       http://www.ietf.org/rfc/rfc2119.txt
+    • Key words for use in RFCs to Indicate Requirement Levels, S. Bradner, IETF RFC 2119, March 1997
+      http://www.ietf.org/rfc/rfc2119.txt
 
 
-12                                                                               Business Process Model and Notation, v2.0
-3.2      Non-Normative
+3.3      Non-Normative
+
 Activity Service
-    • Additional Structuring Mechanism for the OTS specification, OMG, June 1999
+    • Additional Structuring Mechanism for the OTS Specification, OMG, June 1999
       http://www.omg.org
 
     • J2EE Activity Service for Extended Transactions (JSR 95), JCP
@@ -59,20 +72,9 @@ Activity Service
 
 
 BPEL4People
-    • WS-BPEL Extension for People (BPEL4People) 1.0, June 2007
-      http://www.active-endpoints.com/active-bpel-for-people.htm
-
-    • http://www.active-endpoints.com/active-bpel-for-people.htm
-
-    • http://www.adobe.com/devnet/livecycle/articles/bpel4people_overview.html
-
-    • http://dev2dev.bea.com/arch2arch/
-
-    • http://www-128.ibm.com/developerworks/webservices/library/specification/ws-bpel4people/
-
-    • http://www.oracle.com/technology/tech/standards/bpel4people/
-
-    • https://www.sdn.sap.com/irj/sdn/bpel4people
+    • WS-BPEL Extension for People (BPEL4People) Specification Version 1.1, Committee Specification,
+      17 August 2010
+      http://docs.oasis-open.org/bpel4people/bpel4people-1.1-spec-cs-01.html
 
 Business Process Definition Metamodel
     • OMG, May 2008,
@@ -89,22 +91,18 @@ Business Transaction Protocol
       http://www.oasis-open.org/committees/download.php/1184/2002-06-03.BTP_cttee_spec_1.0.pdf
 
 
+
+
+Business Process Model and Notation (BPMN), v2.0.2                                                      13
 Dublin Core Meta Data
-    • Dublin Core Metadata Element Set, Dublin Core Metadata Initiative
-      http://dublincore.org/documents/dces/
+      • Dublin Core Metadata Element Set, Dublin Core Metadata Initiative
+        http://dublincore.org/documents/dces/
 
 
 ebXML BPSS
-    • Jean-Jacques Dubray, “A new model for ebXML BPSS Multi-party Collaborations and Web Services Choreography,”
-      2002
-      http://www.ebpml.org/ebpml.doc
-
-
-
-Business Process Model and Notation, v2.0                                                                      13
-OMG UML
-      • Unified Modeling Language Specification V2.1.2: Superstructure, OMG, Nov 2007,
-        http://www.omg.org/spec/UML/2.1.2/Superstructure/PDF
+      • Jean-Jacques Dubray, “A new model for ebXML BPSS Multi-party Collaborations and Web Services Choreography,”
+        2002
+        http://www.ebpml.org/ebpml.doc
 
 
 Open Nested Transactions
@@ -147,15 +145,14 @@ Web Services Transaction
         http://www.oasis-open.org/committees/ws-tx/
 
 
+
+
+14                                                                    Business Process Model and Notation (BPMN), v2.0.2
 Workflow Patterns
-      • Russell, N., ter Hofstede, A.H.M., van der Aalst W.M.P, & Mulyar, N. (2006). Workflow Control-Flow Patterns: A
+    • Russell, N., ter Hofstede, A.H.M., van der Aalst W.M.P, & Mulyar, N. (2006). Workflow Control-Flow Patterns: A
         Revised View. BPM Center Report BPM-06-22, BPMcentre.org
         http://www.workflowpatterns.com/
 
-
-
-
-14                                                                              Business Process Model and Notation, v2.0
 WSBPEL
     • Web Services Business Process Execution Language (WSBPEL) 2.0, OASIS Standard, April 2007
         http://docs.oasis-open.org/wsbpel/2.0/OS/wsbpel-v2.0-OS.html
@@ -170,18 +167,8 @@ WSDL
         http://www.w3.org/TR/wsdl20/
 
 WS-HumanTask
-    • Web Services Human Task (WS-HumanTask) 1.0, June 2007
-        http://www.active-endpoints.com/active-bpel-for-people.htm
-
-    • http://www.adobe.com/devnet/livecycle/articles/bpel4people_overview.html
-
-    • http://dev2dev.bea.com/arch2arch/
-
-    • http://www-128.ibm.com/developerworks/webservices/library/specification/ws-bpel4people/
-
-    • http://www.oracle.com/technology/tech/standards/bpel4people/
-
-    • https://www.sdn.sap.com/irj/sdn/bpel4people
+    • Web Services Human Task (WS-HumanTask) 1.1, August 2010
+        http://docs.oasis-open.org/bpel4people/ws-humantask-1.1-spec-cs-01.html
 
 
 XML 1.0 (Second Edition)
@@ -209,7 +196,8 @@ XPath
 
 
 
-Business Process Model and Notation, v2.0                                                                    15
+
+Business Process Model and Notation (BPMN), v2.0.2                                                                     15
 XPDL
      • Workflow Management Coalition XML Process Definition Language, version 2.0.
         http://www.wfmc.org/wfmc-standards-framework.html
@@ -217,23 +205,26 @@ XPDL
 
 
 4         Terms and Definitions
-See Annex C - Glossary.
+
+NOTE: See Annex C - Glossary.
 
 
 
 5         Symbols
-There are no symbols defined in this specification.
+
+NOTE: There are no symbols defined.
 
 
 
 6         Additional Information
+
 6.1       Conventions
-The section introduces the conventions used in this document. This includes (text) notational conventions and notations
-for schema components. Also included are designated namespace definitions.
+The sub clause introduces the conventions used in this document. This includes (text) notational conventions and
+notations for schema components. Also included are designated namespace definitions.
 
 6.1.1     Typographical and Linguistic Conventions and Style
 
-This specification incorporates the following conventions:
+This International Standard incorporates the following conventions:
 
      • The keywords “MUST,” “MUST NOT,” “REQUIRED,” “SHALL,” “MUST NOT,” “SHOULD,” “SHOULD NOT,”
         “RECOMMENDED,” “MAY,” and “OPTIONAL” in this document are to be interpreted as described in RFC-2119.
@@ -241,8 +232,8 @@ This specification incorporates the following conventions:
      • A term is a word or phrase that has a special meaning. When a term is defined, the term name is highlighted in bold
         typeface.
 
-     • A reference to another definition, section, or specification is highlighted with underlined typeface and provides a link to
-        the relevant location in this specification.
+     • A reference to another definition, sub clause, or specification is highlighted with underlined typeface and provides a
+        link to the relevant location in this International Standard.
 
      • A reference to a graphical element is highlighted with a bold, capitalized word and will be presented with the Arial
         font (e.g., Sub-Process).
@@ -258,9 +249,7 @@ This specification incorporates the following conventions:
      • Non-normative examples are set off in boxes and accompanied by a brief explanation.
 
 
-
-
-16                                                                                   Business Process Model and Notation, v2.0
+16                                                                       Business Process Model and Notation (BPMN), v2.0.2
     • XML and pseudo code is highlighted with mono-spaced typeface. Different font colors MAY be used to highlight
         the different components of the XML code.
 
@@ -274,53 +263,51 @@ This specification incorporates the following conventions:
           • <value> — default value
           • <type> — the type of the attribute
 
-
 6.1.2     Abbreviations
 
-The following abbreviations are used throughout this document:
+The following abbreviations are used throughout:
 
  This abbreviation            Refers to
- WSBPEL                       Web Services Business Process Execution Language (see WSBPEL). This abbreviation
-                              refers specifically to version 2.0 of the specification.
- WSDL                         Web Service Description Language (see WSDL). This abbreviation refers specifically to the
-                              W3C Technical Note, 15 March 2001, but is intended to support future versions of the WSDL
-                              specification.
+ WSBPEL                       Web Services Business Process Execution Language (see WSBPEL). This abbreviation refers
+                              specifically to version 2.0 of this International Standard.
+ WSDL                         Web Service Description Language (see WSDL). This abbreviation refers specifically to the W3C
+                              Technical Note, 15 March 2001, but is intended to support future versions of the WSDL specification.
 
 
 6.2       Structure of this Document
-Chapter 7 discusses the scope of the specification and provides a summary of the elements introduced in subsequent
-sections of the document.
+Clause 1 discusses the scope of the document and provides a summary of the elements introduced in subsequent clauses
+of the document.
 
-Chapter 8 introduces the BPMN Core that includes basic BPMN elements needed for constructing various Business
+Clause 7 introduces the BPMN Core that includes basic BPMN elements needed for constructing various Business
 Processes, including collaborations, orchestration Processes and Choreographies.
 
 Elements needed for modeling of Collaborations, orchestration Processes, Conversations, and Choreographies
-are introduced in chapters 9, 10, 11 and 12, respectively.
+are introduced in Clauses 8, 9, 10 and 11, respectively.
 
-Chapter 13 introduces the BPMN visual diagram model. Chapter 14 defines the execution semantics for Process
-orchestrations in BPMN 2.0. Chapter 15 discusses a mapping of a BPMN model to WS-BPEL that is derived by
+Clause 13 introduces the BPMN visual diagram model. Clause 14 defines the execution semantics for Process
+orchestrations in BPMN 2.0. Clause 14 discusses a mapping of a BPMN model to WS-BPEL that is derived by
 analyzing the BPMN objects and the relationships between these objects. Exchange formats and an XSLT transformation
-between them are provided in Chapter 16.
+between them are provided in Clause 15.
 
 
-6.3       Acknowledgements
+6.3       Acknowledgments
 
-Submitting Organizations (RFP Process)
+Submitting Organizations
 The following companies are formal submitting members of OMG:
 
     • Axway
+    • International Business Machines
 
 
-Business Process Model and Notation, v2.0                                                                             17
-     • International Business Machines
+Business Process Model and Notation (BPMN), v2.0.2                                                                                   17
      • MEGA International
      • Oracle
      • SAP AG
      • Unisys
 
 
-Supporting Organizations (RFP Process)
-The following organizations support this specification but are not formal submitters:
+Supporting Organizations
+The following organizations support this International Standard but are not formal submitters:
 
      • Accenture
      • Adaptive
@@ -340,63 +327,24 @@ The following organizations support this specification but are not formal submit
      • Vangent
 
 
-Finalization Task Force Voting Members
-The following organizations have been Voting Members of the BPMN 2.0 Finalization Task Force:
+Special Acknowledgments
 
-     • Adaptive
-     • Axway Software
-     • BAE SYSTEMS
-     • BizAgi Ltd.
-     • CA Inc.
-     • Camunda Services GmbH
-     • Cordys
-     • DICOM
-     • France Telecom R&D
-     • Fujitsu
-     • Global 360, Inc.
-
-
-18                                                                             Business Process Model and Notation, v2.0
-    • Hewlett-Packard
-    • iGrafx
-    • Inferware
-    • Intalio
-    • International Business Machines
-    • KnowGravity Inc.
-    • Lombardi Software
-    • MITRE
-    • U.S. National Institute of Standards and Technology
-    • No Magic, Inc.
-    • oose Innovative Informatik GmbH
-    • Oracle
-    • PNA Group
-    • Red Hat
-    • SAP AG
-    • Softeam
-    • Software AG Inc.
-    • TIBCO
-    • Trisotech
-    • Visumpoint
-
-
-Special Acknowledgements
-
-The following persons were members of the core teams that contributed to the content of this specification: Anurag
-Aggarwal, Mike Amend, Sylvain Astier, Alistair Barros, Rob Bartel, Mariano Benitez, Conrad Bock, Gary Brown, Justin
-Brunt, John Bulles, Martin Chapman, Fred Cummins, Rouven Day, Maged Elaasar, David Frankel, Denis Gagné, John
-Hall, Reiner Hille-Doering, Dave Ings, Pablo Irassar, Oliver Kieselbach, Matthias Kloppmann, Jana Koehler, Frank
-Michael Kraft, Tammo van Lessen, Frank Leymann, Antoine Lonjon, Sumeet Malhotra, Falko Menge, Jeff Mischkinsky,
-Dale Moberg, Alex Moffat, Ralf Mueller, Sjir Nijssen, Karsten Ploesser, Pete Rivett, Michael Rowley, Bernd Ruecker,
-Tom Rutt, Suzette Samoojh, Robert Shapiro, Vishal Saxena, Scott Schanel, Axel Scheithauer, Bruce Silver, Meera
-Srinivasan, Antoine Toulme, Ivana Trickovic, Hagen Voelzer, Franz Weber, Andrea Westerinen and Stephen A. White.
+The following persons were members of the core teams that contributed to the content of this International Standard:
+Anurag Aggarwal, Mike Amend, Sylvain Astier, Alistair Barros, Rob Bartel, Mariano Benitez, Conrad Bock, Gary
+Brown, Justin Brunt, John Bulles, Martin Chapman, Fred Cummins, Rouven Day, Maged Elaasar, David Frankel, Denis
+Gagné, John Hall, Reiner Hille-Doering, Dave Ings, Pablo Irassar, Oliver Kieselbach, Matthias Kloppmann, Jana Koehler,
+Frank Michael Kraft, Tammo van Lessen, Frank Leymann, Antoine Lonjon, Sumeet Malhotra, Falko Menge, Jeff
+Mischkinsky, Dale Moberg, Alex Moffat, Ralf Mueller, Sjir Nijssen, Karsten Ploesser, Pete Rivett, Michael Rowley,
+Bernd Ruecker, Tom Rutt, Suzette Samoojh, Robert Shapiro, Vishal Saxena, Scott Schanel, Axel Scheithauer, Bruce
+Silver, Meera Srinivasan, Antoine Toulme, Ivana Trickovic, Hagen Voelzer, Franz Weber, Andrea Westerinen and Stephen
+A. White.
 
 In addition, the following persons contributed valuable ideas and feedback that improved the content and the quality of
-this specification: im Amsden, Mariano Belaunde, Peter Carlson, Cory Casanave, Michele Chinosi, Manoj Das, Robert
-Lario, Sumeet Malhotra, Henk de Man, David Marston, Neal McWhorter, Edita Mileviciene, Vadim Pevzner, Pete Rivett,
-Jesus Sanchez, Markus Schacher, Sebastian Stein, and Prasad Yendluri.
+this International Standard: im Amsden, Mariano Belaunde, Peter Carlson, Cory Casanave, Michele Chinosi, Manoj Das,
+Robert Lario, Sumeet Malhotra, Henk de Man, David Marston, Neal McWhorter, Edita Mileviciene, Vadim Pevzner, Pete
+Rivett, Jesus Sanchez, Markus Schacher, Sebastian Stein, and Prasad Yendluri.
 
 
 
 
-Business Process Model and Notation, v2.0                                                                           19
-20   Business Process Model and Notation, v2.0
+18                                                                   Business Process Model and Notation (BPMN), v2.0.2

@@ -1,40 +1,41 @@
-Annex B: Diagram Interchange
+Annex B
+Diagram Interchange
 (non-normative)
 
 B.1
 
 Scope
 
-This annex provides documentation for a relevant subset of an alpha version of a Diagram Definition (DD) specification that is
-being referenced by this specification (in Chapter 13 - BPMN DI). The (complete version of the) DD specification is still
-going through a separate submission/approval process and once finalized and adopted, a future revision of this specification
-may replace this annex by a reference to that adopted DD specification.
-The Diagram Definition specification provides a basis for modeling and interchanging graphical notations, specifically node
-and edge style diagrams as found in BPMN, UML and SysML, for example, where the notations are tied to abstract language
-syntaxes defined with MOF. The specification addresses the requirements in the Diagram Definition RFP (ad/2007-09-02).
+This annex provides documentation for a relevant subset of an alpha version of a Diagram Definition (DD) specification
+that is being referenced by this International Standard (in Clause 13 - BPMN DI). The (complete version of the) DD
+specification is still going through a separate submission/approval process and once finalized and adopted, a future
+revision of this specification may replace this annex by a reference to that adopted DD specification.
+The Diagram Definition specification provides a basis for modeling and interchanging graphical notations, specifically
+node and edge style diagrams as found in BPMN, UML and SysML, for example, where the notations are tied to abstract
+language syntaxes defined with MOF. The specification addresses the requirements in the Diagram Definition RFP (ad/
+2007-09-02).
 
 B.2
 
 Architecture
 
-The DD architecture distinguishes two kinds of graphical information, depending on whether language users have control over
-it. Graphics that users have control over, such as position of nodes and line routing points, are captured for interchange
-between tools. Graphics that users do not have control over, such as shape and line styles defined by language standards are
-not interchanged because they are the same in all diagrams conforming to the language. The DD architecture has two models
-to enable specification of these two kinds of graphical information, Diagram Interchange (DI) and Diagram Graphics
-(DG).(both models share common elements from a Diagram Common (DC) model). The DI and DG models are shown in
-Figure B.1 by bold outlined boxes on the left and right, respectively.
-The DD architecture expects language specification to define mappings between interchanged and non-interchanged graphical
-information, but does not restrict how it is done. This is shown in Figure B.1 by a shaded box labeled "CS Mapping
-Specification" in the middle section. The DD specification gives examples of mappings in QVT, but does not define or
-recommend any particular mapping language. The overall architecture resembles typical model-view-controllers, which
-separate visual rendering from underlying models, and provide a way to keep visuals and models consistent.
+The DD architecture distinguishes two kinds of graphical information, depending on whether language users have control
+over it. Graphics that users have control over, such as position of nodes and line routing points, are captured for
+interchange between tools. Graphics that users do not have control over, such as shape and line styles defined by language
+standards are not interchanged because they are the same in all diagrams conforming to the language. The DD
+architecture has two models to enable specification of these two kinds of graphical information, Diagram Interchange (DI)
+and Diagram Graphics (DG).(both models share common elements from a Diagram Common (DC) model). The DI and
+DG models are shown in Figure B.1 by bold outlined boxes on the left and right, respectively.
+The DD architecture expects language specification to define mappings between interchanged and non-interchanged
+graphical information, but does not restrict how it is done. This is shown in Figure B.1 by a shaded box labeled “CS
+Mapping Specification” in the middle section. The DD specification gives examples of mappings in QVT, but does not
+define or recommend any particular mapping language. The overall architecture resembles typical model-viewcontrollers, which separate visual rendering from underlying models, and provide a way to keep visuals and models
+consistent.
 The first few steps of using the DD architecture are:
 1.
 
 An abstract language syntax is defined separately from DD by instantiating MOF (abstract syntaxes are sometimes
-called “metamodels”). This is shown in Figure B.1 by a shaded box labeled “AS” at the far middle left (the “M”
-levels in the figure are described in the UML 2 Infrastructure (formal/2009-02-04)).
+called “metamodels”). This is shown in Figure B.1 by a shaded box labeled “AS” at the far middle left (the “M” levels in the figure are described in the UML 2 Infrastructure (formal/2009-02-04)).
 
 2.
 
@@ -46,50 +47,40 @@ language. This is shown in Figure B.1 by the dashed arrow on the far lower left 
 Users typically see graphical depictions of their models in tools. This is shown in Figure B.1 by a box on the lower
 right labeled “Graphics.”
 
-Users expect their graphics to appear again in other tools after models are interchanged. The DD architecture enables this in
-two parts, one for graphical information that is interchanged, and another for graphical information that is not. The
-interchanged information is captured in the next few steps:
-
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
 481
 
+Users expect their graphics to appear again in other tools after models are interchanged. The DD architecture enables this
+in two parts, one for graphical information that is interchanged, and another for graphical information that is not. The
+interchanged information is captured in the next few steps:
 4.
 
-The portion of graphics that users have control over is captured for interchange, such as node position and line
-routing points. This is shown in Figure B.1 by a box labeled “Diagram” on the lower left. This information is linked
-to user models (instances of abstract syntax), as shown by the arrow to the Model box.
+The portion of graphics that users have control over is captured for interchange, such as node position and line routing points. This is shown in Figure B.1 by a box labeled “Diagram” on the lower left. This information is linked to
+user models (instances of abstract syntax), as shown by the arrow to the Model box.
 
 5.
 
 User diagram interchange information is instantiated from a model defined along with the abstract syntax. This is
 shown in Figure B.1 by a shaded box labeled “AS DI” on the left. Elements of this model are linked to elements of
-abstract syntax, specifying which kinds of diagram interchange information depict which kinds of user model
-elements. Diagram interchange models would typically be defined by the same community that defines the abstract
-syntax, as part of the overall language specification.
+abstract syntax, specifying which kinds of diagram interchange information depict which kinds of user model elements. Diagram interchange models would typically be defined by the same community that defines the abstract syntax, as part of the overall language specification.
 
 6.
 
 Elements of language-specific diagram interchange models (AS DI) specialize elements of the Diagram Interchange
 (DI), which is a model provided by this specification for typically needed diagram interchange information, as node
-position and line routing points. This is shown in Figure B.1 by the bold box labeled “DI” on the left, with
-specialization shown with a hollow headed arrow (specialization here is MOF generalization and property subsetting
-and redefinition, or XSD subclassing, where DI has the general elements, and AS DI has the specific elements). DI
-elements cannot be instantiated to capture diagram interchange information by themselves, they are almost entirely
-abstract. This specification provides normative CMOF and XSD artifacts for DI.
+position and line routing points. This is shown in Figure B.1 by the bold box labeled “DI” on the left, with specialization shown with a hollow headed arrow (specialization here is MOF generalization and property subsetting and redefinition, or XSD subclassing, where DI has the general elements, and AS DI has the specific elements). DI elements
+cannot be instantiated to capture diagram interchange information by themselves, they are almost entirely abstract.
+This specification provides normative CMOF and XSD artifacts for DI.
 
 The final part of using the DD architecture captures graphical information that is not interchanged:
 7.
 
 Language specifications specify mappings from their diagram interchange models (instances of AS DI) to instances
-of Diagram Graphics (DG), which is a model provided by this specification for typically needed graphical
-information that is not interchanged, such as shape and line styles. This shown in Figure B.1 by the box labeled “DG”
-on the right, and by the box labeled “CS Mapping Specification” in the middle section. The arrow at the bottom of the
-middle section illustrates mappings being carried out according to the specification above it, producing a model of
-diagram visuals, or directly rendering the visuals on a display. Languages specifying this mapping reduce ambiguity
-and non uniformity in how their abstract syntax appears visually. The DG model is not expected to be specialized,
-enabling implementations to render instances of DG elements for all applications of the DD architecture. This
-specification provides normative CMOF and XSD artifacts for DG.
+of Diagram Graphics (DG), which is a model provided by this specification for typically needed graphical information that is not interchanged, such as shape and line styles. This shown in Figure B.1 by the box labeled “DG” on the
+right, and by the box labeled “CS Mapping Specification” in the middle section. The arrow at the bottom of the middle section illustrates mappings being carried out according to the specification above it, producing a model of diagram visuals, or directly rendering the visuals on a display. Languages specifying this mapping reduce ambiguity and
+non uniformity in how their abstract syntax appears visually. The DG model is not expected to be specialized,
+enabling implementations to render instances of DG elements for all applications of the DD architecture. This specification provides normative CMOF and XSD artifacts for DG.
 
 In the BPMN specification, the only realized part of the DD architecture so far is diagram interchange. Hence the only
 documentation provided by this annex is for the Diagram Interchange (DI) package, in addition to the relevant subset of
@@ -98,9 +89,9 @@ Graphics (DG) package is not provided here.
 
 482
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
-Figure B.1 - Diagram Definition Architecture
+Figure B.1 – Diagram Definition Architecture
 
 B.3
 
@@ -110,55 +101,50 @@ The Diagram Common (DC) package contains abstractions shared by the Diagram Inte
 packages.
 
 B.3.1 Overview
-The Diagram Common (DC) package contains a number of common primitive types as well as structured data types that are
-used in the definition of the Diagram Interchange (DG) package (see Diagram Interchange on page 487). The DC package
-itself does not depend on other packages. Some of the types defined in this package are defined based on similar ones in other
-related specifications including Cascading Style Sheets (CSS), Scalable Vector Graphics (SVG), and Office Document Format
-(ODF).
+The Diagram Common (DC) package contains a number of common primitive types as well as structured data types that
+are used in the definition of the Diagram Interchange (DG) package (see “Diagram Interchange” on page 487). The DC
+package itself does not depend on other packages. Some of the types defined in this package are defined based on similar
+ones in other related specifications including Cascading Style Sheets (CSS), Scalable Vector Graphics (SVG), and Office
+Document Format (ODF).
 
 B.3.2 Abstract Syntax
 
-Figure B.2 - The Primitive Types
+Figure B.2 – The Primitive Types
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
 483
 
-Figure B.3 - Diagram Definition Architecture
+Figure B.3 – Diagram Definition Architecture
 
-Figure B.4 - Diagram Definition Architecture
+Figure B.4 – Diagram Definition Architecture
 
 B.3.3 Classifier Descriptions
 B.3.3.1 Boolean [PrimitiveType]
 Boolean is a primitive data type having one of two values: true or false, intended to represent the truth value of logical
 expressions.
 Description
-
 Boolean is used as a type for typed elements that represent logical expressions. There are only two possible values for
 Boolean:
 • true - The Boolean expression is satisfied.
 • false - The Boolean expression is not satisfied.
 Abstract Syntax
-
 • Figure B.2 The primitive types
 B.3.3.2 Bounds [PrimitiveType]
-Bounds specifies an area in some (x, y) coordinate system that is enclosed by a bounded element’s top-left point, its width, and
-its height.
+Bounds specifies an area in some (x, y) coordinate system that is enclosed by a bounded element’s top-left point, its
+width, and its height.
 Description
-
-Bounds is used to specify the area of an element in some (x, y) coordinate system. The area is specified with a top-left point,
-representing the element's location (distance from the origin in logical units of length), in addition to the element’s width and
-height (in logical units of length).
+Bounds is used to specify the area of an element in some (x, y) coordinate system. The area is specified with a top-left
+point, representing the element's location (distance from the origin in logical units of length), in addition to the element’s
+width and height (in logical units of length).
 Abstract Syntax
-
 • Figure B.3 (Layout Types)
 
 484
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
 Attributes
-
 • + x : Real [1] = 0
 a real number that represents the x-coordinate of the rectangle.
 • + y : Real[1] = 0
@@ -170,13 +156,10 @@ a real number that represents the height of the rectangle.
 B.3.3.3 Font [PrimitiveType]
 Font specifies the characteristics of a given font through a set of font properties.
 Description
-
 Font specifies a set of properties for a given font that is used when rendering text on a diagram
 Abstract Syntax
-
 • Figure B.4 The font type
 Attributes
-
 • + name : String[0..1]
 the name of the font (e.g., “Times New Roman,” “Arial,” and “Helvetica”).
 • + size : Real [0..1]
@@ -191,28 +174,23 @@ whether the font has an underline style.
 whether the font has a strike-through style.
 B.3.3.4 Integer [PrimitiveType]
 Integer is a primitive data type used to represent the mathematical concept of integer.
+Description
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
 485
 
-Description
-
 Integer is used as a type for typed elements whose values are in the infinite set of integer numbers.
 Abstract Syntax
-
 • Figure B.2 The primitive types
 B.3.3.5 Point [DataType]
 A Point specifies an location in some (x, y) coordinate system.
 Description
-
-Point is used to specify a location in logical unit of length from the origin of some (x, y) coordinate system. The point (0, 0) is
-considered to be at the origin of that coordinate system.
+Point is used to specify a location in logical unit of length from the origin of some (x, y) coordinate system. The point (0,
+0) is considered to be at the origin of that coordinate system.
 Abstract Syntax
-
 • Figure B.3 The layout types
 Attributes
-
 • + x : Real [1] = 0
 a real number that represents the x-coordinate of the point.
 • + y : Real [1] = 0
@@ -220,118 +198,125 @@ a real number that represents the y-coordinate of the point.
 B.3.3.6 Real [PrimitiveType]
 Real is a primitive data type used to represent the mathematical concept of real.
 Description
-
-Real is used as a type for typed elements whose values are in the infinite set of real numbers. Note that integer values are also
-considered real values and as such can be assigned to real-typed elements.
+Real is used as a type for typed elements whose values are in the infinite set of real numbers. Note that integer values are
+also considered real values and as such can be assigned to real-typed elements.
 Abstract Syntax
-
 • Figure B.2 The primitive types
 B.3.3.7 String [PrimitiveType]
-String is a primitive data type used to represent a sequence of characters in some suitable character set. Character sets may
-include both ASCII and Unicode characters.
+String is a primitive data type used to represent a sequence of characters in some suitable character set. Character sets
+may include both ASCII and Unicode characters.
 Description
-
-String is used as a type for typed elements in the metamodel that have text values. The allowed values for String depend on the
-semantics of the text in each context. A string value is a sequence of characters surrounded by double quotes (").
+String is used as a type for typed elements in the metamodel that have text values. The allowed values for String depend
+on the semantics of the text in each context. A string value is a sequence of characters surrounded by double quotes (").
 Abstract Syntax
-
 • Figure B.2 The primitive types
 
 486
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
 B.4
 
 Diagram Interchange
 
-The Diagram Interchange (DI) package contains a model enabling interchange of graphical information that language users
-have control over, such as position of nodes and line routing points. Language specifications specialize elements of DI to
-define diagram interchange for a language.
+The Diagram Interchange (DI) package contains a model enabling interchange of graphical information that language
+users have control over, such as position of nodes and line routing points. Language specifications specialize elements of
+DI to define diagram interchange for a language.
 
 B.4.1 Overview
-The Diagram Interchange (DI) package contains a number of types used in the definition of diagram interchange models. The
-package imports the Diagram Common package (see Diagram Common on page 483), as shown in Figure B.5, that contains
-various relevant data types. The DI package contains mainly abstract types that are to be properly extended and refined by
-concrete types in domain-specific DI packages. In this sense, the DI package plays the role of a framework that is meant for
-extension rather than a component that is ready to be used out of the box. The benefit of this design is capture common
-assumptions in the DI package in order to facilitate the integration between various graphical domains that define their DI
-packages as extensions.
-Diagrams are generally considered depictions of part or all of the elements in a domain-specific model. Therefore, one of the
-best practices adopted in the design of the DI package and that can be subsumed by the extending domain-specific DI
-packages is to minimize any redundancy with the depicted model when possible. For example, the text representing the name
-of a UML class is not defined as part of the UML class shape. This is primarily achieved by the fact that diagram elements
-reference their counterparts in the domain model as their context model elements instead of duplicating data from them. This
-design has the side effect of coupling the diagram models with their corresponding domain models, which is generally a
-common practice by tools. However, the DI package does not enforce this best practice and domain-specific DI packages can
-decide to have some level of duplication to decouple the models.
-Another best practice adopted by the DI package is to avoid defining any data that is not changeable by the user but is rather
-derivable from the diagram’s model context, like graphical rendering details. For example, the option to render a UML actor as
-a stick man or a as rectangle can be defined in a DI model as a boolean property to allow a user to choose between them.
-However, the definition of the actual line segments making up such shapes need not be interchanged in a DI model as it can be
-defined in the tool itself.
-Other decisions that are left to the individual domain-specific DI packages include: whether to allow 1-n vs. m-n relationships
-between the domain elements and their referencing diagram elements, the formatting properties (styles) that affect the
-aesthetics of diagrams rather than their semantics that are allowed to be interchanged, and the degree of pragmatic redundancy
-that is allowed in the DI models to balance their footprint with the ease of their import/export.
+The Diagram Interchange (DI) package contains a number of types used in the definition of diagram interchange models.
+The package imports the Diagram Common package (see “Diagram Common” on page 483), as shown in Figure B.5, that
+contains various relevant data types. The DI package contains mainly abstract types that are to be properly extended and
+refined by concrete types in domain-specific DI packages. In this sense, the DI package plays the role of a framework that
+is meant for extension rather than a component that is ready to be used out of the box. The benefit of this design is
+capture common assumptions in the DI package in order to facilitate the integration between various graphical domains
+that define their DI packages as extensions.
+Diagrams are generally considered depictions of part or all of the elements in a domain-specific model. Therefore, one of
+the best practices adopted in the design of the DI package and that can be subsumed by the extending domain-specific DI
+packages is to minimize any redundancy with the depicted model when possible. For example, the text representing the
+name of a UML class is not defined as part of the UML class shape. This is primarily achieved by the fact that diagram
+elements reference their counterparts in the domain model as their context model elements instead of duplicating data
+from them. This design has the side effect of coupling the diagram models with their corresponding domain models,
+which is generally a common practice by tools. However, the DI package does not enforce this best practice and domainspecific DI packages can decide to have some level of duplication to decouple the models.
+Another best practice adopted by the DI package is to avoid defining any data that is not changeable by the user but is
+rather derivable from the diagram’s model context, like graphical rendering details. For example, the option to render a
+UML actor as a stick man or a as rectangle can be defined in a DI model as a boolean property to allow a user to choose
+between them. However, the definition of the actual line segments making up such shapes need not be interchanged in a
+DI model as it can be defined in the tool itself.
+Other decisions that are left to the individual domain-specific DI packages include: whether to allow 1-n vs. m-n
+relationships between the domain elements and their referencing diagram elements, the formatting properties (styles) that
+affect the aesthetics of diagrams rather than their semantics that are allowed to be interchanged, and the degree of
+pragmatic redundancy that is allowed in the DI models to balance their footprint with the ease of their import/export.
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
 487
 
 B.4.2 Abstract Syntax
 
-Figure B.5 - Dependencies of the DI package
+Figure B.5 – Dependencies of the DI package
 
-Figure B.6 - Diagram Element
+ 
 
-Figure B.7 - Node
+Figure B.6 – Diagram Element
+
+ 
+
+Figure B.7 – Node
 
 488
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
-Figure B.8 - Edge
+ 
 
-Figure B.9 - Diagram
+Figure B.8 – Edge
 
-Figure B.10 - Plane
+ 
 
-Business Process Model and Notation, v2.0
+Figure B.9 – Diagram
+
+ 
+
+Figure B.10 – Plane
+
+Business Process Model and Notation (BPMN), v2.0.2
 
 489
 
-Figure B.11 - Labeled Edge
+ 
 
-Figure B.12 - Labeled Shape
+Figure B.11 – Labeled Edge
 
-Figure B.13 - Shape
+ 
+
+Figure B.12 – Labeled Shape
+
+ 
+
+Figure B.13 – Shape
 
 B.4.3 Classifier Descriptions
 B.4.3.1 Diagram [Class]
 Diagram is a container of a graph of diagram elements depicting all or part of a model.
 Description
-
-Diagram represents a depiction of all or part of a MOF model. A model can have one or more diagrams, each of which has a
-name and a description. A diagram contains the root of a graph of diagram elements that could reference various elements in a
-model. The root element is defined as a derived union, allowing domain-specific diagrams to specialize the root. All lengths
-specified by diagram elements are expressed in logical units of lengths. This unit of length would map to a unit of screen
-resolution (i.e. pixel) when rendering to the screen. To allow for predictable lengths when printing diagrams to paper, a
-diagram can also specify an intended printing resolution in Unit Per Inch (UPI). For example, a UPI of 300 means that a
-diagram element that is 300 unit wide would print as 1 inch wide on paper. A diagram can also own a collection of styles that
-are referenced by its diagram elements. Styles contain unique combination of formatting properties used by different elements
-
+Diagram represents a depiction of all or part of a MOF model. A model can have one or more diagrams, each of which
+has a name and a description. A diagram contains the root of a graph of diagram elements that could reference various
+elements in a model. The root element is defined as a derived union, allowing domain-specific diagrams to specialize the
+root. All lengths specified by diagram elements are expressed in logical units of lengths. This unit of length would map
+to a unit of screen resolution (i.e., pixel) when rendering to the screen. To allow for predictable lengths when printing
+diagrams to paper, a diagram can also specify an intended printing resolution in Unit Per Inch (UPI). For example, a UPI
+of 300 means that a diagram element that is 300 unit wide would print as 1 inch wide on paper. A diagram can also own
 490
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
-across the diagram. This allows for a large number of diagram elements to reference a small number of unique styles, which
-would dramatically reduce a diagram’s footprint.
+a collection of styles that are referenced by its diagram elements. Styles contain unique combination of formatting
+properties used by different elements across the diagram. This allows for a large number of diagram elements to reference
+a small number of unique styles, which would dramatically reduce a diagram’s footprint.
 Abstract Syntax
-
 • Figure B.9 Diagram
 Attributes
-
 • + name : String [0..1]
 the name of the diagram.
 • + documentation : String [0..1]
@@ -339,63 +324,58 @@ the documentation of the diagram.
 • + resolution : Real [0..1]
 the printing resolution of the diagram expressed in Unit Per Inch (UPI).
 Associations
-
 • ? + /rootElement : DiagramElement [1] {readOnly, union}
 the root of containment for all diagram elements contained in the diagram.
 • ? + /ownedStyle : Style [*] {readOnly, union}
 the collection of styles owned by the diagram and referenced by its contained diagram elements.
 B.4.3.2 DiagramElement [Class]
-DiagramElement is the abstract supertype of all elements that can be nested in a diagram. It has two subtypes: Node and Edge.
+DiagramElement is the abstract supertype of all elements that can be nested in a diagram. It has two subtypes: Node and
+Edge.
 Description
-
-DiagramElement specifies an element that can be owned by a diagram and rendered to graphics. It is an abstract class that is
-further specialized by classes Node and Edge. A diagram element can either depict (reference) another context model element
-from an abstract syntax model (like UML or BPMN) or be purely notational (i.e., for enhancing the diagram understanding).
-In the case of depiction, data from both the diagram element and the model element are used for rendering. For example, the
-text of the name label of a UML class shape comes from the class, while the color of the label comes from the diagram
-element. A diagram element can reference a maximum of one model element, which can be any MOF-based element. The
-model element reference is a derived union and can be specialized in a domain-specific DI metamodel to be of a more concrete
-type.
-Diagram elements can also own other diagram elements in a graph-like hierarchy. The collection of owned diagram elements
-is defined as a derived union. Domain-specific DI metamodels can specialize this collections to define what other diagram
-elements can be nested in a given diagram element.
-Diagram elements can be specialized in a domain-specific DI metamodel to have domain-specific properties. Some of those
-properties augment the semantics of diagram elements and are therefore defied on the diagram elements. Other properties are
-considered formatting properties that influence the visual rendering of diagram elements but do not contribute to their
-semantics. Examples of such formatting properties include font, fill and stroke properties. Such properties tend to have similar
-values for diagram elements across the diagram and therefore to reduce the footprint of diagrams, they are defined in Style
-elements that are owned by the diagram and referenced by individual diagram elements. For every unique combination of
-
-Business Process Model and Notation, v2.0
+DiagramElement specifies an element that can be owned by a diagram and rendered to graphics. It is an abstract class that
+is further specialized by classes Node and Edge. A diagram element can either depict (reference) another context model
+element from an abstract syntax model (like UML or BPMN) or be purely notational (i.e., for enhancing the diagram
+understanding). In the case of depiction, data from both the diagram element and the model element are used for
+rendering. For example, the text of the name label of a UML class shape comes from the class, while the color of the label
+comes from the diagram element. A diagram element can reference a maximum of one model element, which can be any
+MOF-based element. The model element reference is a derived union and can be specialized in a domain-specific DI
+metamodel to be of a more concrete type.
+Diagram elements can also own other diagram elements in a graph-like hierarchy. The collection of owned diagram
+elements is defined as a derived union. Domain-specific DI metamodels can specialize this collections to define what
+other diagram elements can be nested in a given diagram element.
+Diagram elements can be specialized in a domain-specific DI metamodel to have domain-specific properties. Some of
+those properties augment the semantics of diagram elements and are therefore defied on the diagram elements. Other
+properties are considered formatting properties that influence the visual rendering of diagram elements but do not
+contribute to their semantics. Examples of such formatting properties include font, fill and stroke properties. Such
+properties tend to have similar values for diagram elements across the diagram and therefore to reduce the footprint of
+Business Process Model and Notation (BPMN), v2.0.2
 
 491
 
-values for the style properties there would be a separate style element that is owned by the diagram. See DiagramElement
-[Class] on page 491 for more details.
+diagrams, they are defined in Style elements that are owned by the diagram and referenced by individual diagram
+elements. For every unique combination of values for the style properties there would be a separate style element that is
+owned by the diagram. See “DiagramElement [Class]” on page 491 for more details.
 There shall always be other properties that some tools wish to interchange that cannot be made normative. These can be
-interchanged using the extensibility mechanism that is native to the used interchange format (for example, an XSD schema
-following the XMI mapping would allow extraneous data to be placed on elements within <xmi:extension> tags, while a
-different XSD schema could allow this through xsd:any and xsd:anyAttribute elements placed in the definitions of extensible
-complex types).
+interchanged using the extensibility mechanism that is native to the used interchange format (for example, an XSD
+schema following the XMI mapping would allow extraneous data to be placed on elements within <xmi:extension> tags,
+while a different XSD schema could allow this through xsd:any and xsd:anyAttribute elements placed in the definitions of
+extensible complex types).
 Abstract Syntax
-
 • Figure B.6 Diagram Element
 • Figure B.7 Node
 • Figure B.8 Edge
 • Figure B.9 Diagram
 • Figure B.10 Plane
 Specializations
-
 • Node
 • Edge
 Associations
-
 • + /owningDiagram : Diagram [0..1] {readOnly, union}
-a reference to the diagram that directly owns this diagram element. The reference is only set for the root element in a
-diagram.
+a reference to the diagram that directly owns this diagram element. The reference is only set for the root
+element in a diagram.
 • + /owningElement : DiagramElement [0..1] {readOnly, union}
-a reference to the diagram element that directly owns this diagram element. The reference is set for all elements except
-the root element in a diagram.
+a reference to the diagram element that directly owns this diagram element. The reference is set for all
+elements except the root element in a diagram.
 • ? + /ownedElement : DiagramElement [*] {readOnly, union}
 a collection of diagram elements that are owned by this diagram element.
 • + /modelElement : Element [0..1] {readOnly, union}
@@ -403,220 +383,189 @@ a reference to a context model element, which can be any MOF-based element, for 
 • + /style : Style [0..1] {readOnly, union}
 a reference to an optional style containing formatting properties for the diagram element.
 B.4.3.3 Edge [Class]
-Edge specifies a given edge in a graph of diagram elements. It represents a polyline connection between two graph elements: a
-source and a target.
+Edge specifies a given edge in a graph of diagram elements. It represents a polyline connection between two graph
+elements: a source and a target.
 
 492
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
 Description
-
-Edge represents a given connection between two elements in a diagram, a source element and a target element. An edge often
-references a relationship element (like a UML generalization or a BPMN message flow) as a context model element. It can
-also be purely notational, i.e., does not reference any model element. When referencing a relationship model element, the
-edge’s source and target reference the relationship's source and target respectively as their model elements. If the edge’s source
-and target can be derived unambiguously from other info (like the edge’s model element or the edge's class type), they are not
-explicitly set on the edge to avoid redundancy, otherwise they need to be set. The source and target are defined as derived
-unions to allow domain-specific DI metamodels to specialize them appropriately.
-An edge is often depicted as a line with 2 or more points (i.e., one or more connected line segments) in the coordinate system,
-called waypoints. The first point typically intersects with the edge’s source, while the last point typically intersects with the
-edge’s target. Any points in between establish a route for the line to traverse in the diagram.
+Edge represents a given connection between two elements in a diagram, a source element and a target element. An edge
+often references a relationship element (like a UML generalization or a BPMN message flow) as a context model element.
+It can also be purely notational, i.e., does not reference any model element. When referencing a relationship model
+element, the edge’s source and target reference the relationship's source and target respectively as their model elements. If
+the edge’s source and target can be derived unambiguously from other info (like the edge’s model element or the edge’s
+class type), they are not explicitly set on the edge to avoid redundancy, otherwise they need to be set. The source and
+target are defined as derived unions to allow domain-specific DI metamodels to specialize them appropriately.
+An edge is often depicted as a line with 2 or more points (i.e., one or more connected line segments) in the coordinate
+system, called waypoints. The first point typically intersects with the edge’s source, while the last point typically
+intersects with the edge’s target. Any points in between establish a route for the line to traverse in the diagram.
 Abstract Syntax
-
 • Figure B.8 Edge
 • Figure B.11 Labeled Edge
 Generalizations
-
 • DiagramElement
 Specializations
-
 • LabeledEdge
 Attributes
-
 • + waypoint : Point [2..*] {ordered, nonunique}
-a list of two or more points relative to the origin of the coordinate system (e.g., the origin of a containing plane) that
-specifies the connected line segments of the edge.
+a list of two or more points relative to the origin of the coordinate system (e.g., the origin of a containing
+plane) that specifies the connected line segments of the edge.
 Associations
-
 • + /source : DiagramElement [0..1] {readOnly, union}
-the edge’s source diagram element, i.e., where the edge starts from. It is optional and needs to be set only if it cannot be
-unambiguously derived.
+the edge’s source diagram element, i.e., where the edge starts from. It is optional and needs to be set only if
+it cannot be unambiguously derived.
 • + /target : DiagramElement [0..1] {readOnly, union}
-the edge’s target diagram element, i.e., where the edge ends at. It is optional and needs to be set only if it cannot be
-unambiguously derived.
+the edge’s target diagram element, i.e., where the edge ends at. It is optional and needs to be set only if it
+cannot be unambiguously derived.
 B.4.3.4 Label [Class]
 Label represents a node that is owned by another main diagram element in a plane and that depicts some (usually textual)
 aspect of that element within its own separate bounds.
 Description
+Label represents an owned node of another diagram element, typically a LabeledShape or a LabeledEdge. A label
+typically depicts some (usually textual) aspect of its owning element that needs to be laid out separately using the label’s
+own bounds. The bounds are optional and if not specified, the label will be positioned in its default position.
 
-Label represents an owned node of another diagram element, typically a LabeledShape or a LabeledEdge. A label typically
-depicts some (usually textual) aspect of its owning element that needs to be laid out separately using the label's own bounds.
-The bounds are optional and if not specified, the label will be positioned in its default position.
-
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
 493
 
-A label's model element is typically not specified as it can be derived from its owning element. However, if the model element
-cannot be unambiguously derived, then a label could be given ts own separate model element to disambiguate it.
+A label’s model element is typically not specified as it can be derived from its owning element. However, if the model
+element cannot be unambiguously derived, then a label could be given ts own separate model element to disambiguate it.
 Abstract Syntax
-
 • Figure B.11 (Labeled Edge)
 • Figure B.12 Labeled Shape
 Generalizations
-
 • Node
 Attributes
-
 • + bounds : Bounds [1]
 the bounds (x, y, width and height) of the label relative to the origin of a containing plane.
 B.4.3.5 LabeledEdge [Class]
 LabeledEdge represents an edge that owns a collection of labels.
 Description
-
-LabeledEdge is an edge that owns a collection of labels (LabeledEdge [Class] on page 494) that depict some aspects of it. An
-example is a UML association that has a number of labels (e.g., a name label, two role name labels and two multiplicity labels)
-positioned beside it. The existence of a label in this collection specifies that it is visible. The separate optional bounds of the
-label indicate where it should be positioned and if not specified the label can be positioned in its default position.
+LabeledEdge is an edge that owns a collection of labels (see “LabeledEdge [Class]” on page 494) that depict some aspects
+of it. An example is a UML association that has a number of labels (e.g., a name label, two role name labels and two
+multiplicity labels) positioned beside it. The existence of a label in this collection specifies that it is visible. The separate
+optional bounds of the label indicate where it should be positioned and if not specified the label can be positioned in its
+default position.
 Abstract Syntax
-
 • Figure B.11 Labeled Edge
 Generalizations
-
 • Edge
 Associations
-
 • ? + /ownedLabel : Label [*] {readOnly, union, subsets ownedNode}
 the collection of labels owned by this edge.
 B.4.3.6 LabeledShape [Class]
 LabeledShape represents a shape that owns a collection of labels.
 Description
-
-LabeledShape is a shape that owns a collection of labels (see LabeledShape [Class] on page 494) that depict some aspects of it.
-An example is a UML port shape that is rendered as a filled box and has a name label positioned beside it. The existence of a
-label in this collection specifies that it is visible. The separate optional bounds of the label indicate where it should be
-positioned and if not specified the label can be positioned in its default position.
+LabeledShape is a shape that owns a collection of labels (see “LabeledShape [Class]” on page 494) that depict some
+aspects of it. An example is a UML port shape that is rendered as a filled box and has a name label positioned beside it.
+The existence of a label in this collection specifies that it is visible. The separate optional bounds of the label indicate
+where it should be positioned and if not specified the label can be positioned in its default position.
 Abstract Syntax
-
 • Figure B.12 Labeled Shape
-
 494
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
 Generalizations
-
 • Shape
 Associations
-
 • ? + /ownedLabel : Label [*] {readOnly, union, subsets ownedNode}
 the collection of labels owned by this shape.
 B.4.3.7 Node [Class]
 Node specifies a given node in a graph of diagram elements.
 Description
-
-Node represents a given node (or vertex) in a diagram, which is a graph of diagram elements. A node often references a nonrelationship element (like a UML class or a BPMN activity) as a model element. It can also be purely notational, i.e., does not
-reference any model element.
-The abstract node class does not have any particular layout characteristics. However, it may gets specialized in a domainspecific DI metamodel to define nodes that have certain layout characteristics. Examples include planes with infinite bounds,
-shapes with limited bounds, tree items and graph vertices...etc.
+Node represents a given node (or vertex) in a diagram, which is a graph of diagram elements. A node often references a
+non-relationship element (like a UML class or a BPMN activity) as a model element. It can also be purely notational, i.e.,
+does not reference any model element.
+The abstract node class does not have any particular layout characteristics. However, it may gets specialized in a domainspecific DI metamodel to define nodes that have certain layout characteristics. Examples include planes with infinite
+bounds, shapes with limited bounds, tree items and graph vertices...etc.
 Abstract Syntax
-
 • Figure B.7 Node
 • Figure B.10 Plane
 • Figure B.11 Labeled Edge
 • Figure B.12 Labeled Shape
 • Figure B.13 Shape
 Generalizations
-
 • DiagramElement
 Specializations
-
 • Label
 • Shape
 • Plane
 B.4.3.8 Plane [Class]
-Plane is a node with an infinite bounds in the x-y coordinate system that owns a collection of shapes and edges that are laid out
-relative to its origin point.
+Plane is a node with an infinite bounds in the x-y coordinate system that owns a collection of shapes and edges that are
+laid out relative to its origin point.
 Description
+Plane has an origin point (0, 0) and an infinite size along the x and y axes. The coordinate system of the plane increases
+along the x-axis from left to right and along the y-axis from top to bottom. All the nested shapes and edges are laid out
+relative to their plane’s origin.
 
-Plane has an origin point (0, 0) and an infinite size along the x and y axes. The coordinate system of the plane increases along
-the x-axis from left to right and along the y-axis from top to bottom. All the nested shapes and edges are laid out relative to
-their plane’s origin.
-A plane is often chosen as a root element for a two dimensional diagram that depicts an inter-connected graph of shapes an
-edges. A plane may have its own reference to a model element, in which case the whole plane is considered a depiction of that
-element. Alternatively, a plane without a reference to a model element is simply a layout container for its shapes and edges.
-
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
 495
 
-The collection of plane elements (shapes and edges) in a plane is ordered with the order specifying the z-order of these plane
-elements relative to each other. The higher the z-order, the more to the front (on top) the plane element is.
+A plane is often chosen as a root element for a two dimensional diagram that depicts an inter-connected graph of shapes
+an edges. A plane may have its own reference to a model element, in which case the whole plane is considered a depiction
+of that element. Alternatively, a plane without a reference to a model element is simply a layout container for its shapes
+and edges.
+The collection of plane elements (shapes and edges) in a plane is ordered with the order specifying the z-order of these
+plane elements relative to each other. The higher the z-order, the more to the front (on top) the plane element is.
 Abstract Syntax
-
 • Figure B.10 Plane
 Generalizations
-
 • Node
 Associations
-
 • ? + planeElement : DiagramElement [*] {subsets ownedNode}
-the ordered collection of diagram elements owned by this plane with the order defining the z-order of the diagram
-element.
+the ordered collection of diagram elements owned by this plane with the order defining the z-order of the
+diagram element.
 B.4.3.9 Shape [Class]
 Shape represents a node that has bounds that is relevant to the origin of a containing plane.
 Description
-
-Shape represents a node that is directly or indirectly owned by a plane (Shape [Class] on page 496) and that is laid out
-according to a given bounds that is relevant to the origin of the plane. A shape does not have any particular graphical
+Shape represents a node that is directly or indirectly owned by a plane (See “Shape [Class]” on page 496.) and that is laid
+out according to a given bounds that is relevant to the origin of the plane. A shape does not have any particular graphical
 rendering, i.e., the rendering is domain-specific.
 A shape can be purely notational (i.e., does not reference any model element), like a block arrow pointing to a UML class
 shape with some textual message or an overlay rectangle with some transparent fill enclosing a bunch of shapes on the
-diagram to make them stand out. However, a shape often represents a depiction of a non-relational element from a business
-model (like UML class or BPMN activity) and hence references such an element as its model element.
+diagram to make them stand out. However, a shape often represents a depiction of a non-relational element from a
+business model (like UML class or BPMN activity) and hence references such an element as its model element.
 Abstract Syntax
-
 • Figure B.13 Shape
 • Figure B.12 Labeled Shape
 Generalizations
-
 • Node
 Specializations
-
 • LabeledShape
 Attributes
-
 • + bounds : Bounds [1]
 the bounds (x, y, width and height) of the shape relative to the origin of a containing plane.
-B.4.3.10 Style [Class]
-A style is a container for a collection of properties that affect the formatting of a set of diagram elements rather than their
-structure or semantics.
 
 496
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
+B.4.3.10 Style [Class]
+A style is a container for a collection of properties that affect the formatting of a set of diagram elements rather than their
+structure or semantics.
 Description
-
-A style represents a bag of properties that affect the appearance of a group of diagram elements. A style property (like font,
-fill, or stroke) is distinguishable from a property on a diagram element in that it is meant for the aesthetics of the element rather
-than being part of its intrinsic syntax.
+A style represents a bag of properties that affect the appearance of a group of diagram elements. A style property (like
+font, fill, or stroke) is distinguishable from a property on a diagram element in that it is meant for the aesthetics of the
+element rather than being part of its intrinsic syntax.
 A style tends to have only a few unique value combinations for its properties across the diagram. Such combinations are
 represented by different style instances owned by the diagram and referenced by the diagram elements. This allows for
 conserving the footprint of diagrams (over making style instances owned by diagram elements).
-Style is defined as an abstract class without prescribing any style properties to leave it up to domain-specific DI metamodels to
-define concrete style classes that are applicable to their diagram element types.
+Style is defined as an abstract class without prescribing any style properties to leave it up to domain-specific DI
+metamodels to define concrete style classes that are applicable to their diagram element types.
 Abstract Syntax
-
 • Figure B.6 Diagram Element
 • Figure B.9 Diagram
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
 497
 
 498
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 

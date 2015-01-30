@@ -1,40 +1,31 @@
-                               Annex A: Changes from v1.2
-
-                                                   (informative)
-
-
+                                             Annex A
+                                         Changes from v1.2
+                                                    (informative)
 
 
-A.1 Changes from BPMN, v1.2
-There have been notational and technical changes to the BPMN specification.
+
+A.1     Changes from BPMN, v1.2
+There have been notational and technical changes to the BPMN International Standard.
 
 The major notational changes include:
-
-    • The addition of a Choreography diagram
-
-    • The addition of a Conversation diagram
-
-    • Non-interrupting Events for a Process
-
-    • Event Sub-Processes for a Process
+         • The addition of a Choreography diagram
+         • The addition of a Conversation diagram
+         • Non-interrupting Events for a Process
+         • Event Sub-Processes for a Process
 
 The major technical changes include:
-
-    • A formal metamodel as shown through the class diagram figures
-
-    • Interchange formats for abstract syntax model interchange in both XMI and XSD
-    • Interchange formats for diagram interchange in both XMI and XSD
-
-    • XSLT transformations between the XMI and XSD formats
+         • A formal metamodel as shown through the class diagram figures
+         • Interchange formats for abstract syntax model interchange in both XMI and XSD
+         • Interchange formats for diagram interchange in both XMI and XSD
+         • XSLT transformations between the XMI and XSD formats
 
 Other technical changes include:
-
-    • Reference Tasks are removed. These provided reusability within a single diagram, as compared to GlobalTasks, which
-      are resuable across multiple diagrams. GlobalTasks can be used instead of Reference Tasks, to simplify the language
-      and implementations."
-
+         • Reference Tasks are removed. These provided reusability within a single diagram, as compared to GlobalTasks,
+           which are resuable across multiple diagrams. GlobalTasks can be used instead of Reference Tasks, to simplify the
+           language and implementations.
 
 
 
-Business Process Model and Notation, v2.0                                                                            479
-480   Business Process Model and Notation, v2.0
+
+Business Process Model and Notation (BPMN), v2.0.2                                                                     479
+480   Business Process Model and Notation (BPMN), v2.0.2

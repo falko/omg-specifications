@@ -1,34 +1,28 @@
-Date: January 2011
+Date: December 2013
 
 Business Process Model and Notation
 (BPMN)
-Version 2.0
+Version 2.0.2
+NOTE: Version 2.0.2 contains a minor change to Clause 15.
 
-OMG Document Number: formal/2011-01-03
-Standard document URL: http://www.omg.org/spec/BPMN/2.0
-Associated Schema Files:
-dtc/2010-05-04 -- http://www.omg.org/spec/BPMN/20100501
-XMI:
+OMG Document Number:
+Standard document URL:
+Machine consumable files:
 
-XSD:
+formal/2013-12-09
+http://www.omg.org/spec/BPMN
 
-XSLT:
-
-BPMN20.cmof
-BPMNDI.cmof
-DC.cmof
-DI.cmof
-BPMN20.xsd
-BPMNDI.xsd
-DC.xsd
-DI.xsd
-Semantic.xsd
-BPMN20-FromXMI.xslt
-BPMN20-ToXMI.xslt
-
-dtc/2010-05-15 -- http://www.omg.org/spec/BPMN/20100502
-Infrastructure.cmof
-Semantic.cmof
+http://www.omg.org/spec/BPMN/20100501/BPMN20.cmof
+http://www.omg.org/spec/BPMN/20100501/BPMNDI.cmof
+http://www.omg.org/spec/BPMN/20100501/DC.cmof
+http://www.omg.org/spec/BPMN/20100501/DI.cmof
+http://www.omg.org/spec/BPMN/20100501/BPMN20.xsd
+http://www.omg.org/spec/BPMN/20100501/BPMNDI.xsd
+http://www.omg.org/spec/BPMN/20100501/DC.xsd
+http://www.omg.org/spec/BPMN/20100501/DI.xsd
+http://www.omg.org/spec/BPMN/20100501/Semantic.xsd
+http://www.omg.org/spec/BPMN/20100502/Infrastructure.cmof
+http://www.omg.org/spec/BPMN/20100502/Semantic.cmof
 
 Copyright © 2010, Axway
 Copyright © 2010, BizAgi
@@ -37,7 +31,7 @@ Copyright © 2010, IDS Scheer
 Copyright © 2010, IBM Corp.
 Copyright © 2010, MEGA International
 Copyright © 2010, Model Driven Solutions
-Copyright © 2010, Object Management Group
+Copyright © 2013, Object Management Group
 Copyright © 2010, Oracle
 Copyright © 2010, SAP AG
 Copyright © 2010, Software AG
@@ -45,20 +39,20 @@ Copyright © 2010, TIBCO Software
 Copyright © 2010, Unisys
 
 USE OF SPECIFICATION - TERMS, CONDITIONS & NOTICES
-The material in this document details an Object Management Group specification in accordance with the terms,
-conditions and notices set forth below. This document does not represent a commitment to implement any portion of this
+The material in this document details an Object Management Group specification in accordance with the terms, conditions
+and notices set forth below. This document does not represent a commitment to implement any portion of this
 specification in any company's products. The information contained in this document is subject to change without notice.
 
 LICENSES
-The companies listed above have granted to the Object Management Group, Inc. (OMG) a nonexclusive, royalty-free,
-paid up, worldwide license to copy and distribute this document and to modify this document and distribute copies of the
+The companies listed above have granted to the Object Management Group, Inc. (OMG) a nonexclusive, royalty-free, paid
+up, worldwide license to copy and distribute this document and to modify this document and distribute copies of the
 modified version. Each of the copyright holders listed above has agreed that no person shall be deemed to have infringed
 the copyright in the included material of any such copyright holder by reason of having used the specification set forth
 herein or having conformed any computer software to the specification.
 Subject to all of the terms and conditions below, the owners of the copyright in this specification hereby grant you a fullypaid up, non-exclusive, nontransferable, perpetual, worldwide license (without the right to sublicense), to use this
-specification to create and distribute software and special purpose specifications that are based upon this specification,
-and to use, copy, and distribute this specification as provided under the Copyright Act; provided that: (1) both the
-copyright notice identified above and this permission notice appear on any copies of this specification; (2) the use of the
+specification to create and distribute software and special purpose specifications that are based upon this specification, and
+to use, copy, and distribute this specification as provided under the Copyright Act; provided that: (1) both the copyright
+notice identified above and this permission notice appear on any copies of this specification; (2) the use of the
 specifications is for informational purposes and will not be copied or posted on any network computer or broadcast in any
 media and will not be otherwise resold or transferred for commercial purposes; and (3) no modifications are made to this
 specification. This limited permission automatically terminates without notice if you breach any of these terms or
@@ -75,9 +69,9 @@ GENERAL USE RESTRICTIONS
 Any unauthorized use of this specification may violate copyright laws, trademark laws, and communications regulations
 and statutes. This document contains information which is protected by copyright. All Rights Reserved. No part of this
 work covered by copyright herein may be reproduced or used in any form or by any means--graphic, electronic, or
+
 mechanical, including photocopying, recording, taping, or information storage and retrieval systems--without permission
 of the copyright owner.
-
 DISCLAIMER OF WARRANTY
 WHILE THIS PUBLICATION IS BELIEVED TO BE ACCURATE, IT IS PROVIDED "AS IS" AND MAY CONTAIN
 ERRORS OR MISPRINTS. THE OBJECT MANAGEMENT GROUP AND THE COMPANIES LISTED ABOVE
@@ -95,18 +89,18 @@ disclaimer of warranty constitutes an essential part of the license granted to y
 
 RESTRICTED RIGHTS LEGEND
 Use, duplication or disclosure by the U.S. Government is subject to the restrictions set forth in subparagraph (c) (1) (ii) of
-The Rights in Technical Data and Computer Software Clause at DFARS 252.227-7013 or in subparagraph (c)(1) and (2)
-of the Commercial Computer Software - Restricted Rights clauses at 48 C.F.R. 52.227-19 or as specified in 48 C.F.R. 2277202-2 of the DoD F.A.R. Supplement and its successors, or as specified in 48 C.F.R. 12.212 of the Federal Acquisition
+The Rights in Technical Data and Computer Software Clause at DFARS 252.227-7013 or in subparagraph (c)(1) and (2) of
+the Commercial Computer Software - Restricted Rights clauses at 48 C.F.R. 52.227-19 or as specified in 48 C.F.R. 2277202-2 of the DoD F.A.R. Supplement and its successors, or as specified in 48 C.F.R. 12.212 of the Federal Acquisition
 Regulations and its successors, as applicable. The specification copyright owners are as indicated above and may be
-contacted through the Object Management Group, 140 Kendrick Street, Needham, MA 02494, U.S.A.
+contacted through the Object Management Group, 109 Highland Avenue, Needham, MA 02494, U.S.A.
 
 TRADEMARKS
-MDA®, Model Driven Architecture®, UML®, UML Cube logo®, OMG Logo®, CORBA® and XMI® are registered
-trademarks of the Object Management Group, Inc., and Object Management Group™, OMG™ , Unified Modeling
-Language™, Model Driven Architecture Logo™, Model Driven Architecture Diagram™, CORBA logos™, XMI
-Logo™, CWM™, CWM Logo™, IIOP™ , IMM™ , MOF™ , OMG Interface Definition Language (IDL)™ , and OMG
-Systems Modeling Language (OMG SysML)™ are trademarks of the Object Management Group. All other products or
-company names mentioned are used for identification purposes only, and may be trademarks of their respective owners.
+IMM®, MDA®, Model Driven Architecture®, UML®, UML Cube logo®, OMG Logo®, CORBA® and XMI® are
+registered trademarks of the Object Management Group, Inc., and Object Management Group™, OMG™ , Unified
+Modeling Language™, Model Driven Architecture Logo™, Model Driven Architecture Diagram™, CORBA logos™,
+XMI Logo™, CWM™, CWM Logo™, IIOP™ , MOF™ , OMG Interface Definition Language (IDL)™ , and OMG
+SysML™ are trademarks of the Object Management Group. All other products or company names mentioned are used for
+identification purposes only, and may be trademarks of their respective owners.
 
 COMPLIANCE
 The copyright holders listed above acknowledge that the Object Management Group (acting itself or through its
@@ -117,46 +111,50 @@ only if the software compliance is of a nature fully matching the applicable com
 specification. Software developed only partially matching the applicable compliance points may claim only that the
 software was based on this specification, but may not claim compliance or conformance with this specification. In the
 event that testing suites are implemented or approved by Object Management Group, Inc., software developed using this
-specification may claim compliance or conformance with the specification only if the software satisfactorily completes
-the testing suites.
+specification may claim compliance or conformance with the specification only if the software satisfactorily completes the
+testing suites.
 
 OMG’s Issue Reporting Procedure
 All OMG specifications are subject to continuous review and improvement. As part of this
 process we encourage readers to report any ambiguities, inconsistencies, or inaccuracies they
 may find by completing the Issue Reporting Form listed on the main web page http://
-www.omg.org, under Documents, Report a Bug/Issue (http://www.omg.org/technology/agreement.htm).
+www.omg.org, under Documents, Report a Bug/Issue (http://www.omg.org/report_issue.htm).
 
 Table of Contents
-Preface ........................................................................................... xxiii
+Preface ........................................................................................... xxvii
 1 Scope ............................................................................................... 1
+1.1 General .................................................................................................... 1
+
 2 Conformance ................................................................................... 1
-2.1 Process Modeling Conformance .............................................................. 2
-2.1.1 BPMN Process Types ............................................................................................. 2
-2.1.2 BPMN Process Elements ........................................................................................ 2
-2.1.3 Visual Appearance .................................................................................................. 8
-2.1.4 Structural Conformance .......................................................................................... 8
-2.1.5 Process Semantics ................................................................................................. 8
-2.1.6 Attributes and Model Associations .......................................................................... 9
-2.1.7 Extended and Optional Elements ............................................................................ 9
-2.1.8 Visual Interchange .................................................................................................. 9
+2.1 General .................................................................................................... 1
+2.2 Process Modeling Conformance .............................................................. 2
+2.2.1 BPMN Process Types ............................................................................................. 2
+2.2.2 BPMN Process Elements ........................................................................................ 3
+2.2.3 Visual Appearance .................................................................................................. 8
+2.2.4 Structural Conformance .......................................................................................... 8
+2.2.5 Process Semantics ................................................................................................. 9
+2.2.6 Attributes and Model Associations .......................................................................... 9
+2.2.7 Extended and Optional Elements ............................................................................ 9
+2.2.8 Visual Interchange ................................................................................................ 10
 
-2.2 Process Execution Conformance ............................................................. 9
-2.2.1 Execution Semantics ............................................................................................. 10
-2.2.2 Import of Process Diagrams .................................................................................. 10
+2.3 Process Execution Conformance ........................................................... 10
+2.3.1 Execution Semantics ............................................................................................. 10
+2.3.2 Import of Process Diagrams .................................................................................. 10
 
-2.3 BPEL Process Execution Conformance ................................................. 10
-2.4 Choreography Modeling Conformance .................................................. 10
-2.4.1 BPMN Choreography Types ................................................................................. 10
-2.4.2 BPMN Choreography Elements ............................................................................ 10
-2.4.3 Visual Appearance ................................................................................................ 11
-2.4.4 Choreography Semantics ...................................................................................... 11
-2.4.5 Visual Interchange ................................................................................................ 11
+2.4 BPEL Process Execution Conformance ................................................. 10
+2.5 Choreography Modeling Conformance .................................................. 10
+2.5.1 BPMN Choreography Types ................................................................................. 10
+2.5.2 BPMN Choreography Elements ............................................................................ 11
+2.5.3 Visual Appearance ................................................................................................ 11
+2.5.4 Choreography Semantics ...................................................................................... 11
+2.5.5 Visual Interchange ................................................................................................ 11
 
-2.5 Summary of BPMN Conformance Types ............................................... 12
+2.6 Summary of BPMN Conformance Types ............................................... 12
 
 3 Normative References ................................................................... 12
-3.1 Normative ............................................................................................... 12
-3.2 Non-Normative ....................................................................................... 13
+3.1 General .................................................................................................. 12
+3.2 Normative ............................................................................................... 13
+3.3 Non-Normative ....................................................................................... 13
 
 4 Terms and Definitions .................................................................... 16
 5 Symbols ......................................................................................... 16
@@ -166,193 +164,203 @@ Preface ........................................................................
 6.1.2 Abbreviations ........................................................................................................ 17
 
 6.2 Structure of this Document ..................................................................... 17
-6.3 Acknowledgements ................................................................................ 17
-
-7 Overview ........................................................................................ 21
-Business Process Model and Notation, v2.0
-
-i
-
-7.1 BPMN Scope .......................................................................................... 22
-7.1.1 Uses of BPMN ....................................................................................................... 22
-
-7.2 BPMN Elements ..................................................................................... 27
-7.2.1 Basic BPMN Modeling Elements .......................................................................... 28
-7.2.2 Extended BPMN Modeling Elements .................................................................... 30
-
-7.3 BPMN Diagram Types ............................................................................ 41
-7.4 Use of Text, Color, Size, and Lines in a Diagram .................................. 41
-7.5 Flow Object Connection Rules ............................................................... 42
-7.5.1 Sequence Flow Connections Rules ...................................................................... 42
-7.5.2 Message Flow Connection Rules .......................................................................... 43
-
-7.6 BPMN Extensibility ................................................................................. 44
-7.7 BPMN Example ...................................................................................... 45
-
-8 BPMN Core Structure .................................................................... 49
-8.1 Infrastructure .......................................................................................... 51
-8.1.1 Definitions ............................................................................................................. 51
-8.1.2 Import .................................................................................................................... 53
-8.1.3 Infrastructure Package XML Schemas................................................................... 54
-
-8.2 Foundation ............................................................................................. 55
-8.2.1 Base Element ........................................................................................................ 56
-8.2.2 Documentation ...................................................................................................... 56
-8.2.3 Extensibility ........................................................................................................... 57
-8.2.4 External Relationships .......................................................................................... 61
-8.2.5 Root Element ........................................................................................................ 64
-8.2.6 Foundation Package XML Schemas ..................................................................... 64
-
-8.3 Common Elements................................................................................. 66
-8.3.1 Artifacts ................................................................................................................. 66
-8.3.2 Correlation ............................................................................................................. 74
-8.3.3 Error ...................................................................................................................... 81
-8.3.4 Escalation .............................................................................................................. 82
-8.3.5 Events ................................................................................................................... 83
-8.3.6 Expressions ........................................................................................................... 84
-8.3.7 Flow Element ........................................................................................................ 86
-8.3.8 Flow Elements Container ...................................................................................... 88
-8.3.9 Gateways .............................................................................................................. 90
-8.3.10 Item Definition ..................................................................................................... 91
-8.3.11 Message .............................................................................................................. 93
-8.3.12 Resources ........................................................................................................... 95
-8.3.13 Sequence Flow ................................................................................................... 97
-8.3.14 Common Package XML Schemas .................................................................... 100
-
-8.4 Services ................................................................................................ 104
-8.4.1 Interface .............................................................................................................. 104
-8.4.2 EndPoint .............................................................................................................. 105
-8.4.3 Operation ............................................................................................................ 105
-8.4.4 Service Package XML Schemas ......................................................................... 106
-
-9 Collaboration ................................................................................ 109
-9.1 Basic Collaboration Concepts .............................................................. 111
-9.1.1 Use of BPMN Common Elements ....................................................................... 112
-ii
-
-Business Process Model and Notation, v2.0
-
-9.2 Pool and Participant ............................................................................. 112
-9.2.1 Participants ......................................................................................................... 114
-9.2.2 Lanes .................................................................................................................. 120
-
-9.3 Message Flow ...................................................................................... 120
-9.3.1 Interaction Node .................................................................................................. 123
-9.3.2 Message Flow Associations ................................................................................ 123
-
-9.4 Conversations ...................................................................................... 124
-9.4.1 Conversation Node ............................................................................................. 128
-9.4.2 Conversation ....................................................................................................... 130
-9.4.3 Sub-Conversation ............................................................................................... 130
-9.4.4 Call Conversation ................................................................................................ 131
-9.4.5 Global Conversation ............................................................................................ 132
-9.4.6 Conversation Link ............................................................................................... 132
-9.4.7 Conversation Association .................................................................................... 135
-9.4.8 Correlations ......................................................................................................... 136
-
-9.5 Process within Collaboration ................................................................ 137
-9.6 Choreography within Collaboration ...................................................... 137
-9.7 Collaboration Package XML Schemas ................................................. 139
-
-10 Process ...................................................................................... 145
-10.1 Basic Process Concepts .................................................................... 149
-10.1.1 Types of BPMN Processes ............................................................................... 149
-10.1.2 Use of BPMN Common Elements ..................................................................... 150
-
-10.2 Activities ............................................................................................. 151
-10.2.1 Resource Assignment ....................................................................................... 154
-10.2.2 Performer .......................................................................................................... 156
-10.2.3 Tasks ................................................................................................................ 156
-10.2.4 Human Interactions ........................................................................................... 165
-10.2.5 Sub-Processes .................................................................................................. 173
-10.2.6 Call Activity ........................................................................................................ 183
-10.2.7 Global Task ....................................................................................................... 187
-10.2.8 Loop Characteristics ......................................................................................... 189
-10.2.9 XML Schema for Activities ................................................................................ 195
-
-10.3 Items and Data ................................................................................... 203
-10.3.1 Data Modeling ................................................................................................... 203
-10.3.2 Execution Semantics for Data ........................................................................... 225
-10.3.3 Usage of Data in XPath Expressions ................................................................ 226
-10.3.4 XML Schema for Data ....................................................................................... 229
-
-10.4 Events ................................................................................................ 233
-10.4.1 Concepts ........................................................................................................... 234
-10.4.2 Start Event ........................................................................................................ 238
-10.4.3 End Event ......................................................................................................... 246
-10.4.4 Intermediate Event ............................................................................................ 249
-10.4.5 Event Definitions ............................................................................................... 260
-10.4.6 Handling Events ................................................................................................ 275
-10.4.7 Scopes .............................................................................................................. 281
-10.4.8 Events Package XML Schemas......................................................................... 282
-
-10.5 Gateways ........................................................................................... 287
-10.5.1 Sequence Flow Considerations ........................................................................ 289
-Business Process Model and Notation, v2.0
+6.3 Acknowledgments .................................................................................. 17
+Business Process Model and Notation (BPMN), v2.0.2
 
 iii
 
-10.5.2 Exclusive Gateway ............................................................................................ 290
-10.5.3 Inclusive Gateway ............................................................................................. 292
-10.5.4 Parallel Gateway ............................................................................................... 293
-10.5.5 Complex Gateway ............................................................................................. 295
-10.5.6 Event-Based Gateway ...................................................................................... 297
-10.5.7 Gateway Package XML Schemas ..................................................................... 301
+7 Overview ........................................................................................ 19
+7.1 General ...................................................................................................19
+7.2 BPMN Scope ..........................................................................................20
+7.2.1 Uses of BPMN ....................................................................................................... 21
 
-10.6 Compensation .................................................................................... 302
-10.6.1 Compensation Handler ..................................................................................... 303
-10.6.2 Compensation Triggering .................................................................................. 304
-10.6.3 Relationship between Error Handling and Compensation ................................ 305
+7.3 BPMN Elements .....................................................................................25
+7.3.1 Basic BPMN Modeling Elements .......................................................................... 26
+7.3.2 Extended BPMN Modeling Elements .................................................................... 29
 
-10.7 Lanes .................................................................................................. 305
-10.8 Process Instances, Unmodeled Activities, and Public Processes ...... 309
-10.9 Auditing .............................................................................................. 311
-10.10 Monitoring ......................................................................................... 311
-10.11 Process Package XML Schemas ..................................................... 312
+7.4 BPMN Diagram Types ............................................................................39
+7.5 Use of Text, Color, Size, and Lines in a Diagram .................................. 39
+7.6 Flow Object Connection Rules ............................................................... 40
+7.6.1 Sequence Flow Connections Rules ...................................................................... 40
+7.6.2 Message Flow Connection Rules .......................................................................... 41
+
+7.7 BPMN Extensibility ................................................................................. 42
+7.8 BPMN Example ...................................................................................... 43
+
+8 BPMN Core Structure .................................................................... 47
+8.1 General ...................................................................................................47
+8.2 Infrastructure ..........................................................................................49
+8.2.1 Definitions ............................................................................................................. 49
+8.2.2 Import .................................................................................................................... 51
+8.2.3 Infrastructure Package XML Schemas.................................................................. 52
+
+8.3 Foundation ............................................................................................. 53
+8.3.1 Base Element ........................................................................................................ 54
+8.3.2 Documentation ...................................................................................................... 54
+8.3.3 Extensibility ........................................................................................................... 55
+8.3.4 External Relationships .......................................................................................... 59
+8.3.5 Root Element ........................................................................................................ 62
+8.3.6 Foundation Package XML Schemas ..................................................................... 62
+
+8.4 Common Elements ................................................................................. 64
+8.4.1 Artifacts ................................................................................................................. 64
+8.4.2 Correlation ............................................................................................................. 72
+8.4.3 Error ...................................................................................................................... 79
+8.4.4 Escalation .............................................................................................................. 80
+8.4.5 Events ................................................................................................................... 81
+8.4.6 Expressions ........................................................................................................... 82
+8.4.7 Flow Element ........................................................................................................ 84
+8.4.8 Flow Elements Container ...................................................................................... 86
+8.4.9 Gateways .............................................................................................................. 88
+8.4.10 Item Definition ..................................................................................................... 89
+8.4.11 Message .............................................................................................................. 91
+8.4.12 Resources ........................................................................................................... 93
+8.4.13 Sequence Flow ................................................................................................... 95
+8.4.14 Common Package XML Schemas ...................................................................... 98
+
+8.5 Services ................................................................................................ 101
+8.5.1 Interface .............................................................................................................. 102
+8.5.2 EndPoint .............................................................................................................. 103
+8.5.3 Operation ............................................................................................................ 103
+8.5.4 Service Package XML Schemas ......................................................................... 104
+iv
+
+Business Process Model and Notation (BPMN), v2.0.2
+
+9 Collaboration ................................................................................ 107
+9.1 General ................................................................................................ 107
+9.2 Basic Collaboration Concepts .............................................................. 110
+9.2.1 Use of BPMN Common Elements ....................................................................... 110
+
+9.3 Pool and Participant ............................................................................. 111
+9.3.1 Participants ......................................................................................................... 113
+9.3.2 Lanes .................................................................................................................. 119
+
+9.4 Message Flow ...................................................................................... 119
+9.4.1 Interaction Node .................................................................................................. 122
+9.4.2 Message Flow Associations ................................................................................ 122
+
+9.5 Conversations ...................................................................................... 123
+9.5.1 Conversation Node ............................................................................................. 127
+9.5.2 Conversation ....................................................................................................... 129
+9.5.3 Sub-Conversation ............................................................................................... 129
+9.5.4 Call Conversation ................................................................................................ 130
+9.5.5 Global Conversation ............................................................................................ 131
+9.5.6 Conversation Link ............................................................................................... 131
+9.5.7 Conversation Association .................................................................................... 134
+9.5.8 Correlations ......................................................................................................... 135
+
+9.6 Process within Collaboration ................................................................ 136
+9.7 Choreography within Collaboration ...................................................... 136
+9.8 Collaboration Package XML Schemas ................................................. 138
+
+10 Process ...................................................................................... 143
+10.1 General .............................................................................................. 143
+10.2 Basic Process Concepts .................................................................... 147
+10.2.1 Types of BPMN Processes ............................................................................... 147
+10.2.2 Use of BPMN Common Elements ..................................................................... 148
+
+10.3 Activities ............................................................................................. 149
+10.3.1 Resource Assignment ....................................................................................... 152
+10.3.2 Performer .......................................................................................................... 154
+10.3.3 Tasks ................................................................................................................ 154
+10.3.4 Human Interactions ........................................................................................... 163
+10.3.5 Sub-Processes .................................................................................................. 171
+10.3.6 Call Activity ........................................................................................................ 182
+10.3.7 Global Task ....................................................................................................... 186
+10.3.8 Loop Characteristics ......................................................................................... 188
+10.3.9 XML Schema for Activities ................................................................................ 194
+
+10.4 Items and Data ................................................................................... 202
+10.4.1 Data Modeling ................................................................................................... 202
+10.4.2 Execution Semantics for Data ........................................................................... 224
+10.4.3 Usage of Data in XPath Expressions ................................................................ 225
+10.4.4 XML Schema for Data ....................................................................................... 228
+
+10.5 Events ................................................................................................ 232
+10.5.1 Concepts ........................................................................................................... 233
+10.5.2 Start Event ........................................................................................................ 237
+10.5.3 End Event ......................................................................................................... 245
+10.5.4 Intermediate Event ............................................................................................ 248
+Business Process Model and Notation (BPMN), v2.0.2
+
+v
+
+10.5.5 Event Definitions ............................................................................................... 259
+10.5.6 Handling Events ................................................................................................ 274
+10.5.7 Scopes .............................................................................................................. 280
+10.5.8 Events Package XML Schemas ........................................................................ 281
+
+10.6 Gateways ........................................................................................... 286
+10.6.1 Sequence Flow Considerations ........................................................................ 288
+10.6.2 Exclusive Gateway ............................................................................................ 289
+10.6.3 Inclusive Gateway ............................................................................................. 291
+10.6.4 Parallel Gateway ............................................................................................... 292
+10.6.5 Complex Gateway ............................................................................................. 294
+10.6.6 Event-Based Gateway ...................................................................................... 296
+10.6.7 Gateway Package XML Schemas ..................................................................... 300
+
+10.7 Compensation .................................................................................... 301
+10.7.1 Compensation Handler ..................................................................................... 302
+10.7.2 Compensation Triggering .................................................................................. 303
+10.7.3 Relationship between Error Handling and Compensation ................................ 304
+
+10.8 Lanes .................................................................................................. 304
+10.9 Process Instances, Unmodeled Activities, and Public Processes ......308
+10.10 Auditing ............................................................................................ 310
+10.11 Monitoring ......................................................................................... 310
+10.12 Process Package XML Schemas .....................................................311
 
 11 Choreography ............................................................................ 315
-11.1 Basic Choreography Concepts ........................................................... 316
-11.2 Data .................................................................................................... 319
-11.3 Use of BPMN Common Elements ...................................................... 319
-11.3.1 Sequence Flow ................................................................................................. 320
-11.3.2 Artifacts ............................................................................................................. 321
+11.1
+11.2
+11.3
+11.4
 
-11.4 Choreography Activities ..................................................................... 321
-11.4.1 Choreography Task ........................................................................................... 323
-11.4.2 Sub-Choreography ............................................................................................ 328
-11.4.3 Call Choreography ............................................................................................ 333
-11.4.4 Global Choreography Task ............................................................................... 335
-11.4.5 Looping Activities .............................................................................................. 335
-11.4.6 The Sequencing of Activities.............................................................................. 335
+General ...............................................................................................315
+Basic Choreography Concepts ........................................................... 317
+Data .................................................................................................... 319
+Use of BPMN Common Elements ...................................................... 319
 
-11.5 Events ................................................................................................ 339
-11.5.1 Start Events ....................................................................................................... 339
-11.5.2 Intermediate Events .......................................................................................... 341
-11.5.3 End Events ........................................................................................................ 343
+11.4.1 Sequence Flow ................................................................................................. 320
+11.4.2 Artifacts ............................................................................................................. 321
 
-11.6 Gateways ........................................................................................... 344
-11.6.1 Exclusive Gateway ............................................................................................ 345
-11.6.2 Event-Based Gateway ...................................................................................... 350
-11.6.3 Inclusive Gateway ............................................................................................. 352
-11.6.4 Parallel Gateway ............................................................................................... 359
-11.6.5 Complex Gateway ............................................................................................. 361
-11.6.6 Chaining Gateways ........................................................................................... 362
+11.5 Choreography Activities .....................................................................321
+11.5.1 Choreography Task ........................................................................................... 323
+11.5.2 Sub-Choreography ............................................................................................ 328
+11.5.3 Call Choreography ............................................................................................ 333
+11.5.4 Global Choreography Task ............................................................................... 335
+11.5.5 Looping Activities .............................................................................................. 335
+11.5.6 The Sequencing of Activities ............................................................................. 335
 
-11.7 Choreography within Collaboration .................................................... 362
-11.7.1 Participants ....................................................................................................... 362
-11.7.2 Swimlanes ......................................................................................................... 363
+11.6 Events ................................................................................................ 339
+11.6.1 Start Events ....................................................................................................... 339
+11.6.2 Intermediate Events .......................................................................................... 340
+11.6.3 End Events ........................................................................................................ 343
 
-11.8 XML Schema for Choreography ......................................................... 364
+11.7 Gateways ........................................................................................... 344
+11.7.1 Exclusive Gateway ............................................................................................ 344
+11.7.2 Event-Based Gateway ...................................................................................... 349
+11.7.3 Inclusive Gateway ............................................................................................. 351
+11.7.4 Parallel Gateway ............................................................................................... 358
+11.7.5 Complex Gateway ............................................................................................. 360
+11.7.6 Chaining Gateways ........................................................................................... 361
+
+11.8 Choreography within Collaboration .................................................... 361
+vi
+
+Business Process Model and Notation (BPMN), v2.0.2
+
+11.8.1 Participants ....................................................................................................... 361
+11.8.2 Swimlanes ......................................................................................................... 362
+
+11.9 XML Schema for Choreography ......................................................... 363
 
 12 BPMN Notation and Diagrams ................................................... 367
 12.1 BPMN Diagram Interchange (BPMN DI) ............................................ 367
 12.1.1 Scope ................................................................................................................ 367
-iv
-
-Business Process Model and Notation, v2.0
-
 12.1.2 Diagram Definition and Interchange .................................................................. 367
-12.1.3 How to Read this Chapter ................................................................................. 368
+12.1.3 How to Read this Clause ................................................................................... 368
 
 12.2 BPMN Diagram Interchange (DI) Meta-model ................................... 368
 12.2.1 Overview ........................................................................................................... 368
@@ -369,754 +377,703 @@ Business Process Model and Notation, v2.0
 12.4.1 Depicting Content in a Sub-Process ................................................................. 412
 12.4.2 Multiple Lanes and Nested Lanes ..................................................................... 417
 12.4.3 Vertical Collaboration ........................................................................................ 418
-12.4.4 Conversation ..................................................................................................... 420
-12.4.5 Choreography ................................................................................................... 422
+12.4.4 Conversation ..................................................................................................... 419
+12.4.5 Choreography ................................................................................................... 421
 
 13 BPMN Execution Semantics ...................................................... 425
-13.1 Process Instantiation and Termination ............................................... 426
-13.2 Activities ............................................................................................. 426
-13.2.1 Sequence Flow Considerations ........................................................................ 427
-13.2.2 Activity ............................................................................................................... 428
-13.2.3 Task .................................................................................................................. 430
-13.2.4 Sub-Process/Call Activity .................................................................................. 430
-13.2.5 Ad-Hoc Sub-Process ......................................................................................... 431
-13.2.6 Loop Activity...................................................................................................... 432
-13.2.7 Multiple Instances Activity ................................................................................. 432
+13.1 General .............................................................................................. 425
+13.2 Process Instantiation and Termination ............................................... 426
+13.3 Activities ............................................................................................. 426
+13.3.1 Sequence Flow Considerations ........................................................................ 427
+13.3.2 Activity ............................................................................................................... 428
+13.3.3 Task .................................................................................................................. 430
+13.3.4 Sub-Process/Call Activity .................................................................................. 430
+13.3.5 Ad-Hoc Sub-Process ......................................................................................... 431
+13.3.6 Loop Activity ...................................................................................................... 432
+13.3.7 Multiple Instances Activity ................................................................................. 432
 
-13.3 Gateways ........................................................................................... 434
-13.3.1 Parallel Gateway (Fork and Join) ...................................................................... 434
-13.3.2 Exclusive Gateway (Exclusive Decision (data-based) and Exclusive Merge) ... 435
-13.3.3 Inclusive Gateway (Inclusive Decision and Inclusive Merge) .......................... 435
-13.3.4 Event-based Gateway (Exclusive Decision (event-based)) .............................. 437
-13.3.5 Complex Gateway (related to Complex Condition and Complex Merge) .......... 437
+13.4 Gateways ........................................................................................... 434
+13.4.1 Parallel Gateway (Fork and Join) ...................................................................... 434
+13.4.2 Exclusive Gateway (Exclusive Decision (data-based) and Exclusive Merge) ... 434
+13.4.3 Inclusive Gateway (Inclusive Decision and Inclusive Merge) ........................... 435
+13.4.4 Event-based Gateway (Exclusive Decision (event-based)) .............................. 437
+13.4.5 Complex Gateway (related to Complex Condition and Complex Merge) .......... 437
 
-13.4 Events ................................................................................................ 439
-13.4.1 Start Events ...................................................................................................... 439
-13.4.2 Intermediate Events .......................................................................................... 440
-13.4.3 Intermediate Boundary Events .......................................................................... 440
-13.4.4 Event Sub-Processes ........................................................................................ 440
-13.4.5 Compensation ................................................................................................... 441
-13.4.6 End Events ........................................................................................................ 443
+13.5 Events ................................................................................................ 439
+13.5.1 Start Events ...................................................................................................... 439
+13.5.2 Intermediate Events .......................................................................................... 440
+13.5.3 Intermediate Boundary Events .......................................................................... 440
+13.5.4 Event Sub-Processes ........................................................................................ 440
+13.5.5 Compensation ................................................................................................... 441
+13.5.6 End Events ........................................................................................................ 443
+Business Process Model and Notation (BPMN), v2.0.2
+
+vii
 
 14 Mapping BPMN Models to WS-BPEL ........................................ 445
-14.1 Basic BPMN-BPEL Mapping .............................................................. 446
-14.1.1 Process ............................................................................................................. 447
-14.1.2 Activities ............................................................................................................ 448
-14.1.3 Events ............................................................................................................... 455
-14.1.4 Gateways and Sequence Flows ........................................................................ 461
-14.1.5 Handling Data ................................................................................................... 465
+14.1 General ...............................................................................................445
+14.2 Basic BPMN-BPEL Mapping ..............................................................446
+14.2.1 Process ............................................................................................................. 447
+14.2.2 Activities ............................................................................................................ 448
+14.2.3 Events ............................................................................................................... 455
+14.2.4 Gateways and Sequence Flows ........................................................................ 461
+14.2.5 Handling Data ................................................................................................... 465
 
-Business Process Model and Notation, v2.0
-
-v
-
-14.2 Extended BPMN-BPEL Mapping ........................................................ 469
-14.2.1 End Events ........................................................................................................ 469
-14.2.2 Loop/Switch Combinations From a Gateway .................................................... 469
-14.2.3 Interleaved Loops .............................................................................................. 470
-14.2.4 Infinite Loops ..................................................................................................... 473
-14.2.5 BPMN Elements that Span Multiple WSBPEL Sub-Elements .......................... 473
+14.3 Extended BPMN-BPEL Mapping ........................................................ 469
+14.3.1 End Events ........................................................................................................ 469
+14.3.2 Loop/Switch Combinations From a Gateway .................................................... 469
+14.3.3 Interleaved Loops .............................................................................................. 470
+14.3.4 Infinite Loops ..................................................................................................... 473
+14.3.5 BPMN Elements that Span Multiple WSBPEL Sub-Elements .......................... 473
 
 15 Exchange Formats ..................................................................... 475
 15.1 Interchanging Incomplete Models ...................................................... 475
-15.2 Machine Readable Files ..................................................................... 475
+15.2 Machine Readable Files .....................................................................475
 15.3 XSD .................................................................................................... 475
 15.3.1 Document Structure .......................................................................................... 475
-15.3.2 References within the BPMN XSD..................................................................... 476
+15.3.2 References within the BPMN XSD .................................................................... 476
 
 15.4 XMI ..................................................................................................... 477
 15.5 XSLT Transformation between XSD and XMI .................................... 477
 
-Annex A: Changes from v1.2 ......................................................... 479
-Annex B: Diagram Interchange ...................................................... 481
-Annex C: Glossary .......................................................................... 499
-Index ................................................................................................ 505
-
-vi
-
-Business Process Model and Notation, v2.0
-
-List of Figures
-Figure 7.1 - Example of a private Business Process 23
-Figure 7.2 - Example of a public Process 24
-Figure 7.3 - An example of a Collaborative Process 25
-Figure 7.4 - An example of a Choreography 25
-Figure 7.5 - An example of a Conversation diagram 26
-Figure 7.6 - An example of a Collaboration diagram with black-box Pools 45
-Figure 7.7 - An example of a stand-alone Choreography diagram 46
-Figure 7.8 - An example of a stand-alone Process (Orchestration) diagram 47
-Figure 8.1 - A representation of the BPMN Core and Layer Structure 49
-Figure 8.2 - Class diagram showing the core packages 50
-Figure 8.3 - Class diagram showing the organization of the core BPMN elements 51
-Figure 8.4 - Definitions class diagram 52
-Figure 8.5 - Classes in the Foundation package 55
-Figure 8.6 - Extension class diagram 57
-Figure 8.7 - External Relationship Metamodel 62
-Figure 8.8 - Artifacts Metamodel 66
-Figure 8.9 - An Association 67
-Figure 8.10 - The Association Class Diagram 67
-Figure 8.11 - A Directional Association 68
-Figure 8.12 - An Association of Text Annotation 68
-Figure 8.13 - A Group Artifact 69
-Figure 8.14 - A Group around Activities in different Pools 69
-Figure 8.15 - The Group class diagram 70
-Figure 8.16 - A Text Annotation 71
-Figure 8.17 - The Correlation Class Diagram 76
-Figure 8.18 - Error class diagram 81
-Figure 8.19 - Escalation class diagram 82
-Figure 8.20 - Event class diagram 84
-Figure 8.21 - Expression class diagram 85
-Figure 8.22 - FlowElement class diagram 87
-Figure 8.23 - FlowElementContainers class diagram 89
-Figure 8.24 - Gateway class diagram 90
-Figure 8.25 - ItemDefinition class diagram 92
-Figure 8.26 - A Message 93
-Figure 8.27 - A non-initiating Message 93
-Figure 8.28 - Messages Association overlapping Message Flows 94
-Figure 8.29 - Messages shown Associated with a Choreography Task 94
-Figure 8.30 - The Message class diagram 95
-Figure 8.31 - Resource class diagram 96
-Figure 8.32 - A Sequence Flow 97
-Figure 8.33 - A Conditional Sequence Flow 97
-Figure 8.34 - A Default Sequence Flow 98
-Figure 8.35 - SequenceFlow class diagram 98
-Figure 8.36 - The Service class diagram 104
-
-Business Process Model and Notation, v2.0
-
-vii
-
-Figure 9.1 - Classes in the Collaboration package 109
-Figure 9.2 - A Pool 112
-Figure 9.3 - Message Flows connecting to the boundaries of two Pools 113
-Figure 9.4 - Message Flows connecting to Flow Objects within two Pools 113
-Figure 9.5 - Main (Internal) Pool without boundaries 114
-Figure 9.6 - Pools with a Multi-Instance Participant Markers 114
-Figure 9.7 - The Participant Class Diagram 115
-Figure 9.8 - A Pool with a Multiple Participant 117
-Figure 9.9 - The Participant Multiplicity class diagram 117
-Figure 9.10 - ParticipantAssociation class diagram 119
-Figure 9.11 - A Message Flow 120
-Figure 9.12 - A Message Flow with an Attached Message 121
-Figure 9.13 - A Message Flow passing through a Choreography Task 121
-Figure 9.14 - The Message Flow Class Diagram 122
-Figure 9.15 - MessageFlowAssociation class diagram 124
-Figure 9.16 - A Conversation diagram 125
-Figure 9.17 - A Conversation diagram where the Conversation is expanded into Message Flows 125
-Figure 9.18 - Conversation diagram depicting several conversations between Participants in a related domain 126
-Figure 9.19 - An example of a Sub-Conversation 127
-Figure 9.20 - An example of a Sub-Conversation expanded to a Conversation and Message Flow 127
-Figure 9.21 - An example of a Sub-Conversation that is fully expanded 128
-Figure 9.22 - Metamodel of ConversationNode Related Elements 129
-Figure 9.23 - A Communication element 130
-Figure 9.24 - A compound Conversation element 131
-Figure 9.25 - A Call Conversation calling a GlobalConversation 131
-Figure 9.26 - A Call Conversation calling a Collaboration 131
-Figure 9.27 - A Conversation Link element 132
-Figure 9.28 - Conversation links to Activities and Events 133
-Figure 9.29 - Metamodel of Conversation Links related elements 134
-Figure 9.30 - Call Conversation Links 135
-Figure 9.31 - The ConversationAssociation class diagram 136
-Figure 9.32 - An example of a Choreography within a Collaboration 138
-Figure 9.33 - Choreography within Collaboration class diagram 139
-Figure 10.1 - An Example of a Process 145
-Figure 10.2 - Process class diagram 146
-Figure 10.3 - Process Details class diagram 147
-Figure 10.4 - Example of a private Business Process 150
-Figure 10.5 - Example of a public Process 150
-Figure 10.6 - Activity class diagram 151
-Figure 10.7 - The class diagram for assigning Resources 154
-Figure 10.8 - A Task object 156
-Figure 10.9 - Task markers 157
-Figure 10.10 - The Task class diagram 157
-Figure 10.11 - A Service Task Object 158
-Figure 10.12 - The Service Task class diagram 159
-Figure 10.13 - A Send Task Object 160
-Figure 10.14 - The Send Task and Receive Task class diagram 160
+Annex A - Changes from v1.2.......................................................... 479
+Annex B - Diagram Interchange....................................................... 481
+Annex C - Glossary.......................................................................... 499
 
 viii
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
-Figure 10.15 - A Receive Task Object 161
-Figure 10.16 - A Receive Task Object that instantiates a Process 162
-Figure 10.17 - A User Task Object 163
-Figure 10.18 - A Manual Task Object 163
-Figure 10.19 - A Business Rule Task Object 164
-Figure 10.20 - A Script Task Object 164
-Figure 10.21 - Manual Task class diagram 166
-Figure 10.22 - User Task class diagram 166
-Figure 10.23 - HumanPerformer class diagram 168
-Figure 10.24 - Procurement Process Example 170
-Figure 10.25 - A Sub-Process object (collapsed) 174
-Figure 10.26 - A Sub-Process object (expanded) 174
-Figure 10.27 - Expanded Sub-Process used as a “Parallel Box” 174
-Figure 10.28 - Collapsed Sub-Process Markers 175
-Figure 10.29- The Sub-Process class diagram 176
-Figure 10.30 - An Event Sub-Process object (Collapsed) 177
-Figure 10.31 - An Event Sub-Process object (expanded) 177
-Figure 10.32 - An example that includes Event Sub-Processes 178
-Figure 10.33 - A Transaction Sub-Process 179
-Figure 10.34 - A Collapsed Transaction Sub-Process 179
-Figure 10.35 - A collapsed Ad-Hoc Sub-Process 181
-Figure 10.36 - An expanded Ad-Hoc Sub-Process 181
-Figure 10.37 - An Ad-Hoc Sub-Process for writing a book chapter 182
-Figure 10.38 - An Ad-Hoc Sub-Process with data and sequence dependencies 183
-Figure 10.39 - A Call Activity object calling a Global Task 184
-Figure 10.40 - A Call Activity object calling a Process (Collapsed) 184
-Figure 10.41 - A Call Activity object calling a Process (Expanded) 184
-Figure 10.42 - The Call Activity class diagram 185
-Figure 10.43 - CallableElement class diagram 186
-Figure 10.44 - Global Tasks class diagram 188
-Figure 10.45 - LoopCharacteristics class diagram 189
-Figure 10.46 - A Task object with a Standard Loop Marker 190
-Figure 10.47 - A Sub-Process object with a Standard Loop Marker 190
-Figure 10.48 - Activity Multi-Instance marker for parallel instances 191
-Figure 10.49 - Activity Multi-Instance marker for sequential instances 191
-Figure 10.50 - ItemAware class diagram 204
-Figure 10.51 - DataObject class diagram 205
-Figure 10.52 - A DataObject 207
-Figure 10.53 - A DataObject that is a collection 207
-Figure 10.54 - A Data Store 208
-Figure 10.55 - DataStore class diagram 209
-Figure 10.56 - Property class diagram 210
-Figure 10.57 - InputOutputSpecification class diagram 212
-Figure 10.58 - A DataInput 214
-Figure 10.59 - Data Input class diagram 214
-Figure 10.60 - A Data Output 216
-Figure 10.61 - Data Output class diagram 216
+List of Figures
 
-Business Process Model and Notation, v2.0
-
-ix
-
-Figure 10.62 - InputSet class diagram 219
-Figure 10.63 - OutputSet class diagram 220
-Figure 10.64 - DataAssociation class diagram 222
-Figure 10.65 - A Data Association 222
-Figure 10.66 - A Data Association used for an Outputs and Inputs into an Activities 222
-Figure 10.67 - A Data Object shown as an output and an inputs 224
-Figure 10.68 - A Data Object associated with a Sequence Flow 225
-Figure 10.69 - The Event Class Diagram 234
-Figure 10.70 - Start Event 238
-Figure 10.71 - End Event 246
-Figure 10.72 - Intermediate Event 250
-Figure 10.73 - EventDefinition Class Diagram 262
-Figure 10.74 - Cancel Events 263
-Figure 10.75 - Compensation Events 263
-Figure 10.76 - CompensationEventDefinition Class Diagram 264
-Figure 10.77 - Conditional Events 265
-Figure 10.78 - ConditionalEventDefinition Class Diagram 265
-Figure 10.79 - Error Events 265
-Figure 10.80 - ErrorEventDefinition Class Diagram 266
-Figure 10.81 - Escalation Events 266
-Figure 10.82 - EscalationEventDefinition Class Diagram 267
-Figure 10.83 - Link Events 267
-Figure 10.84 - Link Events Used as Off-Page Connector 268
-Figure 10.85 - A Process with a long Sequence Flow 269
-Figure 10.86 - A Process with Link Intermediate Events used as Go To Objects 269
-Figure 10.87 - Link Events Used for looping 270
-Figure 10.88 - Message Events 270
-Figure 10.89 - MessageEventDefinition Class Diagram 271
-Figure 10.90 - Multiple Events 272
-Figure 10.91 - None Events 272
-Figure 10.92 - Multiple Events 273
-Figure 10.93 - SignalEventDefinition Class Diagram 273
-Figure 10.94 - Signal Events 273
-Figure 10.95 - Terminate Event 274
-Figure 10.96 - Timer Events 274
-Figure 10.97 - Exclusive start of a Process 275
-Figure 10.98 - A Process initiated by an Event-Based Gateway 276
-Figure 10.99 - Event synchronization at Process start 276
-Figure 10.100 - Example of inline Event Handling via Event Sub-Processes 278
-Figure 10.101 - Example of boundary Event Handling 279
-Figure 10.102 - A Gateway 287
-Figure 10.103 - The Different types of Gateways 288
-Figure 10.104 - Gateway class diagram 289
-Figure 10.105 - An Exclusive Data-Based Decision (Gateway) Example without the Internal Indicator 290
-Figure 10.106 - A Data-Based Exclusive Decision (Gateway) Example with the Internal Indicator 291
-Figure 10.107 - Exclusive Gateway class diagram 291
-Figure 10.108 - An example using an Inclusive Gateway 292
-
-x
-
-Business Process Model and Notation, v2.0
-
-Figure 10.109 - Inclusive Gateway class diagram 293
-Figure 10.110 - An example using an Parallel Gateway 294
-Figure 10.111 - An example of a synchronizing Parallel Gateway 294
-Figure 10.112 - Parallel Gateway class diagram 295
-Figure 10.113 - An example using a Complex Gateway 295
-Figure 10.114 - Complex Gateway class diagram 296
-Figure 10.115 – Event-Based Gateway 297
-Figure 10.116 - An Event-Based Gateway example using Message Intermediate Events 298
-Figure 10.117 - An Event-Based Gateway example using Receive Tasks 298
-Figure 10.118 - Exclusive Event-Based Gateway to start a Process 299
-Figure 10.119 - Parallel Event-Based Gateway to start a Process 299
-Figure 10.120 - Event-Based Gateway class diagram 300
-Figure 10.121- Compensation through a boundary Event 303
-Figure 10.122 - Monitoring Class Diagram 304
-Figure 10.123 - Two Lanes in a Vertical Pool 306
-Figure 10.124 - Two Lanes in a horizontal Pool 306
-Figure 10.125 - An Example of Nested Lanes 307
-Figure 10.126 - The Lane class diagram 308
-Figure 10.127 - One Process supporting to another 310
-Figure 10.128 - Auditing Class Diagram 311
-Figure 10.129 - Monitoring Class Diagram 312
-Figure 11.1 - The Choreography metamodel 316
-Figure 11.2 - An example of a Choreography 317
-Figure 11.3 - A Collaboration diagram logistics example 318
-Figure 11.4 - The corresponding Choreography diagram logistics example 319
-Figure 11.5 - The use of Sequence Flows in a Choreography 320
-Figure 11.6 - The metamodel segment for a Choreography Activity 322
-Figure 11.7 - A Collaboration view of Choreography Task elements 323
-Figure 11.8 - A Choreography Task 323
-Figure 11.9 - A Collaboration view of a Choreography Task 324
-Figure 11.10 - A two-way Choreography Task 324
-Figure 11.11 - A Collaboration view of a two-way Choreography Task 325
-Figure 11.12 - Choreography Task Markers 326
-Figure 11.13 - The Collaboration view of a looping Choreography Task 326
-Figure 11.14 - The Collaboration view of a Parallel Multi-Instance Choreography Task 327
-Figure 11.15 - A Choreography Task with a multiple Participant 327
-Figure 11.16 - A Collaboration view of a Choreography Task with a multiple Participant 328
-Figure 11.17- A Sub-Choreography 329
-Figure 11.18 - A Collaboration view of a Sub-Choreography 329
-Figure 11.19 - An expanded Sub-Choreography 330
-Figure 11.20 - A Collaboration view of an expanded Sub-Choreography 330
-Figure 11.21 - Sub-Choreography (Collapsed) with More than Two Participants 331
-Figure 11.22 - Sub-Choreography Markers 332
-Figure 11.23 - Sub-Choreography Markers with a multi-instance Participant 332
-Figure 11.24 - A Call Choreography calling a Global Choreography Task 333
-Figure 11.25 - A Call Choreography calling a Choreography (Collapsed) 333
-Figure 11.26 - A Call Choreography calling a Choreography (expanded) 334
-
-Business Process Model and Notation, v2.0
+Figure 7.1 – Example of a private Business Process 21
+Figure 7.2 – Example of a public Process 22
+Figure 7.3 – An example of a Collaborative Process 23
+Figure 7.4 – An example of a Choreography 23
+Figure 7.5 – An example of a Conversation diagram 24
+Figure 7.6 – An example of a Collaboration diagram with black-box Pools 43
+Figure 7.7 – An example of a stand-alone Choreography diagram 44
+Figure 7.8 – An example of a stand-alone Process (Orchestration) diagram 45
+Figure 8.1 – A representation of the BPMN Core and Layer Structure 47
+Figure 8.2 – Class diagram showing the core packages 48
+Figure 8.3 – Class diagram showing the organization of the core BPMN elements 49
+Figure 8.4 – Definitions class diagram 50
+Figure 8.5 – Classes in the Foundation package 53
+Figure 8.6 – Extension class diagram 55
+Figure 8.7 – External Relationship Metamodel 60
+Figure 8.8 – Artifacts Metamodel 64
+Figure 8.9 – An Association 65
+Figure 8.10 – The Association Class Diagram 65
+Figure 8.11 – A Directional Association 66
+Figure 8.12 – An Association of Text Annotation 66
+Figure 8.13 – A Group Artifact 67
+Figure 8.14 – A Group around Activities in different Pools 67
+Figure 8.15 – The Group class diagram 68
+Figure 8.16 – A Text Annotation 69
+Figure 8.17 – The Correlation Class Diagram 74
+Figure 8.18 – Error class diagram 79
+Figure 8.19 – Escalation class diagram 80
+Figure 8.20 – Event class diagram 82
+Figure 8.21 – Expression class diagram 83
+Figure 8.22 – FlowElement class diagram 85
+Figure 8.23 – FlowElementContainers class diagram 87
+Figure 8.24 – Gateway class diagram 88
+Figure 8.25 – ItemDefinition class diagram 90
+Figure 8.26 – A Message 91
+Figure 8.27 – A non-initiating Message 91
+Figure 8.28 – Messages Association overlapping Message Flows 92
+Figure 8.29 – Messages shown Associated with a Choreography Task 92
+Figure 8.30 – The Message class diagram 93
+Figure 8.31 – Resource class diagram 94
+Figure 8.32 – A Sequence Flow 95
+Figure 8.33 – A Conditional Sequence Flow 95
+Figure 8.34 – A Default Sequence Flow 96
+Business Process Model and Notation (BPMN), v2.0.2
 
 xi
 
-Figure 11.27- The Call Choreography class diagram 334
-Figure 11.28 - A valid sequence of Choreography Activities 336
-Figure 11.29 - The corresponding Collaboration for a valid Choreography sequence 337
-Figure 11.30 - A valid sequence of Choreography Activities with a two-way Activity 337
-Figure 11.31 - The corresponding Collaboration for a valid Choreography sequence with a two-way Activity 338
-Figure 11.32 - An invalid sequence of Choreography Activities 338
-Figure 11.33 - The corresponding Collaboration for an invalid Choreography sequence 339
-Figure 11.34 - An example of the Exclusive Gateway 346
-Figure 11.35 - The relationship of Choreography Activity Participants across the sides of the Exclusive Gateway
-shown through a Collaboration 347
-Figure 11.36 - Different Receiving Choreography Activity Participants on the output sides of the Exclusive Gateway
-348
-Figure 11.37 - The corresponding Collaboration view of the above Choreography Exclusive Gateway configuration
-349
-Figure 11.38 - An example of an Event Gateway 350
-Figure 11.39 - The corresponding Collaboration view of the above Choreography Event Gateway configuration 351
-Figure 11.40 - An example of a Choreography Inclusive Gateway configuration 353
-Figure 11.41 - The corresponding Collaboration view of the above Choreography Inclusive Gateway configuration
-354
-Figure 11.42 - An example of a Choreography Inclusive Gateway configuration 355
-Figure 11.43 - The corresponding Collaboration view of the above Choreography Inclusive Gateway configuration
-356
-Figure 11.44 - Another example of a Choreography Inclusive Gateway configuration 357
-Figure 11.45 - The corresponding Collaboration view of the above Choreography Inclusive Gateway configuration
-358
-Figure 11.46 - The relationship of Choreography Activity Participants across the sides of the Parallel Gateway 359
-Figure 11.47 - The corresponding Collaboration view of the above Choreography Parallel Gateway configuration
-360
-Figure 11.48 - An example of a Choreography Complex Gateway configuration 361
-Figure 11.49 - The corresponding Collaboration view of the above Choreography Complex Gateway configuration
-362
-Figure 11.50 - An example of a Choreography Process combined with Black Box Pools 363
-Figure 11.51 - An example of a Choreography Process combined with Pools that contain Processes 364
-Figure 12.1 - BPMN Diagram 369
-Figure 12.2 - BPMN Plane 369
-Figure 12.3 - BPMN Shape 369
-Figure 12.4 - BPMN Edge 370
-Figure 12.5 - BPMN Label 370
-Figure 12.6 - Depicting a Label for a DataObjectReference with its state 381
-Figure 12.7 - Combined Compensation and Loop Characteristic Marker Example 384
-Figure 12.8 - Expanded Sub-Process Example 413
-Figure 12.9 - Start and End Events on the Border Example 414
-Figure 12.10 - Collapsed Sub-Process 416
-Figure 12.11 - Contents of Collapsed Sub-Process 416
-Figure 12.12 - Nested Lanes Example 418
-Figure 12.13 - Vertical Collaboration Example 419
-Figure 12.14 - Conversation Example 420
-
+Figure 8.35 – SequenceFlow class diagram 96
+Figure 8.36 – The Service class diagram 102
+Figure 9.1 – Classes in the Collaboration package 108
+Figure 9.2 – A Pool 111
+Figure 9.3 – Message Flows connecting to the boundaries of two Pools 112
+Figure 9.4 – Message Flows connecting to Flow Objects within two Pools 112
+Figure 9.5 – Main (Internal) Pool without boundaries 113
+Figure 9.6 – Pools with a Multi-Instance Participant Markers 113
+Figure 9.7 – The Participant Class Diagram 114
+Figure 9.8 – A Pool with a Multiple Participant 116
+Figure 9.9 – The Participant Multiplicity class diagram 116
+Figure 9.10 – ParticipantAssociation class diagram 118
+Figure 9.11 – A Message Flow 119
+Figure 9.12 – A Message Flow with an Attached Message 120
+Figure 9.13 – A Message Flow passing through a Choreography Task 120
+Figure 9.14 – The Message Flow Class Diagram 121
+Figure 9.15 – MessageFlowAssociation class diagram 123
+Figure 9.16 – A Conversation diagram 124
+Figure 9.17 – A Conversation diagram where the Conversation is expanded into Message Flows 124
+Figure 9.18 – Conversation diagram depicting several conversations between Participants in a related domain 125
+Figure 9.19 – An example of a Sub-Conversation 126
+Figure 9.20 – An example of a Sub-Conversation expanded to a Conversation and Message Flow 126
+Figure 9.21 – An example of a Sub-Conversation that is fully expanded 127
+Figure 9.22 – Metamodel of ConversationNode Related Elements 128
+Figure 9.23 – A Communication element 129
+Figure 9.24 – A compound Conversation element 130
+Figure 9.25 – A Call Conversation calling a GlobalConversation 130
+Figure 9.26 – A Call Conversation calling a Collaboration 130
+Figure 9.27 – A Conversation Link element 131
+Figure 9.28 – Conversation links to Activities and Events 132
+Figure 9.29 – Metamodel of Conversation Links related elements 133
+Figure 9.30 – Call Conversation Links 134
+Figure 9.31 – The ConversationAssociation class diagram 135
+Figure 9.32 – An example of a Choreography within a Collaboration 137
+Figure 9.33– Choreography within Collaboration class diagram 138
+Figure 10.1 – An Example of a Process 143
+Figure 10.2 – Process class diagram 144
+Figure 10.3 – Process Details class diagram 145
+Figure 10.4 – Example of a private Business Process 148
+Figure 10.5 – Example of a public Process 148
+Figure 10.6 – Activity class diagram 149
+Figure 10.7 – The class diagram for assigning Resources 152
+Figure 10.8 – A Task object 154
+Figure 10.9 – Task markers 155
+Figure 10.10 – The Task class diagram 155
+Figure 10.11 – A Service Task Object 156
+Figure 10.12 – The Service Task class diagram 157
 xii
 
-Business Process Model and Notation, v2.0
+Business Process MOdel and Notation (BPMN), v2.0.2
 
-Figure 12.15 - Choreography Example 422
-Figure 13.1 - Behavior of multiple outgoing Sequence Flows of an Activity 427
-Figure 13.2 - The Lifecycle of a BPMN Activity 428
-Figure 13.3 - Merging and Branching Sequence Flows for a Parallel Gateway 434
-Figure 13.4 - Merging and Branching Sequence Flows for an Exclusive Gateway 435
-Figure 13.5 - Merging and Branching Sequence Flows for an Inclusive Gateway 435
-Figure 13.6 - Merging and branching Sequence Flows for an Event-Based Gateway 437
-Figure 13.7 - Merging and branching Sequence Flows for a Complex Gateway 437
-Figure 14.1 - A BPMN orchestration process and its block hierarchy 446
-Figure 14.2 - An example of distributed token recombination 469
-Figure 14.3 - An example of a loop from a decision with more than two alternative paths 470
-Figure 14.4 - An example of interleaved loops 471
-Figure 14.5 - An example of the WSBPEL pattern for substituting for the derived Process 472
-Figure 14.6 - An example of a WSBPEL pattern for the derived Process 472
-Figure 14.7 - An example – An infinite loop 473
-Figure 14.8 - An example - Activity that spans two paths of a WSBPEL structured element 474
-Figure B.1 - Diagram Definition Architecture 483
-Figure B.2 - The Primitive Types 483
-Figure B.3 - Diagram Definition Architecture 484
-Figure B.4 - Diagram Definition Architecture 484
-Figure B.5 - Dependencies of the DI package 488
-Figure B.6 - Diagram Element 488
-Figure B.7 - Node 488
-Figure B.8 - Edge 489
-Figure B.9 - Diagram 489
-Figure B.10 - Plane 489
-Figure B.11 - Labeled Edge 490
-Figure B.12 - Labeled Shape 490
-Figure B.13 - Shape 490
-
-Business Process Model and Notation, v2.0
+Figure 10.13 – A Send Task Object 158
+Figure 10.14 – The Send Task and Receive Task class diagram 158
+Figure 10.15 – A Receive Task Object 159
+Figure 10.16 – A Receive Task Object that instantiates a Process 160
+Figure 10.17 – A User Task Object 161
+Figure 10.18 – A Manual Task Object 161
+Figure 10.19 – A Business Rule Task Object 162
+Figure 10.20 – A Script Task Object 162
+Figure 10.21 – Manual Task class diagram 163
+Figure 10.22 – User Task class diagram 164
+Figure 10.23 – HumanPerformer class diagram 165
+Figure 10.24 – Procurement Process Example 168
+Figure 10.25 – A Sub-Process object (collapsed) 171
+Figure 10.26 – A Sub-Process object (expanded) 172
+Figure 10.27 – Expanded Sub-Process used as a “Parallel Box” 172
+Figure 10.28 – Collapsed Sub-Process Markers 173
+Figure 10.29– The Sub-Process class diagram 173
+Figure 10.30 – An Event Sub-Process object (Collapsed) 175
+Figure 10.31 – An Event Sub-Process object (expanded) 175
+Figure 10.32 – An example that includes Event Sub-Processes 176
+Figure 10.33 – A Transaction Sub-Process 177
+Figure 10.34 – A Collapsed Transaction Sub-Process 177
+Figure 10.35 – A collapsed Ad-Hoc Sub-Process 179
+Figure 10.36 – An expanded Ad-Hoc Sub-Process 179
+Figure 10.37 – An Ad-Hoc Sub-Process for writing a book chapter 181
+Figure 10.38 – An Ad-Hoc Sub-Process with data and sequence dependencies 182
+Figure 10.39– A Call Activity object calling a Global Task 183
+Figure 10.40 – A Call Activity object calling a Process (Collapsed) 183
+Figure 10.41 – A Call Activity object calling a Process (Expanded) 183
+Figure 10.42 –The Call Activity class diagram 184
+Figure 10.43 – CallableElement class diagram 185
+Figure 10.44 – Global Tasks class diagram 187
+Figure 10.45 – LoopCharacteristics class diagram 188
+Figure 10.46 – A Task object with a Standard Loop Marker 189
+Figure 10.47 – A Sub-Process object with a Standard Loop Marker 189
+Figure 10.48 – Activity Multi-Instance marker for parallel instances 190
+Figure 10.49 – Activity Multi-Instance marker for sequential instances 190
+Figure 10.50 - ItemAware class diagram 203
+Figure 10.51 – DataObject class diagram 204
+Figure 10.52 – A DataObject 206
+Figure 10.53 – A DataObject that is a collection 206
+Figure 10.54 – A Data Store 207
+Figure 10.55 – DataStore class diagram 207
+Figure 10.56 – Property class diagram 209
+Figure 10.57 – InputOutputSpecification class diagram 211
+Figure 10.58 – A DataInput 213
+Figure 10.59 – Data Input class diagram 213
+Business Process Model and Notation (BPMN), v2.0.2
 
 xiii
 
+Figure 10.60 – A Data Output 215
+Figure 10.61 – Data Output class diagram 215
+Figure 10.62 – InputSet class diagram 218
+Figure 10.63 – OutputSet class diagram 219
+Figure 10.64 – DataAssociation class diagram 221
+Figure 10.65 – A Data Association 221
+Figure 10.66 – A Data Association used for an Outputs and Inputs into an Activities 221
+Figure 10.67 – A Data Object shown as an output and an inputs 223
+Figure 10.68 – A Data Object associated with a Sequence Flow 224
+Figure 10.69 – The Event Class Diagram 233
+Figure 10.70 – Start Event 238
+Figure 10.71 – End Event 245
+Figure 10.72 – Intermediate Event 249
+Figure 10.73 – EventDefinition Class Diagram 261
+Figure 10.74 – Cancel Events 262
+Figure 10.75 – Compensation Events 262
+Figure 10.76 – CompensationEventDefinition Class Diagram 262
+Figure 10.77 – Conditional Events 263
+Figure 10.78 – ConditionalEventDefinition Class Diagram 264
+Figure 10.79 – Error Events 264
+Figure 10.80 – ErrorEventDefinition Class Diagram 265
+Figure 10.81 – Escalation Events 265
+Figure 10.82 – EscalationEventDefinition Class Diagram 266
+Figure 10.83 – Link Events 266
+Figure 10.84 – Link Events Used as Off-Page Connector 267
+Figure 10.85 – A Process with a long Sequence Flow 268
+Figure 10.86 – A Process with Link Intermediate Events used as Go To Objects 268
+Figure 10.87 – Link Events Used for looping 269
+Figure 10.88 – Message Events 269
+Figure 10.89 – MessageEventDefinition Class Diagram 270
+Figure 10.90 – Multiple Events 271
+Figure 10.91 – None Events 271
+Figure 10.92 – Multiple Events 272
+Figure 10.93 – SignalEventDefinition Class Diagram 272
+Figure 10.94 – Signal Events 272
+Figure 10.95 – Terminate Event 273
+Figure 10.96 – Timer Events 273
+Figure 10.97 – Exclusive start of a Process 274
+Figure 10.98 – A Process initiated by an Event-Based Gateway 275
+Figure 10.99 – Event synchronization at Process start 275
+Figure 10.100 – Example of inline Event Handling via Event Sub-Processes 277
+Figure 10.101 – Example of boundary Event Handling 278
+Figure 10.102 – A Gateway 286
+Figure 10.103 – The Different types of Gateways 287
+Figure 10.104 – Gateway class diagram 288
+Figure 10.105 – An Exclusive Data-Based Decision (Gateway) Example without the Internal Indicator 289
+Figure 10.106 – A Data-Based Exclusive Decision (Gateway) Example with the Internal Indicator 290
 xiv
 
-Business Process Model and Notation, v2.0
+Business Process MOdel and Notation (BPMN), v2.0.2
+
+Figure 10.107 – Exclusive Gateway class diagram 290
+Figure 10.108 – An example using an Inclusive Gateway 291
+Figure 10.109 – Inclusive Gateway class diagram 292
+Figure 10.110 – An example using an Parallel Gateway 293
+Figure 10.111 – An example of a synchronizing Parallel Gateway 293
+Figure 10.112 – Parallel Gateway class diagram 294
+Figure 10.113 – An example using a Complex Gateway 294
+Figure 10.114 – Complex Gateway class diagram 295
+Figure 10.115 – Event-Based Gateway 296
+Figure 10.116 – An Event-Based Gateway example using Message Intermediate Events 297
+Figure 10.117 – An Event-Based Gateway example using Receive Tasks 297
+Figure 10.118 – Exclusive Event-Based Gateway to start a Process 298
+Figure 10.119 – Parallel Event-Based Gateway to start a Process 298
+Figure 10.120 – Event-Based Gateway class diagram 299
+Figure 10.121– Compensation through a boundary Event 302
+Figure 10.122 – Monitoring Class Diagram 303
+Figure 10.123 – Two Lanes in a Vertical Pool 305
+Figure 10.124 – Two Lanes in a horizontal Pool 305
+Figure 10.125 – An Example of Nested Lanes 306
+Figure 10.126 – The Lane class diagram 307
+Figure 10.127 – One Process supporting to another 309
+Figure 10.128 – Auditing Class Diagram 310
+Figure 10.129 – Monitoring Class Diagram 311
+Figure 11.1 – The Choreography metamodel 316
+Figure 11.2 – An example of a Choreography 317
+Figure 11.3 – A Collaboration diagram logistics example 318
+Figure 11.4 – The corresponding Choreography diagram logistics example 319
+Figure 11.5 – The use of Sequence Flows in a Choreography 320
+Figure 11.6 – The metamodel segment for a Choreography Activity 322
+Figure 11.7 – A Collaboration view of Choreography Task elements 323
+Figure 11.8 – A Choreography Task 323
+Figure 11.9 – A Collaboration view of a Choreography Task 324
+Figure 11.10 – A two-way Choreography Task 324
+Figure 11.11 – A Collaboration view of a two-way Choreography Task 325
+Figure 11.12 – Choreography Task Markers 326
+Figure 11.13 – The Collaboration view of a looping Choreography Task 326
+Figure 11.14 – The Collaboration view of a Parallel Multi-Instance Choreography Task 327
+Figure 11.15 – A Choreography Task with a multiple Participant 327
+Figure 11.16 – A Collaboration view of a Choreography Task with a multiple Participant 328
+Figure 11.17– A Sub-Choreography 329
+Figure 11.18 – A Collaboration view of a Sub-Choreography 329
+Figure 11.19 – An expanded Sub-Choreography 330
+Figure 11.20 – A Collaboration view of an expanded Sub-Choreography 330
+Figure 11.21 – Sub-Choreography (Collapsed) with More than Two Participants 331
+Figure 11.22 – Sub-Choreography Markers 332
+Figure 11.23 – Sub-Choreography Markers with a multi-instance Participant 332
+Figure 11.24 – A Call Choreography calling a Global Choreography Task 333
+Business Process Model and Notation (BPMN), v2.0.2
+
+xv
+
+Figure 11.25 – A Call Choreography calling a Choreography (Collapsed) 333
+Figure 11.26 – A Call Choreography calling a Choreography (expanded) 334
+Figure 11.27– The Call Choreography class diagram 334
+Figure 11.28 – A valid sequence of Choreography Activities 336
+Figure 11.29 – The corresponding Collaboration for a valid Choreography sequence 337
+Figure 11.30 – A valid sequence of Choreography Activities with a two-way Activity 337
+Figure 11.31 – The corresponding Collaboration for a valid Choreography sequence with a two-way Activity 338
+Figure 11.32 – An invalid sequence of Choreography Activities 338
+Figure 11.33 – The corresponding Collaboration for an invalid Choreography sequence 339
+Figure 11.34 – An example of the Exclusive Gateway 345
+Figure 11.35 – The relationship of Choreography Activity Participants across the sides
+of the Exclusive Gateway shown through a Collaboration 346
+Figure 11.36 – Different Receiving Choreography Activity Participants
+on the output sides of the Exclusive Gateway 347
+Figure 11.37 – The corresponding Collaboration view of the above
+Choreography Exclusive Gateway configuration 348
+Figure 11.38 – An example of an Event Gateway 349
+Figure 11.39 – The corresponding Collaboration view of the above Choreography Event Gateway configuration 350
+Figure 11.40 – An example of a Choreography Inclusive Gateway configuration 352
+Figure 11.41 – The corresponding Collaboration view of the above Choreography Inclusive Gateway
+configuration 353
+Figure 11.42 – An example of a Choreography Inclusive Gateway configuration 354
+Figure 11.43 – The corresponding Collaboration view of the above Choreography
+Inclusive Gateway configuration 355
+Figure 11.44 – Another example of a Choreography Inclusive Gateway configuration 356
+Figure 11.45 – The corresponding Collaboration view of the above Choreography
+Inclusive Gateway configuration 357
+Figure 11.46 – The relationship of Choreography Activity Participants
+across the sides of the Parallel Gateway 358
+Figure 11.47 – The corresponding Collaboration view of the above
+Choreography Parallel Gateway configuration 359
+Figure 11.48 – An example of a Choreography Complex Gateway configuration 360
+Figure 11.49 – The corresponding Collaboration view of the above Choreography Complex Gateway
+configuration 361
+Figure 11.50 – An example of a Choreography Process combined with Black Box Pools 362
+Figure 11.51 – An example of a Choreography Process combined with Pools that contain Processes 363
+Figure 12.1 – BPMN Diagram 369
+Figure 12.2 – BPMN Plane 369
+Figure 12.3 – BPMN Shape 369
+Figure 12.4 – BPMN Edge 370
+Figure 12.5 – BPMN Label 370
+Figure 12.6 – Depicting a Label for a DataObjectReference with its state 381
+Figure 12.7 – Combined Compensation and Loop Characteristic Marker Example 384
+Figure 12.8 – Expanded Sub-Process Example 413
+Figure 12.9 – Start and End Events on the Border Example 414
+Figure 12.10 – Collapsed Sub-Process 415
+Figure 12.11 – Contents of Collapsed Sub-Process 416
+xvi
+
+Business Process MOdel and Notation (BPMN), v2.0.2
+
+Figure 12.12 – Nested Lanes Example 417
+Figure 12.13 – Vertical Collaboration Example 418
+Figure 12.14 – Conversation Example 420
+Figure 12.15 – Choreography Example 422
+Figure 13.1 – Behavior of multiple outgoing Sequence Flows of an Activity 427
+Figure 13.2 – The Lifecycle of a BPMN Activity 428
+Figure 13.3 – Merging and Branching Sequence Flows for a Parallel Gateway 434
+Figure 13.4 – Merging and Branching Sequence Flows for an Exclusive Gateway 434
+Figure 13.5 – Merging and Branching Sequence Flows for an Inclusive Gateway 435
+Figure 13.6 – Merging and branching Sequence Flows for an Event-Based Gateway 437
+Figure 13.7 – Merging and branching Sequence Flows for a Complex Gateway 437
+Figure 14.1 – A BPMN orchestration process and its block hierarchy 446
+Figure 14.2 – An example of distributed token recombination 469
+Figure 14.3 – An example of a loop from a decision with more than two alternative paths 470
+Figure 14.4 – An example of interleaved loops 471
+Figure 14.5 – An example of the WSBPEL pattern for substituting for the derived Process 472
+Figure 14.6 – An example of a WSBPEL pattern for the derived Process 472
+Figure 14.7 – An example: An infinite loop 473
+Figure 14.8 – An example: Activity that spans two paths of a WSBPEL structured element 474
+Figure B.1 – Diagram Definition Architecture 483
+Figure B.2 – The Primitive Types 483
+Figure B.3 – Diagram Definition Architecture 484
+Figure B.4 – Diagram Definition Architecture 484
+Figure B.5 – Dependencies of the DI package 488
+Figure B.6 – Diagram Element 488
+Figure B.7 – Node 488
+Figure B.8 – Edge 489
+Figure B.9 – Diagram 489
+Figure B.10 – Plane 489
+Figure B.11 – Labeled Edge 490
+Figure B.12 – Labeled Shape 490
+Figure B.13 – Shape 490
+
+Business Process Model and Notation (BPMN), v2.0.2
+
+xvii
+
+xviii
+
+Business Process MOdel and Notation (BPMN), v2.0.2
 
 List of Tables
+
 Table 2.1 – Descriptive Conformance Sub-Class Elements and Attributes 3
 Table 2.2 – Analytic Conformance Sub-Class Elements and Attributes 4
 Table 2.3 – Common Executable Conformance Sub-Class Elements and Attributes 6
 Table 2.4 – Common Executable Conformance Sub-Class Supporting Classes 7
 Table 2.5 – Types of BPMN Conformance 12
-Table 7.1 – Basic Modeling Elements 29
-Table 7.2 – BPMN Extended Modeling Elements 31
-Table 7.3 – Sequence Flow Connection Rules 42
-Table 7.4 – Message Flow Connection Rules 44
-Table 8.1 – Definitions attributes and model associations 53
-Table 8.2 – Import attributes 54
-Table 8.3 – Definitions XML schema 54
-Table 8.4 – Import XML schema 55
-Table 8.5 – BaseElement attributes and model associations 56
-Table 8.6 – Documentation attributes 56
-Table 8.7 – Extension attributes and model associations 58
-Table 8.8 – ExtensionDefinition attributes and model associations 59
-Table 8.9 – ExtensionAttributeDefinition attributes 59
-Table 8.10 – ExtensionAttributeValue model associations 59
-Table 8.11 – Extension XML schema 60
-Table 8.12 – Example Core XML schema 60
-Table 8.13 – Example Extension XML schema 61
-Table 8.14 – Sample XML instance 61
-Table 8.15 – Relationship attributes 63
-Table 8.16 – Reengineer XML schema 63
-Table 8.17 – BaseElement XML schema 64
-Table 8.18 – RootElement XML schema 65
-Table 8.19 – Relationship XML schema 65
-Table 8.20 – Association attributes and model associations 68
-Table 8.21 – Group model associations 70
-Table 8.22 – Category model associations 71
-Table 8.23 – CategoryValue attributes and model associations 71
-Table 8.24 – Text Annotation attributes 72
-Table 8.25 – Artifact XML schema 72
-Table 8.26 – Association XML schema 72
-Table 8.27 – Category XML schema 72
-Table 8.28 – CategoryValue XML schema 73
-Table 8.29 – Group XML schema 73
-Table 8.30 – Text Annotation XML schema 73
-Table 8.31 – CorrelationKey model associations 77
-Table 8.32 – CorrelationProperty model associations 77
-Table 8.33 – CorrelationPropertyRetrievalExpression model associations 78
-Table 8.34 – CorrelationSubscription model associations 78
-
-Business Process Model and Notation, v2.0
-
-xv
-
-Table 8.35 – CorrelationPropertyBinding model associations 79
-Table 8.36 – Correlation Key XML schema 79
-Table 8.37 – Correlation Property XML schema 79
-Table 8.38 – Correlation Property Binding XML schema 80
-Table 8.39 – Correlation Property Retrieval Expression XML schema 80
-Table 8.40 – Correlation Subscription XML schema 80
-Table 8.41 – Error attributes and model associations 82
-Table 8.42 – Esclation attributes and model associations 83
-Table 8.43 – FormalExpression attributes and model associations 86
-Table 8.44 – FlowElement attributes and model associations 88
-Table 8.45 – FlowElementsContainer model associations 89
-Table 8.46 – Gateway attributes 91
-Table 8.47 – ItemDefinition attributes & model associations 92
-Table 8.48 – Message attributes and model associations 95
-Table 8.49 – Resource attributes and model associations 96
-Table 8.50 – ResourceParameter attributes and model associations 97
-Table 8.51 – SequenceFlow attributes and model associations 99
-Table 8.52 – FlowNode model associations 100
-Table 8.53 – Error XML schema 100
-Table 8.54 – Escalation XML schema 100
-Table 8.55 – Expression XML schema 100
-Table 8.56 – FlowElement XML schema 101
-Table 8.57 – FlowNode XML schema 101
-Table 8.58 – FormalExpression XML schema 101
-Table 8.59 – InputOutputBinding XML schema 102
-Table 8.60 – ItemDefinition XML schema 102
-Table 8.61 – Message XML schema 102
-Table 8.62 – Resources XML schema 102
-Table 8.63 – ResourceParameter XML schema 103
-Table 8.64 – SequenceFlow XML schema 103
-Table 8.65 – Interface attributes and model associations 105
-Table 8.66 – Operation attributes and model associations 106
-Table 8.67 – Interface XML schema 106
-Table 8.68 – Operation XML schema 106
-Table 8.69 – EndPoint XML schema 107
-Table 9.1 – Collaboration Attributes and Model Associations 110
-Table 9.2 – Participant attributes and model associations 116
-Table 9.3 – PartnerEntity attributes 116
-Table 9.4 – PartnerRole attributes 117
-Table 9.5 – ParticipantMultiplicity attributes 118
-Table 9.6 – ParticipantMultiplicity Instance attributes 118
-Table 9.7 – ParticipantAssociation model associations 120
-Table 9.8 – Message Flow attributes and model associations 123
-Table 9.9 – MessageFlowAssociation attributes and model associations 124
-Table 9.10 – ConversationNode Model Associations 130
-Table 9.11 – Sub-Conversation Model Associations 131
-Table 9.12 – Call Conversation Model Associations 132
-xvi
-
-Business Process Model and Notation, v2.0
-
-Table 9.13 – Conversation Link Attributes and Model Associations 134
-Table 9.14 – ConversationAssociation Model Associations 136
-Table 9.15 – Call Conversation XML schema 139
-Table 9.16 – Collaboration XML schema 140
-Table 9.17 – Conversation XML schema 140
-Table 9.18 – ConversationAssociation XML schema 140
-Table 9.19 – ConversationAssociation XML schema 140
-Table 9.20 – ConversationNode XML schema 141
-Table 9.21 – Conversation Node XML schema 141
-Table 9.22 – Global Conversation XML schema 141
-Table 9.23 – MessageFlow XML schema 142
-Table 9.24 – MessageFlowAssociation XML schema 142
-Table 9.25 – Participant XML schema 142
-Table 9.26 – ParticipantAssociation XML schema 143
-Table 9.27 – ParticipantMultiplicity XML schema 143
-Table 9.28 – PartnerEntity XML schema 143
-Table 9.29 – PartnerRole XML schema 143
-Table 9.30 – Sub-Conversation XML schema 144
-Table 10.1 – Process Attributes & Model Associations 147
-Table 10.2 – Process instance attributes 149
-Table 10.3 – Activity attributes and model associations 152
-Table 10.4 – Activity instance attributes 153
-Table 10.5 – Resource Role model associations 155
-Table 10.6 – ResourceAssignmentExpression model associations 155
-Table 10.7 – ResourceParameterBinding model associations 156
-Table 10.8 – Service Task model associations 159
-Table 10.9 – Send Task model associations 161
-Table 10.10 – Receive Task attributes and model associations 162
-Table 10.11 – Business Rule Task attributes and model associations 164
-Table 10.12 – Script Task attributes 165
-Table 10.13 – User Task attributes and model associations 167
-Table 10.14 – User Task instance attributes 167
-Table 10.15 – ManualTask XML schema 168
-Table 10.16 – UserTask XML schema 169
-Table 10.17 – HumanPerformer XML schema 169
-Table 10.18 – PotentialOwner XML schema 170
-Table 10.19 – XML serialization of Buyer process 170
-Table 10.20 – Sub-Process attributes 176
-Table 10.21 – Transaction Sub-Process attributes and model associations 180
-Table 10.22 – Ad-hoc Sub-Process model associations 181
-Table 10.23 – CallActivity model associations 186
-Table 10.24 – CallableElement attributes and model associations 187
-Table 10.25 – InputOutputBinding model associations 187
-Table 10.26 – Global Task model associations 188
-Table 10.27 – Loop Activity instance attributes 190
-Table 10.28 – StandardLoopCharacteristics attributes and model associations 191
-Table 10.29 – MultiInstanceLoopCharacteristics attributes and model associations 192
-Business Process Model and Notation, v2.0
-
-xvii
-
-Table 10.30
-Table 10.31
-Table 10.32
-Table 10.33
-Table 10.34
-Table 10.35
-Table 10.36
-Table 10.37
-Table 10.38
-Table 10.39
-Table 10.40
-Table 10.41
-Table 10.42
-Table 10.43
-Table 10.44
-Table 10.45
-Table 10.46
-Table 10.47
-Table 10.48
-Table 10.49
-Table 10.50
-Table 10.51
-Table 10.52
-Table 10.53
-Table 10.54
-Table 10.55
-Table 10.56
-Table 10.57
-Table 10.58
-Table 10.59
-Table 10.60
-Table 10.61
-Table 10.62
-Table 10.63
-Table 10.64
-Table 10.65
-Table 10.66
-Table 10.67
-Table 10.68
-Table 10.69
-Table 10.70
-Table 10.71
-Table 10.72
-Table 10.73
-Table 10.74
-Table 10.75
-Table 10.76
-xviii
-
-– Multi-instance Activity instance attributes 194
-– ComplexBehaviorDefinition attributes and model associations 195
-– Activity XML schema 195
-– AdHocSubProcess XML schema 196
-– BusinessRuleTask XML schema 196
-– CallableElement XML schema 197
-– CallActivity XML schema 197
-– GlobalBusinessRuleTask XML schema 197
-– GlobalScriptTask XML schema 198
-– GlobalTask XML schema 198
-– LoopCharacteristics XML schema 198
-– MultiInstanceLoopCharacteristics XML schema 199
-– ReceiveTask XML schema 200
-– ResourceRole XML schema 200
-– ScriptTask XML schema 201
-– SendTask XML schema 201
-– ServiceTask XML schema 201
-– StandardLoopCharacteristics XML schema 202
-– SubProcess XML schema 202
-– Task XML schema 202
-– Transaction XML schema 203
-– ItemAwareElement model associations 204
-– DataObject attributes 206
-– DataObjectReference attributes and model associations 206
-– DataState attributes and model associations 206
-– Data Store attributes 209
-– Data Store attributes 210
-– Property attributes 211
-– InputOutputSpecification Attributes and Model Associations 213
-– DataInput attributes and model associations 215
-– DataOutput attributes and associations 217
-– InputSet attributes and model associations 219
-– OutputSet attributes and model associations 221
-– DataAssociation model associations 223
-– Assignment attributes 224
-– XPath Extension Function for Data Objects 227
-– XPath Extension Function for Data Inputs and Data Outputs 227
-– XPath Extension Functions for Properties 228
-– XPath extension functions for instance attributes 228
-– Assignment XML schema 229
-– DataAssociation XML schema 229
-– DataInput XML schema 229
-– DataInputAssociation XML schema 230
-– DataObject XML schema 230
-– DataState XML schema 230
-– DataOutput XML schema 231
-– DataOutputAssociation XML schema 231
-Business Process Model and Notation, v2.0
-
-Table 10.77 – InputOutputSpecification XML schema 231
-Table 10.78 – InputSet XML schema 232
-Table 10.79 – OutputSet XML schema 232
-Table 10.80 – Property XML schema 233
-Table 10.81 – Event model associations 236
-Table 10.82 – CatchEvent attributes and model associations 236
-Table 10.83 – ThrowEvent attributes and model associations 237
-Table 10.84 – Top-Level Process Start Event Types 240
-Table 10.85 – Sub-Process Start Event Types 242
-Table 10.86 – Event Sub-Process Start Event Types 242
-Table 10.87 – Start Event attributes 245
-Table 10.88 – End Event Types 247
-Table 10.89 – Intermediate Event Types in Normal Flow 251
-Table 10.90 – Intermediate Event Types Attached to an Activity Boundary 254
-Table 10.91 – Boundary Event attributes 258
-Table 10.92 – Possible Values of the cancelActivity Attribute 258
-Table 10.93 – Types of Events and their Markers 261
-Table 10.94 – CompensationEventDefinition attributes and model associations 264
-Table 10.95 – ConditionalEventDefinition model associations 265
-Table 10.96 – ErrorEventDefinition attributes and model associations 266
-Table 10.97 – EscalationEventDefinition attributes and model associations 267
-Table 10.98 – LinkEventDefinition attributes 270
-Table 10.99 – MessageEventDefinition model associations 271
-Table 10.100 – SignalEventDefinition model associations 273
-Table 10.101 – TimerEventDefinition model associations 274
-Table 10.102 – BoundaryEvent XML schema 282
-Table 10.103 – CancelEventDefinition XML schema 282
-Table 10.104 – CatchEvent XML schema 282
-Table 10.105 – CancelEventDefinition XML schema 283
-Table 10.106 – CompensateEventDefinition XML schema 283
-Table 10.107 – ConditionalEventDefinition XML schema 283
-Table 10.108 – ErrorEventDefinition XML schema 283
-Table 10.109 – EscalationEventDefinition XML schema 283
-Table 10.110 – Event XML schema 284
-Table 10.111 – EventDefinition XML schema 284
-Table 10.112 – ImplicitThrowEvent XML schema 284
-Table 10.113 – IntermediateCatchEvent XML schema 284
-Table 10.114 – IntermediateThrowEvent XML schema 284
-Table 10.115 – LinkEventDefinition XML schema 285
-Table 10.116 – MessageEventDefinition XML schema 285
-Table 10.117 – Signal XML schema 285
-Table 10.118 – SignalEventDefinition XML schema 286
-Table 10.119 – StartEvent XML schema 286
-Table 10.120 – TerminateEventDefinition XML schema 286
-Table 10.121 – ThrowEvent XML schema 286
-Table 10.122 – TimerEventDefinition XML schema 287
-Table 10.123 – ExclusiveGateway Attributes & Model Associations 292
-Business Process Model and Notation, v2.0
+Table 7.1 – Basic Modeling Elements 27
+Table 7.2 – BPMN Extended Modeling Elements 29
+Table 7.3 – Sequence Flow Connection Rules 40
+Table 7.4 – Message Flow Connection Rules 42
+Table 8.1 – Definitions attributes and model associations 50
+Table 8.2 – Import attributes 52
+Table 8.3 – Definitions XML schema 52
+Table 8.4 – Import XML schema 53
+Table 8.5 – BaseElement attributes and model associations 54
+Table 8.6 – Documentation attributes 54
+Table 8.7 – Extension attributes and model associations 56
+Table 8.8 – ExtensionDefinition attributes and model associations 57
+Table 8.9 – ExtensionAttributeDefinition attributes 57
+Table 8.10 – ExtensionAttributeValue model associations 57
+Table 8.11 – Extension XML schema 58
+Table 8.12 – Example Core XML schema 58
+Table 8.13 – Example Extension XML schema 59
+Table 8.14 – Sample XML instance 59
+Table 8.15 – Relationship attributes 61
+Table 8.16 – Reengineer XML schema 61
+Table 8.17 – BaseElement XML schema 62
+Table 8.18 – RootElement XML schema 63
+Table 8.19 – Relationship XML schema 63
+Table 8.20 – Association attributes and model associations 66
+Table 8.21 – Group model associations 68
+Table 8.22 – Category model associations 69
+Table 8.23 – CategoryValue attributes and model associations 69
+Table 8.24 – Text Annotation attributes 70
+Table 8.25 – Artifact XML schema 70
+Table 8.26 – Association XML schema 70
+Table 8.27 – Category XML schema 70
+Table 8.28 – CategoryValue XML schema 71
+Table 8.29 – Group XML schema 71
+Table 8.30 – Text Annotation XML schema 71
+Table 8.31– CorrelationKey model associations 75
+Table 8.32 – CorrelationProperty model associations 75
+Table 8.33 – CorrelationPropertyRetrievalExpression model associations 76
+Business Process Model and Notation (BPMN), v2.0.2
 
 xix
 
-Table 10.124 – InclusiveGateway Attributes & Model Associations 293
-Table 10.125 – Complex Gateway model associations 296
-Table 10.126 – Instance attributes related to the Complex Gateway 297
-Table 10.127 – EventBasedGateway Attributes & Model Associations 300
-Table 10.128 – ComplexGateway XML schema 301
-Table 10.129 – EventBasedGateway XML schema 301
-Table 10.130 – ExclusiveGateway XML schema 301
-Table 10.131 – Gateway XML schema 301
-Table 10.132 – InclusiveGateway XML schema 302
-Table 10.133 – ParallelGateway XML schema 302
-Table 10.134 – LaneSet attributes and model associations 308
-Table 10.135 – Lane attributes and model associations 309
-Table 10.136 – Process XML schema 312
-Table 10.137 – Auditing XML schema 313
-Table 10.138 – GlobalTask XML schema 313
-Table 10.139 – Lane XML schema 313
-Table 10.140 – LaneSet XML schema 313
-Table 10.141 – Monitoring XML schema 314
-Table 10.142 – Performer XML schema 314
+Table 8.34 – CorrelationSubscription model associations 76
+Table 8.35 – CorrelationPropertyBinding model associations 77
+Table 8.36 – Correlation Key XML schema 77
+Table 8.37 – Correlation Property XML schema 77
+Table 8.38 – Correlation Property Binding XML schema 78
+Table 8.39 – Correlation Property Retrieval Expression XML schema 78
+Table 8.40 – Correlation Subscription XML schema 78
+Table 8.41 – Error attributes and model associations 80
+Table 8.42 – Esclation attributes and model associations 81
+Table 8.43 – FormalExpression attributes and model associations 84
+Table 8.44 – FlowElement attributes and model associations 86
+Table 8.45 – FlowElementsContainer model associations 87
+Table 8.46 – Gateway attributes 89
+Table 8.47 – ItemDefinition attributes & model associations 90
+Table 8.48 – Message attributes and model associations 93
+Table 8.49 – Resource attributes and model associations 94
+Table 8.50 – ResourceParameter attributes and model associations 95
+Table 8.51 – SequenceFlow attributes and model associations 97
+Table 8.52 – FlowNode model associations 98
+Table 8.53 – Error XML schema 98
+Table 8.54 – Escalation XML schema 98
+Table 8.55 – Expression XML schema 98
+Table 8.56 – FlowElement XML schema 99
+Table 8.57 – FlowNode XML schema 99
+Table 8.58 – FormalExpression XML schema 99
+Table 8.59 – InputOutputBinding XML schema 99
+Table 8.60 – ItemDefinition XML schema 100
+Table 8.61 – Message XML schema 100
+Table 8.62 – Resources XML schema 100
+Table 8.63 – ResourceParameter XML schema 101
+Table 8.64 – SequenceFlow XML schema 101
+Table 8.65 – Interface attributes and model associations 103
+Table 8.66 – Operation attributes and model associations 104
+Table 8.67 – Interface XML schema 104
+Table 8.68 – Operation XML schema 104
+Table 8.69 – EndPoint XML schema 105
+Table 9.1 – Collaboration Attributes and Model Associations 108
+Table 9.2 – Participant attributes and model associations 115
+Table 9.3 – PartnerEntity attributes 115
+Table 9.4 – PartnerRole attributes 116
+Table 9.5 – ParticipantMultiplicity attributes 117
+Table 9.6 – ParticipantMultiplicity Instance attributes 117
+Table 9.7 – ParticipantAssociation model associations 119
+Table 9.8 – Message Flow attributes and model associations 122
+Table 9.9 – MessageFlowAssociation attributes and model associations 123
+Table 9.10 – ConversationNode Model Associations 129
+Table 9.11 – Sub-Conversation Model Associations 130
+xx
+
+Business Process Model and Notation (BPMN), v2.0.2
+
+Table 9.12 – Call Conversation Model Associations 131
+Table 9.13 – Conversation Link Attributes and Model Associations 133
+Table 9.14 – ConversationAssociation Model Associations 135
+Table 9.15 – Call Conversation XML schema 138
+Table 9.16 – Collaboration XML schema 138
+Table 9.17 – Conversation XML schema 139
+Table 9.18 – ConversationAssociation XML schema 139
+Table 9.19 – ConversationAssociation XML schema 139
+Table 9.20 – ConversationNode XML schema 140
+Table 9.21 – Conversation Node XML schema 140
+Table 9.22 – Global Conversation XML schema 140
+Table 9.23 – MessageFlow XML schema 140
+Table 9.24 – MessageFlowAssociation XML schema 141
+Table 9.25 – Participant XML schema 141
+Table 9.26 – ParticipantAssociation XML schema 141
+Table 9.27 – ParticipantMultiplicity XML schema 142
+Table 9.28 – PartnerEntity XML schema 142
+Table 9.29 – PartnerRole XML schema 142
+Table 9.30 – Sub-Conversation XML schema 142
+Table 10.1 – Process Attributes & Model Associations 145
+Table 10.2 – Process instance attributes 147
+Table 10.3 – Activity attributes and model associations 150
+Table 10.4– Activity instance attributes 151
+Table 10.5 – Resource Role model associations 153
+Table 10.6 – ResourceAssignmentExpression model associations 153
+Table 10.7 – ResourceParameterBinding model associations 154
+Table 10.8 – Service Task model associations 157
+Table 10.9 – Send Task model associations 159
+Table 10.10 – Receive Task attributes and model associations 160
+Table 10.11 – Business Rule Task attributes and model associations 162
+Table 10.12 – Script Task attributes 163
+Table 10.13 – User Task attributes and model associations 164
+Table 10.14 – User Task instance attributes 165
+Table 10.15 – ManualTask XML schema 166
+Table 10.16 – UserTask XML schema 167
+Table 10.17 – HumanPerformer XML schema 168
+Table 10.18 – PotentialOwner XML schema 168
+Table 10.19 – XML serialization of Buyer process 169
+Table 10.20 – Sub-Process attributes 174
+Table 10.21 – Transaction Sub-Process attributes and model associations 178
+Table 10.22 – Ad-hoc Sub-Process model associations 180
+Table 10.23 – CallActivity model associations 185
+Table 10.24 – CallableElement attributes and model associations 186
+Table 10.25 – InputOutputBinding model associations 186
+Table 10.26 – Global Task model associations 187
+Table 10.27 – Loop Activity instance attributes 189
+Table 10.28 – StandardLoopCharacteristics attributes and model associations 190
+Business Process Model and Notation (BPMN), v2.0.2
+
+xxi
+
+Table 10.29 – MultiInstanceLoopCharacteristics attributes and model associations 191
+Table 10.30 – Multi-instance Activity instance attributes 193
+Table 10.31 – ComplexBehaviorDefinition attributes and model associations 194
+Table 10.32 – Activity XML schema 194
+Table 10.33 – AdHocSubProcess XML schema 195
+Table 10.34 – BusinessRuleTask XML schema 195
+Table 10.35 – CallableElement XML schema 196
+Table 10.36 – CallActivity XML schema 196
+Table 10.37 – GlobalBusinessRuleTask XML schema 196
+Table 10.38 – GlobalScriptTask XML schema 197
+Table 10.39 – GlobalTask XML schema 197
+Table 10.40 – LoopCharacteristics XML schema 197
+Table 10.41 – MultiInstanceLoopCharacteristics XML schema 198
+Table 10.42 – ReceiveTask XML schema 199
+Table 10.43 – ResourceRole XML schema 199
+Table 10.44 – ScriptTask XML schema 200
+Table 10.45 – SendTask XML schema 200
+Table 10.46 – ServiceTask XML schema 200
+Table 10.47 – StandardLoopCharacteristics XML schema 201
+Table 10.48 – SubProcess XML schema 201
+Table 10.49 – Task XML schema 201
+Table 10.50 – Transaction XML schema 202
+Table 10.51 – ItemAwareElement model associations 203
+Table 10.52 – DataObject attributes 205
+Table 10.53 – DataObjectReference attributes and model associations 205
+Table 10.54 – DataState attributes and model associations 205
+Table 10.55 – Data Store attributes 208
+Table 10.56 – Data Store attributes 208
+Table 10.57 – Property attributes 209
+Table 10.58 – InputOutputSpecification Attributes and Model Associations 212
+Table 10.59 – DataInput attributes and model associations 214
+Table 10.60 – DataOutput attributes and associations 216
+Table 10.61 – InputSet attributes and model associations 218
+Table 10.62 – OutputSet attributes and model associations 220
+Table 10.63 – DataAssociation model associations 222
+Table 10.64 – Assignment attributes 223
+Table 10.65 – XPath Extension Function for Data Objects 226
+Table 10.66 – XPath Extension Function for Data Inputs and Data Outputs 226
+Table 10.67 – XPath Extension Functions for Properties 227
+Table 10.68 – XPath extension functions for instance attributes 228
+Table 10.69 – Assignment XML schema 228
+Table 10.70 – DataAssociation XML schema 229
+Table 10.71 – DataInput XML schema 229
+Table 10.72 – DataInputAssociation XML schema 229
+Table 10.73 – DataObject XML schema 230
+Table 10.74 – DataState XML schema 230
+Table 10.75 – DataOutput XML schema 230
+xxii
+
+Business Process Model and Notation (BPMN), v2.0.2
+
+Table 10.76 – DataOutputAssociation XML schema 230
+Table 10.77 – InputOutputSpecification XML schema 231
+Table 10.78 – InputSet XML schema 231
+Table 10.79 – OutputSet XML schema 232
+Table 10.80 – Property XML schema 232
+Table 10.81 – Event model associations 235
+Table 10.82 – CatchEvent attributes and model associations 235
+Table 10.83 – ThrowEvent attributes and model associations 236
+Table 10.84 – Top-Level Process Start Event Types 239
+Table 10.85 – Sub-Process Start Event Types 241
+Table 10.86 – Event Sub-Process Start Event Types 241
+Table 10.87 – Start Event attributes 244
+Table 10.88 – End Event Types 246
+Table 10.89 – Intermediate Event Types in Normal Flow 250
+Table 10.90 – Intermediate Event Types Attached to an Activity Boundary 253
+Table 10.91 – Boundary Event attributes 257
+Table 10.92 – Possible Values of the cancelActivity Attribute 257
+Table 10.93 – Types of Events and their Markers 260
+Table 10.94 – CompensationEventDefinition attributes and model associations 263
+Table 10.95 – ConditionalEventDefinition model associations 264
+Table 10.96 – ErrorEventDefinition attributes and model associations 265
+Table 10.97 – EscalationEventDefinition attributes and model associations 266
+Table 10.98 – LinkEventDefinition attributes 269
+Table 10.99 – MessageEventDefinition model associations 270
+Table 10.100 – SignalEventDefinition model associations 272
+Table 10.101 – TimerEventDefinition model associations 273
+Table 10.102 – BoundaryEvent XML schema 281
+Table 10.103 – CancelEventDefinition XML schema 281
+Table 10.104 – CatchEvent XML schema 281
+Table 10.105 – CancelEventDefinition XML schema 281
+Table 10.106 – CompensateEventDefinition XML schema 282
+Table 10.107 – ConditionalEventDefinition XML schema 282
+Table 10.108 – ErrorEventDefinition XML schema 282
+Table 10.109 – EscalationEventDefinition XML schema 282
+Table 10.110 – Event XML schema 283
+Table 10.111 – EventDefinition XML schema 283
+Table 10.112 – ImplicitThrowEvent XML schema 283
+Table 10.113 – IntermediateCatchEvent XML schema 283
+Table 10.114 – IntermediateThrowEvent XML schema 283
+Table 10.115 – LinkEventDefinition XML schema 283
+Table 10.116 – MessageEventDefinition XML schema 284
+Table 10.117 – Signal XML schema 284
+Table 10.118 – SignalEventDefinition XML schema 284
+Table 10.119 – StartEvent XML schema 285
+Table 10.120 – TerminateEventDefinition XML schema 285
+Table 10.121 – ThrowEvent XML schema 285
+Table 10.122 – TimerEventDefinition XML schema 285
+Business Process Model and Notation (BPMN), v2.0.2
+
+xxiii
+
+Table 10.123 – ExclusiveGateway Attributes & Model Associations 291
+Table 10.124 – InclusiveGateway Attributes & Model Associations 292
+Table 10.125 – Complex Gateway model associations 295
+Table 10.126 – Instance attributes related to the Complex Gateway 296
+Table 10.127 – EventBasedGateway Attributes & Model Associations 299
+Table 10.128 – ComplexGateway XML schema 300
+Table 10.129 – EventBasedGateway XML schema 300
+Table 10.130 – ExclusiveGateway XML schema 300
+Table 10.131 – Gateway XML schema 300
+Table 10.132 – InclusiveGateway XML schema 301
+Table 10.133 – ParallelGateway XML schema 301
+Table 10.134 – LaneSet attributes and model associations 307
+Table 10.135 – Lane attributes and model associations 308
+Table 10.136 – Process XML schema 311
+Table 10.137 – Auditing XML schema 312
+Table 10.138 – GlobalTask XML schema 312
+Table 10.139 – Lane XML schema 312
+Table 10.140 – LaneSet XML schema 312
+Table 10.141– Monitoring XML schema 313
+Table 10.142 – Performer XML schema 313
 Table 11.1 – Choreography Activity Model Associations 322
 Table 11.2 – Choreography Task Model Associations 328
 Table 11.3 – Sub-Choreography Model Associations 332
 Table 11.4 – Call Choreography Model Associations 335
 Table 11.5 – Global Choreography Task Model Associations 335
 Table 11.6 – Use of Start Events in Choreography 340
-Table 11.7 – Use of Intermediate Events in Choreography 341
+Table 11.7 – Use of Intermediate Events in Choreography 340
 Table 11.8 – Use of End Events in Choreography 343
-Table 11.9 – Choreography XML schema 364
-Table 11.10 – GlobalChoreographyTask XML schema 365
-Table 11.11 – ChoreographyActivity XML schema 365
-Table 11.12 – ChoreographyTask XML schema 365
-Table 11.13 – CallChoreography XML schema 366
-Table 11.14 – SubChoreography XML schema 366
+Table 11.9 – Choreography XML schema 363
+Table 11.10 – GlobalChoreographyTask XML schema 364
+Table 11.11 – ChoreographyActivity XML schema 364
+Table 11.12 – ChoreographyTask XML schema 364
+Table 11.13 – CallChoreography XML schema 365
+Table 11.14 – SubChoreography XML schema 365
 Table 12.1 – BPMNDiagram XML schema 371
 Table 12.2 – BPMNPlane XML schema 372
 Table 12.3 – BPMNShape XML schema 374
@@ -1130,11 +1087,11 @@ Table 12.10 – Depiction Resolution for Collapsed Sub-Processes 386
 Table 12.11 – Depiction Resolution for Expanded Sub-Processes 386
 Table 12.12 – Depiction Resolution for Collapsed Ad Hoc Sub-Processes 387
 Table 12.13 – Depiction Resolution for Expanded Ad Hoc Sub-Processes 387
+xxiv
+
+Business Process Model and Notation (BPMN), v2.0.2
+
 Table 12.14 – Depiction Resolution for Collapsed Transactions 387
-xx
-
-Business Process Model and Notation, v2.0
-
 Table 12.15 – Depiction Resolution for Tasks 388
 Table 12.16 – Depiction Resolution for Collapsed Event Sub-Processes 388
 Table 12.17 – Depiction Resolution for Expanded Event Sub-Processes 391
@@ -1159,9 +1116,9 @@ Table 12.35 – Depiction Resolution for Connecting Objects 411
 Table 12.36 – Expanded Sub-Process BPMN DI instance 413
 Table 12.37 – Start and End Events on the Border BPMN DI instance 414
 Table 12.38 – Collapsed Sub-Process BPMN DI instance 416
-Table 12.39 – Sub-Process Content BPMN DI instance 417
-Table 12.40 – Multiple Lanes and Nested Lanes BPMN DI instance 418
-Table 12.41 – Vertical Collaboration BPMN DI instance 419
+Table 12.39 – Sub-Process Content BPMN DI instance 416
+Table 12.40 – Multiple Lanes and Nested Lanes BPMN DI instance 417
+Table 12.41 – Vertical Collaboration BPMN DI instance 418
 Table 12.42 – Conversation BPMN DI instance 420
 Table 12.43 – Choreography BPMN DI instance 422
 Table 13.1 – Parallel Gateway Execution Semantics 434
@@ -1172,127 +1129,105 @@ Table 13.5 – Semantics of the Complex Gateway 438
 Table 14.1 – Common Activity Mappings to WS-BPEL 448
 Table 14.2 – Expressions mapping to WS-BPEL 468
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
-xxi
+xxv
 
-xxii
+xxvi
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
 Preface
 About the Object Management Group
 OMG
 Founded in 1989, the Object Management Group, Inc. (OMG) is an open membership, not-for-profit computer industry
-standards consortium that produces and maintains computer industry specifications for interoperable, portable and
+standards consortium that produces and maintains computer industry specifications for interoperable, portable, and
 reusable enterprise applications in distributed, heterogeneous environments. Membership includes Information
-Technology vendors, end users, government agencies and academia.
-OMG member companies write, adopt, and maintain its specifications following a mature, open process. OMG's
+Technology vendors, end users, government agencies, and academia.
+OMG member companies write, adopt, and maintain its specifications following a mature, open process. OMG’s
 specifications implement the Model Driven Architecture® (MDA®), maximizing ROI through a full-lifecycle approach to
 enterprise integration that covers multiple operating systems, programming languages, middleware and networking
-infrastructures, and software development environments. OMG's specifications include: UML® (Unified Modeling
+infrastructures, and software development environments. OMG’s specifications include: UML® (Unified Modeling
 Language™); CORBA® (Common Object Request Broker Architecture); CWM™ (Common Warehouse Metamodel);
 and industry-specific standards for dozens of vertical markets.
 More information on the OMG is available at http://www.omg.org/.
 
 OMG Specifications
-As noted, OMG specifications address middleware, modeling and vertical domain frameworks. A catalog of all OMG
-Specifications is available from the OMG website at:
-http://www.omg.org/technology/documents/spec_catalog.htm
-Specifications within the Catalog are organized by the following categories:
+As noted, OMG specifications address middleware, modeling and vertical domain frameworks. All OMG specifications
+are available from the OMG website at:
+http://www.omg.org/spec
+Specifications are organized by the following categories:
 
-OMG Modeling Specifications
-•
-
-UML
-
-•
-
-MOF
-
-•
-
-XMI
-
-•
-
-CWM
-
-•
-
-Profile specifications
-
-OMG Middleware Specifications
+Business Modeling Specifications
+Middleware Specifications
 •
 
 CORBA/IIOP
 
 •
 
-IDL/Language Mappings
+Data Distribution Services
 
 •
 
-Specialized CORBA specifications
+Specialized CORBA
+
+IDL/Language Mapping Specifications
+Modeling and Metadata Specifications
+•
+
+UML, MOF, CWM, XMI
 
 •
 
-CORBA Component Model (CCM)
+UML Profile
 
-Business Process Model and Notation (BPMN), v2.0
+Modernization Specifications
 
-xxiii
+Business Process Model and Notation (BPMN), v2.0.2
 
-Platform Specific Model and Interface Specifications
+xxvii
+
+Platform Independent Model (PIM), Platform Specific Model (PSM), Interface Specifications
 •
 
-CORBAservices
-
-•
-
-CORBAfacilities
-
-•
-
-OMG Domain specifications
+CORBAServices
 
 •
 
-OMG Embedded Intelligence specifications
+CORBAFacilities
 
-•
-
-OMG Security specifications
+OMG Domain Specifications
+CORBA Embedded Intelligence Specifications
+CORBA Security Specifications
 
 All of OMG’s formal specifications may be downloaded without charge from our website. (Products implementing OMG
 specifications are available from individual suppliers.) Copies of specifications, available in PostScript and PDF format,
-may be obtained from the Specifications Catalog cited above or by contacting the Object Management Group, Inc. at:
+may be obtained from the link cited above or by contacting the Object Management Group, Inc. at:
 OMG Headquarters
-140 Kendrick Street
-Building A, Suite 300
+109 Highland Avenue
 Needham, MA 02494
 USA
 Tel: +1-781-444-0404
 Fax: +1-781-444-0320
 Email: pubs@omg.org
+Certain OMG specifications are also available as ISO standards. Please consult http://www.iso.org
 
 Typographical Conventions
 The type styles shown below are used in this document to distinguish programming statements from ordinary English.
 However, these conventions are not used in tables or section headings where no distinction is necessary.
 Times/Times New Roman - 10 pt.: Standard body text
-Helvetica/Arial - 10 pt Bold: OMG Interface Definition Language (OMG IDL) and syntax elements.
+Helvetica/Arial - 10 pt. Bold: OMG Interface Definition Language (OMG IDL) and syntax elements.
 Courier - 10 pt. Bold: Programming language elements.
 Helvetica/Arial - 10 pt: Exceptions
-Note – Terms that appear in italics are defined in the glossary. Italic text also represents the name of a document,
-specification, or other publication.
-Throughout the document, structural specifications will appear in paragraphs using a special shaped bullet: Example: ♦ A
-TASK MAY be a target for Sequence Flow; it can have multiple incoming Flows.
+Note – Terms that appear in italics are defined in the glossary. Italic text also represents the name of a document, specification,
+or other publication.
 
 Issues
 The reader is encouraged to report any technical or editing issues/problems with this specification to http://www.omg.org/
-technology/agreement.htm.
+report_issue.htm.
 
-xxiv
+xxviii
 
-Business Process Model and Notation (BPMN), v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 

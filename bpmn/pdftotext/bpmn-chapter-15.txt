@@ -14,8 +14,8 @@ files based on the BPMN XSD. In such XML files, implementers are expected to sup
 • Reducing the lower bound of elements with ‘minOccurs’ greater than 0.
 
 15.2 Machine Readable Files
-BPMN 2.0 machine readable files, including XSD, XMI, and XSLT files can be found in OMG Document
-DTC/2010-05-04, which is a zip file containing all the files:
+BPMN 2.0.2 machine readable files, including XSD, XMI, and XSLT files can be found in OMG Document
+dtc/2010-05-04, which is a zip file containing all the files:
 • XSD files are found under the XSD folder of the zip file, and the main file is XSD/BPMN20.xsd.
 • XMI files are found under the XMI folder of the zip file, and the main file is XSD/BPMN20.cmof.
 • XSLT files are found under the XSLT folder of the zip file.
@@ -35,26 +35,27 @@ targetNamespace="sample1.main" xmlns:main="sample1.main" xmlns:s1="sample1.seman
 <bpmn:import location="semantic1.bpmn" namespace="sample1.semantic1"
 importType="http://www.omg.org/spec/BPMN/20100524/MODEL” />
 <bpmn:import location="diagram1.bpmn" namespace="sample1.diagram1"
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
 475
 
 importType="http://www.omg.org/spec/BPMN/20100524/MODEL” />
 <bpmn:collaboration>
 <bpmn:participant processRef="s1:process1" id="collaboration1"></bpmn:participant>
-<!-more content here -->
+<!--more content here -->
 </bpmn:collaboration>
 </bpmn:definitions>
 semantic1.bpmn
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL”
-"targetNamespace="sample1.semantic1"
+targetNamespace="sample1.semantic1"
 xmlns:s1="sample1.semantic1">
 <bpmn:process id="process1">
 <!-- content here -->
 </bpmn:process>
 </bpmn:definitions>
 diagram1.bpmn
+
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/DI”
 targetNamespace="sample1.diagram1"
@@ -83,7 +84,7 @@ where “process_ns” is the namespace prefix associated with the process names
 
 476
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
 The BPMN XSD utilizes IDREFs wherever possible and resorts to QName only when references can span files. In both
 situations however, the reference is still based on IDs.
@@ -91,7 +92,7 @@ situations however, the reference is still based on IDs.
 15.4 XMI
 XMI allows the use of tags to tailor the documents that are produced using XMI. The following tags have been explicitly
 set for serializing BPMN 2.0 models; the others are left at their default values:
-• tag nsURI set to “"http://www.omg.org/spec/BPMN/20100524/XMI"
+• tag nsURI set to "http://www.omg.org/spec/BPMN/20100524/XMI"
 • tag nsPrefix set to “bpmn”
 
 The BPMN 2.0 XMI for the interchange of diagram information will be published once the OMG Diagram Definition
@@ -102,11 +103,11 @@ the BPMN specification with the Diagram Definition specification.
 • The XSLT transformation from XSD to XMI is in the file XSLT/BPMN20-ToXMI.xslt
 • The XSLT transformation from XMI to XSD is in the file XSLT/BPMN20-FromXMI.xslt
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
 477
 
 478
 
-Business Process Model and Notation, v2.0
+Business Process Model and Notation (BPMN), v2.0.2
 
