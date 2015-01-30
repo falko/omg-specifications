@@ -1,0 +1,848 @@
+13
+
+BPMN Execution Semantics
+
+Note – The content of this chapter is REQUIRED for BPMN Process Execution Conformance or for BPMN Complete
+Conformance. However, this chapter is NOT REQUIRED for BPMN Process Modeling Conformance, BPMN Choreography
+Conformance, or BPMN BPEL Process Execution Conformance. For more information about BPMN conformance types, see
+page 2.
+This section defines the execution semantics for orchestrations in BPMN 2.0. The purpose of this execution semantics is
+to describe a clear and precise understanding of the operation of the elements. However, for some elements only
+conceptual model is provided which does not specify details needed to execute them on an engine. These elements are
+called non-operational. Implementations MAY extend the semantics of non-operational elements to make them
+executable, but this is considered to be an optional extension to BPMN. Non-operational elements MAY be ignored by
+implementations conforming to BPMN Process Execution Conformance type. The following elements are nonoperational:
+• Manual Task
+• Abstract Task
+• DataState
+• IORules
+• Ad-Hoc Process
+• ItemDefinitions with an itemKind of Physical
+• the inputSetWithWhileExecuting attribute of DataInput
+• the outputSetWithWhileExecuting attribute of DataOutput
+• the isClosed attribute of Process
+• the isImmediate attribute of Sequence Flow
+
+The execution semantics are described informally (textually), and this based on prior research involving the formalization
+of execution semantics using mathematical formalisms.
+This section provides the execution semantics of elements through the following structure:
+• A description of the operational semantics of the element,
+• Exception issues for the element where relevant,
+• List of workflow patterns1supported by the element where relevant.
+
+1.
+
+http://www.workflowpatterns.com/patterns/control/index.php
+
+Business Process Model and Notation, v2.0
+
+435
+
+13.1 Process Instantiation and Termination
+A Process is instantiated when one of its Start Events occurs. Each occurrence of a Start Event creates a new
+Process Instance unless the Start Event participates in a Conversation that includes other Start Events. In that
+case, a new Process instance is only created if none already exists for the specific Conversation (identified through
+its associated correlation information) of the Event occurrence. Subsequent Start Events that share the same correlation
+information as a Start Event that created a Process instance are routed to that Process instance. Note that a global
+Process MUST neither have any empty Start Event nor any Gateway or Activity without incoming Sequence
+Flows. An exception is the Event Gateway.
+A Process can also be started via an Event-Based Gateway or a Receive Task that has no incoming Sequence
+Flows and its instantiate flag set to true. If the Event-Based Gateway is exclusive, the first matching Event
+will create a new instance of the Process. The Process then does not wait for the other Events originating from the
+same Event-Based Gateway (see also semantics of the Event-Based Exclusive Gateway on page 448). If the
+Event-Based Gateway is parallel, also the first matching Event creates a new Process instance. However, the
+Process then waits for the other Events to arrive. As stated above, those Events MUST have the same correlation
+information as the Event that arrived first. A Process instance completes only if all Events that succeed a Parallel
+Event-Based Gateway have occurred.
+To specify that the instantiation of a Process waits for multiple Start Events to happen, a Multiple Parallel Start
+Event can be used.
+Note that two Start Events are alternative, A Process instance triggered by one (1) of the Start Events does not wait
+for an alternative Start Event to occur. Note that there MAY be multiple instantiating Parallel Event-Based
+Gateways. This allows the modeler to express that either all the Events after the first Gateway occur or all the
+Events after the second Gateway and so forth.
+Each Start Event that occurs creates a token on its outgoing Sequence Flows, which is followed as described by the
+semantics of the other Process elements.
+A Process instance is completed, if and only if the following three conditions hold:
+If the instance was created through an instantiating Parallel Gateway, then all subsequent Events (of that
+Gateway) MUST have occurred.
+There is no token remaining within the Process instance.
+No Activity of the Process is still active.
+For a Process instance to become completed, all tokens in that instance MUST reach an end node, i.e., a node without
+outgoing Sequence Flows. A token reaching an End Event triggers the behavior associated with the Event type is,
+e.g., the associated Message is sent for a Message End Event, the associated Signal is sent for a Signal End
+Event, and so on. If a token reaches a Terminate End Event, the entire Process is abnormally terminated.
+
+13.2 Activities
+This section specifies the semantics of Activities. First the semantics that is common to all Activities is described.
+Subsequently the semantics of special types of Activities is described.
+
+436
+
+Business Process Model and Notation, v2.0
+
+13.2.1 Sequence Flow Considerations
+The nature and behavior of Sequence Flows is described in 8.3.13, ’Sequence Flow’. But there are special
+considerations relative to Sequence Flows when applied to Activities. An Activity that is the target of multiple
+Sequence Flows participates in “uncontrolled flow.”
+To facilitate the definition of Sequence Flow (and other Process elements) behavior, we employ the concept of a
+token that will traverse the Sequence Flows and pass through the elements in the Process. A token is a theoretical
+concept that is used as an aid to define the behavior of a Process that is being performed. The behavior of Process
+elements can be defined by describing how they interact with a token as it “traverses” the structure of the Process.
+However, modeling and execution tools that implement BPMN are NOT REQUIRED to implement any form of token.
+Uncontrolled flow means that, for each token arriving on any incoming Sequence Flows into the Activity, the Task
+will be enabled independently of the arrival of tokens on other incoming Sequence Flows. The presence of multiple
+incoming Sequence Flows behaves as an exclusive gateway. If the flow of tokens into the Task needs to be
+‘controlled,’ then Gateways (other than Exclusive) should be explicitly included in the Process flow prior to the
+Task to fully eliminate semantic ambiguities.
+If an Activity has no incoming Sequence Flows, the Activity will be instantiated when the containing Process or
+Sub-Process is instantiated. Exceptions to this are Compensation Activities, as they have specialized instantiation
+behavior.
+Activities can also be source of Sequence Flows. If an Activity has multiple outgoing Sequence Flows, all of
+them will receive a token when the Activity transitions to the Completed state. Semantics for token propagation for other
+termination states is defined below. Thus, multiple outgoing Sequence Flows behaves as a parallel split. Multiple
+outgoing Sequence Flows with conditions behaves as an inclusive split. A mix of multiple outgoing Sequence
+Flows with and without conditions is considered as a combination of a parallel and an inclusive split as shown in the
+Figure 13.1.
+
+Figure 13.1 - Behavior of multiple outgoing Sequence Flows of an Activity
+
+If the Activity has no outgoing Sequence Flows, the Activity will terminate without producing any tokens and
+termination semantics for the container is then applied.
+Token movement across a Sequence Flow does not have any timing constraints. A token might take a long or short
+time to move across the Sequence Flow. If the isImmediate attribute of a Sequence Flow has a value of false,
+or has no value and is taken to mean false, then Activities not in the model MAY be executed while the token is moving
+along the Sequence Flow. If the isImmediate attribute of a Sequence Flow has a value of true, or has no value
+and is taken to mean true, then Activities not in the model MAY NOT be executed while the token is moving along the
+Sequence Flow.
+
+Business Process Model and Notation, v2.0
+
+437
+
+13.2.2 Activity
+An Activity is a Process step that can be atomic (Tasks) or decomposable (Sub-Processes) and is executed by
+either a system (automated) or humans (manual). All Activities share common attributes and behavior such as states and
+state transitions. An Activity, regardless of type, has lifecycle generally characterizing its operational semantics. The
+lifecycle, described as a UML state diagram in Figure 13.2, entails states and transitions between the states.
+
+Figure 13.2 - The Lifecycle of a BPMN Activity
+
+438
+
+Business Process Model and Notation, v2.0
+
+The lifecycle of an Activity is described as follows:
+An Activity is Ready for execution if the REQUIRED number of tokens is available to activate the Activity. The
+REQUIRED number of tokens (one or more) is indicated by the attribute StartQuantity. If the Activity has more
+than one Incoming Sequence Flows, there is an implied Exclusive Gateway that defines the behavior.
+When some data InputSet becomes available, the Activity changes from Ready to the Active state. The
+availability of a data InputSet is evaluated as follows. The data InputSets are evaluated in order. For each
+InputSet, the data inputs are filled with data coming from the elements of the context such as Data Objects or
+Properties by triggering the input Data Associations. An InputSet is available if each of its REQUIRED
+Data Inputs is available. A data input is REQUIRED by a data InputSet if it is not optional in that InputSet.
+If an InputSet is available, it is used to start the Activity. Further InputSets are not evaluated. If an
+InputSet is not available, the next InputSet is evaluated. The Activity waits until one InputSet becomes
+available. Please refer to Section 10.3.2 (page 229) for a description of the execution semantics for Data
+Associations.
+An Activity, if Ready or Active, can be Withdrawn from being able to complete in the context of a race condition.
+This situation occurs for Tasks that are attached after an Event-Based Exclusive Gateway. The first element
+(Task or Event) that completes causes all other Tasks to be withdrawn.
+If an Activity fails during execution, it changes from the state Active to Failed.
+If a fault happens in the environment of the Activity, termination of the Activity is triggered, causing the
+Activity to go into the state Terminated.
+If an Activity’s execution ends without anomalies, the Activity’s state changes to Completing. This intermediate
+state caters for processing steps prior to completion of the Activity. An example of where this is useful is when noninterrupting Event Handlers (proposed for BPMN 2.0) are attached to an Activity. They need to complete before
+the Activity to which it is attached can complete. The state Completing of the main Activity indicates that the
+execution of the main Activity has been completed, however, the main Activity is not allowed to be in the state
+Completed, as it still has to wait for all non-interrupting Event Handlers to complete. The state Completing does not
+allow further processing steps, otherwise allowed during the execution of the Activity. For example, new attached
+non-interrupting Event Handlers MAY be created as long as the main Activity is in state Active. However, once in
+the state Completing, running handlers should be completed with no possibility to create new ones.
+An Activity’s execution is interrupted if an interrupting Event is raised (such as an error) or if an interrupting
+Event Sub-Process is initiated, In this case, the Activity’s state changes to Failing (in case of an error) or
+Terminating (in case any other interrupting Event). All nested Activities that are not in Ready, Active or a final
+state (Completed, Compensated, Failed, etc.) and non-interrupting Event Sub-Processes are terminated. The
+data context of the Activity is preserved in case an interrupting Event Sub-Process is invoked. The data context
+is released after the Event Sub-Process reaches a final state.
+After all completion dependencies have been fulfilled, the state of the Activity changes to Completed. The outgoing
+Sequence Flows becomes active and a number of tokens, indicated by the attribute CompletionQuantity, is
+placed on it. If there is more than one (1) outbound Sequence Flows for an Activity, it behaves like an implicit
+Parallel Gateway. Upon completion, also a data OutputSet of the Activity is selected as follows. All
+OutputSets are checked for availability in order. An OutputSet is available if all its REQUIRED Data
+Outputs are available. A data output is REQUIRED by an OutputSet if it is not optional in that OutputSet. If
+the data OutputSet is available, data is pushed into the context of the Activity by triggering the output Data
+Associations of all its data outputs. Further OutputSets are not evaluated. If the data OutputSet is not
+available, the next data OutputSet is checked. If no OutputSet is available, a runtime exception is thrown. If the
+Activity has an associated IORule, the chosen OutputSet is checked against that IORule, i.e., it is checked
+whether the InputSet that was used in starting the Activity instance is together with the chosen OutputSet
+compliant with the IORule. If not, a runtime exception is thrown.
+Only completed Activities could, in principle, be compensated, however, the Activity can end in state Completed,
+Business Process Model and Notation, v2.0
+
+439
+
+as compensation might not be triggered or there might be no compensation handler specified. If the compensation
+handler is invoked, the Activity changes to state Compensating until either compensation finishes successfully (state
+Compensated), an exceptions occurs (state Failed) or controlled or uncontrolled termination is triggered (state
+Terminated).
+
+13.2.3 Task
+Task execution and completion for the different Task types are as follows:
+Service Task: Upon activation, the data in the inMessage of the Operation is assigned from the data in the
+Data Input of the Service Task the Operation is invoked. On completion of the service, the data in the Data
+Output of the Service Task is assigned from the data in the outMessage of the Operation, and the Service
+Task completes. If the invoked service returns a fault, that fault is treated as interrupting error, and the Activity
+fails.
+Send Task: Upon activation, the data in the associated Message is assigned from the data in the Data Input of
+the Send Task. The Message is sent and the Send Task completes.
+Receive Task: Upon activation, the Receive Task begins waiting for the associated Message. When the
+Message arrives, the data in the Data Output of the Receive Task is assigned from the data in the Message,
+and Receive Task completes. For key-based correlation, only a single receive for a given CorrelationKey can
+be active, and thus the Message matches at most one Process instance. For predicate-based correlation, the
+Message can be passed to multiple Receive Tasks. If the Receive Task’s instantiate attribute is set to
+true, the Receive Task itself can start a new Process instance.
+User Task: Upon activation, the User Task is distributed to the assigned person or group of people. When the
+work has been done, the User Task completes.
+Manual Task: Upon activation, the manual task is distributed to the assigned person or group of people. When the
+work has been done, the Manual Task completes. This is a conceptual model only; a Manual Task is never
+actually executed by an IT system.
+Business Rule Task: Upon activation, the associated business rule is called. On completion of the business rule,
+the Business Rule Task completes.
+Script Task: Upon activation, the associated script is invoked. On completion of the script, the Script Task
+completes.
+Abstract Task: Upon activation, the Abstract Task completes. This is a conceptual model only; an Abstract
+Task is never actually executed by an IT system.
+
+13.2.4 Sub-Process/Call Activity
+A Sub-Process is an Activity which encapsulates a Process which is in turn modeled by Activities, Gateways,
+Events, and Sequence Flows. Once a Sub-Process is instantiated, its elements behave as in a normal Process.
+The instantiation and completion of a Sub-Process is defined as follows.
+A Sub-Process is instantiated when it is reached by a Sequence Flow token. The Sub-Process has either a
+unique empty Start Event, which gets a token upon instantiation, or it has no Start Event but Activities and
+Gateways without incoming Sequence Flows. In the latter case all such Activities and Gateways get a token.
+A Sub-Process MUST not have any non-empty Start Events.
+If the Sub-Process does not have incoming Sequence Flows but Start Events that are target of Sequence
+Flows from outside the Sub-Process, the Sub-Process is instantiated when one of these Start Events is
+reached by a token. Multiple such Start Events are alternative, i.e., each such Start Event that is reached by a
+440
+
+Business Process Model and Notation, v2.0
+
+token generates a new instance.
+A Sub-Process instance completes when there are no more tokens in the Sub-Process and none of its
+Activities is still active.
+If a “terminate” End Event is reached, the Sub-Process is abnormally terminated. For a “cancel” End Event,
+the Sub-Process is abnormally terminated and the associated Transaction is aborted. Control leaves the SubProcess through a cancel intermediate boundary Event. For all other End Events, the behavior associated with
+the Event type is performed, e.g., the associated Message is sent for a Message End Event, the associated
+signal is sent for a signal End Event, and so on.
+If a global Process is called through a Call Activity, then the Call Activity has the same instantiation and
+termination semantics as a Sub-Process. However, in contrast to a Sub-Process, the global Process that is
+called MAY also have non-empty Start Events. These non-empty Start Events are alternative to the empty Start
+Event and hence they are ignored when the Process is called from another Process.
+
+13.2.5 Ad-Hoc Sub-Process
+An Ad-Hoc Sub-Process or Process contains a number of embedded inner Activities and is intended to be executed
+with a more flexible ordering compared to the typical routing of Processes. Unlike regular Processes, it does not
+contain a complete, structured BPMN diagram description—i.e., from Start Event to End Event. Instead the Ad-Hoc
+Sub-Process contains only Activities, Sequence Flows, Gateways, and Intermediate Events. An Ad-Hoc
+Sub-Process MAY also contain Data Objects and Data Associations. The Activities within the Ad-Hoc SubProcess are not REQUIRED to have incoming and outgoing Sequence Flows. However, it is possible to specify
+Sequence Flows between some of the contained Activities. When used, Sequence Flows will provide the same
+ordering constraints as in a regular Process. To have any meaning, Intermediate Events will have an outgoing
+Sequence Flows and they can be triggered multiple times while the Ad-Hoc Sub-Process is active.
+The contained Activities are executed sequentially or in parallel, they can be executed multiple times in an order that is
+only constrained through the specified Sequence Flows, Gateways, and data connections.
+Operational semantics
+At any point in time, a subset of the embedded Activities is enabled. Initially, all Activities without incoming
+Sequence Flows are enabled. One of the enabled Activities is selected for execution. This is not done by the
+implementation but usually by a Human Performer. If the ordering attribute is set to sequential, another enabled
+Activity can be selected for execution only if the previous one has terminated. If the ordering attribute is set to
+parallel, another enabled Activity can be selected for execution at any time. This implies the possibility of the
+multiple parallel instances of the same inner Activity.
+After each completion of an inner Activity, a condition specified through the completionCondition attribute
+is evaluated:
+If false, the set of enabled inner Activities is updated and new Activities can be selected for execution.
+If true, the Ad-Hoc Sub-Process completes without executing further inner Activities. In case the ordering
+attribute is set to parallel and the attribute cancelRemainingInstances is true, running instances of inner
+Activities are canceled. If cancelRemainingInstances is set to false, the Ad-Hoc Sub-Process
+completes after all remaining inner instances have completed or terminated.
+When an inner Activity with outgoing Sequence Flows completes, a number of tokens are produced on its
+outgoing Sequence Flows. This number is specified through its attribute completionQuantity. The
+resulting state MAY contain also other tokens on incoming Sequence Flows of either Activities, converging
+Parallel or Complex Gateways, or an Intermediate Event. Then all tokens are propagated as far as possible,
+i.e., all activated Gateways are executed until no Gateway and Intermediate Event is activated anymore.
+Business Process Model and Notation, v2.0
+
+441
+
+Consequently, a state is obtained where each token is on an incoming Sequence Flow of either an inner Activity,
+a converging Parallel or Complex Gateway or an Intermediate Event. An inner Activity is now enabled if it
+has either no incoming Sequence Flows or there are sufficiently many tokens on its incoming Sequence Flows
+(as specified through startQuantity).
+Workflow patterns: WCP-17 Interleaved parallel routing.
+
+13.2.6 Loop Activity
+The Loop Activity is a type of Activity that acts as a wrapper for an inner Activity that can be executed multiple times
+in sequence.
+Operational semantics: Attributes can be set to determine the behavior. The Loop Activity executes the inner Activity
+as long as the loopCondition evaluates to true. A testBefore attribute is set to decide when the loopCondition should be
+evaluated: either before the Activity is executed or after, corresponding to a pre- and post-tested loop respectively. A
+loopMaximum attribute can be set to specify a maximal number of iterations. If it is not set, the number is unbounded.
+Workflow Patterns Support: WCP-21 Structured Loop.
+
+13.2.7 Multiple Instances Activity
+The multi-instance (MI) Activity is a type of Activity that acts as a wrapper for an Activity which has multiple
+instances spawned in parallel or sequentially.
+Operational semantics: The MI specific attributes are used to configure specific behavior. The attribute isSequential
+determines whether instances are generated sequentially (true) or in parallel (false). The number of instances to be
+generated is either specified by the integer-valued Expression loopCardinality or as the cardinality of a specific
+collection-valued data item of the data input of the MI Activity. The latter is described in detail below.
+The number of instances to be generated is evaluated once. Subsequently the number of instances are generated. If the
+instances are generated sequentially, a new instance is generated only after the previous has been completed. Otherwise,
+multiple instances to be executed in parallel are generated.
+Attributes are available to support the different possibilities of behavior. The completionCondition Expression
+is a boolean predicate that is evaluated every time an instance completes. When evaluated to true, the remaining instances
+are cancelled, a token is produced for the outgoing Sequence Flows, and the MI Activity completes.
+The attribute behavior defines if and when an Event is thrown from an Activity instance that is about to complete. It
+has values of none, one, all, and complex, assuming the following behavior:
+none: an EventDefinition is thrown for all instances completing.
+one: an EventDefinition is thrown upon the first instance completing.
+all: no Event is ever thrown.
+complex: the complexBehaviorDefinitions are consulted to determine if and which Events to throw.
+For the behaviors of none and one, an EventDefinition (which is referenced from
+MultipleInstanceLoopCharacteristics through the noneEvent and oneEvent associations, respectively)
+is thrown which automatically carries the current runtime attributes of the MI Activity. That is, the ItemDefinition
+of these SignalEventDefinitions is implicitly given by the specific runtime attributes of the MI Activity.
+
+442
+
+Business Process Model and Notation, v2.0
+
+The complexBehaviorDefinition association references multiple ComplexBehaviorDefinition entities
+which each point to a boolean condition being a FormalExpression and an Event which is an
+ImplicitThrowEvent. Whenever an Activity instance completes, the conditions of all
+ComplexBehaviorDefinitions are evaluated. For each ComplexBehaviorDefinition whose condition is
+evaluated to true, the associated Event is automatically thrown. That is, a single Activity completion can lead to
+multiple different Events that are thrown. The Events can then be caught on the boundary of the MI Activity. Multiple
+ComplexBehaviorDefinitions offer an easy way of implicitly spawning different flow at the MI Activity
+boundary for different situations indicating different states of progress in the course of executing the MI Activity.
+The completionCondition, the condition in the ComplexBehaviorDefinition, and the
+DataInputAssociation of the Event in the ComplexBehaviorDefinition can refer to the MI Activity
+instance attributes and the loopDataInput, loopDataOutput, inputDataItem, and outputDataItem that
+are referenced from the MultiInstanceLoopCharacteristics.
+In practice, an MI Activity is executed over a data collection, processing as input the data values in the collection and
+producing as output data values in a collection. The input data collection is passed to the MI outer Activity’s
+loopDataInput from a Data Object in the Process scope of the MI Activity. Under BPMN data flow constraints,
+the Data Object is linked to MI activity’s loopDataInput through a DataInputAssociation. To indicate that
+the Data Object is a collection, its respective symbol is marked with the MI indicator (three-bar). The items of the
+loopDataInput collection are used to determine the number of instances REQUIRED to be executed (whether
+sequentially or in parallel). Accordingly, the inner instances are created and data values from the loopDataInput are
+extracted and assigned to the respective instances. Specifically, the values from the loopDataInput items are passed
+to an inputDataItem, created in the scope of the outer Activity. The value in the inputDataItem can be passed
+to the loopDataInput of each inner instance, where a DataInputAssociation links both. The process of
+extraction is left under-specified. In practice, it would entail a special-purpose mediator which not only provides the
+extraction and data assignment, but also any necessary data transformation.
+Each instance processes the data value of its DataInput. It produces a value in its DataOutput if it completes
+successfully. The DataOutPut value of the instance is passed to a corresponding outputDataItem in the outer
+Activity, where a DataOutputAssociation links both. Each outputDataItem value is updated in the
+loopDataOutput collection, in the corresponding item. The mechanism of this update is left underspecified, and again
+would be implemented through a special purpose mediator. The loopDataOutput is passed to the MI Activity’s
+Process scope through a Data Object that has a DataOutputAssociation linking both.
+It should be noted that the collection in the Process scope should not be accessible until all its items have been written
+to. This is because, it could be accessed by an Activity running concurrently, and therefore control flow through token
+passing cannot guarantee that the collection is fully written before it is accessed.
+The MI Activity is compensated only if all its instances have completed successfully.
+Workflow Patterns Support: WCP-21 Structured Loop, Multiple Instance Patterns WCP 13, 14, 34, 36
+
+Business Process Model and Notation, v2.0
+
+443
+
+13.3 Gateways
+This section describes the behavior of Gateways.
+
+13.3.1 Parallel Gateway (Fork and Join)
+
+X1
+
+Y1
+
+Xm
+
+Yn
+
+Figure 13.3 - Merging and Branching Sequence Flows for a Parallel Gateway
+
+On the one hand, the Parallel Gateway is used to synchronize multiple concurrent branches (merging behavior). On the
+other hand, it is used to spawn new concurrent threads on parallel branches (branching behavior).
+Table 13.1 – Parallel Gateway Execution Semantics
+
+Operational Semantics
+
+The Parallel Gateway is activated if there is at least one token on each
+incoming Sequence Flow.
+The Parallel Gateway consumes exactly one token from each incoming
+Sequence Flow and produces exactly one token at each outgoing
+Sequence Flow.
+If there are excess tokens at an incoming Sequence Flow, these tokens
+remain at this Sequence Flow after execution of the Gateway.
+
+Exception Issues
+
+The Parallel Gateway cannot throw any exception.
+
+Workflow Patterns Support
+
+Parallel Split (WCP-2)
+Synchronization (WCP-3)
+
+444
+
+Business Process Model and Notation, v2.0
+
+13.3.2 Exclusive Gateway (Exclusive Decision (data-based) and Exclusive Merge)
+
+X1
+
+Cond1
+
+Y1
+
+Cond2
+
+Xm
+
+Default
+
+Y2
+
+Y3
+
+Figure 13.4 - Merging and Branching Sequence Flows for an Exclusive Gateway
+
+The Exclusive Gateway has pass-through semantics for a set of incoming branches (merging behavior). Further on,
+each activation leads to the activation of exactly one out of the set of outgoing branches (branching behavior).
+Table 13.2 – Exclusive Gateway Execution Semantics
+
+Operational Semantics
+
+Each token arriving at any incoming Sequence Flows activates the gateway and is routed to exactly one of the outgoing Sequence Flows.
+In order to determine the outgoing Sequence Flows that receives the
+token, the conditions are evaluated in order. The first condition that evaluates to true determines the Sequence Flow the token is sent to. No more
+conditions are henceforth evaluated.
+If and only if none of the conditions evaluates to true, the token is passed
+on the default Sequence Flow.
+In case all conditions evaluate to false and a default flow has not been
+specified, an exception is thrown.
+
+Exception Issues
+
+The exclusive gateway throws an exception in case all conditions
+evaluate to false and a default flow has not been specified.
+
+Workflow Patterns Support
+
+Exclusive Choice (WCP-4)
+Simple Merge (WCP-5)
+Multi-Merge (WCP-8)
+
+Business Process Model and Notation, v2.0
+
+445
+
+13.3.3
+
+X1
+
+Inclusive Gateway (Inclusive Decision and Inclusive Merge)
+
+Cond1
+
+Y1
+
+Cond2
+
+Xm
+
+Default
+
+Y2
+
+Y3
+
+Figure 13.5 - Merging and Branching Sequence Flows for an Inclusive Gateway
+
+The Inclusive Gateway synchronizes a certain subset of branches out of the set of concurrent incoming branches
+(merging behavior). Further on, each firing leads to the creation of threads on a certain subset out of the set of outgoing
+branches (branching behavior).
+
+446
+
+Business Process Model and Notation, v2.0
+
+Table 13.3 – Inclusive Gateway Execution Semantics
+
+Operational Semantics
+
+The Inclusive Gateway is activated if
+• At least one incoming Sequence Flow has at least one token and
+• For every directed path formed by sequence flow that
+- starts with a Sequence Flow f of the diagram that has a token,
+- ends with an incoming Sequence Flow of the inclusive gateway
+that has no token, and
+- does not visit the Inclusive Gateway,
+• There is also a directed path formed by Sequence Flow that
+- starts with f,
+- ends with an incoming Sequence Flow of the inclusive gateway
+that has a token, and
+- does not visit the Inclusive Gateway.
+Upon execution, a token is consumed from each incoming Sequence
+Flow that has a token. A token will be produced on some of the outgoing
+Sequence Flows.
+In order to determine the outgoing Sequence Flows that receive a token,
+all conditions on the outgoing Sequence Flows are evaluated. The evaluation does not have to respect a certain order.
+For every condition which evaluates to true, a token MUST be passed on
+the respective Sequence Flow.
+If and only if none of the conditions evaluates to true, the token is passed
+on the default Sequence Flow.
+In case all conditions evaluate to false and a default flow has not been
+specified, the Inclusive Gateway throws an exception.
+
+Exception Issues
+
+The inclusive gateway throws an exception in case all conditions evaluate
+to false and a default flow has not been specified.
+
+Workflow Patterns Support
+
+Multi-Choice (WCP-6)
+Structured Synchronizing Merge (WCP-7)
+Acyclic Synchronizing Merge (WCP-37)
+General Synchronizing Merge (WCP-38)
+
+Business Process Model and Notation, v2.0
+
+447
+
+13.3.4 Event-based Gateway (Exclusive Decision (event-based))
+X1
+
+Y1
+
+Xm
+
+Yn
+
+Figure 13.6 - Merging and branching Sequence Flows for an Event-Based Gateway
+
+The Event-Based Gateway has pass-through semantics for a set of incoming branches (merging behavior). Exactly one
+of the outgoing branches is activated afterwards (branching behavior), depending on which of Events of the Gateway
+configuration is first triggered. The choice of the branch to be taken is deferred until one of the subsequent Tasks or
+Events completes. The first to complete causes all other branches to be withdrawn.
+When used at the Process start as a Parallel Event Gateway, only message-based triggers are allowed. The
+Message triggers that are part of the Gateway configuration MUST be part of a Conversation with the same
+correlation information. After the first trigger instantiates the Process, the remaining Message triggers will be a part
+of the Process instance that is already active (rather than creating new Process instances).
+Table 13.4 – Event-Based Gateway Execution Semantics
+
+Exception Issues
+
+The event-based gateway cannot throw any exception.
+
+Workflow Patterns Support
+
+Deferred Choice (WCP-16)
+
+13.3.5 Complex Gateway (related to Complex Condition and Complex Merge)
+
+x1
+
+Cond1
+Condn
+
+xm
+
+y1
+yn
+
+Default
+
+Figure 13.7 - Merging and branching Sequence Flows for a Complex Gateway
+
+The Complex Gateway facilitates the specification of complex synchronization behavior, in particular race situations.
+The diverging behavior is similar to the Inclusive Gateway. Each incoming gate of the Complex Gateway has an
+attribute activationCount, which can be used in an Expression as an integer-valued variable. This variable
+represents the number of tokens that are currently on the respective incoming Sequence Flows. The Complex
+Gateway has an attribute activationExpression. An activationExpression is a boolean Expression
+448
+
+Business Process Model and Notation, v2.0
+
+that refers to data and to the activationCount of incoming gates. For example, an activationExpression
+could be x1+x2+…+xm >= 3 stating that it needs 3 out of the m incoming gates to have a token in order to proceed. To
+prevent undesirable oscillation of activation of the Complex Gateway, ActivationCount variables should only be
+used in subexpressions of the form expr >= const where expr is an arithmetic Expression that uses only addition and
+const is an Expression whose evaluation remains constant during execution of the Process.
+Each outgoing Sequence Flow of the Complex Gateway has a boolean condition that is evaluated to determine
+whether that Sequence Flow receives a token during the execution of the Gateway. Such a condition MAY refer to
+internal state of the Complex Gateway. There are two states: waiting for start (represented by the runtime attribute
+waitingForStart = true) and waiting for reset (waitingForStart=false).
+
+Business Process Model and Notation, v2.0
+
+449
+
+Table 13.5 – Semantics of the Complex Gateway
+
+Operational Semantics
+
+The Complex Gateway is in one of the two states: waiting for start or waiting for reset,
+initially it is in waiting for start. If it is waiting for start, then it waits for the activationExpression to become true. The activationExpression is not evaluated
+before there is at least one token on some incoming Sequence Flow. When it
+becomes true, a token is consumed from each incoming Sequence Flow that has a
+token. To determine which outgoing Sequence Flow receive a token, all conditions on
+the outgoing Sequence Flows are evaluated (in any order). Those and only those that
+evaluate to true receive a token. If no condition evaluates to true, and only then, the
+default Sequence Flow receives a token. If no default flow is specified an exception is
+thrown. The Gateway changes its state to waiting for reset.The Gateway remembers
+from which of the incoming Sequence Flows it consumed tokens in the first phase.
+When waiting for reset, the Gateway waits for a token on each of those incoming
+Sequence Flows from which it has not yet received a token in the first phase unless
+such a token is not expected according to the join behavior of an inclusive Gateway.
+More precisely, the Gateway being waiting for reset, resets when for every directed
+path formed by sequence flow that
+- starts with a Sequence Flow f of the diagram that has a token,
+- ends with an incoming Sequence Flow of the Complex Gateway that has
+no token and has not consumed a token in the first phase, and that
+- does not visit the Complex Gateway,
+•
+
+There is also a directed path formed by Sequence Flow that
+- starts with f,
+- ends with an incoming Sequence Flow of the Complex Gateway that has a
+token or from which a token was consumed in the first phase, and that,
+- does not visit the Complex Gateway
+
+If the Complex Gateway is contained in a Sub-Process, then no paths are
+considered that cross the boundary of that Sub-Process.
+When the Gateway resets, it consumes a token from each incoming Sequence Flow
+that has a token and from which it had not yet consumed a token in the first phase. It
+then evaluates all conditions on the outgoing Sequence Flows (in any order) to
+determine which Sequence Flows receives a token. Those and only those that
+evaluate to true receive a token. If no condition evaluates to true, and only then, the
+default Sequence Flow receives a token. The Gateway changes its state back to the
+state waiting for start. Note that the Gateway might not produce any tokens in this
+phase and no exception is thrown. Note that the conditions on the outgoing Sequence
+Flows MAY evaluate differently in the two phases, e.g., by referring to the state of the
+Gateway (runtime attribute waitingForStart).
+Note that if the activationCondition never becomes true in the first phase, tokens
+are blocked indefinitely at the Complex Gateway, which MAY cause a deadlock of the
+entire Process
+
+450
+
+Business Process Model and Notation, v2.0
+
+Exception issues
+
+The Complex Gateway throws an exception when it is activated in the state waiting
+for start, no condition on any outgoing Sequence Flow evaluates to true and no
+default Sequence Flow is specified.
+
+Workflow Patterns Support
+
+Structured Discriminator (WCP-9)
+Blocking Discriminator (WCP-28)
+Structured Partial Join (WCP-30)
+Blocking Partial Join (WCP-31)
+
+13.4 Events
+This section describes the handling of Events.
+
+13.4.1 Start Events
+For single Start Events, handling consists of starting a new Process instance each time the Event occurs. Sequence
+Flows leaving the Event are then followed as usual.
+If the Start Event participates in a Conversation that includes other Start Events, a new Process instance is only
+created if none already exists for the specific Conversation (identified through its associated correlation information) of
+the Event occurrence.
+A Process can also be started via an Event-Based Gateway. In that case, the first matching Event will create a new
+instance of the Process, and waiting for the other Events originating from the same decision stops, following the usual
+semantics of the Event-Based Exclusive Gateway. Note that this is the only scenario where a Gateway can exist
+without an incoming Sequence Flows.
+It is possible to have multiple groups of Event-Based Gateways starting a Process, provided they participate in the
+same Conversation and hence share the same correlation information. In that case, one Event out of each group needs
+to arrive; the first one creates a new Process instance, while the subsequent ones are routed to the existing instance,
+which is identified through its correlation information.
+
+13.4.2 Intermediate Events
+For Intermediate Events, the handling consists of waiting for the Event to occur. Waiting starts when the
+Intermediate Event is reached. Once the Event occurs, it is consumed. Sequence Flows leaving the Event are
+followed as usual. For catch Message Intermediate Events, the Message correlation behavior is the same as for
+Receive Tasks -- see Section 13.2.3.
+
+13.4.3 Intermediate Boundary Events
+For boundary Events, handling first consists of consuming the Event occurrence. If the cancelActivity attribute is
+set, the Activity the Event is attached to is then cancelled (in case of a multi-instance, all its instances are cancelled); if
+the attribute is not set, the Activity continues execution (only possible for Message, Signal, Timer, and Conditional
+Events, not for Error Events). Execution then follows the Sequence Flow connected to the boundary Event. For
+boundary Message Intermediate Events, the Message correlation behavior is the same as for Receive Tasks -see Section 13.2.3.
+
+Business Process Model and Notation, v2.0
+
+451
+
+13.4.4 Event Sub-Processes
+Event Sub-Processes allow to handle an Event within the context of a given Sub-Processes or Process. An
+Event Sub-Process always begins with a Start Event, followed by Sequence Flows. Event Sub-Processes are
+a special kind of Sub-Process: they create a scope and are instantiated like a Sub-Process, but they are not
+instantiated by normal control flow but only when the associated Start Event is triggered. Event Sub-Processes are
+self-contained and MUST not be connected to the rest of the Sequence Flows in the Sub-Processes; also they
+cannot have attached boundary Events. They run in the context of the Sub-Process, and thus have access to its
+context.
+An Event Sub-Process cancels execution of the enclosing Sub-Process, if the isInterrupting attribute of its
+Start Event is set; for a multi-instance Activity this cancels only the affected instance. If the isInterrupting
+attribute is not set (not possible for an Error Event Sub-Processes), execution of the enclosing Sub-Process
+continues in parallel to the Event Sub-Process.
+An Event Sub-Process can optionally retrigger the Event through which it was triggered, to cause its continuation
+outside the boundary of the associated Sub-Process. In that case the Event Sub-Process is performed when the
+Event occurs; then control passes to the boundary Event, possibly canceling the Sub-Process (including running
+handlers).
+Operational semantics
+An Event Sub-Process becomes initiated, and thus Enabled and Running, through the Activity to which it is
+attached. The Event Handler MAY only be initiated after the parent Activity is Running.
+More than one non-interrupting Event Handler MAY be initiated and they MAY be initiated at different times. There
+might be multiple instances of the non-interrupting Event Handler at a time. For Event Sub-Processes triggered
+by a Message, the Message correlation behavior is the same as for Receive Tasks -- see Section 13.2.3.
+Only one interrupting Event Handler MAY be initiated for a given EventDefinition within the context of the
+parent Activity. Once the interrupting Event Handler is started, the parent Activity is interrupted and no new Event
+Handlers can be initiated or started.An Event Sub-Process completes when all tokens have reached an End
+Event, like any other Sub-Process. If the parent Activity enters the state Completing, it remains in that state until
+all contained active Event Sub-Processes have completed. While the parent Activity is in the Completing state,
+no new Event Sub-Processes can be initiated.
+If an interrupting Event Sub-Process is started by an error, then the parent Activity enters the state Failing and
+remains in this state until the interrupting Event Handler reaches a final state. During this time, the running Event
+Handler can access to the context of the parent Activity. However, new Event Handlers MUST NOT be started.
+Similarly, if an interrupting Event Sub-Process is started by a non error (e.g., Escalation), then the parent
+Activity enters the state Terminating and remains in this state until the interrupting Event Handler reaches a final
+state. During this time, the running Event Handler can access to the context of the parent Activity. However, new
+Event Handlers MUST NOT be started.
+
+13.4.5 Compensation
+Compensation is concerned with undoing steps that were already successfully completed, because their results and
+possibly side effects are no longer desired and need to be reversed. If an Activity is still active, it cannot be compensated,
+but rather needs to be canceled. Cancellation in turn can result in compensation of already successfully completed
+portions of an active Activity, in case of a Sub-Process.
+
+452
+
+Business Process Model and Notation, v2.0
+
+Compensation is performed by a compensation handler. A compensation handler can either be a Compensation Event
+Sub-Process (for a Sub-Process or Process), or an associated Compensation Activity (for any Activity). A
+compensation handler performs the steps necessary to reverse the effects of an Activity. In case of a Sub-Process, its
+Compensation Event Sub-Process has access to Sub-Process data at the time of its completion (“snapshot data”).
+Compensation is triggered by a throw Compensation Event, which typically will be raised by an error handler, as part
+of cancellation, or recursively by another compensation handler. That Event specifies the Activity for which
+compensation is to be performed, either explicitly or implicitly.
+Compensation Handler
+A compensation handler is a set of Activities that are not connected to other portions of the BPMN model. The
+compensation handler starts with a catch Compensation Event. That catch Compensation Event either is a
+boundary Event, or, in case of a Compensation Event Sub-Process, the handler’s Start Event.
+A compensation handler connected via a boundary Event can only perform “black-box” compensation of the original
+Activity. This compensation is modeled with a specialized Compensation Activity.
+A Compensation Event Sub-Process is contained within a Process or a Sub-Processes. It can access data that
+is part of its parent, snapshot at the point in time when its parent has completed. A compensation Event Sub-Process
+can in particular recursively trigger compensation for Activities contained in that its parent.
+It is possible to specify that a Sub-Process can be compensated without having to define the compensation handler.
+The Sub-Process attribute compensable, when set, specifies that default compensation is implicitly defined, which
+recursively compensates all successfully completed Activities within that Sub-Process, invoking them in reverse order
+of their forward execution.
+Compensation Triggering
+Compensation is triggered using a throw Compensation Event, which can either be an Intermediate or an End
+Event. The Activity which needs to be compensated is referenced. If the Activity is clear from the context, it doesn’t
+have to be specified and defaults to the current Activity. A typical scenario for that is an inline error handler of a SubProcess that cannot recover the error, and as a result would trigger compensation for that Sub-Process. If no
+Activity is specified in a “global” context, all completed Activities in the Process are compensated.
+By default, compensation is triggered synchronously, that is, the throw Compensation Event waits for the completion
+of the triggered compensation handler. Alternatively, compensation can just be triggered without waiting for its
+completion, by setting the throw Compensation Event’s waitForCompletion attribute to false.
+Multiple instances typically exist for Loop or Multi-Instance Sub-Processes. Each of these has its own instance of
+its Compensation Event Sub-Process, which has access to the specific snapshot data that was current at the time of
+completion of that particular instance. Triggering compensation for the Multi-Instance Sub-Process individually
+triggers compensation for all instances within the current scope. If compensation is specified via a boundary
+compensation handler, this boundary compensation handler also is invoked once for each instance of the Multi-Instance
+Sub-Process in the current scope.
+Relationship between Error Handling and Compensation
+Compensation employs a “presumed abort principle”, which has a number of consequences. First, only completed
+Activities are compensated; compensation of a failed Activity results in an empty operation. Thus, when an Activity
+fails, i.e., is left because an error has been thrown, it’s the error handler’s responsibility to ensure that no further
+
+Business Process Model and Notation, v2.0
+
+453
+
+compensation will be necessary once the error handler has completed. Second, if no error Event Sub-Process is
+specified for a particular Sub-Process and a particular error, the default behavior is to automatically call compensation
+for all contained Activities of that Sub-Process if that error occurs, thus ensuring the “presumed abort” invariant.
+Operational Semantics
+A Compensation Event Sub-Process becomes enabled when its parent Activity transitions into state
+Completed. At that time, a snapshot of the data associated with the parent Activity is taken and kept for later usage
+by the Compensation Event Sub-Process. In case the parent Activity is a multi-instance or loop, for each
+instance a separate data snapshot is taken, which is used when its associated Compensation Event SubProcess is triggered.
+When compensation is triggered for the parent Activity, its Compensation Event Sub-Process is activated
+and runs. The original context data of the parent Activity is restored from the data snapshot. In case the parent
+Activity is a multi-instance or loop, for each instance the dedicated snapshot is restored and a dedicated
+Compensation Event Sub-Process is activated.
+An associated Compensation Activity becomes enabled when the Activity it is associated with transitions into
+state Completed. When compensation is triggered for that Activity, the associated Compensation Activity is
+activated. In case the Activity is a multi-instance or loop, the Compensation Activity is triggered only once, too,
+and thus has to compensate the effects of all instances.
+Default compensation ensures that Compensation Activities are performed in reverse order of the execution
+of the original Activities, allowing for concurrency when there was no dependency between the original
+Activities. Dependencies between original Activities that default compensation MUST consider are the
+following
+A Sequence Flow between Activities A and B results in compensation of B to be performed before
+compensation of A.
+A data dependency between Activities A and B, e.g., through an IORules specification in B referring to data
+produced by A, results in compensation of B to be performed before compensation of A.
+If A and B are two Activities that were active as part of an Ad-Hoc Sub-Process, then compensation of B
+MUST be performed before compensation of A if A completed before B started.
+Instances of a loop or sequential multi-instance are compensated in reverse order of their forward
+completion. Instances of a parallel multi-instance can be compensated in parallel.
+If a Sub-Process A has a boundary Event connected to Activity B, then compensation of B MUST be
+performed before compensation of A if that particular Event occurred. This also applies to multi-instances and
+loops.
+
+13.4.6 End Events
+Process level end events
+For a “terminate” End Event, the Process is abnormally terminated—no other ongoing Process instances are
+affected.
+For all other End Events, the behavior associated with the Event type is performed, e.g., the associated Message is
+sent for a Message End Event, the associated signal is sent for a Signal End Event, and so on. The Process
+instance is then completed, if and only if the following two conditions hold:
+All start nodes of the Process have been visited. More precisely, all Start Events have been triggered, and for all
+starting Event-Based Gateways, one of the associated Events has been triggered.
+454
+
+Business Process Model and Notation, v2.0
+
+There is no token remaining within the Process instance.
+Sub-process level end events
+For a “terminate” End Event, the Sub-Process is abnormally terminated. In case of a multi-instance Sub-Process,
+only the affected instance is terminated—no other ongoing Sub-Process instances or higher-level Sub-Process or
+Process instances are affected.
+For a “cancel” End Event, the Sub-Process is abnormally terminated and the associated transaction is aborted.
+Control leaves the Sub-Process through a cancel intermediate boundary Event.
+For all other End Events, the behavior associated with the Event type is performed, e.g., the associated Message is
+sent for a Message End Event, the associated signal is sent for a signal End Event, and so on. The Sub-Process
+instance is then completed, if and only if the following two conditions hold:
+All start nodes of the Sub-Process have been visited. More precisely, all Start Events have been triggered, and
+for all starting Event-Based Gateways, one of the associated Events has been triggered.
+There is no token remaining within the Sub-Process instance.
+
+Business Process Model and Notation, v2.0
+
+455
+
+456
+
+Business Process Model and Notation, v2.0
+

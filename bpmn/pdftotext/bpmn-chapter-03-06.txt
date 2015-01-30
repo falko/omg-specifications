@@ -1,0 +1,347 @@
+3.2
+
+Non-Normative
+
+Activity Service
+• Additional Structuring Mechanism for the OTS specification, OMG, June 1999
+
+http://www.omg.org
+• J2EE Activity Service for Extended Transactions (JSR 95), JCP
+
+http://www.jcp.org/jsr/detail/95.jsp
+BPEL4People
+• WS-BPEL Extension for People (BPEL4People) 1.0, June 2007
+
+http://www.active-endpoints.com/active-bpel-for-people.htm
+• http://www.active-endpoints.com/active-bpel-for-people.htm
+• http://www.adobe.com/devnet/livecycle/articles/bpel4people_overview.html
+• http://dev2dev.bea.com/arch2arch/
+• http://www-128.ibm.com/developerworks/webservices/library/specification/ws-bpel4people/
+• http://www.oracle.com/technology/tech/standards/bpel4people/
+• https://www.sdn.sap.com/irj/sdn/bpel4people
+
+Business Process Definition Metamodel
+• OMG, May 2008,
+
+http://www.omg.org/docs/dtc/08-05-07.pdf
+Business Process Modeling
+• Jean-Jacques Dubray, “A Novel Approach for Modeling Business Process Definitions,” 2002
+
+http://www.ebpml.org/ebpml2.2.doc
+Business Transaction Protocol
+• OASIS BTP Technical Committee, June, 2002
+
+http://www.oasis-open.org/committees/download.php/1184/2002-06-03.BTP_cttee_spec_1.0.pdf
+Dublin Core Meta Data
+• Dublin Core Metadata Element Set, Dublin Core Metadata Initiative
+
+http://dublincore.org/documents/dces/
+ebXML BPSS
+• Jean-Jacques Dubray, “A new model for ebXML BPSS Multi-party Collaborations and Web Services Choreography,”
+
+2002
+http://www.ebpml.org/ebpml.doc
+
+Business Process Model and Notation, v2.0
+
+13
+
+OMG UML
+• Unified Modeling Language Specification V2.1.2: Superstructure, OMG, Nov 2007,
+
+http://www.omg.org/spec/UML/2.1.2/Superstructure/PDF
+Open Nested Transactions
+• Concepts and Applications of Multilevel Transactions and Open Nested Transactions, Gerhard Weikum, Hans-J.
+
+Schek, 1992
+http://citeseer.nj.nec.com/weikum92concepts.html
+RDF
+• RDF Vocabulary Description Language 1.0: RDF Schema, W3C Working Draft
+
+http://www.w3.org/TR/rdf-schema/
+SOAP 1.2
+• SOAP Version 1.2 Part 1: Messaging Framework, W3C Working Draft
+
+http://www.w3.org/TR/soap12-part1/
+• SOAP Version 1.2 Part21: Adjuncts, W3C Working Draft
+
+http://www.w3.org/TR/soap12-part2/
+UDDI
+• Universal Description, Discovery and Integration, Ariba, IBM and Microsoft, UDDI.org.
+
+http://www.uddi.org
+URI
+• Uniform Resource Identifiers (URI): Generic Syntax, T. Berners-Lee, R. Fielding, L. Masinter, IETF RFC 2396,
+
+August 1998
+http://www.ietf.org/rfc/rfc2396.txt
+WfMC Glossary
+• Workflow Management Coalition Terminology and Glossary.
+
+http://www.wfmc.org/wfmc-standards-framework.html
+Web Services Transaction
+• (WS-Transaction) 1.1, OASIS, 12 July 2007,
+
+http://www.oasis-open.org/committees/ws-tx/
+Workflow Patterns
+• Russell, N., ter Hofstede, A.H.M., van der Aalst W.M.P, & Mulyar, N. (2006). Workflow Control-Flow Patterns: A
+
+Revised View. BPM Center Report BPM-06-22, BPMcentre.org
+http://www.workflowpatterns.com/
+
+14
+
+Business Process Model and Notation, v2.0
+
+WSBPEL
+• Web Services Business Process Execution Language (WSBPEL) 2.0, OASIS Standard, April 2007
+
+http://docs.oasis-open.org/wsbpel/2.0/OS/wsbpel-v2.0-OS.html
+WS-Coordination
+• Web Services Coordination (WS-Coordination) 1.1, OASIS Standard, July 2007
+
+http://www.oasis-open.org/committees/ws-tx/
+WSDL
+• Web Services Description Language (WSDL) 2.0, W3C Proposed Recommendation, June 2007
+
+http://www.w3.org/TR/wsdl20/
+WS-HumanTask
+• Web Services Human Task (WS-HumanTask) 1.0, June 2007
+
+http://www.active-endpoints.com/active-bpel-for-people.htm
+• http://www.adobe.com/devnet/livecycle/articles/bpel4people_overview.html
+• http://dev2dev.bea.com/arch2arch/
+• http://www-128.ibm.com/developerworks/webservices/library/specification/ws-bpel4people/
+• http://www.oracle.com/technology/tech/standards/bpel4people/
+• https://www.sdn.sap.com/irj/sdn/bpel4people
+
+XML 1.0 (Second Edition)
+• Extensible Markup Language (XML) 1.0, Second Edition, Tim Bray et al., eds., W3C, 6 October 2000
+
+http://www.w3.org/TR/REC-xml
+XML-Namespaces
+• Namespaces in XML, Tim Bray et al., eds., W3C, 14 January 1999
+
+http://www.w3.org/TR/REC-xml-names
+XML-Schema
+• XML Schema Part 1: Structures, Henry S. Thompson, David Beech, Murray Maloney, Noah Mendelsohn, W3C, 2 May
+
+2001
+http://www.w3.org/TR/xmlschema-1//
+• XML Schema Part 2: Datatypes, Paul V. Biron and Ashok Malhotra, eds., W3C, 2 May 2001
+
+http://www.w3.org/TR/xmlschema-2/
+XPath
+• XML Path Language (XPath) 1.0, James Clark and Steve DeRose, eds., W3C, 16 November 1999
+
+http://www.w3.org/TR/xpath
+
+Business Process Model and Notation, v2.0
+
+15
+
+XPDL
+• Workflow Management Coalition XML Process Definition Language, version 2.0.
+
+http://www.wfmc.org/wfmc-standards-framework.html
+
+4
+
+Terms and Definitions
+
+See Annex C - Glossary.
+
+5
+
+Symbols
+
+There are no symbols defined in this specification.
+
+6
+
+Additional Information
+
+6.1
+
+Conventions
+
+The section introduces the conventions used in this document. This includes (text) notational conventions and notations
+for schema components. Also included are designated namespace definitions.
+
+6.1.1
+
+Typographical and Linguistic Conventions and Style
+
+This specification incorporates the following conventions:
+• The keywords “MUST,” “MUST NOT,” “REQUIRED,” “SHALL,” “MUST NOT,” “SHOULD,” “SHOULD NOT,”
+
+“RECOMMENDED,” “MAY,” and “OPTIONAL” in this document are to be interpreted as described in RFC-2119.
+• A term is a word or phrase that has a special meaning. When a term is defined, the term name is highlighted in bold
+
+typeface.
+• A reference to another definition, section, or specification is highlighted with underlined typeface and provides a link to
+
+the relevant location in this specification.
+• A reference to a graphical element is highlighted with a bold, capitalized word and will be presented with the Arial font
+
+(e.g., Sub-Process).
+• A reference to a non-graphical element or BPMN concept is highlighted by being italicized and will be presented with
+
+the Times New Roman font (e.g., token).
+• A reference to an attribute or model association will be presented with the Courier New font (e.g., Expression).
+• A reference to a WSBPEL element, attribute, or construct is highlighted with an italic lower-case word, usually
+
+preceded by the word “WSBPEL” and will be presented with the Courier New font (e.g., WSBPEL pick).
+• Non-normative examples are set off in boxes and accompanied by a brief explanation.
+
+16
+
+Business Process Model and Notation, v2.0
+
+• XML and pseudo code is highlighted with mono-spaced typeface. Different font colors MAY be used to highlight
+
+the different components of the XML code.
+• The cardinality of any content part is specified using the following operators:
+
+• <none> — exactly once
+• [0..1] — 0 or 1
+• [0..*] — 0 or more
+• [1..*] — 1 or more
+• Attributes separated by | and grouped within { and } — alternative values
+
+• <value> — default value
+• <type> — the type of the attribute
+
+6.1.2
+
+Abbreviations
+
+The following abbreviations are used throughout this document:
+This abbreviation
+
+Refers to
+
+WSBPEL
+
+Web Services Business Process Execution Language (see WSBPEL). This abbreviation
+refers specifically to version 2.0 of the specification.
+
+WSDL
+
+Web Service Description Language (see WSDL). This abbreviation refers specifically to the
+W3C Technical Note, 15 March 2001, but is intended to support future versions of the WSDL
+specification.
+
+6.2
+
+Structure of this Document
+
+Section 7 discusses the scope of the specification and provides a summary of the elements introduced in subsequent
+sections of the document.
+Section 8 introduces the BPMN Core that includes basic BPMN elements needed for constructing various Business
+Processes, including collaborations, orchestration Processes and Choreographies.
+Elements needed for modeling of Collaborations, orchestration Processes, Conversations, and Choreographies
+are introduced in sections 9, 10, 11 and 12, respectively.
+Section 13 introduces the BPMN visual diagram model. Section 14 defines the execution semantics for Process
+orchestrations in BPMN 2.0. Section 15 discusses a mapping of a BPMN model to WS-BPEL that is derived by
+analyzing the BPMN objects and the relationships between these objects. Exchange formats and an XSLT transformation
+between them are provided in Section 16.
+
+6.3
+
+Acknowledgements
+
+Submitting Organizations (RFP Process)
+The following companies are formal submitting members of OMG:
+Business Process Model and Notation, v2.0
+
+17
+
+• Axway
+• International Business Machines
+• MEGA International
+• Oracle
+• SAP AG
+• Unisys
+
+Supporting Organizations (RFP Process)
+The following organizations support this specification but are not formal submitters:
+• Accenture
+• Adaptive
+• BizAgi
+• Bruce Silver Associates
+• Capgemini
+• Enterprise Agility
+• France Telecom
+• IDS Scheer
+• Intalio
+• Metastorm
+• Model Driven Solutions
+• Nortel
+• Red Hat Software
+• Software AG
+• TIBCO Software
+• Vangent
+
+Finalization Task Force Voting Members
+The following organizations have been Voting Members of the BPMN 2.0 Finalization Task Force:
+• Adaptive
+• Axway Software
+• BAE SYSTEMS
+• BizAgi Ltd.
+• CA Inc.
+• Camunda Services GmbH
+• Cordys
+• DICOM
+
+18
+
+Business Process Model and Notation, v2.0
+
+• France Telecom R&D
+• Fujitsu
+• Global 360, Inc.
+• Hewlett-Packard
+• iGrafx
+• Inferware
+• Intalio
+• International Business Machines
+• KnowGravity Inc.
+• Lombardi Software
+• MITRE
+• U.S. National Institute of Standards and Technology
+• No Magic, Inc.
+• oose Innovative Informatik GmbH
+• Oracle
+• PNA Group
+• Red Hat
+• SAP AG
+• Softeam
+• Software AG Inc.
+• TIBCO
+• Trisotech
+• Visumpoint
+
+Special Acknowledgements
+The following persons were members of the core teams that contributed to the content specification: Anurag Aggarwal,
+Mike Amend, Sylvain Astier, Alistair Barros, Rob Bartel, Mariano Benitez, Conrad Bock, Gary Brown, Justin Brunt, John
+Bulles , Martin Chapman, Fred Cummins, Rouven Day, Maged Elaasar, David Frankel, Denis Gagné, John Hall, Reiner
+Hille-Doering, Dave Ings, Pablo Irassar, Oliver Kieselbach, Matthias Kloppmann, Jana Koehler, Frank Michael Kraft,
+Tammo van Lessen, Frank Leymann, Antoine Lonjon, Sumeet Malhotra, Falko Menge, Jeff Mischkinsky, Dale Moberg,
+Alex Moffat, Ralf Mueller, Sjir Nijssen, Karsten Ploesser, Pete Rivett, Michael Rowley, Bernd Ruecker, Tom Rutt,
+Suzette Samoojh, Robert Shapiro, Vishal Saxena, Axel Scheithauer, Bruce Silver, Meera Srinivasan, Antoine Toulme,
+Ivana Trickovic, Hagen Voelzer, Franz Weber, Andrea Westerinen and Stephen A. White.
+
+Business Process Model and Notation, v2.0
+
+19
+
+In addition, the following persons contributed valuable ideas and feedback that improved the content and the quality of
+this specification: im Amsden, Mariano Belaunde, Peter Carlson, Cory Casanave, Michele Chinosi, Manoj Das, Robert
+Lario, Sumeet Malhotra, Henk de Man, David Marston, Neal McWhorter, Edita Mileviciene, Vadim Pevzner, Pete Rivett,
+Jesus Sanchez, Markus Schacher, Sebastian Stein, and Prasad Yendluri.
+
+20
+
+Business Process Model and Notation, v2.0
+

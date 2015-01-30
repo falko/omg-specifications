@@ -1,0 +1,112 @@
+15
+
+Exchange Formats
+
+15.1 Interchanging Incomplete Models
+In practice, it is common for models to be interchanged before they are complete. This occurs frequently when doing
+iterative modeling, where one user (such as a subject matter expert or business person) first defines a high-level model,
+and then passes it on to another user to be completed and refined.
+Such "incomplete" models are ones in which all of the mandatory attributes have not yet been filled in, or the cardinality
+lowerbound of attributes and associations has not been satisfied.
+XMI allows for the interchange of such incomplete models. In BPMN, we extend this capability to interchange of XML
+files based on the BPMN XSD. In such XML files, implementers are expected to support this interchange by:
+• Disregarding missing attributes that are marked as 'required' in the XSD.
+• Reducing the lower bound of elements with 'minOccurs' greater than 0.
+
+15.2 Machine Readable Files
+BPMN 2.0 machine readable files, including XSD, XMI and XSLT files can be found in OMG Document
+DTC/2010-05-04, which is a zip file containing all the files:
+• XSD files are found under the XSD folder of the zip file, and the main file is XSD/BPMN20.xsd.
+• XMI files are found under the XMI folder of the zip file, and the main file is XSD/BPMN20.cmof.
+• XSLT files are found under the XSLT folder of the zip file.
+
+15.3 XSD
+
+15.3.1 Document Structure
+A domain-specific set of model elements is interchanged in one or more BPMN files. The root element of each file
+MUST be <bpmn:definitions>. The set of files MUST be self-contained, i.e. all definitions that are used in a file MUST
+be imported directly or indirectly using the <bpmn:import> element.
+Each file MUST declare a "targetNamespace" which MAY differ between multiple files of one model.
+BPMN files MAY import non-BPMN files (such as XSDs and WSDLs) if the contained elements use external definitions.
+Example:
+main.bpmn
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn=""http://www.omg.org/spec/BPMN/20100524/MODEL"
+targetNamespace="sample1.main" xmlns:main="sample1.main" xmlns:s1="sample1.semantic1">
+<bpmn:import location="semantic1.bpmn" namespace="sample1.semantic1"
+Business Process Model and Notation, v2.0
+
+487
+
+importType=""http://www.omg.org/spec/BPMN/20100524/MODEL" />
+<bpmn:import location="diagram1.bpmn" namespace="sample1.diagram1"
+importType=""http://www.omg.org/spec/BPMN/20100524/MODEL" />
+<bpmn:collaboration>
+<bpmn:participant processRef="s1:process1" id="collaboration1"></bpmn:participant>
+<!-more content here -->
+</bpmn:collaboration>
+</bpmn:definitions>
+semantic1.bpmn
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn=""http://www.omg.org/spec/BPMN/20100524/MODEL "targetNamespace="sample1.semantic1"
+xmlns:s1="sample1.semantic1">
+<bpmn:process id="process1">
+<!-- content here -->
+</bpmn:process>
+</bpmn:definitions>
+diagram1.bpmn
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn=""http://www.omg.org/spec/BPMN/20100524/MODEL"
+targetNamespace="sample1.diagram1"
+xmlns:bpmndi="http://www.omg.org/spec/BPMNDI/1.0.0"
+xmlns:d1="sample1.diagram1" xmlns:s1="sample1.semantic1"
+xmlns:main="sample1.main">
+<bpmndi:BPMNDiagram scale="1.0" unit="Pixel">
+<bpmndi:BPMNPlane element="main:collaboration1">
+<!-- content here -->
+</bpmndi:BPMNPlane>
+</bpmndi:BPMNDiagram>
+</bpmn:definitions>
+
+15.3.2 References within the BPMN XSD
+All BPMN elements contain IDs and within the BPMN XSD, references to elements are expressed via these IDs. The
+XSD IDREF type is the traditional mechanism for referencing by IDs, however it can only reference an element within
+the same file. The BPMN XSD supports referencing by ID, across files, by utilizing QNames. A QName consists of two
+parts: an optional namespace prefix and a local part. When used to reference a BPMN element, the local part is expected
+to be the ID of the element.
+For example, consider the following Process
+<process name="Patient Handling" id="Patient_Handling_Process_ID1"> ... </process>
+When this Process is referenced from another file, the reference would take the following form:
+processRef="process_ns:Patient_Handling_Process_ID1"
+
+488
+
+Business Process Model and Notation, v2.0
+
+where "process_ns" is the namespace prefix associated with the process namespace upon import, and
+"Patient_Handling_Process_ID1" is the value of the id attribute for the Process.
+The BPMN XSD utilizes IDREFs wherever possible and resorts to QName only when references can span files. In both
+situations however, the reference is still based on IDs.
+
+15.4 XMI
+XMI allows the use of tags to tailor the documents that are produced using XMI. The following tage have been explicitly
+set for serializing BPMN 2.0 models; the others are left at their default values:
+• tag nsURI set to “"http://www.omg.org/spec/BPMN/20100524/XMI"
+• tag nsPrefix set to “bpmn”
+
+The BPMN 2.0 XMI for the interchange of diagram information will be published once the OMG Diagram Definition
+RFP process has produced a specification that is sufficiently complete such that the BPMN 2.0 FTF can align the BPMN
+2.0 specification with the Diagram Definition specification.
+
+15.5 XSLT Transformation between XSD and XMI
+• The XSLT transformation from XSD to XMI is in the file XSLT/BPMN20-ToXMI.xslt
+• The XSLT transformation from XMI to XSD is in the file XSLT/BPMN20-FromXMI.xslt
+
+Business Process Model and Notation, v2.0
+
+489
+
+490
+
+Business Process Model and Notation, v2.0
+
