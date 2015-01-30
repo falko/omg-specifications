@@ -20,9 +20,9 @@ and implementations."
 
 Business Process Model and Notation, v2.0
 
-491
+479
 
-492
+480
 
 Business Process Model and Notation, v2.0
 

@@ -23,7 +23,6 @@ The major technical changes include:
     • A formal metamodel as shown through the class diagram figures
 
     • Interchange formats for abstract syntax model interchange in both XMI and XSD
-
     • Interchange formats for diagram interchange in both XMI and XSD
 
     • XSLT transformations between the XMI and XSD formats
@@ -37,5 +36,5 @@ Other technical changes include:
 
 
 
-Business Process Model and Notation, v2.0                                             491
-492   Business Process Model and Notation, v2.0
+Business Process Model and Notation, v2.0                                                                            479
+480   Business Process Model and Notation, v2.0

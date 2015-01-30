@@ -1,7 +1,3 @@
-510
-
-Business Process Model and Notation, v2.0
-
 Annex C: Glossary
 (informative)
 
@@ -75,7 +71,7 @@ BPMN model. The two Participants represent two separate BPML processes.
 
 Business Process Model and Notation, v2.0
 
-511
+499
 
 Collapsed Sub-Process
 
@@ -147,7 +143,7 @@ display the Flow Objects within.
 
 F
 
-512
+500
 
 Business Process Model and Notation, v2.0
 
@@ -171,7 +167,7 @@ A point in the Process where one Sequence Flow path is split into two or more pa
 that are run in parallel within the Process, allowing multiple activities to run
 simultaneously rather than sequentially. BPMN uses multiple outgoing Sequence
 Flows from Activities or Events or a Parallel Gateway to perform a Fork. Also
-known as "AND-Split."
+known as “AND-Split.”
 
 I
 Intermediate Event
@@ -188,7 +184,7 @@ Join
 
 A point in the Process where two or more parallel Sequence Flow paths are combined
 into one Sequence Flow path. BPMN uses a Parallel Gateway to perform a Join. Also
-known as "AND-Join."
+known as “AND-Join.”
 
 L
 Lane
@@ -205,7 +201,7 @@ A point in the Process where two or more alternative Sequence Flow paths are
 combined into one Sequence Flow path. No synchronization is required because no
 parallel activity runs at the join point. BPMN uses multiple incoming Sequence
 Flows for an Activity or an Exclusive Gateway to perform a Merge. Also know as
-"OR-Join."
+“OR-Join.”
 
 Message
 
@@ -222,7 +218,7 @@ N
 
 Business Process Model and Notation, v2.0
 
-513
+501
 
 Normal Flow
 
@@ -239,13 +235,13 @@ Participant
 A business entity (e.g., a company, company division, or a customer) or a business
 role (e.g., a buyer or a seller) that controls or is responsible for a business process. If
 Pools are used, then a Participant would be associated with one Pool. In a
-Collaboration, Participants are informally known as "Pools.".
+Collaboration, Participants are informally known as “Pools.”
 
 Pool
 
 A Pool represents a Participant in a Collaboration. Graphically, a Pool is a container
 for partitioning a Process from other Pools/Participants. A Pool is not required to
-contain a Process, i.e., it can be a "black box."
+contain a Process, i.e., it can be a “black box.”
 
 Private Business Process
 
@@ -294,7 +290,7 @@ activities. BPMN has two different types of Swimlanes. See “Pool” and “Lan
 T
 Task
 
-514
+502
 
 An atomic activity that is included within a Process. A Task is used when the work
 in the Process is not broken down to a finer level of Process Model detail. Generally,
@@ -307,7 +303,7 @@ Token
 
 A theoretical concept that is used as an aid to define the behavior of a Process that is
 being performed. The behavior of Process elements can be defined by describing
-how they interact with a token as it "traverses" the structure of the Process. For
+how they interact with a token as it “traverses” the structure of the Process. For
 example, a token will pass through an Exclusive Gateway, but continue down only
 one of the Gateway's outgoing Sequence Flow.
 
@@ -334,9 +330,309 @@ conditional indicator (mini-diamond) or an intervening Gateway.
 
 Business Process Model and Notation, v2.0
 
-515
+503
 
-516
+504
+
+Business Process Model and Notation, v2.0
+
+INDEX
+A
+Abbreviations 17
+Abstract Task 430, 449
+Activities 426
+Activity 151
+Activity Boundary Connections 258
+Activity Service 13
+Ad-Hoc Sub-Process 180, 431
+Artifacts 66
+Attributes for Boundary Events 257
+Auditing element 311
+B
+BPEL Process Execution Conformance 1, 10
+BPEL Process Execution Semantics Conformance type 1
+BPEL4People 13
+BPMN 1.2 22
+BPMN Complete Conformance 1
+BPMN Extended Modeling Elements 31
+BPMN Process Modeling Conformance 8
+BPMNDiagram 370
+BPMNEdge 375
+BPMNLabel 376
+BPMNLabelStyle 377
+BPMNPlane 371
+BPMNShape 372
+Business Process Definition Metamodel 13
+Business Process Management (BPM) 21
+Business Process Modeling 13
+Business Rule Task 163, 430
+Business Transaction Protocol 13
+C
+Call Activity 183
+Call Activity Mapping 218
+Call Choreography 333
+Call Conversation 131
+CallableElement 186
+Cancel Events 263
+Cancellation 235
+CatchEvent 236
+Changes from BPMN, v1.2 479
+Choreographies 25
+Choreography 315
+Choreography Activity 322
+Choreography Conformance 10
+Choreography Conformance type 1
+Choreography Elements 10
+Choreography Modeling Conformance 1
+Choreography Semantics 11
+Choreography Task 323
+Choreography Types 10
+
+Business Process Model and Notation, v2.0
+
+Collaboration 109
+Collaboration element 2
+Compensation 235, 302, 441
+Compensation Events 263
+Compensation handler 303, 441
+Compensation triggering 442
+CompensationEventDefinition 264
+Completing 429
+Complex Gateway 295, 361, 437
+ComplexBehaviorDefinition 194
+Compliance 1
+Conditional Sequence Flows 320
+ConditionalEventDefinition 265
+Conformance 1
+Context-based correlation 78
+Conventions 16
+Conversation 26, 124, 426
+Conversation Link 134
+ConversationAssociation 135
+ConversationNode 128
+Core Elements 49
+Core Structure 49
+Correlation 74
+CorrelationKey 76
+Correlations 136
+D
+Data Input 213
+Data Object 205
+Data Object Reference 206
+Data Output 215
+DataAssociation 221
+DataInputAssociation 224
+DataOutputAssociation 224
+DataState 206
+DataStore 208
+DD architecture 481
+Default Sequence Flows 320
+Descriptive conformance sub-class elements 3
+Diagram Commons (DC) 367, 483
+Diagram Definition (DD) 367
+Diagram extensions 8
+Diagram Interchange (DI) 367, 487
+Diagram Point of View 26
+Diagram Types 41
+Documentation element 56
+Dublin Core Meta Data 13
+E
+ebXML BPSS 13
+Elements 27
+End Events 246, 343, 443
+EndPoint element 105
+Error 81
+ErrorEventDefinition 266
+Escalation 82
+
+505
+
+EscalationEventDefinition 267
+Event 83, 233
+Event Definitions 260
+Event Gateway 426
+Event Sub-Process 176, 440
+Event-Based Gateway 297, 300, 350, 437
+Events 439, 455
+Exclusive Gateway 292, 345, 435
+Exclusive Gateway (Decision) 290
+Execution Conformance 10
+Expressions 468
+Extensibility 44, 57
+ExtensionAttributeDefinition 59
+ExtensionAttributeValue 59
+ExtensionDefinition class 58
+F
+Flow Connections Rules 42
+FlowElements 86, 311
+FlowElementsContainer element 89
+FlowNode element 99
+Foundation package 55
+G
+Gateways 90, 287, 344, 434, 426, 461
+Global Task 187
+GlobalChoreographyTask 335
+GlobalConversation 132
+Group element 70
+H
+Handling Start Events 275
+I
+Icons 8
+Import class 53
+Inclusive Gateway 292, 436
+Inclusive Gateways 352
+Infrastructure 51
+InputOutputSpecification 212, 225
+InputSet 218
+InteractionNode element 123
+Interchange format 9
+Interface 104
+Intermediate Events 249, 341, 440
+Intermediate Events Attached to an Activity Boundary 254
+Intermediate Events in Normal Flow 250
+ItemAwareElement 204
+ItemDefinition element 92
+K
+Key-based correlation 77
+L
+Lane 120, 305
+LaneSet 308
+
+506
+
+Link Event 267
+LinkEventDefinition 270
+Loop Activity 432
+Loop Mapping 453
+LoopCharacteristics 189
+M
+Manual Task 163, 430
+Message 93
+Message Flow 120
+Message Flow Connections 154
+MessageEventDefinition 271
+MessageFlowAssociation 123
+MessageVisibleKind 376
+Monitoring 311
+Multi-instance (MI) activity 432
+MultiInstanceLoopCharacteristics 191
+Multiple Parallel Start Event 426
+N
+None Event 272
+Normative References 12
+O
+OMG UML 14
+Open Nested Transactions 14
+Operation 105
+OutputSet 219, 429
+P
+Parallel Event Gateway 299
+Parallel Gateways 293, 359
+Parallel Multiple Event 272
+Participant 114
+ParticipantBandKind 374
+ParticipantMultiplicity 117
+PartnerEntity 116, 315, 316
+PartnerRole 117, 316
+Pool 112
+Private Business Processes 149
+Private Executable (internal) Business Processes 149
+Private Non-executable (internal) Business Processes 149
+Process 145, 309
+Process diagram element 2
+Process diagrams 49
+Process Elements 2
+Process Execution Conformance 1, 9
+Process Execution Conformance type 10
+Process instance 426
+Process Modeling Conformance 1, 2
+Process Types 2
+Processes 8
+Public Process 149, 150
+
+Business Process Model and Notation, v2.0
+
+R
+RDF 14
+Receive Task 161, 430, 448
+Receive Task Mapping 217
+References 12
+Relationship element 62
+Resource assignment. 154
+Resource class 95
+ResourceAssignmentExpression element 155
+ResourceParameterBinding element 155
+ResourceRole element 154
+Resources 154
+RFC-2119 12
+RootElement 64
+S
+Scope 1, 21, 49, 109, 124, 145, 281, 315, 367, 425, 445, 475
+Script Task 164, 430
+Script Task Mapping 218
+Send Task 159, 430, 449
+Send Task Mapping 217
+Sequence Flow Connections 153, 259
+Sequence Flows 97, 427, 461
+Service package 104
+Service Task 158, 430, 448
+Service Task Mapping 217
+shapes 8
+SOAP 1.2 14
+StandardLoopCharacteristics 190
+Start Event 238, 339, 426, 439
+Structural Conformance 8
+Sub-Choreography 328
+Sub-Conversation 130
+Sub-Process 430
+Swimlanes 363
+
+visual language 8
+W
+Web Services Business Process Execution Language
+(WSBPEL) 1
+Web Services Transaction 14
+WfMC Glossary 14
+Workflow Patterns 14
+WS-BPEL 445
+WSBPEL 15, 17
+WS-Coordination 15
+WSDL 15, 17
+WS-HumanTask 15
+X
+XMI 477
+XML 1.0 (Second Edition) 15
+XML-Namespaces 15
+XML-Schema 15
+XPath 15
+XPath Expressions 226
+XPDL 16
+XSD 475
+
+T
+Task 156, 430
+Task Mappings 448
+Terminate Event 273
+Text Annotation 71
+ThrowEvent 237
+Timer Event 274
+Token 427
+Transaction 178
+trigger 235
+U
+UDDI 14
+URI 14
+User Task 163, 430
+User Task Mapping 217
+V
+Visual Appearance 11
+Visual Interchange 11
+
+Business Process Model and Notation, v2.0
+
+507
+
+508
 
 Business Process Model and Notation, v2.0
 

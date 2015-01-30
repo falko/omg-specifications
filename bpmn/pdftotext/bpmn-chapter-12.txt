@@ -7,9 +7,8 @@ BPMN Notation and Diagrams
 This chapter specifies the meta-model and schema for BPMN 2.0 Diagram Interchange (BPMN DI). The BPMN DI is
 meant to facilitate interchange of BPMN diagrams between tools rather than being used for internal diagram
 representation by the tools. The simplest interchange approach to ensure the unambiguous rendering of a BPMN diagram
-was chosen for BPMN DI. As such, BPMN DI does not aim to preserve or interchange any "tool smarts" between the
-source and target tools (e.g. layout smarts, efficient styling, etc.).
-
+was chosen for BPMN DI. As such, BPMN DI does not aim to preserve or interchange any “tool smarts” between the
+source and target tools (e.g., layout smarts, efficient styling, etc.).
 BPMN DI does not address or define the interchange of color information. The use of alternative colors in BPMN is non
 normative. The meaning or semantic of colors might vary from tool to tool or, from user to user, potentially leading to
 miss-interpretations.
@@ -28,19 +27,19 @@ from the abstract classes from DI.
 The focus of BPMN DI is the interchange of laid out shapes and edges that constitute a BPMN diagram. Each shape and
 edge references a particular BPMN model element. The referenced BPMN model elements are all part of the actual
 BPMN model. As such, BPMN DI is meant to only contain information that is neither present, nor derivable, from the
-BPMN model when ever possible. Simply put, to render a BPMN diagram both the BPMN DI instance(s) and the
+BPMN model whenever possible. Simply put, to render a BPMN diagram both the BPMN DI instance(s) and the
 referenced BPMN model are REQUIRED.
-From the BPMN DI perspective, a BPMN diagram is a particular snap shot of a BPMN model at a certain point in time.
-Multiple BPMN diagrams can be exchanged referencing model elements from the same BPMN model. Each diagram
-may provide an incomplete or partial depiction of the content of the BPMN model. BPMN DI does not ascertain that the
+From the BPMN DI perspective, a BPMN diagram is a particular snapshot of a BPMN model at a certain point in time.
+Multiple BPMN diagrams can be exchanged referencing model elements from the same BPMN model. Each diagram may
+provide an incomplete or partial depiction of the content of the BPMN model. BPMN DI does not ascertain that the
 BPMN diagram is syntactically or semantically correct.
-As described in Section •, a BPMN model package consists of one or more files. Each file may contain any number of
+As described in Section 15, a BPMN model package consists of one or more files. Each file may contain any number of
 BPMN diagrams. The exporting tool is free to decide how many diagrams are exported and the importing tool is free to
 decide if and how to present the contained diagrams to the user.
 
 Business Process Model and Notation, v2.0
 
-373
+367
 
 12.1.3 How to Read this Chapter
 The normative BPMN 2.0 Diagram Interchange (BPMN DI) specification has three parts. Section 12.2 defines BPMN DI;
@@ -54,29 +53,29 @@ XML BPMN DI serializations are provided.
 The BPMN DI is an instance of the DI meta-model provided at Annex B. The basic concept of BPMN DI, as with DI in
 general, is that serializing a diagram [BPMNDiagram] for interchange requires the specification of a collection of shapes
 [BPMNShape] and edges [BPMNEdge] on a plane [BPMNPlane].
-BPMNPlane, BPMNShape and BPMNEdge MUST reference exactly one abstract syntax BPMN element from the BPMN
-model using the bpmnElement attribute. The only exception is for a Data Association connected to a Sequence Flow (See
-Figure 10.68). This is a visual short cut that actually normalizes two Data Associations within the BPMN model. In this
-case, the resolution is made from the BPMN DI attributes rather than the abstract syntax reference [bpmnElement] (See
-Table 12.36 - Depiction Resolution for Connecting Objects).
+BPMNPlane, BPMNShape, and BPMNEdge MUST reference exactly one abstract syntax BPMN element from the
+BPMN model using the bpmnElement attribute. The only exception is for a Data Association connected to a Sequence
+Flow (See Figure 10.68). This is a visual short cut that actually normalizes two Data Associations within the BPMN
+model. In this case, the resolution is made from the BPMN DI attributes rather than the abstract syntax reference
+[bpmnElement] (See Table 12.35 - Depiction Resolution for Connecting Objects).
 The BPMN DI classes only define the visual properties used for depiction. All other properties that are REQUIRED for
 the unambiguous depiction of the BPMN element are derived from the referenced bpmnElement.
 Multiple depictions of a specific BPMN element in a single diagram is NOT allowed, except for Participants in a
-choreography (i.e. Participant Bands). For example, it is not allowed to depict a Task twice in the same diagram, but it is
-allowed to depict the same Task in two different diagrams.
+choreography (i.e., Participant Bands). For example, it is not allowed to depict a Task twice in the same diagram, but it
+is allowed to depict the same Task in two different diagrams.
 BPMN diagrams may be an incomplete or partial depiction of the content of the BPMN model. Some BPMN elements
 from a BPMN model may not be present in any of the diagram instances being interchanged.
 BPMN DI does not provide for any containment concept. The BPMNPlane is an ordered collection of mixed
-BPMNShape(s) and BPMNEdge(s). The order of the BPMNShape(s) and BPMNEdge(s) inside a BPMNPlane
-determines their Z-order (i.e. what is in front of what). BPMNShape(s) and BPMNEdge(s) that are meant to be depicted
-"on top" of other BPMNShape(s) and BPMNEdge(s) MUST appear after them in the BPMNPlane. Therefore, the
-exporting tool MUST order all BPMNShape(s) and BPMNEdge(s) such that the desired depiction can be rendered.
+BPMNShape(s) and BPMNEdge(s). The order of the BPMNShape(s) and BPMNEdge(s) inside a BPMNPlane determines
+their Z-order (i.e., what is in front of what). BPMNShape(s) and BPMNEdge(s) that are meant to be depicted “on top” of
+other BPMNShape(s) and BPMNEdge(s) MUST appear after them in the BPMNPlane. Therefore, the exporting tool
+MUST order all BPMNShape(s) and BPMNEdge(s) such that the desired depiction can be rendered.
 
 12.2.2 Abstract Syntax
 This section introduces the Abstract Syntax of BPMN DI. BPMN DI is an instance of the DI meta-model provided at
 Annex B.
 
-374
+368
 
 Business Process Model and Notation, v2.0
 
@@ -84,22 +83,18 @@ Figure 12.1 - BPMN Diagram
 
 Figure 12.2 - BPMN Plane
 
-Business Process Model and Notation, v2.0
-
-375
-
 Figure 12.3 - BPMN Shape
 
-Figure 12.4 - BPMN Edge
-
-376
-
 Business Process Model and Notation, v2.0
+
+369
+
+Figure 12.4 - BPMN Edge
 
 Figure 12.5 - BPMN Label
 
 12.2.3 Classifier Descriptions
-BPMNDiagram [Class]
+12.2.3.1 BPMNDiagram [Class]
 BPMNDiagram is a kind of diagram that depicts all or part of a BPMN model.
 Description
 BPMNDiagram represents a depiction of all or part of a BPMN model. It specializes DI::Diagram and redefines the root
@@ -108,6 +103,10 @@ BPMNStyle elements that are referenced by BPMNLabel elements in the diagram. The
 unique appearance styles used in the diagram.
 Abstract Syntax
 • Figure 12.1 - BPMN Diagram
+
+370
+
+Business Process Model and Notation, v2.0
 
 Generalizations
 • DI::Diagram
@@ -131,11 +130,7 @@ Table 12.1 – BPMNDiagram XML schema
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-Business Process Model and Notation, v2.0
-
-377
-
-BPMNPlane [Class]
+12.2.3.2 BPMNPlane [Class]
 A BPMNPlane is the BPMNDiagram container of BPMNShape and BPMNEdge.
 Description
 A BPMNPlane specializes DI::Plane and redefines its model element reference to be of type (BPMN) BaseElement. A
@@ -152,6 +147,10 @@ Abstract Syntax
 Generalizations
 • DI::Plane
 
+Business Process Model and Notation, v2.0
+
+371
+
 Associations
 • + bpmnElement : BaseElement [0..1] {redefines modelElement}
 
@@ -167,26 +166,21 @@ Table 12.2 – BPMNPlane XML schema
 </xsd:complexContent>
 </xsd:complexType>
 
-BPMNShape [Class]
+12.2.3.3 BPMNShape [Class]
 BPMNShape is a kind of shape that can depict a BPMN model element.
 Description
 BPMNShape represents a depiction of a (typically a node) BPMN model element. It specializes DI::LabeledShape and
 redefines its model element reference to be of type (BPMN) BaseElement, allowing it to reference an element from a
 BPMN model.
-
-378
-
-Business Process Model and Notation, v2.0
-
 BPMNShape also contains an optional label of type BPMNLabel that can be nested in the shape when it has a visible
 textual label with its own bounding box.
 The shape also contains a number of normative notational options that can be specified for different types of BPMN
 elements depicted by the shape. Those options, each represented by a separate property, and described below, allow for
 recording the specific notational style desired for the shape.
-All BPMNShape elements are owned directly by a BPMNPlane (that is the root element in a BPMNDiagram), i.e. shapes
+All BPMNShape elements are owned directly by a BPMNPlane (that is the root element in a BPMNDiagram), i.e., shapes
 are not nested within each other in the BPMN DI model although they may appear that way when depicted. The bounds
 of a BPMNShape are always relative to that plane's origin point and are REQUIRED to be positive coordinates. Note that
-the bounds' x and y coordinates are the position of the upper left corner of the shape (relative to the upper left corner of
+the bounds’ x and y coordinates are the position of the upper left corner of the shape (relative to the upper left corner of
 the plane).
 Abstract Syntax
 • Figure 12.3 - BPMN Shape
@@ -194,6 +188,10 @@ Abstract Syntax
 
 Generalizations
 • DI::LabeledShape
+
+372
+
+Business Process Model and Notation, v2.0
 
 Attributes
 • + isHorizontal : Boolean [0..1]
@@ -223,11 +221,6 @@ depicted linked to the Participant Band.
 an optional attribute that should only be used for Participant Bands. It is REQUIRED for a BPMNShape depicting a
 Participant Band. This is REQUIRED in order to relate the Participant Band to the BPMNShape depicting the
 Choreography Activity that this Participant Band is related to.
-
-Business Process Model and Notation, v2.0
-
-379
-
 Associations
 • + bpmnElement : BaseElement [0..1] {redefines modelElement}
 
@@ -236,6 +229,11 @@ provided for a BPMNShape.
 • + label : BPMNLabel [0..1] {subsets ownedLabel}
 
 an optional label that is nested when the shape has a visible text label with its own bounding box.
+
+Business Process Model and Notation, v2.0
+
+373
+
 Table 12.3 – BPMNShape XML schema
 
 <xsd:complexType name="BPMNShape">
@@ -254,43 +252,47 @@ Table 12.3 – BPMNShape XML schema
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-ParticipantBandKind [Enumeration]
+12.2.3.4 ParticipantBandKind [Enumeration]
 ParticipantBandKind defines the type of Participant Band to depict.
 Description
 Participant bands can be depicted in 3 ways:
--a top band is rectangular with rounded corners at the top
--a middle band is rectangular
--a bottom band is rectangular with rounded corners at the bottom
+1.
+
+a top band is rectangular with rounded corners at the top
+
+2.
+
+a middle band is rectangular
+
+3.
+
+a bottom band is rectangular with rounded corners at the bottom
+
 Participant bands can be depicted in 2 shadings:
--initiating (the band should not be shaded)
--non_initiating (the band should be shaded)
+1.
+
+initiating (the band should not be shaded)
+
+2.
+
+non_initiating (the band should be shaded)
+
 Abstract Syntax
 • Figure 12.3 - BPMN Shape
 
-380
+Literals
+• top_initiating - the band should be depicted as a non shaded top band
+• middle_initiating - the band should be depicted as a non shaded middle band
+• bottom_initiating - the band should be depicted as a non shaded bottom band
+• top_non_initiating - the band should be depicted as a shaded top band
+• middle_ non_initiating - the band should be depicted as a shaded middle band
+• bottom_ non_initiating - the band should be depicted as a shaded bottom band
+
+374
 
 Business Process Model and Notation, v2.0
 
-Literals
-• top_initiating
-
-the band should be depicted as a non shaded top band
-• middle_initiating
-
-the band should be depicted as a non shaded middle band
-• bottom_initiating
-
-the band should be depicted as a non shaded bottom band
-• top_non_initiating
-
-the band should be depicted as a shaded top band
-• middle_ non_initiating
-
-the band should be depicted as a shaded middle band
-• bottom_ non_initiating
-
-the band should be depicted as a shaded bottom band
-BPMNEdge [Class]
+12.2.3.5 BPMNEdge [Class]
 BPMNEdge is a kind of edge that can depict a relationship between two BPMN model elements.
 Description
 BPMNEdge represents a depiction of a relationship between two (source and target) BPMN model elements. It specializes
@@ -306,13 +308,9 @@ being the BPMNShape depicting the Pool to connect it to the boundary of that bla
 BPMNEdge also contains an optional label of type BPMNLabel that can be nested in the edge when it has a visible
 textual label with its own bounding box.
 All BPMNEdge elements are owned directly by a BPMNPlane (that is the root element in a BPMNDiagram). The
-waypoints of BPMNEdge are always relative to that plane's origin point and are REQUIRED to be positive coordinates.
+waypoints of BPMNEdge are always relative to that plane’s origin point and are REQUIRED to be positive coordinates.
 Abstract Syntax
 • Figure 12.4 - BPMN Edge
-
-Business Process Model and Notation, v2.0
-
-381
 
 Generalizations
 • DI::LabeledEdge
@@ -323,21 +321,26 @@ Associations
 an optional label that is nested when the edge has a visible text label with its own bounding box.
 • + bpmnElement : BaseElement [0..1] {redefines modelElement}
 
-a reference to a connecting BPMN element that this edge depicts. Note that this reference is only optional for the
-specific case of a Data Association connected to a Sequence Flow; in all other cases a referenced element must be
-provided.
+a reference to a connecting BPMN element that this edge depicts. Note that this reference is only optional for
+the specific case of a Data Association connected to a Sequence Flow; in all other cases a referenced element
+must be provided.
 • + sourceElement : DiagramElement [0..1] {redefines source}
 
-an optional reference to the edge's source element if it is different from the source inferred from the bpmnElement
-association.
+an optional reference to the edge’s source element if it is different from the source inferred from the
+bpmnElement association.
 • + targetElement : DiagramElement [0..1] {redefines target}
 
-an optional reference to the edge's target element if it is different from the target inferred from the bpmnElement
+an optional reference to the edge’s target element if it is different from the target inferred from the bpmnElement
 association.
 • messageVisibleKind : MessageVisibleKind [0..1]
 
 an optional attribute that should be used only for Message Flow. It determines if an envelope decorator should be
 depicted and the kind of envelope to be depicted.
+
+Business Process Model and Notation, v2.0
+
+375
+
 Table 12.4 – BPMNEdge XML schema
 
 <xsd:complexType name="BPMNEdge">
@@ -353,15 +356,10 @@ Table 12.4 – BPMNEdge XML schema
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-MessageVisibleKind [Enumeration]
+12.2.3.6 MessageVisibleKind [Enumeration]
 MessageVisibleKind defines the type of envelope that is visible.
 Description
 MessageVisibleKind is applicable only to Participant Band and Message Flow.
-
-382
-
-Business Process Model and Notation, v2.0
-
 For Message Flow, the envelope should be positioned in the middle of the edge.
 For Participant Band, the envelope should be positioned over (for top band) or under (for bottom band) and connected to
 the band using an association. Note that only Choreography Task Participant Bands are allowed to show the envelope.
@@ -370,22 +368,23 @@ Abstract Syntax
 • Figure 12.3 - BPMN Shape
 
 Literals
-• initiating
+• initiating - The envelope should not be shaded.
+• non_inititating - The envelope should be shaded.
 
-The envelope should be not be shaded
-• non_inititating
-
-The envelope should be shaded
-BPMNLabel [Class]
+12.2.3.7 BPMNLabel [Class]
 BPMNLabel is a kind of label that depicts textual info about a BPMN element.
 Description
 BPMNLabel represents a depiction of some textual information about a BPMN element. It specializes DI::Label and
 redefines its style reference to be of type BPMNLabelStyle, which contains information about the appearance of the label
-(e.g. the chosen font). The referenced style is owned by the diagram that nests the label.
+(e.g., the chosen font). The referenced style is owned by the diagram that nests the label.
 A BPMN label is not a top-level element but is always nested inside either a BPMNShape or a BPMNEdge. It does not
 have its own reference to a BPMN element but rather inherits that reference (if any) from its parent shape or edge. The
 textual info depicted by the label is derived from that referenced BPMN element.
-The bounds of BPMNLabel are always relative to the containing plane's origin point. Note that the bounds' x and y
+376
+
+Business Process Model and Notation, v2.0
+
+The bounds of BPMNLabel are always relative to the containing plane’s origin point. Note that the bounds’ x and y
 coordinates are the position of the upper left corner of the label (relative to the upper left corner of the plane).
 Abstract Syntax
 • Figure 12.3 - BPMN Shape
@@ -398,13 +397,8 @@ Generalizations
 Associations
 • + labelStyle : BPMNLabelStyle [0..1] {redefines style}
 
-an optional reference to a label style (owned by the diagram) that gives the appearance options for the label. If not
-specified, the style of the label can be assumed by a tool.
-
-Business Process Model and Notation, v2.0
-
-383
-
+an optional reference to a label style (owned by the diagram) that gives the appearance options for the label. If
+not specified, the style of the label can be assumed by a tool.
 Table 12.5 – BPMNLabel XML schema
 
 <xsd:complexType name="BPMNLabel">
@@ -414,7 +408,7 @@ Table 12.5 – BPMNLabel XML schema
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-BPMNLabelStyle [Class]
+12.2.3.8 BPMNLabelStyle [Class]
 BPMNLabelStyle is a kind of style that gives the appearance options for a BPMNLabel.
 Description
 BPMNLabelStyle represents the appearance options for elements of type BPMNLabel. It specializes DI::Style and
@@ -428,9 +422,13 @@ Generalizations
 • DI::Style
 
 Attributes
-• + font : Font[1]
+• + font : Font[1] - a font object that describes the properties of the font used for depicting the labels that reference this
 
-a font object that describes the properties of the font used for depicting the labels that reference this style.
+style.
+Business Process Model and Notation, v2.0
+
+377
+
 Table 12.6 – BPMNLabelStyle XML schema
 
 <xsd:complexType name="BPMNLabelStyle">
@@ -443,16 +441,12 @@ Table 12.6 – BPMNLabelStyle XML schema
 </xsd:complexContent>
 </xsd:complexType>
 
-384
-
-Business Process Model and Notation, v2.0
-
 12.2.4 Complete BPMN DI XML Schema
-Table 12.7 – Complete BPMN DI XML schema
+Table 12.7 - Complete BPMN DI XML schema
 
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bpmndi="http://www.omg.org/spec/
-BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/
-spec/DD/20100524/DI" targetNamespace="http://www.omg.org/spec/BPMN/20100524/DI"
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bpmndi="http://www.omg.org/spec/BPMN/
+20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/
+20100524/DI" targetNamespace="http://www.omg.org/spec/BPMN/20100524/DI"
 elementFormDefault="qualified" attributeFormDefault="unqualified">
 <xsd:import namespace="http://www.omg.org/spec/DD/20100524/DC" schemaLocation="DC.xsd" />
 <xsd:import namespace="http://www.omg.org/spec/DD/20100524/DI" schemaLocation="DI.xsd" />
@@ -472,6 +466,13 @@ elementFormDefault="qualified" attributeFormDefault="unqualified">
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
+
+378
+
+Business Process Model and Notation, v2.0
+
+Table 12.7 – Complete BPMN DI XML schema (continued)
+
 <xsd:complexType name="BPMNPlane">
 <xsd:complexContent>
 <xsd:extension base="di:Plane">
@@ -492,13 +493,6 @@ elementFormDefault="qualified" attributeFormDefault="unqualified">
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-
-Business Process Model and Notation, v2.0
-
-385
-
-Table 12.7 – Complete BPMN DI XML schema
-
 <xsd:complexType name="BPMNShape">
 <xsd:complexContent>
 <xsd:extension base="di:LabeledShape">
@@ -515,6 +509,13 @@ Table 12.7 – Complete BPMN DI XML schema
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
+
+Business Process Model and Notation, v2.0
+
+379
+
+Table 12.7 – Complete BPMN DI XML schema (continued)
+
 <xsd:complexType name="BPMNLabel">
 <xsd:complexContent>
 <xsd:extension base="di:Label">
@@ -541,13 +542,6 @@ Table 12.7 – Complete BPMN DI XML schema
 <xsd:enumeration value="bottom_non_initiating" />
 </xsd:restriction>
 </xsd:simpleType>
-
-386
-
-Business Process Model and Notation, v2.0
-
-Table 12.7 – Complete BPMN DI XML schema
-
 <xsd:simpleType name="MessageVisibleKind">
 <xsd:restriction base="xsd:string">
 <xsd:enumeration value="initiating" />
@@ -558,39 +552,37 @@ Table 12.7 – Complete BPMN DI XML schema
 
 12.3 Notational Depiction Library and Abstract Element Resolutions
 As a notation, BPMN specifies the depiction for each of the BPMN elements.
-Serializing a BPMN diagram for interchange requires the specification of a collection of BPMNShape(s) (see page 378)
-and BPMNEdge(s) (see page 381) on the BPMNPlane (see page 378) of the BPMNDiagram (see page 377). The
+Serializing a BPMN diagram for interchange requires the specification of a collection of BPMNShape(s) (see page 372)
+and BPMNEdge(s) (see page 375) on the BPMNPlane (see page 371) of the BPMNDiagram (see page 370). The
 BPMNShape(s) and BPMNEdge(s) attributes must be populated in such a way as to allow the unambiguous rendering of
 the BPMN diagram by the receiving party. More specifically, the BPMNShape(s) and BPMNEdge(s) must reference
+380
+
+Business Process Model and Notation, v2.0
+
 BPMN model element [bpmnElement]. If no bpmnElement is referenced or if the reference is invalid, it is expected that
 this shape or edge should not be depicted. The only exception is for a Data Association connected to a Sequence Flow
-(See Figure 10.68). This is a visual short cut that actually normalizes two Data Associations within the BPMN model.
-In this case, the resolution is made from the BPMN DI attributes rather than the abstract syntax reference [bpmnElement]
-(See Table 12.36 - Depiction Resolution for Connecting Objects).
+(See Figure 10.68). This is a visual short cut that actually normalizes two Data Associations within the BPMN model. In
+this case, the resolution is made from the BPMN DI attributes rather than the abstract syntax reference [bpmnElement]
+(See Table 12.35 - Depiction Resolution for Connecting Objects).
 When rendering a BPMN diagram, the correct depiction of a BPMNShape or BPMNEdge depends mainly on the
 referenced BPMN model element [bpmnElement] and its particular attributes and/or references.
 The purpose of this section is to: provide a library of the BPMN element depictions, and to provide an unambiguous
 resolution between the referenced BPMN model element [bpmnElement], BPMNShape or BPMNEdge and their
-depiction. Depiction resolution tables are provided below for both BPMNShape (Section 12.3.2) and BPMNEdge
-(Section 12.3.3).
+depiction. Depiction resolution tables are provided below for both BPMNShape (Section 12.3.2) and BPMNEdge (Section
+12.3.3).
 
 12.3.1 Labels
 Both BPMNShape and BPMNEdge may have labels (e.g., its name) placed inside the shape/edge, or above or below the
 shape/edge, in any direction or location, depending on the preference of the modeler or modeling tool vendor.
 Labels are optional for BPMNShape and BPMNEdge. When there is a label, the position of the label is specified by the
 bounds of the BPMNLabel of the BPMNShape or BPMNEdge. Simply put, label visibility is defined by the presence of
-the BPMNLabel element. The bounds of the BPMNLabel are optional and always relative to the containing
-BPMNPlane's origin point (see page 383). The depiction resolution tables provided below exemplify default label
-positions for BPMNShape kinds (Section 12.3.2) and BPMNEdge kinds (Section 12.3.3) if no BPMNLabel bounds are
-provided.
-
-Business Process Model and Notation, v2.0
-
-387
-
+the BPMNLabel element. The bounds of the BPMNLabel are optional and always relative to the containing BPMNPlane's
+origin point (see page 376). The depiction resolution tables provided below exemplify default label positions for
+BPMNShape kinds (Section 12.3.2) and BPMNEdge kinds (Section 12.3.3) if no BPMNLabel bounds are provided.
 The text of the label to be rendered is obtained by resolving the name attribute of the referenced BPMN model element
 [bpmnElement] from the BPMNShape or BPMNEdge. In the particular case when the referenced BPMN model element
-[bpmnElement] is a DataObjectReference , the text of the label to be rendered is obtained by concatenating the name
+[bpmnElement] is a DataObjectReference, the text of the label to be rendered is obtained by concatenating the name
 attribute of the referenced BPMN model element [bpmnElement] and the name attribute of the dataState attribute of this
 DataObjectReference (see Figure 12.6 - Depicting a Label for a DataObjectReference with its state).
 
@@ -604,30 +596,30 @@ BPMNLabel. If not provided, the tool should use its default style to depict the 
 12.3.2 BPMNShape
 Markers for Activities
 Various BPMN Activities can be decorated with markers at the bottom center of the shape.
+
+Business Process Model and Notation, v2.0
+
+381
+
 Loop Characteristic markers may need to be rendered when the referenced BPMN model element [bpmnElement] of a
 BPMNShape is a Task, ServiceTask, SendTask, ReceiveTask, UserTask, ManualTask, BusinessRuleTask, ScriptTask,
 SubProcess, AdHocSubProcess, Transaction or CallActivity. Note that Loop Characteristic Markers (Loop, Multi-Instance
 - Parallel and Multi-Instance - Sequential) are mutually exclusive markers. That is, only one of them can be present on a
 single shape. See Table 10.8 - Depiction Resolution for Loop Characteristic Markers. Note that the patterns of Markers
-depicted in Table 10.8 also apply to Transaction and Call Activity which have different border depictions (i.e. double
+depicted in Table 10.8 also apply to Transaction and Call Activity which have different border depictions (i.e., double
 border or thick border).
 A Compensation marker may need to be rendered when the referenced BPMN model element [bpmnElement] of a
 BPMNShape is a Task, ServiceTask, SendTask, ReceiveTask, UserTask, ManualTask, BusinessRuleTask, ScriptTask,
-SubProcess, AdHocSubProcess, Transaction or CallActivity. See Table 12.9 - Depiction Resolution for Compensation
-Marker
+SubProcess, AdHocSubProcess, Transaction or CallActivity. See Table 12.8 - Depiction Resolution for Compensation
+Marker.
 In the case of expandable kind of shapes, the markers (Compensation or Loop Characteristic) are placed to the left of the
 + on the shape.
 The Compensation marker may be combined with a Loop Characteristic Marker. All the markers that are present must be
 grouped and the whole group centered to the bottom of the shape. See Figure 12.7 - Combined Compensation and Loop
 Characteristic Marker Example.
 Note that in the case where the referenced BPMN model element [bpmnElement] of a BPMNShape is an
-AdHocSubProcess, the shape has its tilde marker to the right of the + (See page 393).
-
-388
-
-Business Process Model and Notation, v2.0
-
-Table 12.8 – Depiction Resolution for Loop Characteristic Markers
+AdHocSubProcess, the shape has its tilde marker to the right of the + (See page 386).
+Table 12.8 - Depiction Resolution for Loop Compensation Marker
 
 Loop
 Characteristic
@@ -643,38 +635,33 @@ Label
 
 bpmnElement:
 
-BPMNShape
-Attributes:
-
 [Task, ServiceTask, SendTask,
 ReceiveTask, UserTask,
-ManualTask,
-BusinessRuleTask,
+ManualTask, BusinessRuleTask,
 ScriptTask, SubProcess,
-AdHocSubProcess,
-Transaction or CallActivity]
-where loopCharacteristics is of
-type
+AdHocSubProcess, Transaction
+or CallActivity] where
+loopCharacteristics is of type
 StandardLoopCharacteristics
 
-None
-
-[Task, ServiceTask, SendTask,
-ReceiveTask, UserTask,
-ManualTask,
-BusinessRuleTask,
-ScriptTask, SubProcess,
-AdHocSubProcess,
-Transaction or CallActivity]
-where loopCharacteristics is of
-type
-MultipleLoopCharacteristics
-with attribute isSequantial to
-false
-
+BPMNShape
+Attributes:
 None
 
 Label
+
+382
+
+Business Process Model and Notation, v2.0
+
+Table 12.8 - Depiction Resolution for Loop Compensation Marker
+
+Loop
+Characteristic
+Marker:
+
+Specific Depiction Resolution:
+Depiction:
 
 Multi-Instance Parallel
 
@@ -682,13 +669,36 @@ Label
 
 Label
 
+bpmnElement:
+
+BPMNShape
+Attributes:
+
+[Task, ServiceTask, SendTask,
+ReceiveTask, UserTask,
+ManualTask, BusinessRuleTask,
+ScriptTask, SubProcess,
+AdHocSubProcess, Transaction
+or CallActivity] where
+loopCharacteristics is of type
+MultipleLoopCharacteristics with
+attribute isSequantial to false.
+
+None
+
+[Task, ServiceTask, SendTask,
+ReceiveTask, UserTask,
+ManualTask, BusinessRuleTask,
+ScriptTask, SubProcess,
+AdHocSubProcess, Transaction
+or CallActivity] where
+loopCharacteristics is of type
+MultipleLoopCharacteristics with
+attribute isSequantial to true.
+
+None
+
 Label
-
-Business Process Model and Notation, v2.0
-
-389
-
-Table 12.8 – Depiction Resolution for Loop Characteristic Markers
 
 Multi-Instance Sequential
 
@@ -698,22 +708,11 @@ Label
 
 Label
 
-[Task, ServiceTask, SendTask,
-ReceiveTask, UserTask,
-ManualTask,
-BusinessRuleTask,
-ScriptTask, SubProcess,
-AdHocSubProcess,
-Transaction or CallActivity]
-where loopCharacteristics is of
-type
-MultipleLoopCharacteristics
-with attribute isSequantial to
-true
+Business Process Model and Notation, v2.0
 
-None
+383
 
-Table 12.9 – Depiction Resolution for Compensation Marker
+Table 12.8 – Depiction Resolution for Compensation Marker
 
 Compensation
 Marker:
@@ -721,33 +720,27 @@ Marker:
 Specific Depiction Resolution:
 Depiction:
 
-Compensation
-Label
-
-Label
-
 bpmnElement:
+
+Compensation
 
 [Task, ServiceTask, SendTask,
 ReceiveTask, UserTask,
-ManualTask,
-BusinessRuleTask,
+ManualTask, BusinessRuleTask,
 ScriptTask, SubProcess,
-AdHocSubProcess,
-Transaction or CallActivity]
-where isForCompensation is
-true
-
-BPMNShape
-Attributes:
-
-None
+AdHocSubProcess, Transaction
+or CallActivity] where
+isForCompensation is true.
 
 Label
 
-390
+Label
 
-Business Process Model and Notation, v2.0
+BPMNShape
+Attributes:
+None
+
+Label
 
 Label
 
@@ -758,12 +751,16 @@ Label
 Figure 12.7 - Combined Compensation and Loop Characteristic Marker Example
 
 Tasks [BPMNShape]
-There are different types of Tasks identified within BPMN. The specific Task type depiction is obtained by placing a
-Task type maker in the upper left corner of the Task shape. A Task which is no further specified is called an Abstract
-Task.
+There are different types of Tasks identified within BPMN. The specific Task type depiction is obtained by placing a Task
+type maker in the upper left corner of the Task shape. A Task that is no further specified is called an Abstract Task.
 Tasks (Abstract, Service, Send, Receive, User, Manual, Business Rule or Script) can also have Compensation and/or Loop
-Characteristic markers at the bottom center of the shape as defined above (see page 388).
-Table 12.10 – Depiction Resolution for Tasks
+Characteristic markers at the bottom center of the shape as defined above (see page 381).
+
+384
+
+Business Process Model and Notation, v2.0
+
+Table 12.9 – Depiction Resolution for Tasks
 
 Specific Depiction Resolution:
 Kind:
@@ -797,28 +794,6 @@ UserTask
 
 None
 
-Label
-
-Service Task
-Label
-
-Send Task
-Label
-
-Receive Task
-Label
-
-User Task
-Label
-
-Business Process Model and Notation, v2.0
-
-391
-
-Table 12.10 – Depiction Resolution for Tasks
-
-Manual Task
-
 ManualTask
 
 None
@@ -833,47 +808,58 @@ None
 
 Label
 
+Service Task
+Label
+
+Send Task
+Label
+
+Receive Task
+Label
+
+User Task
+Label
+
+Manual Task
+Label
+
 Business Rule Task
 Label
 
 Script Task
 Label
 
+Business Process Model and Notation, v2.0
+
+385
+
 Collapsed Sub-Processes [BPMNShape]
 Collapsed Sub-Processes can also have Compensation and/or Loop Characteristic markers at the bottom center of the
-shape as defined above (see page 388).
-Table 12.11 – Depiction Resolution for Collapsed Sub-Processes
+shape as defined above (see page 381).
+Table 12.10 – Depiction Resolution for Collapsed Sub-Processes
 
 Specific Depiction Resolution:
 Kind:
 
-Sub-Process Collapsed
-
 Depiction:
 
-Label
-
 bpmnElement:
-
 SubProcess where
-triggeredByEvent is false
+triggeredByEvent is false.
+
+Sub-Process Collapsed
+Label
 
 BPMNShape
 Attributes:
-
 None or
 isExpanded is
 false
 
 Expanded Sub-Processes [BPMNShape]
 Expanded Sub-Processes can also have Compensation and/or Loop Characteristic markers at the bottom center of the
-shape as defined above (see page 388).
-
-392
-
-Business Process Model and Notation, v2.0
-
-Table 12.12 – Depiction Resolution for Expanded Sub-Processes
+shape as defined above (see page 381).
+Table 12.11 – Depiction Resolution for Expanded Sub-Processes
 
 Specific Depiction Resolution:
 Kind:
@@ -882,72 +868,66 @@ Sub-Process Expanded
 
 Depiction:
 
+Label
+
 bpmnElement:
 
 SubProcess where
-triggeredByEvent is false
-
-Label
+triggeredByEvent is false.
 
 BPMNShape
 Attributes:
-
 isExpanded is
 true
 
 Collapsed Ad Hoc Sub-Processes [BPMNShape]
 Collapsed Ad Hoc Sub-Processes can also have a Compensation marker at the bottom center of the shape as defined
-above (see page 388).
-Table 12.13 – Depiction Resolution for Collapsed Ad Hoc Sub-Processes
+above (see page 381).
+
+386
+
+Business Process Model and Notation, v2.0
+
+Table 12.12 – Depiction Resolution for Collapsed Ad Hoc Sub-Processes
 
 Specific Depiction Resolution:
 Kind:
 
 Depiction:
 
-Ad Hoc Sub-Process
-- Collapsed
+Ad Hoc Sub-Process Collapsed
 
 bpmnElement:
-
 AdHocSubProcess
-Label
 
-~
+Label
 
 BPMNShape
 Attributes:
-
 None or
 isExpanded is
 false
 
+~
 Expanded Ad Hoc Sub-Processes [BPMNShape]
 Expanded Ad Hoc Sub-Processes can also have a Compensation marker at the bottom center of the shape as defined
-above (see page 388).
-
-Business Process Model and Notation, v2.0
-
-393
-
-Table 12.14 – Depiction Resolution for Expanded Ad Hoc Sub-Processes
+above (see page 381).
+Table 12.13 – Depiction Resolution for Expanded Ad Hoc Sub-Processes
 
 Specific Depiction Resolution:
 Kind:
 
-Ad Hoc Sub-Process
-- Expanded
+Ad Hoc Sub-Process Expanded
 
 Depiction:
 
 bpmnElement:
-
 AdHocSubProcess
+
 Label
 
 BPMNShape
 Attributes:
-
 None or
 isExpanded is
 true
@@ -955,81 +935,75 @@ true
 ~
 Collapsed Transactions [BPMNShape]
 Collapsed Transactions can also have Compensation and/or Loop Characteristic markers at the bottom center of the shape
-as defined above (see page 388).
-Table 12.15 – Depiction Resolution for Collapsed Transactions
+as defined above (see page 381).
+Table 12.14 – Depiction Resolution for Collapsed Transactions
 
 Specific Depiction Resolution:
 Kind:
 
-Transaction Collapsed
-
 Depiction:
+
+Transaction
+
+Transaction Collapsed
+Label
+
+Business Process Model and Notation, v2.0
 
 bpmnElement:
 
-Transaction
-Label
-
 BPMNShape
 Attributes:
-
 None or
 isExpanded is
 false
 
+387
+
 Expanded Transactions [BPMNShape]
 Expanded Transactions can also have Compensation and/or Loop Characteristic markers at the bottom center of the shape
-as defined above (see page 388).
-
-394
-
-Business Process Model and Notation, v2.0
-
-Table 12.16 – Depiction Resolution for Tasks
+as defined above (see page 381).
+Table 12.15 – Depiction Resolution for Tasks
 
 Specific Depiction Resolution:
 Kind:
 
-Transaction Expanded
-
 Depiction:
 
 bpmnElement:
-
 Transaction
-Label
+
+Transaction Expanded
 
 BPMNShape
 Attributes:
-
 None or
 isExpanded is
 true
 
+Label
+
 Collapsed Event Sub-Processes [BPMNShape]
-Table 12.17 – Depiction Resolution for Collapsed Event Sub-Processes
+Table 12.16 – Depiction Resolution for Collapsed Event Sub-Processes
 
 Specific Depiction Resolution:
 Kind:
 
 Depiction:
 
-Non-interrupting
-Message - Event
-Sub-Process Collapsed
-
-Interrupting Message - Event
-Sub-Process Collapsed
-
-Non-interrupting Timer - Event SubProcess - Collapsed
-
-Business Process Model and Notation, v2.0
-
+Non-interrupting Message - Event
+Sub-Process - Collapsed
 Label
 
+Interrupting - Message - Event
+Sub-Process - Collapsed
 Label
 
+Non-interrupting - Timer - Event
+Sub-Process - Collapsed
 Label
+
+388
 
 bpmnElement:
 
@@ -1037,146 +1011,33 @@ BPMNShape
 Attributes:
 
 SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has one EventDefintion of type
+triggeredByEvent is true and the
+one-and-only start event has one
+EventDefintion of type
 MessageEventDefintion and
-isInterrupting is false
+isInterrupting is false.
 
 None or
 isExpanded is
 false
 
 SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has one EventDefintion of type
+triggeredByEvent is true and the
+one-and-only start event has one
+EventDefintion of type
 MessageEventDefintion and
-isInterrupting is true
+isInterrupting is true.
 
 None or
 isExpanded is
 false
 
 SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has one EventDefintion of type
+triggeredByEvent is true and the
+one-and-only start event has one
+EventDefintion of type
 TimerEventDefintion and
-isInterrupting is false
-
-None or
-isExpanded is
-false
-
-395
-
-Table 12.17 – Depiction Resolution for Collapsed Event Sub-Processes
-
-Interrupting - Timer Event Sub-Process Collapsed
-
-Non-interrupting Conditional - Event
-Sub-Process Collapsed
-
-Interrupting Conditional - Event
-Sub-Process Collapsed
-
-Non-interrupting Signal - Event SubProcess - Collapsed
-
-Interrupting - Signal
-- Event SubProcess - Collapsed
-
-Non-interruptingMultiple - Event
-Sub-Process Collapsed
-Interrupting Multiple - Event
-Sub-Process Collapsed
-
-396
-
-Label
-
-Label
-
-Label
-
-Label
-
-Label
-
-Label
-
-Label
-
-SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has one EventDefintion of type
-TimerEventDefintion and
-isInterrupting is true
-
-None or
-isExpanded is
-false
-
-SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has one EventDefintion of type
-ConditionalEventDefintion and
-isInterrupting is false
-
-None or
-isExpanded is
-false
-
-SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has one EventDefintion of type
-ConditionalEventDefintion and
-isInterrupting is true
-
-None or
-isExpanded is
-false
-
-SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has one EventDefintion of type
-SignalEventDefintion and
-isInterrupting is false
-
-None or
-isExpanded is
-false
-
-SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has one EventDefintion of type
-SignalEventDefintion and
-isInterrupting is true
-
-None or
-isExpanded is
-false
-
-SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has multiple EventDefintions
-and isInterrupting is false
-
-None or
-isExpanded is
-false
-
-SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has multiple EventDefintions
-and isInterrupting is true
+isInterrupting is false.
 
 None or
 isExpanded is
@@ -1184,125 +1045,225 @@ false
 
 Business Process Model and Notation, v2.0
 
-Table 12.17 – Depiction Resolution for Collapsed Event Sub-Processes
+Table 12.16 – Depiction Resolution for Collapsed Event Sub-Processes
 
-Non-interrupting Parallel Multiple Event Sub-Process Collapsed
+SubProcess where
+triggeredByEvent is true and the
+one-and-only start event has one
+EventDefintion of type
+TimerEventDefintion and
+isInterrupting is true.
+
+None or
+isExpanded is
+false
+
+SubProcess where
+triggeredByEvent is true and the
+one-and-only start event has one
+EventDefintion of type
+ConditionalEventDefintion and
+isInterrupting is false.
+
+None or
+isExpanded is
+false
+
+SubProcess where
+triggeredByEvent is true and the
+one-and-only start event has one
+EventDefintion of type
+ConditionalEventDefintion and
+isInterrupting is true.
+
+None or
+isExpanded is
+false
+
+SubProcess where
+triggeredByEvent is true and the
+one-and-only start event has one
+EventDefintion of type
+SignalEventDefintion and
+isInterrupting is false.
+
+None or
+isExpanded is
+false
+
+SubProcess where
+triggeredByEvent is true and the
+one-and-only start event has one
+EventDefintion of type
+SignalEventDefintion and
+isInterrupting is true.
+
+None or
+isExpanded is
+false
+
+Label
+
+SubProcess where
+triggeredByEvent is true and the
+one-and-only start event has
+multiple EventDefintions and
+isInterrupting is false.
+
+None or
+isExpanded is
+false
+
+Label
+
+SubProcess where
+triggeredByEvent is true and the
+one-and-only start event has
+multiple EventDefintions and
+isInterrupting is true.
+
+None or
+isExpanded is
+false
+
+Interrupting - Timer - Event
+Sub-Process - Collapsed
+Label
+
+Non-interrupting - Conditional Event Sub-Process - Collapsed
+Label
+
+Interrupting - Conditional Event Sub-Process - Collapsed
+Label
+
+Non-interrupting - Signal Event Sub-Process - Collapsed
+Label
+
+Interrupting - Signal Event Sub-Process - Collapsed
+Label
+
+Non-interrupting- Multiple Event Sub-Process - Collapsed
+
+Interrupting - Multiple Event Sub-Process - Collapsed
+
+Business Process Model and Notation, v2.0
+
+389
+
+Table 12.16 – Depiction Resolution for Collapsed Event Sub-Processes
+
+Non-interrupting - Parallel
+Multiple - Event Sub-Process Collapsed
 
 Interrupting - Parallel
-Multiple - Event SubProcess - Collapsed
+Multiple - Event Sub-Process Collapsed
 
-Non-interrupting Escalation - Event
-Sub-Process Collapsed
+Label
 
-Interrupting Escalation Event
-Sub-Process Collapsed
+Label
 
-Interrupting - Error Event Sub-Process Collapsed
+Non-interrupting - Escalation Event Sub-Process - Collapsed
+Label
 
-Interrupting Compensation Event Sub-Process Collapsed
+Interrupting - Escalation Event
+Sub-Process - Collapsed
+Label
+
+Interrupting - Error Event Sub-Process -Collapsed
+Label
+
+Interrupting - Compensation Event Sub-Process - Collapsed
+Label
+
+390
+
+SubProcess where
+triggeredByEvent is true and the
+one-and-only start event has
+multiple EventDefintions and
+isInterrupting is false and
+isParallelMultiple is true.
+
+None or
+isExpanded is
+false
+
+SubProcess where
+triggeredByEvent is true and the
+one-and-only start event has
+multiple EventDefintions and
+isInterrupting is true and
+isParallelMultiple is true.
+
+None or
+isExpanded is
+false
+
+SubProcess where
+triggeredByEvent is true and the
+one-and-only start event has one
+EventDefintion of type
+EscalationEventDefintion and
+isInterrupting is false.
+
+None or
+isExpanded is
+false
+
+SubProcess where
+triggeredByEvent is true and the
+one-and-only start event has one
+EventDefintion of type
+EscalationEventDefintion and
+isInterrupting is true.
+
+None or
+isExpanded is
+false
+
+SubProcess where
+triggeredByEvent is true and the
+one-and-only start event has one
+EventDefintion of type
+ErrorEventDefintion and
+isInterrupting is true.
+
+None or
+isExpanded is
+false
+
+SubProcess where
+triggeredByEvent is true and the
+one-and-only start event has one
+EventDefintion of type
+CompensationEventDefintion and
+isInterrupting is true.
+
+None or
+isExpanded is
+false
 
 Business Process Model and Notation, v2.0
 
-Label
-
-Label
-
-Label
-
-Label
-
-Label
-
-Label
-
-SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has multiple EventDefintions
-and isInterrupting is false and
-isParallelMultiple is true
-
-None or
-isExpanded is
-false
-
-SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has multiple EventDefintions
-and isInterrupting is true and
-isParallelMultiple is true
-
-None or
-isExpanded is
-false
-
-SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has one EventDefintion of type
-EscalationEventDefintion and
-isInterrupting is false
-
-None or
-isExpanded is
-false
-
-SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has one EventDefintion of type
-EscalationEventDefintion and
-isInterrupting is true
-
-None or
-isExpanded is
-false
-
-SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has one EventDefintion of type
-ErrorEventDefintion and
-isInterrupting is true
-
-None or
-isExpanded is
-false
-
-SubProcess where
-triggeredByEvent is true and
-the one-and-only start event
-has one EventDefintion of type
-CompensationEventDefintion
-and isInterrupting is true
-
-None or
-isExpanded is
-false
-
-397
-
 Expanded Event Sub-Processes [BPMNShape]
-Table 12.18 – Depiction Resolution for Expanded Event Sub-Processes
+Table 12.17 – Depiction Resolution for Expanded Event Sub-Processes
 
 Specific Depiction Resolution:
 Kind:
 
-Event Sub-Process
-- Expanded
+Event Sub-Process Expanded
 
 Depiction:
 
 bpmnElement:
 
-SubProcess where
-triggeredByEvent is true
-
-Label
-
 BPMNShape
 Attributes:
+
+SubProcess where
+triggeredByEvent is true.
+
+Label
 
 isExpanded is
 true
@@ -1310,8 +1271,8 @@ true
 Call Activities (Calling a Global Task) [BPMNShape]
 A Call Activity (Calling a Global Task) must display the Task type marker of the Global Task it calls.
 Call Activities (Calling a Global Task) can also have Compensation and/or Loop Characteristic markers at the bottom
-center of the shape as defined above (see page 388).
-Table 12.19 – Depiction Resolution for Call Activities (Calling a Global Task)
+center of the shape as defined above (see page 381).
+Table 12.18 – Depiction Resolution for Call Activities (Calling a Global Task)
 
 Specific Depiction Resolution:
 Kind:
@@ -1325,59 +1286,53 @@ User Call Activity
 Label
 
 Manual Call Activity
-Label
-
-398
 
 bpmnElement:
 
 BPMNShape
 Attributes:
 
-CallActivity where
-calledElement is unspecified
-or of type GlobalTask
+CallActivity where calledElement is
+unspecified or of type GlobalTask.
 
 None
 
-CallActivity where
-calledElement is of type
-GlobalUserTask
+CallActivity where calledElement is of
+type GlobalUserTask.
 
 None
 
-CallActivity where
-calledElement is of type
-GlobalManualTask
+CallActivity where calledElement is of
+type GlobalManualTask.
 
 None
 
-Business Process Model and Notation, v2.0
+CallActivity where calledElement is of
+type GlobalBusinessRuleTask.
 
-Table 12.19 – Depiction Resolution for Call Activities (Calling a Global Task)
+None
+
+Label
 
 Business Rule Call
 Activity
-
 Label
 
+Business Process Model and Notation, v2.0
+
+391
+
+Table 12.18 – Depiction Resolution for Call Activities (Calling a Global Task)
 Script Call Activity
 Label
 
-CallActivity where
-calledElement is of type
-GlobalBusinessRuleTask
-
-None
-
-CallActivity where
-calledElement is of type
-GlobalScriptTask
+CallActivity where calledElement is of
+type GlobalScriptTask.
 
 None
 
 Collapsed Call Activities (Calling a Process) [BPMNShape]
-Table 12.20 – Depiction Resolution for Collapsed Call Activities (Calling a Process)
+Table 12.19 – Depiction Resolution for Collapsed Call Activities (Calling a Process)
 
 Specific Depiction Resolution:
 Kind:
@@ -1386,23 +1341,20 @@ Depiction:
 
 Call Activity Collapsed
 
-Label
-
 bpmnElement:
+CallActivity where calledElement
+is of type Process.
 
-CallActivity where
-calledElement is of type
-Process
+Label
 
 BPMNShape
 Attributes:
-
 None or
 isExpanded is
 false
 
 Expanded Call Activities (Calling a Process) [BPMNShape]
-Table 12.21 – Depiction Resolution for Expanded Call Activities (Calling a Process)
+Table 12.20 – Depiction Resolution for Expanded Call Activities (Calling a Process)
 
 Specific Depiction Resolution:
 Kind:
@@ -1415,13 +1367,11 @@ Label
 
 bpmnElement:
 
-CallActivity where
-calledElement is of type
-Process
+CallActivity where calledElement
+is of type Process.
 
 BPMNShape
 Attributes:
-
 None or
 isExpanded is
 true
@@ -1429,11 +1379,11 @@ true
 Data [BPMNShape]
 Data Inputs and Data Outputs rendering are optional and only allowed for Processes.
 
+392
+
 Business Process Model and Notation, v2.0
 
-399
-
-Table 12.22 – Depiction Resolution for Data
+Table 12.21 – Depiction Resolution for Data
 
 Specific Depiction Resolution:
 Kind:
@@ -1448,9 +1398,9 @@ Attributes:
 Data Object
 
 DataObjectReference where
-dataObjectRef unspecified or
-is pointing to a DataObject
-where isCollection is false
+dataObjectRef unspecified or is
+pointing to a DataObject where
+isCollection is false.
 
 None
 
@@ -1459,37 +1409,34 @@ Collection
 
 DataObjectReference where
 dataObjectRef is pointing to a
-DataObject where isCollection
-is true
+DataObject where isCollection is
+true.
 
 None
 
 Data Input
 
-DataInput where isCollection
-is false
+DataInput where isCollection is false.
 
 None
 
 Data Input Collection
 
-DataInput where isCollection
-is true
+DataInput where isCollection is true.
 
 None
 
 Data Output
 
-DataOutput where isCollection
-is false
+DataOutput where isCollection is
+false.
 
 None
 
-Data Output
-Collection
+Data Output Collection
 
-DataOutput where isCollection
-is true
+DataOutput where isCollection is
+true.
 
 None
 
@@ -1501,12 +1448,12 @@ None
 
 Label
 
-400
-
 Business Process Model and Notation, v2.0
 
+393
+
 Events [BPMNShape]
-Table 12.23 – Depiction Resolution for Events
+Table 12.22 – Depiction Resolution for Events
 
 Specific Depiction Resolution:
 Kind:
@@ -1520,449 +1467,420 @@ bpmnElement:
 BPMNShape
 Attributes:
 
-StartEvent with no
-EventDefinition
+StartEvent with no EventDefinition
 
 None
 
-StartEvent with one
-EventDefinition of type
-MessageEventDefinition and
-isInterrupting is true
+StartEvent with one EventDefinition
+of type MessageEventDefinition and
+isInterrupting is true.
 
 None
 
-StartEvent with one
-EventDefinition of type
-MessageEventDefinition and
-isInterrupting is false
+StartEvent with one EventDefinition
+of type MessageEventDefinition and
+isInterrupting is false.
 
 None
 
-StartEvent with one
-EventDefinition of type
-TimerEventDefinition and
-isInterrupting is true
+StartEvent with one EventDefinition
+of type TimerEventDefinition and
+isInterrupting is true.
 
 None
 
-Non-interrupting Timer Start Event
-
-StartEvent with one
-EventDefinition of type
-TimerEventDefinition and
-isInterrupting is false
-
-None
-
-Interrupting Conditional Start
+Non-interrupting - Timer Start
 Event
 
-StartEvent with one
-EventDefinition of type
-ConditionalEventDefinition
-and isInterrupting is true
+StartEvent with one EventDefinition
+of type TimerEventDefinition and
+isInterrupting is false.
 
 None
 
-Non-interrupting Conditional Start
+Interrupting Conditional Start Event
+
+StartEvent with one EventDefinition
+of type ConditionalEventDefinition
+and isInterrupting is true.
+
+None
+
+Non-interrupting -Conditional
+Start Event
+
+StartEvent with one EventDefinition
+of type ConditionalEventDefinition
+and isInterrupting is false.
+
+None
+
+Interrupting Signal Start Event
+
+StartEvent One EventDefinition of
+type SignalEventDefinition and
+isInterrupting is true.
+
+None
+
+Non-interrupting -Signal Start
 Event
 
-StartEvent with one
-EventDefinition of type
-ConditionalEventDefinition
-and isInterrupting is false
-
-None
-
-Interrupting Signal
-Start Event
-
-StartEvent One
-EventDefinition of type
-SignalEventDefinition and
-isInterrupting is true
+StartEvent with one EventDefinition
+of type SignalEventDefinition and
+isInterrupting is false.
 
 None
 
 Label
 
-Interrupting Message Start Event
+Interrupting - Message Start
+Event
 Label
 
-Non-interrupting Message Start Event
-Label
-
-Interrupting - Timer
+Non-interrupting - Message
 Start Event
 Label
+
+Interrupting - Timer Start
+Event
+Label
+
+394
 
 Business Process Model and Notation, v2.0
 
-401
+Table 12.22 – Depiction Resolution for Events
 
-Table 12.23 – Depiction Resolution for Events
+Interrupting Multiple Start
+Event
 
-Non-interrupting Signal Start Event
-
-StartEvent with one
-EventDefinition of type
-SignalEventDefinition and
-isInterrupting is false
+StartEvent with more than one
+EventDefinition, parallelMultiple is
+false and isInterrupting is true.
 
 None
 
-Interrupting Multiple
+Non-interrupting Multiple Start
+Event
+
+StartEvent with more than one
+EventDefinition, parallelMultiple is
+false and isInterrupting is false.
+
+None
+
+Interrupting - Parallel Multiple
 Start Event
 
 StartEvent with more than one
-EventDefinition,
-parallelMultiple is false and
-isInterrupting is true
+EventDefinition, parallelMultiple is
+true and isInterrupting is true.
 
 None
 
-Non-interrupting
+Non-interrupting - Parallel
 Multiple Start Event
 
 StartEvent with more than one
-EventDefinition,
-parallelMultiple is false and
-isInterrupting is false
+EventDefinition, parallelMultiple is
+true and isInterrupting is false.
 
 None
 
-Interrupting - Parallel
-Multiple Start Event
+Interrupting Escalation Start Event
 
-StartEvent with more than one
-EventDefinition,
-parallelMultiple is true and
-isInterrupting is true
+StartEvent with one EventDefinition
+of type EscalationEventDefinition
+and isInterrupting is true.
 
 None
 
-Non-interrupting Parallel Multiple
+Non-interrupting - Escalation
 Start Event
 
-StartEvent with more than one
-EventDefinition,
-parallelMultiple is true and
-isInterrupting is false
+StartEvent with one EventDefinition
+of type EscalationEventDefinition
+and isInterrupting is false.
 
 None
 
-Interrupting Escalation Start
-Event
+Interrupting - Error Start Event
 
-StartEvent with one
-EventDefinition of type
-EscalationEventDefinition and
-isInterrupting is true
+StartEvent with one EventDefinition
+of type ErrorEventDefinition.
 
 None
 
-Non-interrupting Escalation Start
-Event
+Interrupting Compensation Start Event
 
-StartEvent with one
-EventDefinition of type
-EscalationEventDefinition and
-isInterrupting is false
-
-None
-
-Interrupting - Error
-Start Event
-
-StartEvent with one
-EventDefinition of type
-ErrorEventDefinition
-
-None
-
-Interrupting Compensation Start
-Event
-
-StartEvent with one
-EventDefinition of type
-CompensationEventDefinition
+StartEvent with one EventDefinition
+of type
+CompensationEventDefinition.
 
 None
 
 Interrupting - None
 Intermediate Event
 
-IntermediateThrowEvent with
-no EventDefinition
+IntermediateThrowEvent with no
+EventDefinition.
 
 None
 
-402
+Catch - Message
+Intermediate Event
+
+IntermediateCatchEvent with one
+EventDefinition of type
+MessageEventDefinition.
+
+None
 
 Label
 
 Business Process Model and Notation, v2.0
 
-Table 12.23 – Depiction Resolution for Events
+395
 
-Catch - Message
-Intermediate Event
+Table 12.22 – Depiction Resolution for Events
 
-IntermediateCatchEvent with
-one EventDefinition of type
-MessageEventDefinition
-
-None
-
-Interrupting Boundary - Catch Message
+Interrupting - Boundary Catch - Message
 Intermediate Event
 
 BoundaryEvent with one
 EventDefinition of type
 MessageEventDefinition and
-cancelActivity is true
+cancelActivity is true.
 
 None
 
-Non-interrupting Boundary - Catch Message
+Non-interrupting - Boundary Catch - Message
 Intermediate Event
 
 BoundaryEvent with one
 EventDefinition of type
 MessageEventDefinition and
-cancelActivity is false
+cancelActivity is false.
 
 None
 
 Throw - Message
 Intermediate Event
 
-IntermediateThrowEvent with
-one EventDefinition of type
-MessageEventDefinition
+IntermediateThrowEvent with one
+EventDefinition of type
+MessageEventDefinition.
 
 None
 
-Timer Intermediate
-Event
+Timer Intermediate Event
 
-IntermediateCatchEvent with
-one EventDefinition of type
-TimerEventDefinition
+IntermediateCatchEvent with one
+EventDefinition of type
+TimerEventDefinition.
 
 None
 
-Interrupting Boundary - Timer
-Intermediate Event
+Interrupting - Boundary Timer Intermediate Event
 
 BoundaryEvent with one
 EventDefinition of type
 TimerEventDefinition and
-cancelActivity is true
+cancelActivity is true.
 
 None
 
-Non-interrupting
-Boundary - Timer
-Intermediate Event
+Non-interrupting Boundary Timer Intermediate Event
 
-IntermediateCatchEvent with
-one EventDefinition of type
+IntermediateCatchEvent with one
+EventDefinition of type
 TimerEventDefinition and
-cancelActivity is false
+cancelActivity is false.
 
 None
 
 Conditional
 Intermediate Event
 
-IntermediateCatchEvent with
-one EventDefinition of type
-ConditionalEventDefinition
+IntermediateCatchEvent with one
+EventDefinition of type
+ConditionalEventDefinition.
 
 None
 
-Interrupting Boundary Conditional
+Interrupting - Boundary Conditional Intermediate
+Event
+
+BoundaryEvent with one
+EventDefinition of type
+ConditionalEventDefinition and
+cancelActivity is true.
+
+None
+
+Non-interrupting - Boundary Conditional
 Intermediate Event
 
 BoundaryEvent with one
 EventDefinition of type
-ConditionalEventDefinition
-and cancelActivity is true
+ConditionalEventDefinition and
+cancelActivity is false.
 
 None
-
-Non-interrupting Boundary Conditional
-Intermediate Event
-
-BoundaryEvent with one
-EventDefinition of type
-ConditionalEventDefinition
-and cancelActivity is false
-
-None
-
-Business Process Model and Notation, v2.0
-
-403
-
-Table 12.23 – Depiction Resolution for Events
 
 Catch - Signal
 Intermediate Event
 
-IntermediateCatchEvent with
-one EventDefinition of type
-MessageEventDefinition
+IntermediateCatchEvent with one
+EventDefinition of type
+MessageEventDefinition.
 
 None
 
-Interrupting Boundary - Catch Signal Intermediate
+396
+
+Business Process Model and Notation, v2.0
+
+Table 12.22 – Depiction Resolution for Events
+
+Interrupting - Boundary Catch - Signal Intermediate
 Event
 
 BoundaryEvent with one
 EventDefinition of type
 SignalEventDefinition and
-cancelActivity is true
+cancelActivity is true.
 
 None
 
-Non-interruptingBoundary - Catch Signal Intermediate
+Non-interrupting-Boundary Catch - Signal Intermediate
 Event
 
 BoundaryEvent with one
 EventDefinition of type
 SignalEventDefinition and
-cancelActivity is false
+cancelActivity is false.
 
 None
 
-Interrupting Boundary - Throw Signal Intermediate
+Interrupting - Boundary Throw - Signal Intermediate
 Event
 
-IntermediateThrowEvent with
-one EventDefinition of type
-SignalEventDefinition
+IntermediateThrowEvent with one
+EventDefinition of type
+SignalEventDefinition.
 
 None
 
-Catch - Multiple
-Intermediate Event
+Catch - Multiple Intermediate
+Event
 
-IntermediateCatchEvent with
-more than one EventDefinition
-and parallelMultiple is false
-
-None
-
-Interrupting Boundary - Catch Multiple
-Intermediate Event
-
-BoundaryEvent with more
-than one EventDefinition,
-parallelMultiple is false and
-cancelActivity is true
+IntermediateCatchEvent with more
+than one EventDefinition and
+parallelMultiple is false.
 
 None
 
-Non-interrupting
-Boundary - Catch Multiple
+Interrupting - Boundary Catch - Multiple
 Intermediate Event
 
-BoundaryEvent with more
-than one EventDefinition,
-parallelMultiple is false and
-cancelActivity is false
+BoundaryEvent with more than one
+EventDefinition, parallelMultiple is
+false and cancelActivity is true.
+
+None
+
+Non-interrupting Boundary Catch - Multiple
+Intermediate Event
+
+BoundaryEvent with more than one
+EventDefinition, parallelMultiple is
+false and cancelActivity is false.
 
 None
 
 Throw - Multiple
 Intermediate Event
 
-IntermediateThrowEvent with
-more than one EventDefinition
-and parallelMultiple is false
+IntermediateThrowEvent with more
+than one EventDefinition and
+parallelMultiple is false.
 
 None
 
-Catch - Parallel
-Multiple
+Catch - Parallel Multiple
 Intermediate Event
 
-IntermediateCatchEvent with
-more than one EventDefinition
-and parallelMultiple is true
+IntermediateCatchEvent with more
+than one EventDefinition and
+parallelMultiple is true.
 
 None
 
-404
+Interrupting - Boundary Catch -Parallel Multiple
+Intermediate Event
+
+BoundaryEvent with more than one
+EventDefinition, parallelMultiple is
+true and cancelActivity is true.
+
+None
+
+Non-interrupting Boundary Catch -Parallel Multiple Intermediate Event
+
+BoundaryEvent with more than one
+EventDefinition, parallelMultiple is
+true and cancelActivity is false.
+
+None
 
 Business Process Model and Notation, v2.0
 
-Table 12.23 – Depiction Resolution for Events
+397
 
-Interrupting Boundary - Catch Parallel Multiple
-Intermediate Event
-
-BoundaryEvent with more
-than one EventDefinition,
-parallelMultiple is true and
-cancelActivity is true
-
-None
-
-Non-interrupting
-Boundary - Catch Parallel Multiple
-Intermediate Event
-
-BoundaryEvent with more
-than one EventDefinition,
-parallelMultiple is true and
-cancelActivity is false
-
-None
+Table 12.22 – Depiction Resolution for Events
 
 Catch -Escalation
 Intermediate Event
 
-IntermediateCatchEvent with
-one EventDefinition of type
-EscalationEventDefinition
+IntermediateCatchEvent with one
+EventDefinition of type
+EscalationEventDefinition.
 
 None
 
-Interrupting Boundary - Catch Escalation
+Interrupting - Boundary Catch -Escalation
 Intermediate Event
 
 BoundaryEvent with one
 EventDefinition of type
 EscalationEventDefinition and
-cancelActivity is true
+cancelActivity is true.
 
 None
 
-Non-interrupting Boundary - Catch Escalation
+Non-interrupting -Boundary Catch -Escalation
 Intermediate Event
 
 BoundaryEvent with one
 EventDefinition of type
 EscalationEventDefinition and
-cancelActivity is false
+cancelActivity is false.
 
 None
 
 Throw - Escalation
 Intermediate Event
 
-IntermediateThrowEvent with
-one EventDefinition of type
-EscalationEventDefinition
+IntermediateThrowEvent with one
+EventDefinition of type
+EscalationEventDefinition.
 
 None
 
-Boundary - Catch Error Intermediate
-Event
+Boundary - Catch - Error
+Intermediate Event
 
 BoundaryEvent with one
 EventDefinition of type
@@ -1979,40 +1897,35 @@ CompensateEventDefinition
 
 None
 
-Throw Compensation
+Throw - Compensation
 Intermediate Event
 
-IntermediateThrowEvent with
-one EventDefinition of type
+IntermediateThrowEvent with one
+EventDefinition of type
 CompensateEventDefinition
 
 None
 
-Catch - Link Intermediate Event
+Catch - Link Intermediate
+Event
 
-IntermediateCatchEvent with
-one EventDefinition of type
+IntermediateCatchEvent with one
+EventDefinition of type
 LinkEventDefinition\
 
 None
 
-Business Process Model and Notation, v2.0
-
-405
-
-Table 12.23 – Depiction Resolution for Events
-
 Throw - Link
 Intermediate Event
 
-IntermediateThrowEvent with
-one EventDefinition of type
+IntermediateThrowEvent with one
+EventDefinition of type
 LinkEventDefinition
 
 None
 
-Boundary - Catch Cancel Intermediate
-Event
+Boundary - Catch - Cancel
+Intermediate Event
 
 BoundaryEvent with one
 EventDefinition of type
@@ -2020,26 +1933,29 @@ CancelEventDefinition
 
 None
 
+398
+
+Business Process Model and Notation, v2.0
+
+Table 12.22 – Depiction Resolution for Events
+
 None End Event
 
-EndEvent with no
-EventDefinition
+EndEvent with no EventDefinition
 
 None
 
 Message End Event
 
-EndEvent with one
-EventDefinition of type
-MessageEventDefiniton
+EndEvent with one EventDefinition
+of type MessageEventDefiniton
 
 None
 
 Signal End Event
 
-EndEvent with one
-EventDefinition of type
-SignalEventDefiniton
+EndEvent with one EventDefinition
+of type SignalEventDefiniton
 
 None
 
@@ -2050,56 +1966,47 @@ EventDefinition
 
 None
 
-Escalation End
-Event
+Escalation End Event
 
-EndEvent with one
-EventDefinition of type
-EscalationEventDefiniton
+EndEvent with one EventDefinition
+of type EscalationEventDefiniton
 
 None
 
 Error End Event
 
-EndEvent with one
-EventDefinition of type
-ErrorEventDefiniton
+EndEvent with one EventDefinition
+of type ErrorEventDefiniton
 
 None
 
-Compensation End
-Event
+Compensation End Event
 
-EndEvent with one
-EventDefinition of type
-CompensateEventDefiniton
+EndEvent with one EventDefinition
+of type CompensateEventDefiniton
 
 None
 
 Cancel End Event
 
-EndEvent with one
-EventDefinition of type
-CancelEventDefiniton
+EndEvent with one EventDefinition
+of type CancelEventDefiniton
 
 None
-
-406
-
-Business Process Model and Notation, v2.0
-
-Table 12.23 – Depiction Resolution for Events
 
 Terminate End Event
 
-EndEvent with one
-EventDefinition of type
-TerminateEventDefiniton
+EndEvent with one EventDefinition
+of type TerminateEventDefiniton
 
 None
 
+Business Process Model and Notation, v2.0
+
+399
+
 Gateways [BPMNShape]
-Table 12.24 – Depiction Resolution for Gateways
+Table 12.23 – Depiction Resolution for Gateways
 
 Specific Depiction Resolution:
 Kind:
@@ -2144,53 +2051,47 @@ ComplexGateway
 
 None
 
-Event-Based
-Gateway
+Event-Based Gateway
 
 EventBasedGateway where
-instantiate is false
+instantiate is false.
 
 None
+
+Event-Based Gateway
+to Start a Process
+
+EventBasedGateway where
+instantiate is true and
+eventGatewayType is exclusive.
+
+None
+
+400
 
 Business Process Model and Notation, v2.0
 
-407
+Table 12.23 – Depiction Resolution for Gateways
 
-Table 12.24 – Depiction Resolution for Gateways
+EventBasedGateway where
+instantiate is true and
+eventGatewayType is parallel.
 
-Event-Based
+Parallel Event-Based
 Gateway to Start a
 Process
 
-EventBasedGateway where
-instantiate is true and
-eventGatewayType is
-exclusive
-
-Parallel EventBased Gateway to
-Start a Process
-
-EventBasedGateway where
-instantiate is true and
-eventGatewayType is parallel
-
-None
-
 Artifacts [BPMNShape]
-Table 12.25 – Depiction Resolution for Artifacts
+Table 12.24 – Depiction Resolution for Artifacts
 
 Specific Depiction Resolution:
 Kind:
 
 Depiction:
 
-Group
-
 bpmnElement:
 
-Label
-
-Text Annotation
+Group
 
 BPMNShape
 Attributes:
@@ -2203,14 +2104,13 @@ Text Annotation
 
 None
 
+La bel
+
+Text Annotation
+
 Text
-
-408
-
-Business Process Model and Notation, v2.0
-
 Lanes [BPMNShape]
-Table 12.26 – Depiction Resolution for Lanes
+Table 12.25 – Depiction Resolution for Lanes
 
 Specific Depiction Resolution:
 Kind:
@@ -2218,6 +2118,8 @@ Kind:
 Depiction:
 
 Vertical Lane
+
+Business Process Model and Notation, v2.0
 
 Label
 
@@ -2227,13 +2129,11 @@ Attributes:
 Lane
 
 None or
-isVertical is
-false
+isVertical is false
 
 Lane
 
-isVertical is
-true
+isVertical is true
 
 Label
 
@@ -2241,16 +2141,18 @@ Horizontal Lane
 
 bpmnElement:
 
+401
+
 Pools [BPMNShape]
-Table 12.27 – Depiction Resolution for Pools
+Table 12.26 – Depiction Resolution for Pools
 
 Specific Depiction Resolution:
 Kind:
 
 Depiction:
 
-Horizontal Pool with Multi Instance
-Participant
+Horizontal Pool - with
+Multi Instance Participant
 
 Label
 
@@ -2261,7 +2163,11 @@ Horizontal Pool
 Vertical Pool
 Label
 
-Business Process Model and Notation, v2.0
+Vertical Pool - with
+Multi Instance
+Participant
+
+Label
 
 bpmnElement:
 
@@ -2271,52 +2177,41 @@ Attributes:
 Participant where
 ParticipantMultiplicity is
 unspecified or set and its
-maximum attribute is 1
+maximum attribute is 1.
 
 None or
-isVertical is
-false
+isVertical is false
 
 Participant where
-ParticipantMultiplicity is set
-and its maximum attribute is >
-1.
+ParticipantMultiplicity is set and its
+maximum attribute is > 1..
 
 None or
-isVertical is
-false
+isVertical is false
 
 Partcipant where
 ParticipantMultiplicity is
 unspecified or set and its
-maximum attribute is 1
+maximum attribute is 1.
 
-isVertical is
-true
-
-409
-
-Table 12.27 – Depiction Resolution for Pools
-
-Vertical Pool - with
-Multi Instance
-Participant
-
-Label
+isVertical is true
 
 Participant where
-ParticipantMultiplicity is set
-and its maximum attribute is >
-1.
+ParticipantMultiplicity is set and its
+maximum attribute is > 1.
 
-isVertical is
-true
+isVertical is true
 
 Choreography Tasks [BPMNShape]
-While the depictions provided in Table 12.28 - Depiction Resolution for Choreography Tasks contain Participant Bands,
+While the depictions provided in Table 12.27 - Depiction Resolution for Choreography Tasks contain Participant Bands,
 Participant Bands are separate shapes that need to be separately defined. Individual Participant Bands are rendered by
-separate BPMNShape(s), each Participant Band referencing the corresponding participant. See page 415.
-Table 12.28 – Depiction Resolution for Choreography Tasks
+separate BPMNShape(s), each Participant Band referencing the corresponding participant. See page 407.
+
+402
+
+Business Process Model and Notation, v2.0
+
+Table 12.27 – Depiction Resolution for Choreography Tasks
 
 Specific Depiction Resolution:
 Kind:
@@ -2331,14 +2226,14 @@ Attributes:
 Choreography Task
 
 ChoreographyTask where
-loopType is None
+loopType is None.
 
 None
 
 Choreography Task Loop
 
 ChoreographyTask where
-loopType is Standard
+loopType is Standard.
 
 None
 
@@ -2347,30 +2242,27 @@ Instance
 
 ChoreographyTask where
 loopType is
-MultiInstanceSequential
+MultiInstanceSequential.
 
 None
 
-410
-
-Business Process Model and Notation, v2.0
-
-Table 12.28 – Depiction Resolution for Choreography Tasks
-
-Choreography Task Parallel Multi
-Instance
+Choreography Task Parallel Multi Instance
 
 ChoreographyTask where
-loopType is
-MultiInstanceParallel
+loopType is MultiInstanceParallel.
 
 None
 
 Collapsed Sub-Choreographies [BPMNShape]
-While the depictions provided in Table 12.29 - Depiction Resolution for Collapsed Sub-Choreographies contain
+While the depictions provided in Table 12.28 - Depiction Resolution for Collapsed Sub-Choreographies contain
 Participant Bands, Participant Bands are separate shapes that need to be separately defined. Individual Participant Bands
-are rendered by separate BPMNShape(s), each Participant Band referencing the corresponding participant. See page 415.
-Table 12.29 – Depiction Resolution for Sub-Choreographies (Collapsed)
+are rendered by separate BPMNShape(s), each Participant Band referencing the corresponding participant. See page 407.
+
+Business Process Model and Notation, v2.0
+
+403
+
+Table 12.28 – Depiction Resolution for Sub-Choreographies (Collapsed)
 
 Specific Depiction Resolution:
 Kind:
@@ -2389,14 +2281,14 @@ BPMNShape
 Attributes:
 
 SubChoreography where
-loopType is None
+loopType is None.
 
 None or
 isExpanded is
 false
 
 SubChoreography where
-loopType is Standard
+loopType is Standard.
 
 None or
 isExpanded is
@@ -2404,7 +2296,14 @@ false
 
 SubChoreography where
 loopType is
-MultiInstanceSequential
+MultiInstanceSequential.
+
+None or
+isExpanded is
+false
+
+SubChoreography where
+loopType is MultiInstanceParallel.
 
 None or
 isExpanded is
@@ -2421,64 +2320,47 @@ Label
 Label
 Label
 
-Business Process Model and Notation, v2.0
-
-411
-
-Table 12.29 – Depiction Resolution for Sub-Choreographies (Collapsed)
-
-Sub-Choreography Parallel Multi
-Instance - Collapsed
+Sub-Choreography Parallel Multi Instance
+- Collapsed
 
 Label
 
 Label
-
-SubChoreography where
-loopType is
-MultiInstanceParallel
-
-None or
-isExpanded is
-false
-
 Label
 
 Expanded Sub-Choreographies [BPMNShape]
-While the depiction provided in Table 12.30 - Depiction Resolution for Expanded Sub-Choreographies contains
+While the depiction provided in Table 12.29 - Depiction Resolution for Expanded Sub-Choreographies contains
 Participant Bands, Participant Bands are separate shapes that need to be separately defined. Individual Participant Bands
-are rendered by separate BPMNShape(s), each Participant Band referencing the corresponding participant. See page 415.
-An expanded Sub Choreography has a loop type that is depicted exactly like the collapsed version in Table 12.29 Depiction Resolution for Collapsed Sub-Choreographies above.
-Table 12.30 – Depiction Resolution for Sub-Choreographies (Expanded)
+are rendered by separate BPMNShape(s), each Participant Band referencing the corresponding participant. See page 407.
+An expanded Sub Choreography has a loop type that is depicted exactly like the collapsed version in Table 12.28 Depiction Resolution for Collapsed Sub-Choreographies above.
+
+404
+
+Business Process Model and Notation, v2.0
+
+Table 12.29 – Depiction Resolution for Sub-Choreographies (Expanded)
 
 Specific Depiction Resolution:
 Kind:
 
-Sub-Choreography Expanded
-
 Depiction:
 
-bpmnElement:
+Sub-Choreography Expanded
 
+bpmnElement:
 SubChoreography
 
 BPMNShape
 Attributes:
-
 isExpanded is
 true
 
 Call Choreographies (Calling a Global Choreography Task) [BPMNShape]
-While the depictions provided in Table 12.31 - Depiction Resolution for Call Choreographies (Calling a Global
+While the depictions provided in Table 12.30 - Depiction Resolution for Call Choreographies (Calling a Global
 Choreography Task) contain Participant Bands, Participant Bands are separate shapes that need to be separately defined.
 Individual Participant Bands are rendered by separate BPMNShape(s), each Participant Band referencing the
-corresponding participant. See page 415.
-
-412
-
-Business Process Model and Notation, v2.0
-
-Table 12.31 – Depiction Resolution for Call Choreographies (Calling a Global Choreography Task)
+corresponding participant. See page 407.
+Table 12.30 – Depiction Resolution for Call Choreographies (Calling a Global Choreography Task)
 
 Specific Depiction Resolution:
 Kind:
@@ -2486,6 +2368,9 @@ Kind:
 Depiction:
 
 bpmnElement:
+
+BPMNShape
+Attributes:
 
 Call Choreography
 Activity calling a
@@ -2493,6 +2378,12 @@ Global
 Choreography Task
 
 CallChoreography where
+calledChoreographyRef is
+unspecified or of type
+GlobalChoreographyTask and
+loopType is None.
+
+None
 
 Call Choreography
 Activity calling a
@@ -2500,6 +2391,17 @@ Global
 Choreography Task Loop
 
 CallChoreography where
+calledChoreographyRef is of type
+GlobalChoreographyTask and
+loopType is Standard.
+
+None
+
+Business Process Model and Notation, v2.0
+
+405
+
+Table 12.30 – Depiction Resolution for Call Choreographies (Calling a Global Choreography Task)
 
 Call Choreography
 Activity calling a
@@ -2508,56 +2410,31 @@ Choreography Task Sequential Multi
 Instance
 
 CallChoreography where
+calledChoreographyRef is of type
+GlobalChoreographyTask and
+loopType is
+MultiInstanceSequential.
+
+None
 
 Call Choreography
 Activity calling a
 Global
-Choreography Task Paralle lMulti
-Instance
+Choreography Task Paralle lMulti Instance
 
 CallChoreography where
-
-BPMNShape
-Attributes:
-
-None
-
-calledChoreographyRef is
-unspecified or of type
+calledChoreographyRef is of type
 GlobalChoreographyTask and
-loopType is None
+loopType is MultiInstanceParallel.
 
 None
-
-calledChoreographyRef is of
-type GlobalChoreographyTask
-and loopType is Standard
-
-None
-
-calledChoreographyRef is of
-type GlobalChoreographyTask
-and loopType is
-MultiInstanceSequential
-
-None
-
-calledChoreographyRef is of
-type GlobalChoreographyTask
-and loopType is
-MultiInstanceParallel
 
 Collapsed Call Choreographies (Calling a Choreography) [BPMNShape]
-While the depictions provided in Table 12.32 - Depiction Resolution for Collapsed Call Choreography (Calling a
+While the depictions provided in Table 12.31 - Depiction Resolution for Collapsed Call Choreography (Calling a
 Choreography) contain Participant Bands, Participant Bands are separate shapes that need to be separately defined.
 Individual Participant Bands are rendered by separate BPMNShape(s), each Participant Band referencing the
-corresponding participant. See page 415.
-
-Business Process Model and Notation, v2.0
-
-413
-
-Table 12.32 – Depiction Resolution for Collapsed Call Choreographies (Calling a Choreography)
+corresponding participant. See page 407.
+Table 12.31 – Depiction Resolution for Collapsed Call Choreographies (Calling a Choreography)
 
 Specific Depiction Resolution:
 Kind:
@@ -2568,19 +2445,37 @@ Choreography
 
 Depiction:
 
+Label
+
+Label
+
 bpmnElement:
-
-CallChoreography where
-Label
-
-Label
-
-calledChoreographyRef is of
-type Choreography and
-loopType is None
 
 BPMNShape
 Attributes:
+
+CallChoreography where
+calledChoreographyRef is of type
+Choreography and loopType is
+None.
+
+None or
+isExpanded is
+false
+
+CallChoreography where
+calledChoreographyRef is of type
+Choreography and loopType is
+Standard.
+
+None or
+isExpanded is
+false
+
+CallChoreography where
+calledChoreographyRef is of type
+Choreography and loopType is
+MultiInstanceSequential.
 
 None or
 isExpanded is
@@ -2590,21 +2485,11 @@ Label
 
 Call Choreography
 Activity calling a
-Choreography Loop
-
-CallChoreography where
-Label
+Choreography - Loop
 
 Label
 
-calledChoreographyRef is of
-type Choreography and
-loopType is Standard
-
-None or
-isExpanded is
-false
-
+Label
 Label
 
 Call Choreography
@@ -2612,53 +2497,43 @@ Activity calling a
 Choreography Sequential Multi
 Instance
 
-Call Choreography
-Activity calling a
-Choreography Parallel Multi
-Instance
+406
 
-CallChoreography where
 Label
 
 Label
 Label
-
-calledChoreographyRef is of
-type Choreography and
-loopType is
-MultiInstanceSequential
-
-CallChoreography where
-Label
-
-Label
-Label
-
-calledChoreographyRef is of
-type Choreography and
-loopType is
-MultiInstanceParallel
-
-None or
-isExpanded is
-false
-
-None or
-isExpanded is
-false
-
-Expanded Call Choreographies (Calling a Choreography) [BPMNShape]
-While the depiction provided in Table 12.33 - Depiction Resolution for Expanded Call Choreographies (Calling a
-Choreography) contains Participant Bands, Participant Bands are separate shapes that need to be separately defined.
-Individual Participant Bands are rendered by separate BPMNShape(s), each Participant Band referencing the
-corresponding participant. See page 415.
-An expanded Use Sub Choreography has a loop type that is depicted exactly like the collapsed version in Table 12.32 Depiction Resolution for Collapsed CallChoreography (Calling a Choreography) above.
-
-414
 
 Business Process Model and Notation, v2.0
 
-Table 12.33 – Depiction Resolution for Expanded Call Choreographies (Calling a Choreography)
+Table 12.31 – Depiction Resolution for Collapsed Call Choreographies (Calling a Choreography)
+
+Call Choreography
+Activity calling a
+Choreography Parallel Multi Instance
+
+Label
+
+Label
+
+CallChoreography where
+calledChoreographyRef is of type
+Choreography and loopType is
+MultiInstanceParallel.
+
+None or
+isExpanded is
+false.
+
+Label
+
+Expanded Call Choreographies (Calling a Choreography) [BPMNShape]
+While the depiction provided in Table 12.32 - Depiction Resolution for Expanded Call Choreographies (Calling a
+Choreography) contains Participant Bands, Participant Bands are separate shapes that need to be separately defined.
+Individual Participant Bands are rendered by separate BPMNShape(s), each Participant Band referencing the
+corresponding participant. See page 407.
+An expanded Use Sub Choreography has a loop type that is depicted exactly like the collapsed version in Table 12.31 Depiction Resolution for Collapsed CallChoreography (Calling a Choreography) above.
+Table 12.32 – Depiction Resolution for Expanded Call Choreographies (Calling a Choreography)
 
 Specific Depiction Resolution:
 Kind:
@@ -2670,16 +2545,14 @@ Activity calling a
 Choreography
 
 bpmnElement:
+CallChoreography where
+calledChoreographyRef is of type
+Choreography.
 
 BPMNShape
 Attributes:
-
-CallChoreography where
-calledChoreographyRef is of
-type Choreography
-
 isExpanded is
-true
+true.
 
 Choreography Participant Bands [BPMNShape]
 Participant Bands (used in Choreography shapes) are separate shapes that need to be separately defined. Individual
@@ -2691,7 +2564,11 @@ decorator.
 The bounds of the BPMNShape representing the band do not include the envelope decorator. The envelope decorator is
 therefore outside of the BPMNShape bounds. BPMN DI does not provide an interchange of the bounds of the envelope
 decorator.
-Table 12.34 – Depiction Resolution for Choreography Participant Bands
+Business Process Model and Notation, v2.0
+
+407
+
+Table 12.33 – Depiction Resolution for Choreography Participant Bands
 
 Specific Depiction Resolution:
 Kind:
@@ -2703,37 +2580,29 @@ bpmnElement:
 BPMNShape
 Attributes:
 
-Initiating Participant
-- Top
+Initiating Participant Top
 
 Participant where
 participantMultiplicity is
 unspecified or is set and its
-maximum attribute is 1
+maximum attribute is 1.
 
-participantBandKind
-is top_initiating and
+participantBandKind is
+top_initiating and
 isMessageVisible is
-unspecified or false
+unspecified or false.
 
-Initiating Participant
-- Top with Decorator
+Initiating Participant Top with Decorator
 
 Participant where
 participantMultiplicity is
 unspecified or set and its
-maximum attribute is 1
+maximum attribute is 1.
 
-participantBandKind
-is top_initiating and
+participantBandKind is
+top_initiating and
 isMessageVisible is
-true
-
-Business Process Model and Notation, v2.0
-
-415
-
-Table 12.34 – Depiction Resolution for Choreography Participant Bands
+true.
 
 Initiating - Additional
 Participant
@@ -2741,41 +2610,37 @@ Participant
 Participant where
 participantMultiplicity is
 unspecified or set and its
-maximum attribute is 1
+maximum attribute is 1.
 
-participantBandKind
-is middle_initiating
+participantBandKind is
+middle_initiating.
 
-Initiating Participant
-- Bottom
+Initiating Participant Bottom
 
 Participant where
 participantMultiplicity is
 unspecified or set and its
-maximum attribute is 1
+maximum attribute is 1.
 
-participantBandKind
-is bottom_initiating
-and
+participantBandKind is
+bottom_initiating and
 isMessageVisible is
-unspecified or false
+unspecified or false.
 
-Initiating Participant
-- Bottom with
+Initiating Participant Bottom with
 Decorator
 
 Participant where
 participantMultiplicity is
 unspecified or set and its
-maximum attribute is 1
+maximum attribute is 1.
 
-participantBandKind
-is bottom_initiating
-and
+participantBandKind is
+bottom_initiating and
 isMessageVisible is
-true
+true.
 
-Initiating - Top Multi-Instance
+Initiating - Top - MultiInstance
 Participant
 
 Participant where
@@ -2783,12 +2648,12 @@ participantMultiplicity is
 unspecified or set and its
 maximum attribute is > 1.
 
-participantBandKind
-is top_initiating and
+participantBandKind is
+top_initiating and
 isMessageVisible is
-unspecified or false
+unspecified or false.
 
-Initiating - Top Multi-Instance
+Initiating - Top - MultiInstance
 Participant with
 Decorator
 
@@ -2797,10 +2662,10 @@ participantMultiplicity is
 unspecified or set and its
 maximum attribute is > 1.
 
-participantBandKind
-is top_initiating and
+participantBandKind is
+top_initiating and
 isMessageVisible is
-true
+true.
 
 Initiating - Additional
 Multi-Instance
@@ -2811,8 +2676,8 @@ participantMultiplicity is
 unspecified or set and its
 maximum attribute is > 1.
 
-participantBandKind
-is middle_initiating
+participantBandKind is
+middle_initiating.
 
 Initiating - Bottom Multi-Instance
 Participant
@@ -2822,11 +2687,16 @@ participantMultiplicity is
 unspecified or set and its
 maximum attribute is > 1.
 
-participantBandKind
-is bottom_initiating
-and
+participantBandKind is
+bottom_initiating and
 isMessageVisible is
-unspecified or false
+unspecified or false.
+
+408
+
+Business Process Model and Notation, v2.0
+
+Table 12.33 – Depiction Resolution for Choreography Participant Bands
 
 Initiating - Bottom Multi-Instance
 Participant with
@@ -2837,161 +2707,136 @@ participantMultiplicity is
 unspecified or set and its
 maximum attribute is > 1.
 
-participantBandKind
-is bottom_initiating
-and
+participantBandKind is
+bottom_initiating and
 isMessageVisible is
-true
-
-416
-
-Business Process Model and Notation, v2.0
-
-Table 12.34 – Depiction Resolution for Choreography Participant Bands
+true.
 
 Non Initiating
 Participant - Top
 
 Participant where
-participantMultiplicity is set
-and its maximum attribute is 1
+participantMultiplicity is set and its
+maximum attribute is 1.
 
-participantBandKind
-is top_non_initiating
-and
+participantBandKind is
+top_non_initiating and
 isMessageVisible is
-unspecified or false
+unspecified or false.
 
 Non Initiating
-Participant - Top
-with Decorator
+Participant - Top with
+Decorator
 
 Participant where
-participantMultiplicity is set
-and its maximum attribute is 1
+participantMultiplicity is set and its
+maximum attribute is 1.
 
-participantBandKind
-is top_non_initiating
-and
+participantBandKind is
+top_non_initiating and
 isMessageVisible is
-true
+true.
 
 Non Initiating Additional Participant
 
 Participant where
-participantMultiplicity is set
-and its maximum attribute is 1
+participantMultiplicity is set and its
+maximum attribute is 1.
 
-participantBandKind
-is
-middle_non_initiating
+participantBandKind is
+middle_non_initiating.
 
 Non Initiating
 Participant - Bottom
 
 Participant where
-participantMultiplicity is set
-and its maximum attribute is 1
+participantMultiplicity is set and its
+maximum attribute is 1.
 
-participantBandKind
-is
+participantBandKind is
 bottom_non_initiating
-and
-isMessageVisible is
-unspecified or false
+and isMessageVisible is
+unspecified or false.
 
 Non Initiating
 Participant - Bottom
 with Decorator
 
 Participant where
-participantMultiplicity is set
-and its maximum attribute is 1
+participantMultiplicity is set and its
+maximum attribute is 1.
 
-participantBandKind
-is
+participantBandKind is
 bottom_non_initiating
-and
-isMessageVisible is
-true
+and isMessageVisible is
+true.
 
 Non Initiating - Top Multi-Instance
 Participant
 
 Participant where
-participantMultiplicity is set
-and its maximum attribute is >
-1.
+participantMultiplicity is set and its
+maximum attribute is > 1.
 
-participantBandKind
-is top_non_initiating
-and
+participantBandKind is
+top_non_initiating and
 isMessageVisible is
-unspecified or false
+unspecified or false.
 
 Non Initiating - Top Multi-Instance
 Participant with
 Decorator
 
 Participant where
-ParticipantMultiplicity is set
-and its maximum attribute is >
-1.
+ParticipantMultiplicity is set and its
+maximum attribute is > 1.
 
-participantBandKind
-is top_non_initiating
-and
+participantBandKind is
+top_non_initiating and
 isMessageVisible is
-true
+true.
 
 Non Initiating Additional MultiInstance Participant
 
 Participant where
-participantMultiplicity is set
-and its maximum attribute is >
-1.
+participantMultiplicity is set and its
+maximum attribute is > 1.
 
-participantBandKind
-is
-middle_non_initiating
+participantBandKind is
+middle_non_initiating.
+
+Non Initiating Bottom - Multi-Instance
+Participant
+
+Participant where
+ParticipantMultiplicity is set and its
+maximum attribute is > 1.
+
+participantBandKind is
+bottom_non_initiating
+and isMessageVisible is
+unspecified or false.
 
 Business Process Model and Notation, v2.0
 
-417
+409
 
-Table 12.34 – Depiction Resolution for Choreography Participant Bands
-
-Non Initiating Bottom - MultiInstance Participant
+Table 12.33 – Depiction Resolution for Choreography Participant Bands
 
 Participant where
-ParticipantMultiplicity is set
-and its maximum attribute is >
-1.
+participantMultiplicity is set and its
+maximum attribute is > 1.
 
-participantBandKind
-is
+Non Initiating Bottom - Multi-Instance
+Participant with Decorator
+
+participantBandKind is
 bottom_non_initiating
-and
-isMessageVisible is
-unspecified or false
-
-Non Initiating Bottom - MultiInstance Participant
-with Decorator
-
-Participant where
-participantMultiplicity is set
-and its maximum attribute is >
-1.
-
-participantBandKind
-is
-bottom_non_initiating
-and
-isMessageVisible is
-true
+and isMessageVisible is
+true.
 
 Conversations [BPMNShape]
-Table 12.35 – Depiction Resolution for Conversations
+Table 12.34 – Depiction Resolution for Conversations
 
 Specific Depiction Resolution:
 Kind:
@@ -3019,7 +2864,7 @@ Call Conversation
 
 CallConversation where
 calledCollaborationRef is a
-GlobalConversation
+GlobalConversation.
 
 None
 
@@ -3027,146 +2872,158 @@ Call Conversation
 
 CallConversation where
 calledCollaborationRef is a
-Collaboration
+Collaboration.
 
 None
-
-418
-
-Business Process Model and Notation, v2.0
 
 12.3.3 BPMNEdge
 Connecting Objects [BPMNEdge]
 The target [targetElement] and source [sourceElement] of a BPMNEdge may be redefined when the depiction of the
 source or target of the edge is different than the target [targetRef] and source [sourceRef] of the referenced model element
-[bpmnElement] (e.g. Message flow finishing on the border of a black box Pool or a collapsed Sub-Process rather than the
+[bpmnElement] (e.g., Message flow finishing on the border of a black box Pool or a collapsed Sub-Process rather than the
 actual Flow Node within the Pool or Sub-Process). In such case, the targetElement and/or sourceElement of the
 BPMNEdge must point to the appropriate BPMNShape or BPMNEdge.
+
+410
+
+Business Process Model and Notation, v2.0
+
 The source [sourceElement] and target [targetElement] of a BPMNEdge can never be a BPMNShape with
-participantBandKind set (i.e. only Choreography Activity can be source or target of the BPMNEdge not the Participant
+participantBandKind set (i.e., only Choreography Activity can be source or target of the BPMNEdge not the Participant
 Bands).
 Note that for Message Flow with an envelope decorator, the envelope decorator should be at the midpoint of the message
 flow. BPMN DI does not provide an interchange of the bounds of the envelope decorator.
-The "diamond" at the source of the Conditional Sequence Flow should not be depicted when the source of a Conditional
+The “diamond” at the source of the Conditional Sequence Flow should not be depicted when the source of a Conditional
 Sequence Flow is a Gateway. In other words, when the source of a Conditional Sequence Flow is a Gateway, the
 Conditional Sequence Flow looks like a Sequence Flow.
 Even though DataInputAssociation(s) and DataOutputAssociation(s) (Directed Data Associations) always point to
 DataInput(s) or DataOutput(s) as sources or targets within the BPMN model, they are mostly depicted as starting or
 finishing on the border of a different depicted element and thus, the target [targetElement] or source [sourceElement] of
 the BPMNEdge must be specified.
-Table 12.36 – Depiction Resolution for Connecting Objects
+Table 12.35 – Depiction Resolution for Connecting Objects
 
 Specific Depiction Resolution:
 Kind:
 
+Depiction:
+
+bpmnElement:
+SequenceFlow where default is
+false and conditionExpression is
+unspecified.
+
+None
+
+SequenceFlow where default is
+false and conditionExpression is
+specified (exception when source
+is a Gateway).
+
+None
+
+SequenceFlow where default is
+true and conditionExpression is
+unspecified.
+
+None
+
+MessageFlow
+
+messageVisibleKind is
+unspecified.
+
+MessageFlow
+
+messageVisibleKind is
+initiating.
+
+MessageFlow
+
+messageVisibleKind is
+non-initiating.
+
+Label
+
+Association where
+associationDirection is none.
+
+None
+
+Association where
+associationDirection is one.
+
+None
+
+Label
+
 Sequence Flow
+Label
 
 Conditional
 Sequence Flow
 
-Default
-Sequence Flow
-
-Depiction:
-
 Label
 
-Label
+Default Sequence
+Flow
 
-Label
-
-Business Process Model and Notation, v2.0
-
-bpmnElement:
-
-BPMNShape
-Attributes:
-
-SequenceFlow where default
-is false and
-conditionExpression is
-unspecified
-
-None
-
-SequenceFlow where default
-is false and
-conditionExpression is
-specified (exception when
-source is a Gateway)
-
-None
-
-SequenceFlow where default
-is true and
-conditionExpression is
-unspecified
-
-None
-
-419
-
-Table 12.36 – Depiction Resolution for Connecting Objects
+Lab el
 
 Message Flow
+Label
 
 Initiating
-Message Flow
-with Decorator
-Non-Initiating
-Message Flow
-with Decorator
+Message Flow with
+Decorator
+
+Label
+
+Non-Initiating Message Flow with
+Decorator
+
+Label
+
 Association
 
 Directional
 Association
+
+BPMNShape
+Attributes:
+
+Business Process Model and Notation, v2.0
+
+411
+
+Table 12.35 – Depiction Resolution for Connecting Objects
+
 Bi -Directional
 Association
 Data Association
 
-MessageFlow
-
-messageVisibleKind
-is unspecified
-
-MessageFlow
-
-messageVisibleKind
-is initiating
-
-MessageFlow
-
-messageVisibleKind
-is non-initiating
+Directed Data
+Association
 
 Label
 
-Association where
-associationDirection is none
-
-None
+Label
 
 Label
 
+Conversation Link
+
 Association where
-associationDirection is one
+associationDirection is both.
 
 None
 
-None
-
-Label
-
-Association where
-associationDirection is both
 None
 
 The targetElement of
-the BPMNEdge is
-itself of type
-BPMNEdge where
-bpmnElement is of
-type SequenceFlow
+the BPMNEdge is itself
+of type BPMNEdge
+where bpmnElement is
+of type SequenceFlow
 
 DataInputAssociation or
 DataOutputAssociation
@@ -3179,22 +3036,6 @@ None
 
 Label
 
-Label
-
-Label
-
-Label
-
-Directed Data
-Association
-
-Label
-
-Conversation
-Link
-
-Label
-
 12.4 Example(s)
 This section provides examples to support interpretation of the BPMN DI specification. Some BPMN diagram depictions
 along with their XML BPMN DI serializations are provided. The XML samples provided in this section present only
@@ -3202,26 +3043,25 @@ BPMN DI instances and omit the BPMN 2.0 abstract syntax.
 For readability purposes, the bpmnElement that is referenced by the BPMNPlane, BPMNShape and BPMNEdge use a
 representative string pattern. This string pattern is:
 BPMNModelClassName_BPMNModelNameAttributeValue
-For example: "Task_Activity" for a Task named "Activity".
-420
-
-Business Process Model and Notation, v2.0
-
+For example: “Task_Activity” for a Task named “Activity.”
 In the provided XML serializations, the di namespace refers to the Diagram Interchange namespace defined in Annex B,
 and the dc namespace refers to the Diagram Common namespace also defined in Annex B.
 
 12.4.1 Depicting Content in a Sub-Process
-This section shows various ways of depicting the content of a Sub-Process of a same BPMN model.
-The BPMN model contains a process composed of a none start event (named "StartEvent"), a sub-process (named
-"SubProcess") and a none end event (named "EndEvent"). There is a sequence flow (named "a") between the start event
-(named "StartEvent") and the sub-process (named "SubProcess") and a sequence flow (named "d") between the subprocess (named "SubProcess") and the end event (named "EndEvent").
-The sub-process (named "SubProcess") is composed of a none start event (named "SubProcessStart"), an abstract task
-(named "Activity") and a none end event (named "SubProcessEnd"). There is a sequence flow (named "b") between the
-start event (named "SubProcessStart") and the task (named "Activity") and a sequence flow (named "c") between the task
-(named "Activity") and the end event (named "SubProcessEnd").
+This section shows various ways of depicting the content of a Sub-Process of the same BPMN model.
+The BPMN model contains a process composed of a none start event (named “StartEvent”), a sub-process (named
+“SubProcess”) and a none end event (named “EndEvent”). There is a sequence flow (named “a”) between the start event
+(named “StartEvent”) and the sub-process (named “SubProcess”) and a sequence flow (named “d”) between the subprocess (named “SubProcess”) and the end event (named “EndEvent”).
+The sub-process (named “SubProcess”) is composed of a none start event (named “SubProcessStart”), an abstract task
+(named “Activity”) and a none end event (named “SubProcessEnd”). There is a sequence flow (named “b”) between the
+start event (named “SubProcessStart”) and the task (named “Activity”) and a sequence flow (named “c”) between the task
+(named “Activity”) and the end event (named “SubProcessEnd”).
 Expanded Sub-Process
 First, a BPMN diagram depicts the BPMN model with the expanded sub-process showing its content (see Figure 12.8).
 This leads to a BPMN DI serialization of a single diagram that depicts this process (see Table 12.37 - Expanded SubProcess BPMN DI instance).
+412
+
+Business Process Model and Notation, v2.0
 
 SubProcess
 
@@ -3244,11 +3084,7 @@ EndEvent
 
 Figure 12.8 - Expanded Sub-Process Example
 
-Business Process Model and Notation, v2.0
-
-421
-
-Table 12.37 – Expanded Sub-Process BPMN DI instance
+Table 12.36 - Expanded Sub-Process BPMN DI instance
 
 <BPMNDiagram name=" Events Inside the Sub Process " resolution="72">
 <BPMNPlane bpmnElement="Process_Process">
@@ -3271,6 +3107,7 @@ Table 12.37 – Expanded Sub-Process BPMN DI instance
 <BPMNShape bpmnElement="EndEvent_SubProcessEnd">
 <dc:Bounds height="32.0" width="32.0" x="468.0" y="224.0" id ="BorderEnd" />
 <BPMNLabel/>
+
 </BPMNShape>
 <BPMNShape bpmnElement="EndEvent_EndEvent">
 <dc:Bounds height="32.0" width="32.0" x="604.0" y="224.0"/>
@@ -3282,6 +3119,10 @@ Table 12.37 – Expanded Sub-Process BPMN DI instance
 <BPMNLabel/>
 </BPMNEdge>
 <BPMNEdge bpmnElement="SequenceFlow_b" sourceElement="BorderStart" >
+Business Process Model and Notation, v2.0
+
+413
+
 <di:waypoint x="258.0" y="240.0"/>
 <di:waypoint x="324.0" y="240.0"/>
 <BPMNLabel/>
@@ -3296,21 +3137,15 @@ Table 12.37 – Expanded Sub-Process BPMN DI instance
 <di:waypoint x="604.0" y="240.0"/>
 <BPMNLabel/>
 </BPMNEdge>
-
-422
-
-Business Process Model and Notation, v2.0
-
-Table 12.37 – Expanded Sub-Process BPMN DI instance
-
 </BPMNPlane>
 </BPMNDiagram>
+
 Expanded Sub-Process with Start and End Events on Border
 An alternative to depicting the same BPMN model of Section 12.4.1 would be to place the sub-process start and end
 events on the border of the sub-process (see Figure 12.9). In the BPMN DI serialization of this diagram (see Table 12.40
 - Expanded Sub-Process with Start and End Events on Border BPMN DI instance), the target of the sequence flow named
-"a" and the source of the sequence flow named "d" are the start and end events on the boundary of the sub-process.
-Compare the target of the sequence flow named "a" and the source of the sequence flow named "d" of Table 12.37 Expanded Sub-Process BPMN DI instance with that of Table 12.38 - Start and End Events on the Border BPMN DI
+“a” and the source of the sequence flow named “d” are the start and end events on the boundary of the sub-process.
+Compare the target of the sequence flow named “a” and the source of the sequence flow named “d” of Table 12.37 Expanded Sub-Process BPMN DI instance with that of Table 12.38 - Start and End Events on the Border BPMN DI
 instance.
 
 SubProcess
@@ -3319,10 +3154,10 @@ a
 
 b
 
-Activity
-
 StartEvent SubProcess
 Start
+
+Activity
 
 c
 
@@ -3332,8 +3167,7 @@ SubProcess EndEvent
 End
 
 Figure 12.9 - Start and End Events on the Border Example
-
-Table 12.38 – Start and End Events on the Border BPMN DI instance
+Table 12.37 - Start and End Events on the Border BPMN DI instance
 
 <BPMNDiagram name=" StartAndEdnEventsOnTheBorder " resolution="72">
 <BPMNPlane bpmnElement="Process_Process">
@@ -3342,6 +3176,11 @@ Table 12.38 – Start and End Events on the Border BPMN DI instance
 <BPMNLabel/>
 </BPMNShape>
 <BPMNShape bpmnElement="SubProcess_SubProcess" isExpanded="true">
+
+414
+
+Business Process Model and Notation, v2.0
+
 <dc:Bounds height="168.0" width="348.0" x="192.0" y="156.0"/>
 <BPMNLabel/>
 </BPMNShape>
@@ -3353,13 +3192,6 @@ Table 12.38 – Start and End Events on the Border BPMN DI instance
 <dc:Bounds height="68.0" width="83.0" x="324.0" y="206.0"/>
 <BPMNLabel/>
 </BPMNShape>
-
-Business Process Model and Notation, v2.0
-
-423
-
-Table 12.38 – Start and End Events on the Border BPMN DI instance
-
 <BPMNShape bpmnElement="EndEvent_SubProcessEnd">
 <dc:Bounds height="32.0" width="32.0" x="524.0" y="224.0"/>
 <BPMNLabel/>
@@ -3395,19 +3227,20 @@ Collapsed Sub-Process
 Alternatively, one could depict the same BPMN model of Section 12.4.1 as two diagrams. A first diagram (Figure 12.10)
 depicts the process with the sub-process collapsed, while a second diagram (Figure 12.11) depicts the content of the subprocess.
 
-a
-StartEvent
+Business Process Model and Notation, v2.0
 
-SubProcess
+415
+
+a
+
+S u bP rocess
+
+S ta rtE ve nt
 
 d
-EndEvent
+E nd E ven t
 
 Figure 12.10 - Collapsed Sub-Process
-
-424
-
-Business Process Model and Notation, v2.0
 
 b
 SubProcess
@@ -3421,7 +3254,7 @@ End
 
 Figure 12.11 - Contents of Collapsed Sub-Process
 
-Table 12.39 – Collapsed Sub-Process BPMN DI instance
+Table 12.38 - Collapsed Sub-Process BPMN DI instance
 
 <BPMNDiagram name="Collapsed Sub-Process" resolution="72">
 <BPMNPlane bpmnElement="Process_Process">
@@ -3450,11 +3283,11 @@ Table 12.39 – Collapsed Sub-Process BPMN DI instance
 </BPMNPlane>
 </BPMNDiagram>
 
+416
+
 Business Process Model and Notation, v2.0
 
-425
-
-Table 12.40 – Sub-Process Content BPMN DI instance
+Table 12.39 - Sub-Process Content BPMN DI instance
 
 <BPMNDiagram name="SubProcess" resolution="72">
 <BPMNPlane bpmnElement="SubProcess_SubProcess">
@@ -3487,9 +3320,9 @@ Table 12.40 – Sub-Process Content BPMN DI instance
 In this next example, a diagram depicting a BPMN Process is composed of a LaneSet which contains 2 lanes is presented.
 The second lane contains 2 sub lanes (See Figure 12.12).
 
-426
-
 Business Process Model and Notation, v2.0
+
+417
 
 Lane 1
 
@@ -3501,21 +3334,21 @@ Lane 2
 
 Lane 2-1
 
-Manual
+M anual
 Task
 
 Lane 2-2
 
 b
 
+User Task
 Document
 
-User Task
 c
 
 Figure 12.12 - Nested Lanes Example
 
-Table 12.41 – Multiple Lanes and Nested Lanes BPMN DI instance
+Table 12.40 - Multiple Lanes and Nested Lanes BPMN DI instance
 
 <BPMNDiagram name="Lanes and Nested Lanes" resolution="72">
 <BPMNPlane bpmnElement="Process_LanesAndNestedLanes">
@@ -3536,57 +3369,12 @@ Table 12.41 – Multiple Lanes and Nested Lanes BPMN DI instance
 <BPMNLabel/>
 </BPMNShape>
 
-Business Process Model and Notation, v2.0
-
-427
-
-Table 12.41 – Multiple Lanes and Nested Lanes BPMN DI instance
-
-<BPMNShape bpmnElement="DataObject_Document">
-<dc:Bounds height="38.0" width="30.0" x="204.0" y="389.0"/>
-<BPMNLabel/>
-</BPMNShape>
-<BPMNShape bpmnElement="ManualTask_ManualTask">
-<dc:Bounds height="58.0" width="71.0" x="162.0" y="177.0"/>
-<BPMNLabel/>
-</BPMNShape>
-<BPMNShape bpmnElement="SubProcess_SubProcess" isExpanded="false">
-<dc:Bounds height="68.0" width="83.0" x="258.0" y="300.0"/>
-<BPMNLabel/>
-</BPMNShape>
-<BPMNShape bpmnElement="UserTask_UserTask">
-<dc:Bounds height="68.0" width="83.0" x="446.0" y="376.0"/>
-<BPMNLabel/>
-</BPMNShape>
-<BPMNEdge bpmnElement="SequenceFlow_A">
-<di:waypoint x="233.0" y="206.0"/>
-<di:waypoint x="300.0" y="206.0"/>
-<di:waypoint x="300.0" y="300.0"/>
-<BPMNLabel/>
-</BPMNEdge>
-<BPMNEdge bpmnElement="SequenceFlow_B">
-<di:waypoint x="342.0" y="334.0"/>
-<di:waypoint x="387.0" y="334.0"/>
-<di:waypoint x="387.0" y="410.0"/>
-<di:waypoint x="446.0" y="410.0"/>
-<BPMNLabel/>
-</BPMNEdge>
-<BPMNEdge bpmnElement="DataAssociation_C">
-<di:waypoint x="234.0" y="408.0"/>
-<di:waypoint x="252.0" y="409.0"/>
-<di:waypoint x="252.0" y="431.0"/>
-<di:waypoint x="446.0" y="430.0"/>
-<BPMNLabel/>
-</BPMNEdge>
-</BPMNPlane>
-</BPMNDiagram>
-
 12.4.3 Vertical Collaboration
 In this example, a Collaboration between two Participants (Pool A and Pool B) is depicted. The first Participant is
 depicted with a white box Pool and the second Participant is depicted with a black box Pool. This diagram also depicts
 message flows that are decorated with message envelopes (See Figure 12.13).
 
-428
+418
 
 Business Process Model and Notation, v2.0
 
@@ -3606,7 +3394,7 @@ b
 
 Figure 12.13 - Vertical Collaboration Example
 
-Table 12.42 – Vertical Collaboration BPMN DI instance
+Table 12.41 - Vertical Collaboration BPMN DI instance
 
 <BPMNDiagram name="Vertical Collaboration" resolution="72">
 <BPMNPlane bpmnElement="Collaboration_Vertical_Collaboration">
@@ -3634,18 +3422,15 @@ Table 12.42 – Vertical Collaboration BPMN DI instance
 <dc:Bounds height="68.0" width="83.0" x="282.0" y="338.0"/>
 <BPMNLabel/>
 </BPMNShape>
-
-Business Process Model and Notation, v2.0
-
-429
-
-Table 12.42 – Vertical Collaboration BPMN DI instance
-
 <BPMNEdge bpmnElement="MessageFlow_a" messageVisibleKind="initiating">
 <di:waypoint x="366.0" y="372.0"/>
 <di:waypoint x="624.0" y="374.0"/>
 <BPMNLabel/>
 </BPMNEdge>
+Business Process Model and Notation, v2.0
+
+419
+
 <BPMNEdge bpmnElement="MessageFlow_b" messageVisibleKind="non_initiating">
 <di:waypoint x="624.0" y="470.0"/>
 <di:waypoint x="228.0" y="470.0"/>
@@ -3656,7 +3441,7 @@ Table 12.42 – Vertical Collaboration BPMN DI instance
 
 12.4.4 Conversation
 The following diagram depicts a Collaboration between 3 Participants (Participants 1, 2 and 3) including two
-Conversations. The diagram also has an annotation connected to a message flow (See Section Figure 12.14).
+Conversations. The diagram also has an annotation connected to a message flow (See Figure 12.14).
 
 Participant 1
 
@@ -3682,11 +3467,7 @@ d
 
 Figure 12.14 - Conversation Example
 
-430
-
-Business Process Model and Notation, v2.0
-
-Table 12.43 – Conversation BPMN DI instance
+Table 12.42 - Conversation BPMN DI instance
 
 <bpmndi:BPMNDiagram name="Conversation " resolution="72">
 <bpmndi:BPMNPlane bpmnElement="Collaboration_Conversation">
@@ -3697,6 +3478,10 @@ Table 12.43 – Conversation BPMN DI instance
 <bpmndi:BPMNShape bpmnElement="Participant_Participant_2" isHorizontal="false">
 <dc:Bounds height="144.0" width="120.0" x="360.0" y="108.0"/>
 <bpmndi:BPMNLabel/>
+420
+
+Business Process Model and Notation, v2.0
+
 </bpmndi:BPMNShape>
 <bpmndi:BPMNShape bpmnElement="Conversation_Conversation_1">
 <dc:Bounds height="38.0" width="38.0" x="274.0" y="168.0"/>
@@ -3734,13 +3519,6 @@ Table 12.43 – Conversation BPMN DI instance
 <dc:Bounds height="23.0" width="108.0" x="210.0" y="313.0"/>
 <bpmndi:BPMNLabel/>
 </bpmndi:BPMNShape>
-
-Business Process Model and Notation, v2.0
-
-431
-
-Table 12.43 – Conversation BPMN DI instance
-
 <bpmndi:BPMNEdge bpmnElement="MessageFlow_E">
 <di:waypoint x="164.0" y="252.0"/>
 <di:waypoint x="163.0" y="396.0"/>
@@ -3755,45 +3533,44 @@ Table 12.43 – Conversation BPMN DI instance
 </bpmndi:BPMNEdge>
 </bpmndi:BPMNPlane>
 </bpmndi:BPMNDiagram>
+Business Process Model and Notation, v2.0
+
+421
 
 12.4.5 Choreography
 The following diagram depicts a Choreography consisting of 3 Choreography Activities (2 Choreography Tasks and 1
 SubChoreography). This diagram also depicts Participant Bands with and without envelope decorator.
 
-Participant 1
-Participant 1
+P a rtic ip a n t 1
+P a rtic ip a n t 1
 
+P a rtic ip a n t 1
+
+SC
 a
 
 CT 1
-
-Participant 1
 
 b
 
 CT 2
 
-StartEvent
+S ta rtE v e n t
 
-Participant 2
+P a rtic ip a n t 2
 
-Participant 2
+P a rtic ip a n t 2
 
-SC
 c
-Participant 2
-Participant 3
+P a rtic ip a n t 2
+P a rtic ip a n t 3
 
 d
-EndEvent
+E n d E ve n t
 
 Figure 12.15 - Choreography Example
 
-432
-
-Business Process Model and Notation, v2.0
-
-Table 12.44 – Choreography BPMN DI instance
+Table 12.43 - Choreography BPMN DI instance
 
 <bpmndi:BPMNDiagram name="Choreography" resolution="72">
 <bpmndi:BPMNPlane bpmnElement="Choreography_Choreography">
@@ -3820,6 +3597,10 @@ participantBandKind="bottom_initiating">
 <bpmndi:BPMNShape bpmnElement="ChoreographyTask_CT2" id="DI_ChoreographyTask_CT2">
 <dc:Bounds height="114.0" width="96.0" x="312.0" y="96.0"/>
 <bpmndi:BPMNLabel/>
+422
+
+Business Process Model and Notation, v2.0
+
 </bpmndi:BPMNShape>
 <bpmndi:BPMNShape bpmnElement="Participant_Participant1"
 choreographyActivityShape="DI_ChoreographyTask_CT2" isMessageVisible="false"
@@ -3843,12 +3624,6 @@ participantBandKind="top_non_initiating">
 <dc:Bounds height="20.0" width="96.0" x="468.0" y="94.0"/>
 <bpmndi:BPMNLabel/>
 </bpmndi:BPMNShape>
-Business Process Model and Notation, v2.0
-
-433
-
-Table 12.44 – Choreography BPMN DI instance
-
 <bpmndi:BPMNShape bpmnElement="Participant_Participant3"
 choreographyActivityShape="DI_SubChoreography_SC" isMessageVisible="false"
 participantBandKind="bottom_non_initiating">
@@ -3877,6 +3652,10 @@ participantBandKind="middle_initiating">
 </bpmndi:BPMNEdge>
 <bpmndi:BPMNEdge bpmnElement="SequenceFlow_c">
 <di:waypoint x="408.0" y="153.0"/>
+Business Process Model and Notation, v2.0
+
+423
+
 <di:waypoint x="468.0" y="153.0"/>
 <bpmndi:BPMNLabel/>
 </bpmndi:BPMNEdge>
@@ -3888,7 +3667,7 @@ participantBandKind="middle_initiating">
 </bpmndi:BPMNPlane>
 </bpmndi:BPMNDiagram>
 
-434
+424
 
 Business Process Model and Notation, v2.0
 

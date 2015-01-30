@@ -29,7 +29,7 @@ Software can claim compliance or conformance with BPMN 2.0 if and only if the so
 compliance points as stated in the specification. Software developed only partially matching the applicable compliance
 points can claim only that the software was based on this specification, but cannot claim compliance or conformance with
 this specification. The specification defines four types of conformance namely Process Modeling Conformance, Process
-Execution Conformance, BPEL Process Execution Conformance and Choreography Modeling Conformance.
+Execution Conformance, BPEL Process Execution Conformance, and Choreography Modeling Conformance.
 The implementation claiming conformance to Process Modeling Conformance type is NOT REQUIRED to support
 Choreography Modeling Conformance type and vice-versa. Similarly, the implementation claiming Process Execution
 Conformance type is NOT REQUIRED to be conformant to the Process Modeling and Choreography Conformance
@@ -50,7 +50,7 @@ Business Process Model and Notation, v2.0
 
 Process Modeling Conformance
 
-The next eight (8) sections describe Process Modeling Conformance.
+The next eight sections describe Process Modeling Conformance.
 
 2.1.1
 
@@ -63,7 +63,7 @@ Process diagrams, which include the elements defined in the Process, Activities,
 packages (see Chapter 10).
 Collaboration diagrams, which include Pools and Message Flow (see Chapter 9).
 Conversation diagrams, which include Pools, Conversations, and Conversation Links (see Chapter 9).
-As an alternative to full Process Modeling Conformance, there are three (3) conformance sub-classes defined:
+As an alternative to full Process Modeling Conformance, there are three conformance sub-classes defined:
 Descriptive
 Analytic
 Common Executable
@@ -97,10 +97,10 @@ All the elements in the sub-class MUST be supported.
 Business Process Model and Notation, v2.0
 
 For each element, all the listed attributes MUST be supported.
-In general, if the sub-class doesn't mention an attribute and it is NOT REQUIRED by the schema then it is not in the
+In general, if the sub-class doesn’t mention an attribute and it is NOT REQUIRED by the schema, then it is not in the
 subclass. Exceptions to this rule are noted.
 Descriptive Conformance Sub-Class
-The Descriptive conformance sub-class elements shown in Table 2.1:
+The Descriptive conformance sub-class elements are shown in Table 2.1.
 
 Table 2.1 – Descriptive Conformance Sub-Class Elements and Attributes
 
@@ -192,13 +192,13 @@ timerStartEvent
 
 id, name, timerEventDefinition
 
-terminateEndEvent
-
-id, name, terminateEventDefinition
-
 Business Process Model and Notation, v2.0
 
 3
+
+terminateEndEvent
+
+id, name, terminateEventDefinition
 
 documentationc
 
@@ -208,18 +208,24 @@ Group
 
 id, categoryRef
 
-a.Data Association is ABSTRACT: Data Input Association and Data Output Association will appear in
-the XML serialization. These both have REQUIRED attributes[sourceRef and targetRef] which refer to
+a.
+
+b.
+c.
+
+Data Association is ABSTRACT: Data Input Association and Data Output Association will appear in the
+XML serialization. These both have REQUIRED attributes[sourceRef and targetRef] which refer to
 itemAwareElements. To be consistent with the metamodel, this will require the following additional elements:
 ioSpecification, inputSet, outputSet, Data Input, Data Output. When a BPMN editor draws a Data
 Association to an Activity or Event it should generate this supporting invisible substructure. Otherwise, the
 metamodel would have to be changed to make sourceRef and targetRef optional or allow reference to
-non-itemAwareElements, e.g. Activity and Event.
-b.associationDirection not specified for Data Association
-c.Documentation is not a visible element. It is an attribute of most elements.
+non-itemAwareElements, e.g., Activity and Event.
+associationDirection not specified for Data Association
+Documentation is not a visible element. It is an attribute of most elements.
+
 Analytic Conformance Sub-Class
 The Analytic conformance sub-class contains all the elements of the Descriptive conformance sub-class plus the
-elements shown in Table 2.2:
+elements shown in Table 2.2.
 
 Table 2.2 – Analytic Conformance Sub-Class Elements and Attributes
 
@@ -282,12 +288,12 @@ Event
 
 id, name, messageEventDefinition
 
+Business Process Model and Notation, v2.0
+
 Throwing message Intermediate
 Event
 
 id, name, messageEventDefinition
-
-Business Process Model and Notation, v2.0
 
 Boundary message Intermediate
 Event
@@ -375,22 +381,25 @@ messagec
 
 id, name, add messageRef attribute to messageFlow
 
-a.ConditionExpression, allowed only for Sequence Flow out of Gateways, MAY be null.
-b.Default is an attribute of a sourceRef (exclusive or inclusive) Gateway.
-c.Note that messageRef, an attribute of various message Events, is optional and not in the sub-class.
-Common Executable Conformance Sub-Class
-This conformance sub-class is intended for modeling tools that can emit executable models.
+a.
+b.
+c.
+
+ConditionExpression, allowed only for Sequence Flow out of Gateways, MAY be null.
+Default is an attribute of a sourceRef (exclusive or inclusive) Gateway.
+Note that messageRef, an attribute of various message Events, is optional and not in the sub-class.
+
 Business Process Model and Notation, v2.0
 
 5
 
+Common Executable Conformance Sub-Class
+This conformance sub-class is intended for modeling tools that can emit executable models.
 Data type definition language MUST be XML Schema.
 Service Interface definition language MUST be WSDL.
 Data access language MUST be XPath.
-The Common Executable conformance sub-class elements are shown in Table 2.3 and and its supporting classes in
-Table 2.4:
-
-Table 2.3. – Common Executable Conformance Sub-Class Elements and Attributes
+The Common Executable conformance sub-class elements are shown in Table 2.3 and its supporting classes in Table 2.4.
+Table 2.3 – Common Executable Conformance Sub-Class Elements and Attributes
 
 6
 
@@ -479,7 +488,7 @@ terminateEndEvent
 
 Business Process Model and Notation, v2.0
 
-Table 2.3. – Common Executable Conformance Sub-Class Elements and Attributes
+Table 2.3 – Common Executable Conformance Sub-Class Elements and Attributes
 
 Catching message Intermediate
 Event
@@ -502,11 +511,17 @@ Boundary error Intermediate Event
 id, name, attachedToRef, errorEventDefinition, (contained or
 referenced), dataOutput, dataOutputAssociations
 
-a.Multiple outgoing connections are only allowed for converging Gateways.
-b.Multiple outgoing connections are only allowed for diverging Gateways.
-c.ConditionExpression, allowed only for Sequence Flow out of Gateways, MAY be null.
-d.Default is an attribute of a sourceRef (exclusive or inclusive) Gateway.
-Table 2.4. – Common Executable Conformance Sub-Class Supporting Classes
+a.
+b.
+c.
+d.
+
+Multiple outgoing connections are only allowed for converging Gateways.
+Multiple outgoing connections are only allowed for diverging Gateways.
+ConditionExpression, allowed only for Sequence Flow out of Gateways, MAY be null.
+Default is an attribute of a sourceRef (exclusive or inclusive) Gateway.
+
+Table 2.4 – Common Executable Conformance Sub-Class Supporting Classes
 
 Element
 
@@ -573,12 +588,15 @@ TimerEventDefinition
 
 id, timeDate
 
-a.Structure MUST be defined by an XSD Complex Type
+a.
+b.
+
+Structure MUST be defined by an XSD Complex Type
+Structure MUST be defined by an XSD Complex Type
+
 Business Process Model and Notation, v2.0
 
 7
-
-b.Structure MUST be defined by an XSD Complex Type
 
 2.1.3
 
@@ -599,7 +617,7 @@ Graphical elements MAY be colored, and the coloring MAY have specified semantics
 conveyed by the element as specified in this standard.
 The line style of a graphical element MAY be changed, but that change SHALL NOT conflict with any other line
 style REQUIRED by this specification.
-An extension SHALL NOT change the specified shape of a defined graphical element or marker. (e.g., changing a
+An extension SHALL NOT change the specified shape of a defined graphical element or marker (e.g., changing a
 square into a triangle, or changing rounded corners into squared corners, etc.).
 
 2.1.4
@@ -626,12 +644,12 @@ elements, markers, and connections. To the extent that an implementation provide
 diagram as a semantic specification of Process, the interpretation SHALL be consistent with the semantic interpretation
 herein specified. In other words, the implementation claiming BPMN Process Modeling Conformance has to support the
 semantics surrounding the diagram elements expressed in Chapter 10.
+Note – The implementations claiming Process Modeling Conformance are not expected to support the BPMN execution
+semantics described in Chapter 13.
+
 8
 
 Business Process Model and Notation, v2.0
-
-Note – The implementations claiming Process Modeling Conformance are not expected to support the BPMN execution
-semantics described in Chapter 13.
 
 2.1.6
 
@@ -678,7 +696,7 @@ business process definitions created in one vendor’s environment and use them 
 
 Process Execution Conformance
 
-The next two (2) sections describe Process Execution Conformance.
+The next two sections describe Process Execution Conformance.
 
 Business Process Model and Notation, v2.0
 
@@ -690,14 +708,13 @@ Execution Semantics
 
 The BPMN execution semantics have been fully formalized in this version of the specification. The tool claiming BPMN
 Execution Conformance type MUST fully support and interpret the operational semantics and Activity life-cycle
-specified in Section 14.2.2. Non-operational elements listed in Section 14 MAY be ignored by implementations claiming
-BPMN Execution Conformance type. Conformant implementations MUST fully support and interpret the
-
-underlying metamodel.
+specified in Section 14.2.2. Non-operational elements listed in Chapter 14 MAY be ignored by implementations claiming
+BPMN Execution Conformance type. Conformant implementations MUST fully support and interpret the underlying
+metamodel.
 Note – The tool claiming Process Execution Conformance type is not expected to support and interpret Choreography
 models. The tool claiming Process Execution Conformance type is not expected to support Process Modeling
 Conformance. More precisely, the tool is not required to support graphical syntax and semantics defined in this specification.
-It MAY use different graphical elements, shapes and markers, then those defined in this specification.
+It MAY use different graphical elements, shapes and markers, than those defined in this specification.
 
 2.2.2
 
@@ -720,7 +737,7 @@ The tool claiming BPEL Process Execution Conformance is not expected to support 
 
 Choreography Modeling Conformance
 
-The next five (5) sections describe Choreography Conformance.
+The next five sections describe Choreography Conformance.
 
 2.4.1
 
@@ -735,7 +752,7 @@ Collaboration diagrams, which include Pools and Message Flow (see Chapter 9).
 
 2.4.2
 
-BPMN Choreography elements
+BPMN Choreography Elements
 
 The Choreography Conformance set includes Message, Choreography Task, Global Choreography Task,
 Sub-Choreography (expanded and collapsed), certain types of Start Events (e.g., None, Timer, Conditional,
@@ -776,146 +793,4 @@ vendor’s environment.
 Business Process Model and Notation, v2.0
 
 11
-
-2.5
-
-Summary of BPMN Conformance Types
-
-Table 2.5 summarizes the requirements for BPMN Conformance.
-Table 2.5. - Types of BPMN Conformance
-
-Category
-
-Process Modeling
-Conformance
-
-Process
-Execution
-Conformance
-
-BPEL Process
-Execution
-Conformance
-
-Choreography
-Conformance
-
-Visual representation
-of BPMN Diagram
-Types
-
-Process diagram types
-and
-Collaboration diagram
-types depicting
-collaborations among
-Process diagram types.
-
-N/A
-
-N/A
-
-Choreography diagram
-types
-and
-Collaboration diagram
-types depicting
-collaboration among
-Choreography diagram
-types.
-
-BPMN Diagram
-Elements that need to
-be supported.
-
-All Task types, embedded
-Sub-Process, Call Activity,
-all Event types, all
-Gateway types, Pool,
-Lane, Data Object
-(including DataInput and
-DataOutput), Message,
-Group, Artifacts, markers
-for Tasks and SubProcesses, Sequence
-Flow, Associations, and
-Message Flow.
-
-N/A
-
-N/A
-
-Message, Choreography
-Task, Global Choreography
-Task, Sub-Choreography
-(expanded and collapsed),
-certain types of Start,
-Intermediate, and End
-Events, Gateways, Pools
-and Message Flow.
-
-Import/Export of
-diagram types
-
-Yes for Process and
-Collaboration diagrams
-that depict Process within
-Collaboration.
-
-Yes for Process
-diagrams
-
-Yes for Process
-diagrams
-
-Yes for Choreography and
-Collaboration diagrams
-depicting choreography
-within Collaboration.
-
-Support for Graphical
-syntax and semantics
-
-Process and Collaboration
-diagrams that depict
-Process within
-Collaboration.
-
-N/A
-
-N/A
-
-Choreography and
-Collaboration diagrams
-depicting Choreography
-within Collaboration.
-
-Support for Execution
-Semantics
-
-N/A
-
-Yes for Process
-diagrams
-
-Yes for Process
-diagrams
-
-Choreography execution
-semantics
-
-3
-
-Normative References
-
-3.1
-
-Normative
-
-RFC-2119
-• Key words for use in RFCs to Indicate Requirement Levels, S. Bradner, IETF RFC 2119, March 1997
-
-http://www.ietf.org/rfc/rfc2119.txt
-12
-
-Business Process Model and Notation, v2.0
 

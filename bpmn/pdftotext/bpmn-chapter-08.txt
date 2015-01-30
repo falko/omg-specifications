@@ -4,12 +4,12 @@ BPMN Core Structure
 
 Note – The content of this chapter is REQUIRED for all BPMN conformance types. For more information about BPMN
 conformance types, see page 2.
-The proposed technical structuring of BPMN is based on the concept of extensibility layers on top of a basic series of
-simple elements identified as Core Elements of the specification. From this core set of constructs, layering is used to
-describe additional elements of the specification that extend and add new constructs to the specification and relies on
-clear dependency paths for resolution. The XML Schema model lends itself particularly well to the proposed structuring
-model with formalized import and resolution mechanics that remove ambiguities in the definitions of elements in the
-outer layers of the specification.
+The technical structuring of BPMN is based on the concept of extensibility layers on top of a basic series of simple
+elements identified as Core Elements of the specification. From this core set of constructs, layering is used to describe
+additional elements of the specification that extend and add new constructs to the specification and relies on clear
+dependency paths for resolution. The XML Schema model lends itself particularly well to the structuring model with
+formalized import and resolution mechanics that remove ambiguities in the definitions of elements in the outer layers of
+the specification.
 
 Co
 n
@@ -20,6 +20,8 @@ rs a
 
 tio
 
+ns
+
 ap
 hy
 
@@ -27,10 +29,8 @@ e ss
 
 Da
 
-S er v
+Ser v
 i c es
-
-ns
 
 Ch
 
@@ -40,13 +40,12 @@ or
 eo
 gr
 
+uc
+t
+s tr
 Inf
 ra
 
-str
-
-Hu m
-a
 P roc
 
 BPMN
@@ -57,8 +56,10 @@ Com nt s
 e
 Ele m
 
-uc
-tur
+Hu m
+a
+
+ur
 e
 
 n
@@ -74,23 +75,31 @@ Figure 8.1 - A representation of the BPMN Core and Layer Structure
 Figure 8.1 shows the basic principles of layering that can be composed in well defined ways. The approach uses
 formalization constructs for extensibility that are applied consistently to the definition.
 The additional effect of layering is that compatibility layers can be built, allowing for different levels of compliance
-amongst vendors, and also enabling vendors to add their own layers in support of different vertical industries or target
+among vendors, and also enabling vendors to add their own layers in support of different vertical industries or target
 audiences. In addition, it provides mechanism for the redefinition of previously existing concepts without affecting
 backwards compatibility, but defining two or more non-composable layers, the level of compliance with the specification
 and backwards compatibility can be achieved without compromising clarity.
 The BPMN specification is structured in layers, where each layer builds on top of and extends lower layers. Included is a
-Core or kernel which includes the most fundamental elements of BPMN that are REQUIRED for constructing BPMN
-diagrams: Process, Choreography, and Collaboration. The Core is intended to be simple, concise, and extendable,
-with well defined behavior
+Core or kernel that includes the most fundamental elements of BPMN, which are REQUIRED for constructing BPMN
+diagrams: Process, Choreography, and Collaboration. The Core is intended to be simple, concise, and extendable
+with well defined behavior.
 
 Business Process Model and Notation, v2.0
 
 49
 
-The Core contains three (3) sub-packages (see Figure 8.2):
-• Foundation: The fundamental constructs needed for BPMN modeling.
-• Service: The fundamental constructs needed for modeling services and interfaces.
-• Common: Those classes which are common to the layers of Process, Choreography, and Collaboration.
+The Core contains three sub-packages (see Figure 8.2):
+1.
+
+Foundation: The fundamental constructs needed for BPMN modeling.
+
+2.
+
+Service: The fundamental constructs needed for modeling services and interfaces.
+
+3.
+
+Common: Those classes which are common to the layers of Process, Choreography, and Collaboration.
 
 Figure 8.2 - Class diagram showing the core packages
 
@@ -106,7 +115,7 @@ Figure 8.3 - Class diagram showing the organization of the core BPMN elements
 
 Infrastructure
 
-The BPMN Infrastructure package contains two (2) elements that are used for both abstract syntax models and diagram
+The BPMN Infrastructure package contains two elements that are used for both abstract syntax models and diagram
 models.
 
 8.1.1
@@ -123,7 +132,7 @@ Business Process Model and Notation, v2.0
 Figure 8.4 - Definitions class diagram
 
 The Definitions element inherits the attributes and model associations of BaseElement (see Table 8.5). Table 8.1 presents
-the additional attributes and model associations of the Definitions element:
+the additional attributes and model associations of the Definitions element.
 
 52
 
@@ -168,7 +177,7 @@ Definitions and are visible to other Definitions.
 diagrams: BPMNDiagram [0..*]
 
 This attribute lists the BPMNDiagrams that are contained within this
-Definitions (see page 373 for more information on
+Definitions (see page 367 for more information on
 BPMNDiagrams).
 
 imports: Import [0..*]
@@ -218,11 +227,10 @@ importType: string
 
 Identifies the type of document being imported by providing an absolute URI that
 identifies the encoding language used in the document.The value of the importType
-attribute MUST be set to http://www.w3.org/2001/XMLSchema when importing
-XML Schema 1.0 documents, to http://www.w3.org/TR/wsdl20/ when importing
-WSDL 2.0 documents, and http://www.omg.org/spec/BPMN/20100524/MODEL
-when importing BPMN 2.0 documents. Other types of documents MAY be
-supported.
+attribute MUST be set to http://www.w3.org/2001/XMLSchema when importing XML
+Schema 1.0 documents, to http://www.w3.org/TR/wsdl20/ when importing WSDL
+2.0 documents, and http://www.omg.org/spec/BPMN/20100524/MODEL when
+importing BPMN 2.0 documents. Other types of documents MAY be supported.
 Importing Xml Schema 1.0, WSDL 2.0 and BPMN 2.0 types MUST be supported.
 
 location: string [0..1]
@@ -276,7 +284,7 @@ Table 8.4 – Import XML schema
 
 Foundation
 
-The Foundation package contains classes which are shared amongst other packages in the Core (see Figure 8.5) of a
+The Foundation package contains classes that are shared among other packages in the Core (see Figure 8.5) of an
 abstract syntax model.
 
 Figure 8.5 - Classes in the Foundation package
@@ -292,6 +300,7 @@ Base Element
 BaseElement is the abstract super class for most BPMN elements. It provides the attributes id and documentation, which
 other elements will inherit.
 Table 8.5 presents the attributes and model associations for the BaseElement.
+
 Table 8.5 – BaseElement attributes and model associations
 
 Attribute Name
@@ -305,7 +314,8 @@ REQUIRED if this element is referenced or intended to be referenced by
 something else. If the element is not currently referenced and is never intended
 to be referenced, the id MAY be omitted.
 
-documentation: Documentation [0..*]
+documentation:
+Documentation [0..*]
 
 This attribute is used to annotate the BPMN element, such as descriptions and
 other documentation.
@@ -334,7 +344,7 @@ Documentation
 All BPMN elements that inherit from the BaseElement will have the capability, through the Documentation
 element, to have one (1) or more text descriptions of that element.
 The Documentation element inherits the attributes and model associations of BaseElement (see Table 8.5). Table
-8.6 presents the additional attributes of the Documentation element:
+8.6 presents the additional attributes of the Documentation element.
 Table 8.6 – Documentation attributes
 
 Attribute Name
@@ -350,15 +360,18 @@ textFormat: string
 This attribute identifies the format of the text. It MUST follow the mime-type
 format. The default is "text/plain."
 
+In the BPMN schema, the tDocumentation complexType does not contain a text attribute or element. Instead, the
+documentation text is expected to appear in the body of the documentation element. For example:
 56
 
 Business Process Model and Notation, v2.0
 
-In the BPMN schema, the tDocumentation complexType does not contain a text attribute or element. Instead, the
-documentation text is expected to appear in the body of the documentation element. For example:
 <documentation>An example of how the documentation text is entered.</documentation>
 
-8.2.3 Extensibility
+8.2.3
+
+Extensibility
+
 The BPMN metamodel is aimed to be extensible. This allows BPMN adopters to extend the specified metamodel in a
 way that allows them to be still BPMN-compliant.
 It provides a set of extension elements, which allows BPMN adopters to attach additional attributes and elements to
@@ -368,35 +381,46 @@ understood by other BPMN adopters. It’s only the additional attributes and ele
 
 Figure 8.6 - Extension class diagram
 
+A BPMN Extension basically consists of four different elements:
+1.
+
+Extension
+
+2.
+
+ExtensionDefinition
+
+3.
+
+ExtensionAttributeDefinition
+
+4.
+
+ExtensionAttributeValue
+
 Business Process Model and Notation, v2.0
 
 57
 
-A BPMN Extension basically consists of four different elements:
-• Extension
-• ExtensionDefinition
-• ExtensionAttributeDefinition
-• ExtensionAttributeValue
-
 The core elements of an Extension are the ExtensionDefinition and ExtensionAttributeDefinition. The
-latter defines a list of attributes which can be attached to any BPMN element. The attribute list defines the name and type
+latter defines a list of attributes that can be attached to any BPMN element. The attribute list defines the name and type
 of the new attribute. This allows BPMN adopters to integrate any meta model into the BPMN meta model and reuse
 already existing model elements.
 The ExtensionDefinition itself can be created independent of any BPMN element or any BPMN definition.
 In order to use an ExtensionDefinition within a BPMN model definition (Definitions element), the
-ExtensionDefinition MUST be associated with an Extension element which binds the
+ExtensionDefinition MUST be associated with an Extension element that binds the
 ExtensionDefinition to a specific BPMN model definition. The Extension element itself is contained within
 the BPMN element Definitions and therefore available to be associated with any BPMN element making use of the
 ExtensionDefinition.
 Every BPMN element which subclasses the BPMN BaseElement can be extended by additional attributes. This works
-by associating a BPMN element with an ExtensionDefinition which was defined at the BPMN model definitions
+by associating a BPMN element with an ExtensionDefinition, which was defined at the BPMN model definitions
 level (element Definitions).
 Additionally, every “extended” BPMN element contains the actual extension attribute value. The attribute value, defined
 by the element ExtensionAttributeValue contains the value of type Element. It also has an association to the
 corresponding attribute definition.
 Extension
 The Extension element binds/imports an ExtensionDefinition and its attributes to a BPMN model definition.
-Table 8.7 presents the attributes and model associations for the Extension element:
+Table 8.7 presents the attributes and model associations for the Extension element.
 Table 8.7 – Extension attributes and model associations
 
 Attribute Name
@@ -419,7 +443,8 @@ schema file and is simply referenced by QName.
 ExtensionDefinition
 The ExtensionDefinition class defines and groups additional attributes. This type is not applicable when the XML
 schema interchange is used, since XSD Complex Types already satisfy this requirement.
-Table 8.8 presents the attributes and model associations for the ExtensionDefinition element:
+Table 8.8 presents the attributes and model associations for the ExtensionDefinition element.
+
 58
 
 Business Process Model and Notation, v2.0
@@ -444,7 +469,7 @@ ExtensionAttributeDefinition
 The ExtensionAttributeDefinition defines new attributes. This type is not applicable when the XML schema
 interchange is used; since the XSD mechanisms for supporting “AnyAttribute” and “Any” type already satisfy this
 requirement.
-Table 8.9 presents the attributes for the ExtensionAttributeDefinition element:
+Table 8.9 presents the attributes for the ExtensionAttributeDefinition element.
 Table 8.9 - ExtensionAttributeDefinition attributes
 
 Attribute Name
@@ -467,7 +492,7 @@ ExtensionAttributeValue
 The ExtensionAttributeValue contains the attribute value. This type is not applicable when the XML schema
 interchange is used; since the XSD mechanisms for supporting “AnyAttribute” and “Any” type already satisfy this
 requirement.
-Table 8.10 presents the model associations for the ExtensionAttributeValue element:
+Table 8.10 presents the model associations for the ExtensionAttributeValue element.
 Table 8.10 – ExtensionAttributeValue model associations
 
 Attribute Name
@@ -598,7 +623,7 @@ be established by referencing objects that exist in their given namespaces.
 Figure 8.7 - External Relationship Metamodel
 
 The Relationship element inherits the attributes and model associations of BaseElement (see Table 8.5). Table
-8.15 presents the additional attributes for the Relationship element:
+8.15 presents the additional attributes for the Relationship element.
 
 62
 
@@ -633,6 +658,7 @@ In this manner, you can, for example, create relationships between different art
 for (for example) traceability, derivation, arbitrary classifications, etc.
 An example where the ‘reengineer’ relationship is shown between elements in a Visio ™ artifact and a BPMN
 Artifact.
+
 Table 8.16 – Reengineer XML schema
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -646,7 +672,8 @@ xmlns:tgt="http://www.example.org/Processes/New">
 <import importType="http://office.microsoft.com/visio" location="OrderConfirmationProcess.vsd"
 namespace="http://www.example.org/Processes/Old"/>
 <import importType="http://www.omg.org/spec/BPMN/20100524/MODEL"
-location="OrderConfirmationProcess.xml" namespace="http://www.example.org/Processes/New"/>
+location="OrderConfirmationProcess.xml"
+namespace="http://www.example.org/Processes/New"/>
 <relationship type="reengineered" id="a234" direction="both">
 <documentation>An as-is and to-be relationship. The as-is model is expressed as a Visio diagram. The re-engineered process has been split in two and is captured in BPMN 2.0 format.</documentation>
 <source ref="src:OrderConfirmation"/>
@@ -765,7 +792,7 @@ Artifacts
 
 BPMN provides modelers with the capability of showing additional information about a Process that is not directly
 related to the Sequence Flows or Message Flows of the Process.
-At this point, BPMN provides three (3) standard Artifacts: Associations, Groups, and Text Annotations.
+At this point, BPMN provides three standard Artifacts: Associations, Groups, and Text Annotations.
 Additional Artifacts MAY be added to the BPMN specification in later versions. A modeler or modeling tool MAY
 extend a BPMN diagram and add new types of Artifacts to a Diagram. Any new Artifact MUST follow the
 Sequence Flow and Message Flow connection rules (listed below). Associations can be used to link Artifacts
@@ -777,45 +804,44 @@ Figure 8.8 - Artifacts Metamodel
 
 Common Artifact Definitions
 The following sections provide definitions that are common to all Artifacts.
+Artifact Sequence Flow Connections
+See “Sequence Flow Connections Rules” on page 42 for the entire set of objects and how they MAY be source or targets
+of a Sequence Flow.
 
 66
 
 Business Process Model and Notation, v2.0
 
-Artifact Sequence Flow Connections
-See “Sequence Flow Rules,” on page 42 for the entire set of objects and how they MAY be source or targets of a
-Sequence Flow.
 An Artifact MUST NOT be a target for a Sequence Flow.
 An Artifact MUST NOT be a source for a Sequence Flow.
 Artifact Message Flow Connections
-See “Message Flow Rules,” on page 43 for the entire set of objects and how they MAY be source or targets of a
-Message Flow.
+See “Message Flow Connection Rules” on page 43 for the entire set of objects and how they MAY be source or targets of
+a Message Flow.
 An Artifact MUST NOT be a target for a Message Flow.
 An Artifact MUST NOT be a source for a Message Flow.
 Association
 An Association is used to associate information and Artifacts with Flow Objects. Text and graphical non-Flow
 Objects can be associated with the Flow Objects and Flow. An Association is also used to show the Activity used for
-compensation. More information about compensation can be found on page 308.
+compensation. More information about compensation can be found on page 302.
 An Association is line that MUST be drawn with a dotted single line (see Figure 8.9).
-The use of text, color, size, and lines for an Association MUST follow the rules defined in section “Use of Text,
-Color, Size, and Lines in a Diagram” on page 41.
+The use of text, color, size, and lines for an Association MUST follow the rules defined in “Use of Text, Color, Size,
+and Lines in a Diagram” on page 41.
 
 Figure 8.9 - An Association
 
 Figure 8.10 - The Association Class Diagram
 
+If there is a reason to put directionality on the Association then:
+A line arrowhead MAY be added to the Association line (see Figure 8.11).
+The directionality of the Association can be in one (1) direction or in both directions.
 Business Process Model and Notation, v2.0
 
 67
 
-If there is a reason to put directionality on the Association then:
-A line arrowhead MAY be added to the Association line (see Figure 8.11).
-The directionality of the Association can be in one (1) direction or in both directions.
-
 Figure 8.11 - A Directional Association
 
 Note that directional Associations were used in BPMN 1.2 to show how Data Objects were inputs or outputs to
-Activities. In BPMN 2.0, a Data Association connector is used to show inputs and outputs (see page 225). A Data
+Activities. In BPMN 2.0, a Data Association connector is used to show inputs and outputs (see page 221). A Data
 Association uses the same notation as a directed Association (as in Figure 8.11, above).
 An Association is used to connect user-defined text (an Annotation) with a Flow Object (see Figure 8.12).
 
@@ -828,7 +854,7 @@ Issues — through email or calls
 Figure 8.12 - An Association of Text Annotation
 
 The Association element inherits the attributes and model associations of BaseElement (see Table 8.5). Table 8.20
-presents the additional attributes and model associations for an Association:
+presents the additional attributes and model associations for an Association.
 Table 8.20 – Association attributes and model associations
 
 Attributes
@@ -853,10 +879,6 @@ targetRef: BaseElement
 
 The BaseElement that the Association is connecting to.
 
-68
-
-Business Process Model and Notation, v2.0
-
 Group
 The Group object is an Artifact that provides a visual mechanism to group elements of a diagram informally. The
 grouping is tied to the CategoryValue supporting element. That is, a Group is a visual depiction of a single
@@ -864,8 +886,13 @@ CategoryValue. The graphical elements within the Group will be assigned the Cate
 (Note -- CategoryValues can be highlighted through other mechanisms, such as color, as defined by a modeler or a
 modeling tool).
 A Group is a rounded corner rectangle that MUST be drawn with a solid dashed line (as seen in Figure 8.13).
-The use of text, color, size, and lines for a Group MUST follow the rules defined in Section “Use of Text,
-Color, Size, and Lines in a Diagram” on page 41.
+
+68
+
+Business Process Model and Notation, v2.0
+
+The use of text, color, size, and lines for a Group MUST follow the rules defined in “Use of Text, Color, Size,
+and Lines in a Diagram” on page 41.
 
 Figure 8.13 - A Group Artifact
 
@@ -874,50 +901,48 @@ Flows or Message Flows. In addition, Groups are not constrained by restrictions 
 that a Group can stretch across the boundaries of a Pool to surround Diagram elements (see Figure 8.14), often to
 identify Activities that exist within a distributed business-to-business transaction.
 
-Business Process Model and Notation, v2.0
-
-69
-
 Receptionist
 
 Patient
 
-Handle Medicine
+H a n d le M e d icin e
 
-Illness
-Occurs
+Illn es s
+O c c u rs
 
-Send Doctor
-Request
+S e n d D o c to r
+R equest
 
-Receive
-Appt.
-
-I want to see doctor
-
-Go see doctor
-
-Receive
-Doctor
-Request
-
-Send Appt.
+R e c e iv e
+A p p t.
 
 Send
-Medicine
-Request
+M e d icin e
+R equest
 
-Receive
-Medicine
+R e ce ive
+M e d ic in e
 
-I need my medicine Here is your medicine
+I w a nt to s e e d o cto r
 
-Receive
-Doctor
-Request
+G o se e do c to r
+
+I ne e d m y m ed ic in e
+
+H ere is y ou r m ed ic in e
+
+R e c e iv e
+D o c to r
+R equest
+
+S e n d A p p t.
+
+R e ce iv e
+D o cto r
+R equest
 
 Send
-Medicine
+M e d ic in e
 
 Figure 8.14 - A Group around Activities in different Pools
 
@@ -925,14 +950,14 @@ Groups are often used to highlight certain sections of a Diagram without adding 
 purposes. Groups do not affect the flow of the Process.
 Figure 8.15 shows the Group class diagram.
 
-Figure 8.15 - The Group class diagram
-
-70
-
 Business Process Model and Notation, v2.0
 
+69
+
+Figure 8.15 - The Group class diagram
+
 The Group element inherits the attributes and model associations of BaseElement (see Table 8.5), through its
-relationship to Artifact. Table 8.21 presents the additional model associations for a Group:
+relationship to Artifact. Table 8.21 presents the additional model associations for a Group.
 Table 8.21 – Group model associations
 
 Attributes
@@ -942,15 +967,15 @@ Description
 categoryValueRef: CategoryValue [0..1]
 
 The categoryValueRef attribute specifies the CategoryValue that
-the Group represents (Further details about the definition of a Category
-and CategoryValue can be found on page 71). The name of the
+the Group represents. (Further details about the definition of a Category
+and CategoryValue can be found on page 70.) The name of the
 Category and the value of the CategoryValue separated by delineator
 "." provides the label for the Group. The graphical elements within the
 boundaries of the Group will be assigned the CategoryValue.
 
 Category
 Categories, which have user-defined semantics, can be used for documentation or analysis purposes. For example,
-FlowElements can be categorized has being customer oriented vs. support oriented. Furthermore, the cost and time of
+FlowElements can be categorized as being customer oriented vs. support oriented. Furthermore, the cost and time of
 Activities per Category can be calculated.
 Groups are one way in which Categories of objects can be visually displayed on the diagram. That is, a Group is a
 visual depiction of a single CategoryValue. The graphical elements within the Group will be assigned the
@@ -960,6 +985,10 @@ mechanisms, such as color, as defined by a modeler or a modeling tool). A single
 Groups in a diagram.
 The Category element inherits the attributes and model associations of BaseElement (see Table 8.5) through its
 relationship to RootElement. Table 8.22 displays the additional model associations of the Category element.
+70
+
+Business Process Model and Notation, v2.0
+
 Table 8.22 –Category model associations
 
 Attributes
@@ -979,11 +1008,6 @@ could specify values like “North,” “South,” “West,” and “East.”
 
 The CategoryValue element inherits the attributes and model associations of BaseElement (see Table 8.5). Table
 8.23 displays the attributes and model associations of the CategoryValue element.
-
-Business Process Model and Notation, v2.0
-
-71
-
 Table 8.23 –CategoryValue attributes and model associations
 
 Attributes
@@ -998,7 +1022,7 @@ category: Category [0..1]
 
 The category attribute specifies the Category representing the
 Category as such and contains the CategoryValue (Further details
-about the definition of a Category can be found on page 71).
+about the definition of a Category can be found on page 70).
 
 categorizedFlowElements:
 FlowElement [0..*]
@@ -1008,12 +1032,11 @@ Activities, Gateways, and Artifacts) that are within the
 boundaries of the Group.
 
 Text Annotation
-Text Annotations are a mechanism for a modeler to provide additional information for the reader of a BPMN
-Diagram.
+Text Annotations are a mechanism for a modeler to provide additional information for the reader of a BPMN Diagram.
 A Text Annotation is an open rectangle that MUST be drawn with a solid single line (as seen in Figure 8.16).
-The use of text, color, size, and lines for a Text Annotation MUST follow the rules defined in Section “Use of
-Text, Color, Size, and Lines in a Diagram” on page 41.
-The Text Annotation object can be connected to a specific object on the Diagram with an Association, but do not
+The use of text, color, size, and lines for a Text Annotation MUST follow the rules defined in “Use of Text,
+Color, Size, and Lines in a Diagram” on page 41.
+The Text Annotation object can be connected to a specific object on the Diagram with an Association, but does not
 affect the flow of the Process. Text associated with the Annotation can be placed within the bounds of the open
 rectangle.
 
@@ -1023,7 +1046,12 @@ additional information
 Figure 8.16 - A Text Annotation
 
 The Text Annotation element inherits the attributes and model associations of BaseElement (see Table 8.5). Table
-8.24 presents the additional attributes for a Text Annotation:
+8.24 presents the additional attributes for a Text Annotation.
+
+Business Process Model and Notation, v2.0
+
+71
+
 Table 8.24 –Text Annotation attributes
 
 Attributes
@@ -1038,10 +1066,6 @@ to the reader of the Diagram.
 textFormat: string
 
 This attribute identifies the format of the text. It MUST follow the mimetype format. The default is "text/plain."
-
-72
-
-Business Process Model and Notation, v2.0
 
 XML Schema for Artifacts
 Table 8.25 – Artifact XML schema
@@ -1075,27 +1099,26 @@ Table 8.27 – Category XML schema
 
 <xsd:element name="category" type="tCategory" substitutionGroup="rootElement"/>
 <xsd:complexType name="tCategory">
+72
+
+Business Process Model and Notation, v2.0
+
 <xsd:complexContent>
 <xsd:extension base="tRootElement">
 <xsd:sequence>
 <xsd:element ref="categoryValue" minOccurs="0" maxOccurs="unbounded"/>
 </xsd:sequence>
-<xsd:attribute name="name" type="xsd:string"/>
+<xsd:attribute name="name" type="xsd:string"/>\
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-
-Business Process Model and Notation, v2.0
-
-73
-
 Table 8.28 – CategoryValue XML schema
 
 <xsd:element name="categoryValue" type="tCategoryValue"/>
 <xsd:complexType name="tCategoryValue">
 <xsd:complexContent>
 <xsd:extension base="tBaseElement">
-<xsd:attribute name="value" type="xsd:string" use="optional"/>
+<xsd:attribute name="value" type="xsd:string" use="optional"/>\
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
@@ -1122,16 +1145,17 @@ Table 8.30 – Text Annotation XML schema
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
+
+Business Process Model and Notation, v2.0
+
+73
+
 <xsd:element name="text" type="tText"/>
 <xsd:complexType name="tText" mixed="true">
 <xsd:sequence>
 <xsd:any namespace="##any" processContents="lax" minOccurs="0"/>
 </xsd:sequence>
 </xsd:complexType>
-
-74
-
-Business Process Model and Notation, v2.0
 
 8.3.2
 
@@ -1153,62 +1177,70 @@ Receive Task. By the same token, each Send Task and each Receive Task participat
 Conversations. Furthermore, it identifies the Message it sends or receives and thereby establishes the relationship to
 one (or many) CorrelationKeys.
 There are two, non-exclusive correlation mechanisms in place:
-• In plain, key-based correlation, Messages that are exchanged within a Conversation are logically correlated by
-
-means of one or more common CorrelationKeys. That is, any Message that is sent or received within this Conversation needs to carry the value of at least one of these CorrelationKey instances within its payload. A
-CorrelationKey basically defines a (composite) key. The first Message that is initially sent or received initializes
-one or more CorrelationKey instances associated with the Conversation, i.e., assigns values to its
-CorrelationProperty instances which are the fields (partial keys) of the CorrelationKey. A
-CorrelationKey is only considered valid for use, if the Message has resulted in all CorrelationProperty
-fields within the key being populated with a value. If a follow-up Message derives a CorrelationKey instance,
-where that CorrelationKey had previously been initialized within the Conversation, then the
-CorrelationKey value in the Message and Conversation MUST match. If the follow-up Message derives a
-CorrelationKey instance associated with the Conversation, that had not previously been initialized, then the
-CorrelationKey value will become associated with the Conversation. As a Conversation can comprise different Messages that can be differently structured, each CorrelationProperty comes with as many extraction
-rules (CorrelationPropertyRetrievalExpression) for the respective partial key as there are different
-Messages.
-In context-based correlation, the Process context (i.e., its Data Objects and Properties) can dynamically influence
-the matching criterion. That is, a CorrelationKey can be complemented by a Process-specific
-CorrelationSubscription. A CorrelationSubscription aggregates as many
-CorrelationPropertyBindings as there are CorrelationProperties in the CorrelationKey. A
-CorrelationPropertyBinding relates to a specific CorrelationProperty and also links to a
-FormalExpression which denotes a dynamic extraction rule atop the Process context. At runtime, the
-CorrelationKey instance for a particular Conversation is populated (and dynamically updated) from the Process
-context using these FormalExpressions. In that sense, changes in the Process context can alter the correlation
-condition. Correlation can be applied to Message Flows in Collaboration and Choreography, as described in
-Chapters 9, Collaboration and 11, Choreography. The keys applying to a Message Flow are the keys of containers or
 
 1.
 
+74
+
+1.
+
+In plain, key-based correlation, Messages that are exchanged within a Conversation are logically correlated by
+means of one or more common CorrelationKeys. That is, any Message that is sent or received within this
+Conversation needs to carry the value of at least one of these CorrelationKey instances within its payload. A
+CorrelationKey basically defines a (composite) key. The first Message that is initially sent or received initializes one or more CorrelationKey instances associated with the Conversation, i.e., assigns values to its
+CorrelationProperty instances which are the fields (partial keys) of the CorrelationKey. A
+CorrelationKey is only considered valid for use, if the Message has resulted in all CorrelationProperty fields within the key being populated with a value. If a follow-up Message derives a CorrelationKey
+instance, where that CorrelationKey had previously been initialized within the Conversation, then the
+CorrelationKey value in the Message and Conversation MUST match. If the follow-up Message derives
+a CorrelationKey instance associated with the Conversation, that had not previously been initialized, then the
+CorrelationKey value will become associated with the Conversation. As a Conversation can comprise different Messages that can be differently structured, each CorrelationProperty comes with as many extraction rules (CorrelationPropertyRetrievalExpression) for the respective partial key as there are
+different Messages.
+
+2.
+
+In context-based correlation, the Process context (i.e., its Data Objects and Properties) can dynamically
+influence the matching criterion. That is, a CorrelationKey can be complemented by a Process-specific
+
 All references to Send or Receive Tasks in this section also include message catch or throw Events -- they behave identically with
 respect to correlation.
+Business Process Model and Notation, v2.0
+
+CorrelationSubscription. A CorrelationSubscription aggregates as many
+CorrelationPropertyBindings as there are CorrelationProperties in the CorrelationKey. A
+CorrelationPropertyBinding relates to a specific CorrelationProperty and also links to a
+FormalExpression that denotes a dynamic extraction rule atop the Process context. At runtime, the
+CorrelationKey instance for a particular Conversation is populated (and dynamically updated) from the
+Process context using these FormalExpressions. In that sense, changes in the Process context can alter the
+correlation condition.
+Correlation can be applied to Message Flows in Collaboration and Choreography, as described in Chapters 9,
+Collaboration and 11, Choreography. The keys applying to a Message Flow are the keys of containers or groupings of
+the Message Flow, such as Collaborations, Choreographies, and Conversation Nodes, and Choreography
+Activities. This might result in multiple CorrelationKeys applying to the same Message Flow, perhaps due to
+multiple layers of containment. In particular, calls of Collaborations and Choreographies are special kinds of
+Conversation Nodes and Choreography Activities, respectively, and are considered a kind of containment for the
+purposes of correlation. The CorrelationKeys specified in the caller apply to Message Flow in a called
+Collaboration or Choreography.
 
 Business Process Model and Notation, v2.0
 
 75
 
-groupings of the Message Flow, such as Collaborations, Choreographies, and Conversation Nodes, and
-Choreography Activities. This might result in multiple CorrelationKeys applying to the same Message Flow,
-perhaps due to multiple layers of containment. In particular, calls of Collaborations and Choreographies are special
-kinds of Conversation Nodes and Choreography Activities, respectively, and are considered a kind of containment
-for the purposes of correlation. The CorrelationKeys specified in the caller apply to Message Flow in a called
-Collaboration or Choreography.
-
 Figure 8.17 - The Correlation Class Diagram
 
 CorrelationKey
-A CorrelationKey represents a composite key out of one (1) or many CorrelationProperties which
-essentially specify extraction Expressions atop Messages. As a result, each CorrelationProperty acts as a
-partial key for the correlation. For each Message that is exhanged as part of a particular Conversation, the
+A CorrelationKey represents a composite key out of one or many CorrelationProperties that essentially
+specify extraction Expressions atop Messages. As a result, each CorrelationProperty acts as a partial key
+for the correlation. For each Message that is exhanged as part of a particular Conversation, the
+CorrelationProperties need to provide a CorrelationPropertyRetrievalExpression which
+references a FormalExpression to the Message payload. That is, for each Message (that is used in a
+Conversation) there is an Expression, which extracts portions of the respective Message’s payload.
+The CorrelationKey element inherits the attributes and model associations of BaseElement (see Table 8.5). Table
+8.31 displays the additional model associations of the CorrelationKey element.
+
 76
 
 Business Process Model and Notation, v2.0
 
-CorrelationProperties need to provide a CorrelationPropertyRetrievalExpression which
-references a FormalExpression to the Message payload. That is, for each Message (that is used in a
-Conversation) there is an Expression which extracts portions of the respective Message’s payload.
-The CorrelationKey element inherits the attributes and model associations of BaseElement (see Table 8.5). Table
-8.31 displays the additional model associations of the CorrelationKey element.
 Table 8.31 – CorrelationKey model associations
 
 Attribute Name
@@ -1234,7 +1266,7 @@ CorrelationKey instance for this Conversation. The idea is to use a joint Conver
 (passed to and received from) and outgoing and incoming Message. Messages are associated to a particular
 Conversation if the composite key extracted from their payload matches the CorrelationKey initialized for this
 Conversation.
-At runtime the first Send Task or Receive Task in a Conversation MUST populate atleast one of the
+At runtime the first Send Task or Receive Task in a Conversation MUST populate at least one of the
 CorrelationKey instances by extracting the values of the CorrelationProperties according to the
 CorrelationPropertyRetrievalExpression from the initially sent or received Message. Later in the
 Conversation, the populated CorrelationKey instances are used for the described matching procedure where from
@@ -1243,11 +1275,6 @@ then the derived value will be associated with the Conversation instance.
 The CorrelationProperty element inherits the attributes and model associations of BaseElement (see Table 8.5)
 through its relationship to RootElement. Table 8.32 displays the additional model associations of the
 CorrelationProperty element.
-
-Business Process Model and Notation, v2.0
-
-77
-
 Table 8.32 – CorrelationProperty model associations
 
 Attribute Name
@@ -1272,6 +1299,11 @@ occurring in this Conversation.
 The CorrelationPropertyRetrievalExpression element inherits the attributes and model associations of
 BaseElement (see Table 8.5). Table 8.33 displays the additional model associations of the
 CorrelationPropertyRetrievalExpression element.
+
+Business Process Model and Notation, v2.0
+
+77
+
 Table 8.33 – CorrelationPropertyRetrievalExpression model associations
 
 Attribute Name
@@ -1281,7 +1313,7 @@ Description/Usage
 messagePath: FormalExpression
 
 The FormalExpression that defines how to extract a
-CorrelationProperty from the Message payload
+CorrelationProperty from the Message payload.
 
 messageRef: Message
 
@@ -1292,9 +1324,9 @@ Context-based Correlation
 Context-based correlation is a more expressive form of correlation on top of key-based correlation. In addition to
 implicitly populating the CorrelationKey instance from the first sent or received Message, another mechanism
 relates the CorrelationKey to the Process context. That is, a Process MAY provide a
-CorrelationSubscription which acts as the Process-specific counterpart to a specific CorrelationKey. In
-this way, a Conversation MAY additionally refer to explicitly updateable Process context data to determine whether
-or not a Message needs to be received. At runtime, the CorrelationKey instance holds a composite key that is
+CorrelationSubscription that acts as the Process-specific counterpart to a specific CorrelationKey. In this
+way, a Conversation MAY additionally refer to explicitly updateable Process context data to determine whether or
+not a Message needs to be received. At runtime, the CorrelationKey instance holds a composite key that is
 dynamically calculated from the Process context and automatically updated whenever the underlying Data Objects or
 Properties change.
 CorrelationPropertyBindings represent the partial keys of a CorrelationSubscription where each
@@ -1303,11 +1335,6 @@ how that CorrelationProperty instance is populated and updated at runtime from t
 Data Objects and Properties).
 The CorrelationSubscription element inherits the attributes and model associations of BaseElement (see
 Table 8.5). Table 8.34 displays the additional model associations of the CorrelationSubscription element.
-
-78
-
-Business Process Model and Notation, v2.0
-
 Table 8.34 – CorrelationSubscription model associations
 
 Attribute Name
@@ -1327,6 +1354,11 @@ FormalExpressions (extraction rules atop the Process context).
 
 The CorrelationPropertyBinding element inherits the attributes and model associations of BaseElement (see
 Table 8.5). Table 8.35 displays the additional model associations of the CorrelationPropertyBinding element.
+
+78
+
+Business Process Model and Notation, v2.0
+
 Table 8.35 – CorrelationPropertyBinding model associations
 
 Attribute Name
@@ -1366,11 +1398,6 @@ Table 8.36 – Correlation Key XML schema
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
-
-Business Process Model and Notation, v2.0
-
-79
-
 Table 8.37 – Correlation Property XML schema
 
 <xsd:element name="correlationProperty" type="tCorrelationProperty" substitutionGroup="rootElement"/>
@@ -1382,6 +1409,10 @@ Table 8.37 – Correlation Property XML schema
 </xsd:sequence>
 <xsd:attribute name="name" type="xsd:String" use="optional"/>
 <xsd:attribute name="type" type="xsd:QName"/>
+Business Process Model and Notation, v2.0
+
+79
+
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
@@ -1416,10 +1447,6 @@ Table 8.40 – Correlation Subscription XML schema
 <xsd:element name="correlationSubscription" type="tCorrelationSubscription"/>
 <xsd:complexType name=" tCorrelationSubscription ">
 <xsd:complexContent>
-80
-
-Business Process Model and Notation, v2.0
-
 <xsd:extension base="tBaseElement">
 <xsd:sequence>
 <xsd:element name="process" type="xsd:QName" use="required"/>
@@ -1429,6 +1456,10 @@ Business Process Model and Notation, v2.0
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
+
+80
+
+Business Process Model and Notation, v2.0
 
 8.3.3
 
@@ -1442,7 +1473,7 @@ Figure 8.18 - Error class diagram
 
 The Error element inherits the attributes and model associations of BaseElement (see Table 8.5), through its
 relationship to RootElement. Table 8.41 presents the additional attributes and model associations of the Error
-element:
+element.
 
 Business Process Model and Notation, v2.0
 
@@ -1491,7 +1522,7 @@ Figure 8.19 - Escalation class diagram
 Business Process Model and Notation, v2.0
 
 The Escalation element inherits the attributes and model associations of BaseElement (see Table 8.5), through its
-relationship to RootElement. Table 8.41 presents the additional model associations of the Error element:
+relationship to RootElement. Table 8.41 presents the additional model associations of the Error element.
 Table 8.42 – Esclation attributes and model associations
 
 Attribute Name
@@ -1541,9 +1572,8 @@ Business Process Model and Notation, v2.0
 Figure 8.20 - Event class diagram
 
 The Event element inherits the attributes and model associations of FlowElement (see Table 8.44), but adds no
-additional attributes or model associations:
-The details for the types of Events (Start, Intermediate, and End) are defined in the Section “Event Definitions” on
-page 265.
+additional attributes or model associations.
+The details for the types of Events (Start, Intermediate, and End) are defined in “Event Definitions” on page 260.
 
 8.3.6
 
@@ -1583,7 +1613,7 @@ expressionLanguage attribute. It can also be overridden on each individual Forma
 attribute.
 The FormalExpression element inherits the attributes and model associations of BaseElement (see Table 8.5),
 through the Expression element. Table 8.43 presents the additional attributes and model associations of the
-FormalExpression:
+FormalExpression.
 
 Business Process Model and Notation, v2.0
 
@@ -1623,8 +1653,8 @@ conditional Expressions evaluate to a boolean.
 Flow Element
 
 FlowElement is the abstract super class for all elements that can appear in a Process flow, which are FlowNodes
-(see page 99, which consist of Activities (see page 153), Choreography Activities (see page 327) Gateways (see
-page 292), and Events (see page 237)), Data Objects (see page 209), Data Associations (see page 225), and
+(see page 99, which consist of Activities (see page 151), Choreography Activities (see page 321) Gateways (see
+page 287), and Events (see page 233), Data Objects (see page 205), Data Associations (see page 221), and
 Sequence Flows (see page 97).
 
 86
@@ -1634,7 +1664,7 @@ Business Process Model and Notation, v2.0
 Figure 8.22 - FlowElement class diagram
 
 The FlowElement element inherits the attributes and model associations of BaseElement (see Table 8.5). Table 8.44
-presents the additional attributes and model associations of the FlowElement element:
+presents the additional attributes and model associations of the FlowElement element.
 
 Business Process Model and Notation, v2.0
 
@@ -1671,8 +1701,8 @@ Flow Elements Container
 
 FlowElementsContainer is an abstract super class for BPMN diagrams (or views) and defines the superset of
 elements that are contained in those diagrams. Basically, a FlowElementsContainer contains FlowElements,
-which are Events (see page 237), Gateways (see page 292), Sequence Flows (see page 97), Activities (see page
-153), and Choreography Activities (see page 327).
+which are Events (see page 233), Gateways (see page 287), Sequence Flows (see page 97), Activities (see page
+151), and Choreography Activities (see page 321).
 There are four (4) types of FlowElementsContainers (see Figure 8.23): Process, Sub-Process,
 Choreography, and Sub-Choreography.
 
@@ -1706,7 +1736,7 @@ a flowElement for a Choreography.
 laneSets: LaneSet [0..*]
 
 This attribute defines the list of LaneSets used in the FlowElementsContainer
-LaneSets are not used for Choreographies or Sub-Choreographies..
+LaneSets are not used for Choreographies or Sub-Choreographies.
 
 Business Process Model and Notation, v2.0
 
@@ -1732,7 +1762,7 @@ then to diverge the Sequence Flows.
 Figure 8.24 - Gateway class diagram
 
 The details for the types of Gateways (Exclusive, Inclusive, Parallel, Event-Based, and Complex) is defined on
-page 292 for Processes and on page 351 for Choreographies.
+page 287 for Processes and on page 344 for Choreographies.
 90
 
 Business Process Model and Notation, v2.0
@@ -1768,9 +1798,9 @@ incoming Sequence Flow.
 incoming Sequence Flows.
 
 8.3.10 Item Definition
-BPMN elements, such as DataObjects and Messages, represent items that are manipulated, transferred, transformed
-or stored during Process flows. These items can be either physical items, such as the mechanical part of a vehicle, or
-information items such the catalog of the mechanical parts of a vehicle.
+BPMN elements, such as DataObjects and Messages, represent items that are manipulated, transferred,
+transformed, or stored during Process flows. These items can be either physical items, such as the mechanical part of a
+vehicle, or information items such the catalog of the mechanical parts of a vehicle.
 An important characteristics of items in Process is their structure. BPMN does not require a particular format for this
 data structure, but it does designate XML Schema as its default. The structure attribute references the actual data
 structure.
@@ -1801,7 +1831,7 @@ Figure 8.25 - ItemDefinition class diagram
 
 The ItemDefinition element inherits the attributes and model associations BaseElement (see Table 8.5) through
 its relationship to RootElement. Table 8.47 presents the additional attributes and model associations for the
-ItemDefinition element:
+ItemDefinition element.
 Table 8.47 – ItemDefinition attributes & model associations
 
 Attribute Name
@@ -1809,11 +1839,11 @@ Attribute Name
 Description/Usage
 
 itemKind: ItemKind = Information
-{ Information | Physical }
 
 This defines the nature of the Item. Possible values are physical or
 information. The default value is information.
 
+{ Information | Physical }
 structureRef: [Element [0..1]
 
 The concrete data structure to be used.
@@ -1835,8 +1865,8 @@ Business Process Model and Notation, v2.0
 
 8.3.11 Message
 A Message represents the content of a communication between two Participants. In BPMN 2.0, a Message is a
-graphical object (it was a supporting element in BPMN 1.2). An ItemDefinition is used to specify the Message
-structure.
+graphical decorator (it was a supporting element in BPMN 1.2). An ItemDefinition is used to specify the
+Message structure.
 When displayed in a diagram:
 In a Message is a rectangle with converging diagonal lines in the upper half of the rectangle to give the appearance
 of an envelope (see Figure 8.26). It MUST be drawn with a single thin line.
@@ -1846,16 +1876,15 @@ Color, Size, and Lines in a Diagram” on page 41.
 Figure 8.26 - A Message
 
 In addition, when used in a Choreography Diagram more than one Message MAY be used for a single
-Choreography Task or a Sub-Choreography. In this case, it is important to know the first (initiating) Message of
-the interaction. For return (non-initiating) Messages the symbol of the Message is shaded with a light fill (see Figure
-8.27).
+Choreography Task. In this case, it is important to know the first (initiating) Message of the interaction. For return
+(non-initiating) Messages the symbol of the Message is shaded with a light fill (see Figure 8.27).
 
 Figure 8.27 - A non-initiating Message
 
-Any Message sent by the non-initiating Participant or Sub-Choreography MUST be shaded with a light fill..
-In a Collaboration, the communication itself is represented by a Message Flow (see the Section “Message Flow”
-below for more details). The Message can be displayed as attached (Associated) to a Message Flow in a
-Collaboration (see Figure 8.28 and Figure 8.29).
+Any Message sent by the non-initiating Participant or Sub-Choreography MUST be shaded with a light fill.
+In a Collaboration, the communication itself is represented by a Message Flow (see “Message Flow” below for more
+details). The Message can be optionally depicted as a graphical decorator on a Message Flow in a Collaboration
+(see Figure 8.28 and Figure 8.29).
 
 Business Process Model and Notation, v2.0
 
@@ -1869,24 +1898,10 @@ Confirmation
 
 Supplier
 
-Figure 8.28 - Messages shown Associated with Message Flows
+Figure 8.28 - Messages Association overlapping Message Flows
 
-Customer
-
-Order
-
-Confirmation
-
-Supplier
-
-Figure 8.29 - Messages Association overlapping Message Flows
-
-In a Choreography, the communication is represented by a Choreography Task (see page 329). The Message can
-be displayed as Associated with a Choreography Task in a Choreography (see Figure 8.30).
-
-94
-
-Business Process Model and Notation, v2.0
+In a Choreography, the communication is represented by a Choreography Task (see page 323). The Message can
+be depicted as a decorator with a Choreography Task in a Choreography (see Figure 8.29).
 
 Order
 
@@ -1896,18 +1911,19 @@ Order
 Suppl ier
 
 Confirmation
-Figure 8.30 - Messages shown Associated with a Choreography Task
+Figure 8.29 - Messages shown Associated with a Choreography Task
 
-Figure 8.31 displays the class diagram showing the attributes and model associations for the Message element.
+Figure 8.30 displays the class diagram showing the attributes and model associations for the Message element.
 
-Figure 8.31 - The Message class diagram
+94
+
+Business Process Model and Notation, v2.0
+
+Figure 8.30 - The Message class diagram
 
 The Message element inherits the attributes and model associations of BaseElement (see Table 8.5) through its
 relationship to RootElement. Table 8.48 presents the additional attributes and model associations for the Message
-element:
-Business Process Model and Notation, v2.0
-
-95
+element.
 
 Table 8.48 – Message attributes and model associations
 
@@ -1929,14 +1945,19 @@ The Resource class is used to specify resources that can be referenced by Activi
 Human Resources as well as any other resource assigned to Activities during Process execution time.
 The definition of a Resource is “abstract,” because it only defines the Resource, without detailing how e.g., actual
 user IDs are associated at runtime. Multiple Activities can utilize the same Resource.
+
+Business Process Model and Notation, v2.0
+
+95
+
 Every Resource can define a set of ResourceParameters. These parameters can be used at runtime to define
 query e.g., into an Organizational Directory. Every Activity referencing a parameterized Resource can bind values
 available in the scope of the Activity to these parameters.
 
-Figure 8.32 - Resource class diagram
+Figure 8.31 - Resource class diagram
 
 The Resource element inherits the attributes and model associations of BaseElement (see Table 8.5) through its
-relationship to RootElement. Table 8.51 presents the additional model associations for the Resource element:
+relationship to RootElement. Table 8.51 presents the additional model associations for the Resource element.
 Table 8.49 – Resource attributes and model associations
 
 Attribute Name
@@ -1953,15 +1974,16 @@ ResourceParameter [0..*]
 This model association specifies the definition of the parameters
 needed at runtime to resolve the Resource.
 
-96
-
-Business Process Model and Notation, v2.0
-
 As mentioned before, the Resource can define a set of parameters to define a query to resolve the actual resources
 (e.g., user ids).
 The ResourceParameter element inherits the attributes and model associations of BaseElement (see Table 8.5)
 through its relationship to RootElement. Table 8.51 presents the additional model associations for the
-ResourceParameter element:
+ResourceParameter element.
+
+96
+
+Business Process Model and Notation, v2.0
+
 Table 8.50 – ResourceParameter attributes and model associations
 
 Attribute Name
@@ -1987,42 +2009,42 @@ Flow Elements: Events (Start, Intermediate, and End), Activities (Task and Sub-P
 Choreography Activities (Choreography Task and Sub-Choreography; for Choreographies), and
 Gateways.
 A Sequence Flow is line with a solid arrowhead that MUST be drawn with a solid single line (as seen in Figure
-8.33).
+8.32).
 The use of text, color, size, and lines for a Sequence Flow MUST follow the rules defined in Section “Use of
 Text, Color, Size, and Lines in a Diagram” on page 41.
 
-Figure 8.33 - A Sequence Flow
+Figure 8.32 - A Sequence Flow
 
 A Sequence Flow can optionally define a condition Expression, indicating that the token will be passed down the
 Sequence Flow only if the Expression evaluates to true. This Expression is typically used when the source of
 the Sequence Flow is a Gateway or an Activity.
 A conditional outgoing Sequence Flow from an Activity MUST be drawn with a mini-diamond marker at the
-beginning of the connector (as seen in Figure 8.34).
+beginning of the connector (as seen in Figure 8.33).
 If a conditional Sequence Flow is used from a source Activity, then there MUST be at least one other
 outgoing Sequence Flow from that Activity.
 Conditional outgoing Sequence Flows from a Gateway MUST NOT be drawn with a mini-diamond marker at
 the beginning of the connector.
 A source Gateway MUST NOT be of type Parallel or Event.
 
+Figure 8.33 - A Conditional Sequence Flow
+
 Business Process Model and Notation, v2.0
 
 97
 
-Figure 8.34 - A Conditional Sequence Flow
-
 A Sequence Flow that has an Exclusive, Inclusive, or Complex Gateway or an Activity as its source can also be
 defined with as default. Such a Sequence Flow will have a marker to show that it is a default flow. The default
 Sequence Flow is taken (a token is passed) only if all the other outgoing Sequence Flows from the Activity or
-Gateway are not valid (i.e., their condition Expressions are false)
+Gateway are not valid (i.e., their condition Expressions are false).
 A default outgoing Sequence Flow MUST be drawn with a slash marker at the beginning of the connector (as
-seen in Figure 8.35).
+seen in Figure 8.34).
 
-Figure 8.35 - A Default Sequence Flow
+Figure 8.34 - A Default Sequence Flow
 
-Figure 8.36 - SequenceFlow class diagram
+Figure 8.35 - SequenceFlow class diagram
 
 The Sequence Flow element inherits the attributes and model associations of FlowElement (see Table 8.44). Table
-8.51 presents the additional attributes and model associations of the Sequence Flow element:
+8.51 presents the additional attributes and model associations of the Sequence Flow element.
 
 98
 
@@ -2077,12 +2099,12 @@ were true.
 
 Flow Node
 The FlowNode element is used to provide a single element as the source and target Sequence Flow associations (see
-Figure 8.36) instead of the individual associations of the elements that can connect to Sequence Flows (see the section
+Figure 8.35) instead of the individual associations of the elements that can connect to Sequence Flows (see the section
 above). Only the Gateway, Activity, Choreography Activity, and Event elements can connect to Sequence Flows
 and thus, these elements are the only ones that are sub-classes of FlowNode.
 Since Gateway, Activity, Choreography Activity, and Event have their own attributes, model associations, and
 inheritances; the FlowNode element does not inherit from any other BPMN element. Table 8.52 presents the additional
-model associations of the FlowNode element:
+model associations of the FlowNode element.
 
 Business Process Model and Notation, v2.0
 
@@ -2104,7 +2126,6 @@ This attribute identifies the outgoing Sequence Flow of the FlowNode.
 This is an ordered collection.
 
 8.3.14 Common Package XML Schemas
-
 Table 8.53 – Error XML schema
 
 <xsd:element name="error" type="tError" substitutionGroup="rootElement"/>
@@ -2117,6 +2138,7 @@ Table 8.53 – Error XML schema
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
+
 Table 8.54 – Escalation XML schema
 
 <xsd:element name="escalation" type="tEscalation" substitutionGroup="rootElement"/>
@@ -2129,6 +2151,7 @@ Table 8.54 – Escalation XML schema
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
+
 Table 8.55 – Expression XML schema
 
 <xsd:element name="expression" type="tExpression"/>
@@ -2157,6 +2180,7 @@ Table 8.56 – FlowElement XML schema
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
+
 Table 8.57 – FlowNode XML schema
 
 <xsd:element name="flowNode" type="tFlowNode"/>
@@ -2170,6 +2194,7 @@ Table 8.57 – FlowNode XML schema
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
+
 Table 8.58 – FormalExpression XML schema
 
 <xsd:element name="formalExpression" type="tFormalExpression" substitutionGroup="expression"/>
@@ -2198,6 +2223,7 @@ Table 8.59 – InputOutputBinding XML schema
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
+
 Table 8.60 – ItemDefinition XML schema
 
 <xsd:element name="itemDefinition" type="tItemDefinition" substitutionGroup="rootElement"/>
@@ -2216,6 +2242,7 @@ Table 8.60 – ItemDefinition XML schema
 <xsd:enumeration value="Physical"/>
 </xsd:restriction>
 </xsd:simpleType>
+
 Table 8.61 – Message XML schema
 
 <xsd:element name="message" type="tMessage" substitutionGroup="rootElement"/>
@@ -2256,6 +2283,7 @@ Table 8.63 – ResourceParameter XML schema
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
+
 Table 8.64 – SequenceFlow XML schema
 
 <xsd:element name="sequenceFlow" type="tSequenceFlow" substitutionGroup="flowElement"/>
@@ -2282,7 +2310,7 @@ Services
 
 The Service package contains constructs necessary for modeling services, interfaces, and operations.
 
-Figure 8.37 - The Service class diagram
+Figure 8.36 - The Service class diagram
 
 8.4.1
 
@@ -2290,7 +2318,7 @@ Interface
 
 An Interface defines a set of operations that are implemented by Services.
 The Interface inherits the attributes and model associations of BaseElement (see Table 8.5) through its relationship
-to RootElement. Table 8.65 presents the additional attributes and model associations of the Interface:
+to RootElement. Table 8.65 presents the additional attributes and model associations of the Interface.
 
 104
 
@@ -2336,7 +2364,12 @@ Operation
 An Operation defines Messages that are consumed and, optionally, produced when the Operation is called. It can
 also define zero or more errors that are returned when operation fails. The Operation inherits the attributes and model
 associations of BaseElement (see Table 8.5). Table 8.66 below presents the additional attributes and model associations
-of the Operation:
+of the Operation.
+
+Business Process Model and Notation, v2.0
+
+105
+
 Table 8.66 – Operation attributes and model associations
 
 Attribute Name
@@ -2367,10 +2400,6 @@ implementationRef: Element [0..1]
 
 This attribute allows to reference a concrete artifact in the underlying implementation technology representing that operation, such as a WSDL operation.
 
-Business Process Model and Notation, v2.0
-
-105
-
 8.4.4
 
 Service Package XML Schemas
@@ -2389,6 +2418,7 @@ Table 8.67 – Interface XML schema
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
+
 Table 8.68 – Operation XML schema
 
 <xsd:element name="operation" type="tOperation"/>
@@ -2402,9 +2432,14 @@ Table 8.68 – Operation XML schema
 </xsd:sequence>
 <xsd:attribute name="name" type="xsd:string" use="required"/>
 <xsd:attribute name="implementationRef" type="xsd:QName" use="optional"/>
+106
+
+Business Process Model and Notation, v2.0
+
 </xsd:extension>
 </xsd:complexContent>
 </xsd:complexType>
+
 Table 8.69 – EndPoint XML schema
 
 <xsd:element name="endPoint" type="tEndPoint"/>
@@ -2414,7 +2449,11 @@ Table 8.69 – EndPoint XML schema
 </xsd:complexContent>
 </xsd:complexType>
 
-106
+Business Process Model and Notation, v2.0
+
+107
+
+108
 
 Business Process Model and Notation, v2.0
 

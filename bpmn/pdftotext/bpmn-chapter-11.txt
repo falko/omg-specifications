@@ -7,77 +7,76 @@ Complete Conformance. However, this chapter is NOT REQUIRED for BPMN Process Mod
 Process Execution Conformance, or BPMN BPEL Process Execution Conformance. For more information about BPMN
 conformance types, see page 2.
 A Choreography is a type of process, but differs in purpose and behavior from a standard BPMN Process. A standard
-Process, or an Orchestration Process (see page 147), is more familiar to most process modelers and defines the flow
+Process, or an Orchestration Process (see page 145), is more familiar to most process modelers and defines the flow
 of Activities of a specific PartnerEntity or organization. In contrast, Choreography formalizes the way business
 Participants coordinate their interactions. The focus is not on orchestrations of the work performed within these
 Participants, but rather on the exchange of information (Messages) between these Participants.
-Another way to look at Choreography is to view it as a type of business contract between two (2) or more organizations.
+Another way to look at Choreography is to view it as a type of business contract between two or more organizations.
 This entails Message (document) exchanges in an orderly fashion: e.g., first a retailer sends a purchase order request to
 a supplier; next the supplier either confirms or rejects intention to investigate the order; then supplier proceeds to
 investigate stock for line-items and seeks outside suppliers if necessary; accordingly the supplier sends a confirmation or
 rejection back; during this period the retailer can send requests to vary the order, etc.
 Message exchanges between partners go beyond simple request-response interactions into multi-cast, contingent
-requests, competing receives, streaming and other service interaction patterns (REF for SIP). Moreover, they cluster
+requests, competing receives, streaming, and other service interaction patterns (REF for SIP). Moreover, they cluster
 around distinct scenarios such as: creation of sales orders; assignment of carriers of shipments involving different sales
 orders; managing the “red tape” of crossing customs and quarantine; processing payment and investigating exceptions. A
 Choreography is a definition of expected behavior, basically a procedural business contract, between interacting
-Participants (see page 110 for more information on Participants). It brings Message exchanges and their logical relation
+Participants (see page 112 for more information on Participants). It brings Message exchanges and their logical relation
 as Conversations into view. This allows partners to plan their Business Processes for inter-operation without
 introducing conflicts. An example of a conflict could arise if a retailer was allowed to send a variation on a purchase
 order immediately after sending the initial request. The Message exchange sequences in Choreography models need
 to be reflected in the orchestration Processes of participants. A Choreography model makes it possible to derive the
 Process interfaces of each partner’s Process (REF: Decker & Weske, 2007).
 To leverage the familiarity of flow charting types of Process models, BPMN Choreographies also have “activities”
-that are ordered by Sequence Flows. These “activities” consist of one (1) or more interactions between Participants.
+that are ordered by Sequence Flows. These “activities” consist of one or more interactions between Participants.
 These interactions are often described as being message exchange patterns (MEPs). A MEP is the atomic unit
 (“Activity”) of a Choreography.
 Some MEPs involve a single Message (e.g., a “Customer” requests an “Order” from a “Supplier”). Other MEPs will
-involve two (2) Messages in a request and response format (e.g., a “Supplier” request a “Credit Rating” from a
-“Financial Institution,” who then returns the “Credit Rating” to the “Supplier”). There can be even more complex MEPs
-that involve error Messages, for example.
-A single MEP can be defined as a BPMN Choreography Task (see page 329). Thus, a Choreography defines the
+involve two Messages in a request and response format (e.g., a “Supplier” request a “Credit Rating” from a “Financial
+Institution,” who then returns the “Credit Rating” to the “Supplier”). There can be even more complex MEPs that involve
+error Messages, for example.
+A single MEP can be defined as a BPMN Choreography Task (see page 323). Thus, a Choreography defines the
 order in which Choreography Tasks occur. Sub-Choreographies allow the composition/decomposition of
 Choreographies.
 Choreographies are designed in BPMN to allow stand-alone, scalable models of these Participant interactions.
 However, since BPMN provides other Business Process modeling views, Choreographies are designed to fit
-within BPMN Collaboration diagrams to display of the relationship between the Choreography and Orchestration
-Processes (thus, expanding BPMN 1.2 capabilities—see page 107, above, for more information on Collaborations,
-and page 368 for Choreographies within Collaborations).
+within BPMN Collaboration diagrams to display the relationship between the Choreography and Orchestration
+Processes (thus, expanding BPMN 1.2 capabilities—see page 109, above, for more information on Collaborations,
+and page 362 for Choreographies within Collaborations).
 Business Process Model and Notation, v2.0
 
-321
+315
 
 Figure 11.1 displays the metamodel of the key BPMN elements that contribute to Choreography modeling. The
 sections of this chapter will describe the characteristics of these elements and how they are used in a Choreography.
 
 Figure 11.1 - The Choreography metamodel
 
-Note – The Choreography element inherits the attributes and model associations of Collaboration (see Table 9.1) and
-of FlowElementContainer (see Table 8.45), but does not have any additional attributes or model associations.The
-Collaboration attribute choreographyRef is not applicable to Choreography.
+The Choreography element inherits the attributes and model associations of Collaboration (see Table 9.1) and of
+FlowElementContainer (see Table 8.45), but does not have any additional attributes or model associations.
+Note – The Collaboration attribute choreographyRef is not applicable to Choreography.
 
 11.1 Basic Choreography Concepts
-A key to understanding Choreographies and how they are used in BPMN is their relationship to Pools (see page 110
+A key to understanding Choreographies and how they are used in BPMN is their relationship to Pools (see page 112
 for more information on Pools). Choreographies exist outside of or in between Pools. A Process, within a Pool,
 represents the work of a specific PartnerEntity (e.g., “FedEx”), often substituted by a PartnerRole (e.g.,
 “Shipper”) when a PartnerEntity is not identified and can be decided later. The PartnerEntity/PartnerRole
 is called a Participant in BPMN. Pools are the graphical representation of Participants. A Choreography, on the other
 hand, is a different kind of process. A Choreography defines the sequence of interactions between Participants. Thus,
-
-322
+316
 
 Business Process Model and Notation, v2.0
 
 a Choreography does not exist in a single Pool—it is not the purview of a single Participant. Each step in the
-Choreography involves two (2) or more Participants (these steps are called Choreography Activities—see below).
+Choreography involves two or more Participants (these steps are called Choreography Activities—see below).
 This means that the Choreography, in BPMN terms, is defined outside of any particular Pool.
 The key question that needs to be continually asked during the development of a Choreography is “what information
 do the Participants in the Choreography have?” Basically, each Participant can only understand the status of the
 Choreography through observable behavior of the other Participants–which are the Messages that have been sent and
-received. If there are only two (2) Participants in the Choreography, then it is very simple—both Participants will be
-aware of who is responsible for sending the next Message. However, if there are more than two (2) Participants, then
-the modeler needs to be careful to sequence the Choreography Activities in such a way that the Participants know
-when they are responsible for initiating the interactions.
+received. If there are only two Participants in the Choreography, then it is very simple—both Participants will be
+aware of who is responsible for sending the next Message. However, if there are more than two Participants, then the
+modeler needs to be careful to sequence the Choreography Activities in such a way that the Participants know when
+they are responsible for initiating the interactions.
 Figure 11.2 presents a sample Choreography. The details of Choreography behavior and elements will be described
 in the sections below.
 
@@ -142,7 +141,7 @@ Figure 11.2 - An example of a Choreography
 
 To illustrate the correspondence between Collaboration and Choreography, consider an example from logistics.
 Figure 11.3 shows a Collaboration where the Pools are expanded to reveal orchestration details per participant (for
-Shipper, Retailer etc). Message Flows connect the elements in the different Pools related to different participants,
+Shipper, Retailer etc.). Message Flows connect the elements in the different Pools related to different participants,
 indicating Message exchanges. For example, a Planned Order Variations Message is sent by the Supplier to the
 Retailer; the corresponding send and receive have been modeled using regular BPMN messaging Activities. Also, a
 number of Messages of the same type being sent, for example a number of Retailer Order and Delivery Variations
@@ -151,7 +150,7 @@ the actual elements for sending/receiving inside the multi-instances construct h
 
 Business Process Model and Notation, v2.0
 
-323
+317
 
 Send
 Message
@@ -300,9 +299,9 @@ partner at a time. This in turn leads to deadlocks. For example, consider the Pa
 and assume that, by error, the order of Confirmation Delivery Schedule and Retailer Confirmation received (far right)
 were swapped. This would result in a deadlock since both, Retailer and Consignee would wait for the other to send a
 Message. Deadlocks in general, however, are not that obvious and might be difficult to recognize in a Collaboration.
-Figure 11.4 shows the Choreography corresponding to the Collaboration of Figure 11.3 above.
+Figure 11.4 shows the Choreography corresponding to the Collaboration of Figure 11.3.
 
-324
+318
 
 Business Process Model and Notation, v2.0
 
@@ -410,8 +409,8 @@ Retailer
 Figure 11.4 - The corresponding Choreography diagram logistics example
 
 11.2 Data
-A Choreography does not have a central control mechanism and, thus, there is no mechanism for maintaining any
-central Process (Choreography) data. Thus, any element in a Process that would normally depend on conditional or
+A Choreography does not have a central control mechanism and there is no mechanism for maintaining any central
+Process (Choreography) data. Thus, any element in a Process that would normally depend on conditional or
 assignment expressions, would not have any central source for this data to be maintained and understood by all the
 Participants involved in the Choreography.
 As mentioned above, neither Data Objects nor Repositories are used in Choreographies. Both of these elements
@@ -424,11 +423,11 @@ Some BPMN elements are common to both Process and Choreography diagrams, as well
 are used in these diagrams. The next few sections will describe the use of Messages, Message Flows, Participants,
 Sequence Flows, Artifacts, Correlations, Expressions, and Services in Choreography.
 The key graphical elements of Gateways and Events are also common to both Choreography and Process. Since
-their usage has a large impact, they are described in major sections of this chapter (see page 346 for Events and page 351
+their usage has a large impact, they are described in major sections of this chapter (see page 339 for Events and page 344
 for Gateways).
 Business Process Model and Notation, v2.0
 
-325
+319
 
 11.3.1 Sequence Flow
 Sequence Flows are used within Choreographies to show the sequence of the Choreography Activities, which
@@ -436,20 +435,21 @@ can have intervening Gateways. They are used in the same way as they are in Proc
 connect with other Flow Objects. For Processes, they can only connect Events, Gateways, and Activities. For
 Choreographies, they can only connect Events, Gateways, and Choreography Activities (see Figure 11.5).
 
-Sequence Flow will
-define the order of
-Choreography elements
-Buyer
+S e que nce F low w ill
+de fine the o rder of
+C ho re ogra phy elem e nts
 
-Buyer
+B u ye r
 
-Place Order
+B u yer
 
-Confirm Order
+P lace O rder
 
-Seller
+C onfirm O rd er
 
-Seller
+S elle r
+
+S eller
 
 Figure 11.5 - The use of Sequence Flows in a Choreography
 
@@ -457,9 +457,9 @@ There are two additional variations of Sequence Flows:
 • Conditional Sequence Flows: Conditions can be added to Sequence Flows in two situations:
 
 • From Gateways: Outgoing Sequence Flows have conditions for Exclusive and Inclusive Gateways. The
-data referenced in the conditions need to be visible to two (2) or more Participants in the Choreography. The
-data becomes visible if it is part of a Message that had been sent (previously) within the Choreography. See
-page 351 and page 358 for more information about how Exclusive and Inclusive Gateways are used in
+data referenced in the conditions need to be visible to two or more Participants in the Choreography. The data
+becomes visible if it is part of a Message that had been sent (previously) within the Choreography. See page
+345 and page 352 for more information about how Exclusive and Inclusive Gateways are used in
 Choreography.
 • From Choreography Activities: Outgoing Sequence Flows MAY have conditions for Choreography
 Activities. Since these act similar to Inclusive Gateways, the Conditional Sequence Flows can be used
@@ -478,14 +478,14 @@ Messages as needed without changing the Choreography. There are two ways to spec
 
 Participants MAY send Messages to each other without additional Choreography Activities in the
 Choreography. Unmodeled messaging can be restricted on particular Sequence Flows in the Choreography,
+see next bullet. If the isClosed attribute of a Choreography has a value of true, then Participants MAY NOT send
+Messages to each other without additional Choreography Activities in the Choreography. This restriction
+overrides any unmodeled messaging allowed by Sequence Flows in the next bullet.
 
-326
+320
 
 Business Process Model and Notation, v2.0
 
-see next bullet. If the isClosed attribute of a Choreography has a value of true, then Participants MAY NOT
-send Messages to each other without additional Choreography Activities in the Choreography. This
-restriction overrides any unmodeled messaging allowed by Sequence Flows in the next bullet.
 • If the isImmediate attribute of a Sequence Flow has a value of false or no value, then Participants MAY send
 
 Messages to each other between the elements connected by the Sequence Flow without additional
@@ -494,7 +494,6 @@ value of true, then Participants MAY NOT send Messages to each other between the
 Sequence Flow without additional Choreography Activities in the Choreography. The value of
 isImmediate attribute of a Sequence Flow has no effect if the isClosed attribute of the containing
 Choreography has a value of true.
-
 Restrictions on unmodeled messaging specified with isClosed and isImmediate applies only under the
 Choreography containing the restriction. PartnerEntities and PartnerRoles of the Participants MAY send
 Messages to each other under other Choreographies, Collaborations, and Conversations.
@@ -504,8 +503,8 @@ Both Text Annotations and Groups can be used within Choreographies and all BPMN 
 restrictions on their use.
 
 11.4 Choreography Activities
-A Choreography Activity represents a point in a Choreography flow where an interaction occurs between two (2)
-or more Participants.
+A Choreography Activity represents a point in a Choreography flow where an interaction occurs between two or
+more Participants.
 The Choreography Activity class is an abstract element, sub-classing from FlowElement (as shown in Figure 11.6).
 When Choreography Activities are defined they are contained within a Choreography or a Sub-Choreography,
 which are FlowElementContainers (other FlowElementContainers are not allowed to contain
@@ -513,13 +512,13 @@ Choreography Activities).
 
 Business Process Model and Notation, v2.0
 
-327
+321
 
 Figure 11.6 - The metamodel segment for a Choreography Activity
 
 The Choreography Activity element inherits the attributes and model associations of FlowElement (see Table 8.44)
 through its relationship to FlowNode. Table 11.1 presents the additional model associations of the Choreography
-Activity element
+Activity element.
 Table 11.1 – Choreography Activity Model Associations
 
 Attribute Name
@@ -529,13 +528,13 @@ Description/Usage
 participantRefs: Participant
 [2..*]
 
-A Choreography Activity has two (2) or more Participants (see page 113
-for more information on Participants).
+A Choreography Activity has two or more Participants (see page 114 for
+more information on Participants).
 
 initiatingParticipantRef:
 Participant
 
-One (1) of the Participants will be the one that initiates the Choreography
+One of the Participants will be the one that initiates the Choreography
 Activity.
 
 loopType:
@@ -553,7 +552,7 @@ This association specifies correlationKeys used by the Message Flow
 in the Choreography Activity, including Sub-Choreographies and called
 Choreographies.
 
-328
+322
 
 Business Process Model and Notation, v2.0
 
@@ -564,16 +563,15 @@ Pa rticip ant B
 P artici pant A
 
 A Choreography Task is an atomic Activity in a Choreography Process. It represents an Interaction, which is one
-(1) or two (2) Message exchanges between two (2) Participants. Using a Collaboration diagram to view these
-elements (see page 107 for more information on Collaboration), we would see the two (2) Pools representing the two
-(2) Participants of the Interaction (see Figure 11.7). The communication between the Participants is shown as a
-Message Flow.
+or two Message exchanges between two Participants. Using a Collaboration diagram to view these elements (see
+page 109 for more information on Collaboration), we would see the two Pools representing the two Participants of the
+Interaction (see Figure 11.7). The communication between the Participants is shown as a Message Flow.
 
 Figure 11.7 - A Collaboration view of Choreography Task elements
 
 In a Choreography diagram, this Interaction is collapsed into a single object, a Choreography Task. The name of
 the Choreography Task and each of the Participants are all displayed in the different bands that make up the shape’s
-graphical notation. There are two (2) or more Participant Bands and one Task Name Band (see Figure 11.8).
+graphical notation. There are two or more Participant Bands and one Task Name Band (see Figure 11.8).
 The Participant Band of the Participant that does not initiate the interaction MUST be shaded with a light fill.
 
 Initiating
@@ -596,7 +594,7 @@ Figure 11.8 - A Choreography Task
 
 Business Process Model and Notation, v2.0
 
-329
+323
 
 Participa nt A
 
@@ -605,7 +603,7 @@ Message
 
 Pa rticip ant B
 
-Ini ti ating
+Initi ating
 Message
 
 Receive
@@ -614,7 +612,7 @@ Message
 Figure 11.9 - A Collaboration view of a Choreography Task
 
 The interaction defined by a Choreography Task can be shown in an expanded format through a Collaboration
-diagram (see Figure 11.9, above—see page 107 for more information on Collaborations). In the Collaboration view,
+diagram (see Figure 11.9, above—see page 109 for more information on Collaborations). In the Collaboration view,
 the Participants of the Choreography Task Participant Band’s will be represented by Pools. The interaction
 between them will be a Message Flow.
 
@@ -628,7 +626,7 @@ Re turn
 Messa ge
 Figure 11.10 - A two-way Choreography Task
 
-330
+324
 
 Business Process Model and Notation, v2.0
 
@@ -660,9 +658,9 @@ Figure 11.11 - A Collaboration view of a two-way Choreography Task
 In a Choreography Diagram, the Choreography Task object shares the same shape as a Task or any other BPMN
 Activity, which is a rectangle that has rounded corners.
 A Choreography Task is a rounded corner rectangle that MUST be drawn with a single line.
-The use of text, color, size, and lines for a Choreography Task MUST follow the rules defined in Section
+The use of text, color, size, and lines for a Choreography Task MUST follow the rules defined in
 “Use of Text, Color, Size, and Lines in a Diagram” on page 41.
-The three (3) bands in the Choreography Task shape provide the distinction between this type of Task and an
+The three bands in the Choreography Task shape provide the distinction between this type of Task and an
 Orchestration Task (in a traditional BPMN diagram).
 The Message sent by either one or both of the Participants of the Choreography Task can be displayed (see Figure
 11.10, above). The Message icon is shown tethered to the Participant that is the sender of the Message.
@@ -674,40 +672,40 @@ Note that Messages can be tethered to a Call Choreography that references a Glob
 cannot be used for Sub-Choreographies or Call Choreography that references another Choreography.
 As with a standard Orchestration Task, the Choreography Task MAY have internal markers to show how the
 Choreography Task MAY be repeated. There are two types of internal markers (see Figure 11.12):
-A Choreography Task MAY have only one of the three (3) markers at one time.
+A Choreography Task MAY have only one of the three markers at one time.
+The marker for a Choreography Task that is a standard loop MUST be a small line with an arrowhead that
+curls back upon itself. The loopType of the Choreography Task MUST be Standard.
 
 Business Process Model and Notation, v2.0
 
-331
+325
 
-The marker for a Choreography Task that is a standard loop MUST be a small line with an arrowhead that
-curls back upon itself. The loopType of the Choreography Task MUST be Standard.
 The marker for a Choreography Task that is parallel multi-instance MUST be a set of three vertical lines.
 The loopType of the Choreography Task MUST be MultiInstanceParallel.
 The marker for a Choreography Task that is sequential multi-instance MUST be a set of three horizontal
 lines. The loopType of the Choreography Task MUST be MultiInstanceSequential.
 The marker that is present MUST be centered at the bottom of the Task Name Band of the shape.
 
-Participant A
+P articip an t A
 
-Participant A
+P articip an t A
 
-Participant A
+P a rti cipa nt A
 
-Choreography
-Task Name
+C h ore og ra p hy
+T a sk N a m e
 
-Choreography
-Task Name
+C h oreo g ra ph y
+T a sk N a me
 
-Choreography
-Task Name
+C ho re o grap h y
+T ask N am e
 
-Participant B
+P articip an t B
 
-Participant B
+P articip an t B
 
-Participant B
+P a rti cipa nt B
 
 Participa nt A
 
@@ -716,16 +714,16 @@ Figure 11.12 - Choreography Task Markers
 Se nd
 Me ssag e
 
-Pa rticip ant B
+Pa rticipant B
 
-M essa ge
+Messa ge
 
 R ece ive
 Me ssag e
 
 Figure 11.13 - The Collaboration view of a looping Choreography Task
 
-332
+326
 
 Business Process Model and Notation, v2.0
 
@@ -757,20 +755,21 @@ Participant A
 Choreography
 Task Name
 Participant B
+
 Figure 11.15 - A Choreography Task with a multiple Participant
 
 Business Process Model and Notation, v2.0
 
-333
+327
 
 Participa nt A
 
 Se nd
 Me ssag e
 
-Pa rticip ant B
+Particip ant B
 
-M essa ge
+Messa ge
 
 R ece ive
 Me ssag e
@@ -788,14 +787,14 @@ Description/Usage
 messageFlowRef: Message
 Flow [1..*]
 
-Although not graphical represented, Choreography Task contain one (1) or
+Although not graphical represented, Choreography Task contains one or
 more Message Flows that represent the interaction(s) between the
 Participants referenced by the Choreography Task.
 
 11.4.2 Sub-Choreography
 A Sub-Choreography is a compound Activity in that it has detail that is defined as a flow of other Activities, in this
-case, a Choreography. Each Sub-Choreography involves two (2) or more Participants. The name of the SubChoreography and each of the Participants are all displayed in the different bands that make up the shape’s graphical
-notation. There are two (2) or more Participant Bands and one Sub-Process Name Band.
+case, a Choreography. Each Sub-Choreography involves two or more Participants. The name of the SubChoreography and each of the Participants are all displayed in the different bands that make up the shape’s graphical
+notation. There are two or more Participant Bands and one Sub-Process Name Band.
 The Sub-Choreography can be in a collapsed view that hides its details (see Figure 11.17) or a Sub-Choreography
 can be expanded to show its details (a Choreography Process) within the Choreography Process in which it is
 contained (see Figure 11.19). In the collapsed form, the Sub-Process object uses a marker to distinguish it as a SubChoreography, rather than a Choreography Task.
@@ -803,7 +802,7 @@ The Sub-Process marker MUST be a small square with a plus sign (+) inside. The s
 bottom center of the Sub-Process Name Band within the shape.
 The Participant Band of the Participant that does not initiate the interaction MUST be shaded with a light fill.
 
-334
+328
 
 Business Process Model and Notation, v2.0
 
@@ -836,7 +835,7 @@ Figure 11.18 - A Collaboration view of a Sub-Choreography
 
 Business Process Model and Notation, v2.0
 
-335
+329
 
 Figure 11.19 shows an example of an expanded Sub-Choreography.
 
@@ -870,15 +869,15 @@ Figure 11.20 shows an example of a potential Collaboration view of the above Sub
 Receive
 Message
 
-Send
-Message
+Se nd
+Me ssag e
 
 Pa rti cip ant C
 
 M1
 
-R eceive
-Message
+R ece ive
+Me ssag e
 
 M2
 
@@ -887,7 +886,7 @@ Message
 
 Figure 11.20 - A Collaboration view of an expanded Sub-Choreography
 
-336
+330
 
 Business Process Model and Notation, v2.0
 
@@ -895,16 +894,15 @@ The Parent Sub-Choreography (Expanded)
 The Choreography Activity shares the same shape as a Sub-Process or any other BPMN Activity, which is in this
 state.
 A Sub-Choreography is a rounded corner rectangle that MUST be drawn with a single thin line.
-The use of text, color, size, and lines for a Sub-Choreography MUST follow the rules defined in Section
-“Use of Text, Color, Size, and Lines in a Diagram” on page 41.
-The three (3) or more partitions in the Sub-Choreography shape provide the distinction between this type of Task and
-an Orchestration Sub-Process (in a traditional BPMN diagram).
-It is possible for a Sub-Choreography to involve more than two (2) Participants. In this case, an additional
-Participant Band will be added to the shape for each additional Participant (see Figure 11.21). The ordering and
-position of the Participant Band (either in the upper or lower positions) is up to the modeler or modeling tool. In
-addition, any Participant Band beyond the first two optional; it is displayed at the discretion of the modeler or
-modeling tool. However, each Participant Band that is added MUST be added to the upper and lower sections of the
-Sub-Choreography in an alternative manner.
+The use of text, color, size, and lines for a Sub-Choreography MUST follow the rules defined in “Use of
+Text, Color, Size, and Lines in a Diagram” on page 41.
+The three or more partitions in the Sub-Choreography shape provide the distinction between this type of Task and an
+Orchestration Sub-Process (in a traditional BPMN diagram).
+It is possible for a Sub-Choreography to involve more than two Participants. In this case, an additional Participant
+Band will be added to the shape for each additional Participant (see Figure 11.21). The ordering and position of the
+Participant Band (either in the upper or lower positions) is up to the modeler or modeling tool. In addition, any
+Participant Band beyond the first two optional; it is displayed at the discretion of the modeler or modeling tool.
+However, each Participant Band that is added MUST be added to the upper and lower sections of the SubChoreography in an alternative manner.
 
 Choreography
 Task Name
@@ -923,11 +921,11 @@ Participant B
 Participant A
 Participant C
 
-Figure 11.21 - Sub-Choreography (Collapsed) with More than Two (2) Participants
+Figure 11.21 - Sub-Choreography (Collapsed) with More than Two Participants
 
 As with a standard Orchestration Sub-Process, the Sub-Choreography MAY have internal markers to show how the
 Sub-Choreography MAY be repeated. There are two types of internal markers (see Figure 11.22):
-A Sub-Choreography MAY have only one of the three (3) markers at one time.
+A Sub-Choreography MAY have only one of the three markers at one time.
 The marker for a Sub-Choreography that is a standard loop MUST be a small line with an arrowhead that
 curls back upon itself. The loopType of the Sub-Choreography MUST be Standard.
 The marker for a Sub-Choreography that is parallel multi-instance MUST be a set of three vertical lines. The
@@ -938,28 +936,28 @@ The marker that is present MUST be centered at the bottom of the Sub-Process Nam
 
 Business Process Model and Notation, v2.0
 
-337
+331
 
-Participant A
-Choreography
-Sub-Process
+P a rticipa n t A
+C ho reo gra ph y
+S ub -P roc ess
+N a me
+
+P a rticipa n t A
+C ho reo gra ph y
+S ub -P roc ess
+N a me
+
+P a rticipa n t A
+C h oreo g ra ph y
+S u b-P ro cess
 Name
 
-Participant A
-Choreography
-Sub-Process
-Name
+P a rticipa n t B
 
-Participant A
-Choreography
-Sub-Process
-Name
+P a rticipa n t B
 
-Participant B
-
-Participant B
-
-Participant B
+P a rticipa n t B
 
 Figure 11.22 - Sub-Choreography Markers
 
@@ -978,6 +976,7 @@ Choreography
 Sub-Process
 Name
 Participant B
+
 Figure 11.23 - Sub-Choreography Markers with a multi-instance Participant
 
 This includes Compensation Event Sub-Processes (contained within a Sub-Choreography) as well as the
@@ -995,7 +994,7 @@ artifacts: Artifact [0..*]
 
 This attribute provides the list of Artifacts that are contained within the SubChoreography.
 
-338
+332
 
 Business Process Model and Notation, v2.0
 
@@ -1004,11 +1003,11 @@ A Call Choreography identifies a point in the Process where a global Choreograph
 Task is used. The Call Choreography acts as a place holder for the inclusion of the Choreography element it is
 calling. This pre-defined called Choreography element becomes a part of the definition of the parent Choreography.
 A Call Choreography object shares the same shape as the Choreography Task and Sub-Choreography, which is
-a rectangle that has rounded corners, two (2) or more Participant Bands, and an Activity Name Band. However, the
+a rectangle that has rounded corners, two or more Participant Bands, and an Activity Name Band. However, the
 target of what the Choreography Activity calls will determine the details of its shape.
 If the Call Choreography calls a Global Choreography Task, then the shape will be the same as a
-Choreography Task, but the boundary of the shape will MUST have a thick line (see Figure 11.24)
-If the Call Choreography calls a Choreography, then there are two (2) options:
+Choreography Task, but the boundary of the shape MUST have a thick line (see Figure 11.24).
+If the Call Choreography calls a Choreography, then there are two options:
 The details of the called Choreography can be hidden and the shape will be the same as a collapsed SubChoreography, but the boundary of the shape MUST have a thick line (see Figure 11.25).
 The details of the called Choreography can be shown and the shape will be the same as an expanded SubChoreography, but the boundary of the shape MUST have a thick line (see Figure 11.26).
 
@@ -1018,16 +1017,16 @@ Figure 11.25 - A Call Choreography calling a Choreography (Collapsed)
 
 Business Process Model and Notation, v2.0
 
-339
+333
 
 Figure 11.26 - A Call Choreography calling a Choreography (expanded)
 
 Figure 11.27- The Call Choreography class diagram
 
 The Call Choreography element inherits the attributes and model associations of ChoreographyActivity (see
-Figure 11.27 and Table 11.1). Table 11.4 presents the additional model associations of the Call Choreography element
+Figure 11.27 and Table 11.1). Table 11.4 presents the additional model associations of the Call Choreography element.
 
-340
+334
 
 Business Process Model and Notation, v2.0
 
@@ -1055,7 +1054,7 @@ A GlobalChoreographyTask is a reusable, atomic Choreography Task definition that
 any Choreography by a Call Choreography.
 The GlobalChoreographyTask element inherits the attributes and model associations of Collaboration (see Table
 9.1), through its relationship to Choreography. Table 11.5 presents the additional model associations of the
-GlobalChoreographyTask element
+GlobalChoreographyTask element.
 Table 11.5 – Global Choreography Task Model Associations
 
 Attribute Name
@@ -1065,10 +1064,10 @@ Description/Usage
 initiatingParticipantRef:
 Participant
 
-One (1) of the Participants will be the one that initiates the Global
+One of the Participants will be the one that initiates the Global
 Choreography Task.
 
-A GlobalChoreographyTask is a restricted type of Choreography, it is an "empty Choreography.
+A GlobalChoreographyTask is a restricted type of Choreography, it is an “empty” Choreography.
 A GlobalChoreographyTask MUST NOT contain any Flow Elements.
 Since a GlobalChoreographyTask does not have any Flow Elements, it does not require
 MessageFlowAssocations, ParticipantAssocations, ConversationAssocations, or Artifacts. It is
@@ -1087,13 +1086,13 @@ Activities need to take into account when the Participants send or receive Messa
 REQUIRED to guess about when it is their turn to send a Message.
 Business Process Model and Notation, v2.0
 
-341
+335
 
 The basic rule of Choreography Activity sequencing is this:
 The Initiator of a Choreography Activity MUST have been involved (as Initiator or Receiver) in the previous
 Choreography Activity.
 Of course, the first Choreography Activity in a Choreography does not have this constraint.
-Figure 11.28 shows a sequence of two (2) Choreography Activities that follow this constraint. “Participant B” is the
+Figure 11.28 shows a sequence of two Choreography Activities that follow this constraint. “Participant B” is the
 Initiator of “Choreography Task 2” after being the Receiver in “Choreography Task 1.” While there is no requirement that
 “Participant B” sends the Message immediately, since there can be internal work that the Participant needs to do prior
 to the Message. But in this situation there is no ambiguity that “Participant B” will be the Initiator of the next
@@ -1126,7 +1125,7 @@ Collaboration diagram to show how the sequence can be enforced. Figure 11.29 sho
 Collaboration. The diagram shows how the Activities within the individual Pools fit with the design of the
 Choreography.
 
-342
+336
 
 Business Process Model and Notation, v2.0
 
@@ -1139,7 +1138,7 @@ P artici pant B
 
 M1
 
-R eceive
+Receive
 Message
 
 Send
@@ -1155,10 +1154,10 @@ Message
 Figure 11.29 - The corresponding Collaboration for a valid Choreography sequence
 
 When determining a valid sequence of Choreography Tasks, it is important to consider the type of Choreography
-Tasks that are being used. A single Choreography Task can be used for one (1) or two (2) Messages. Most of the
-time there will be one (1) or two (2) Messages for a Choreography Task. Figure 11.30 shows a sequence of
-Choreography Tasks, the first one being a two-way interaction, where the initiator sends a Message and gets a
-response from the other Participant.
+Tasks that are being used. A single Choreography Task can be used for one or two Messages. Most of the time
+there will be one or two Messages for a Choreography Task. Figure 11.30 shows a sequence of Choreography
+Tasks, the first one being a two-way interaction, where the initiator sends a Message and gets a response from the other
+Participant.
 
 Participan t A
 
@@ -1168,7 +1167,7 @@ C ho reogra phy
 T ask 1
 
 C h oreog raphy
-T a sk 2
+Ta sk 2
 
 Participan t B
 
@@ -1178,7 +1177,7 @@ Figure 11.30 - A valid sequence of Choreography Activities with a two-way Activi
 
 Business Process Model and Notation, v2.0
 
-343
+337
 
 Participa nt A
 
@@ -1192,24 +1191,24 @@ Se nd
 and R ec ei ve
 M es s age s
 
-Pa rti cip ant C
-
-P artici pant B
-
-M1
-
 R ece iv e
 Me ss ag e
 
 M2
 
-Sen d
-Mes s age
-
 M3
 
 S end
 M es sa ge
+
+Parti cip ant C
+
+P artici pant B
+
+M1
+
+S en d
+Mes s age
 
 R e ce iv e
 Mes s age
@@ -1222,36 +1221,36 @@ that an Initiating Participant would not know when the appropriate time would be
 “Participant C.” However, “Participant A” will not know when the Message from “Participant B” has been sent. So,
 there is no way to enforce the sequence that is modeled in the Choreography.
 
-344
+P a rticip a n t A
+
+P a rticip a n t C
+
+P a rticip a n t C
+
+C h o re o g ra p h y
+T a sk 1
+
+C h o re o g ra p h y
+T a sk 2
+
+C h o re o g ra p h y
+T a sk 3
+
+P a rticip a n t B
+
+P a rticip a n t B
+
+P a rtic ip a n t A
+
+T h e In itia to r o f a
+C h o re o g ra p h y T a sk m u st
+b e in vo lve d in th e p re vio u s
+A ctivity
+Figure 11.32 - An invalid sequence of Choreography Activities
+
+338
 
 Business Process Model and Notation, v2.0
-
-Participant A
-
-Participant C
-
-Participant C
-
-Choreography
-Task 1
-
-Choreography
-Task 2
-
-Choreography
-Task 3
-
-Participant B
-
-Participant B
-
-Participant A
-
-The Initiator of a
-Choreography Task must
-be involved in the previous
-Activity
-Figure 11.32 - An invalid sequence of Choreography Activities
 
 Figure 11.33 shows the Collaboration view of the above Choreography diagram. It becomes clear that “Participant
 A” will not know the appropriate time to send Message “M3” to “Participant C.” If the Message is sent too soon, then
@@ -1295,16 +1294,15 @@ Mes s age
 
 Figure 11.33 - The corresponding Collaboration for an invalid Choreography sequence
 
-Business Process Model and Notation, v2.0
-
-345
-
 11.5 Events
 11.5.1 Start Events
 Start Events provide the graphical marker for the start of a Choreography. They are used much in the same way as
-they are used for a Process (see “Start Event” on page 242).
-This table shows how the types of Start Events are applied to Choreography.
-I
+they are used for a Process (see “Start Event” on page 238). This table shows how the types of Start Events are
+applied to Choreography.
+
+Business Process Model and Notation, v2.0
+
+339
 
 Table 11.6 – Use of Start Events in Choreography
 
@@ -1361,7 +1359,7 @@ Yes. But they can only be Multiple Signals or Timers. As in Orchestration, this 
 an OR. Any one of the incoming Signals will Trigger the Choreography. Any Signal
 that follows would create a separate instance of the Choreography.
 
-346
+340
 
 Business Process Model and Notation, v2.0
 
@@ -1390,7 +1388,8 @@ way to show who the senders or receivers of the Message should be. A
 Choreography Task should be used instead. Also, would the Event be a Catch
 or a Throw?
 
-Message: Attached to Activity boundary
+Message: Attached to
+Activity boundary
 
 Yes. Only for Choreography Tasks. The Intermediate Event has to be attached
 to the Participant Band of the receiver of the Message (since it is a catch
@@ -1423,7 +1422,7 @@ Participant that enforces the timer.
 
 Business Process Model and Notation, v2.0
 
-347
+341
 
 Table 11.7 - Use of Intermediate Events in Choreography
 
@@ -1441,7 +1440,8 @@ immediately precedes the Activity with the attached timer.
 For absolute timers (full time/date): All Participants would know the time. They all
 have to be involved in the Choreography Activity that immediately precedes the
 Activity with the attached timer.
-Timer: Used in Event Gateway
+Timer: Used in Event
+Gateway
 
 Yes. See Event-Based Gateway below.
 
@@ -1451,7 +1451,8 @@ boundary
 No. An Error is only visible to a single Participant. That Participant will have to
 send a Message to the other Participants.
 
-Escalation: Used in Normal Flow
+Escalation: Used in
+Normal Flow
 
 No. An Escalation is only visible to a single Participant. That Participant will have
 to send a Message to the other Participants.
@@ -1504,7 +1505,7 @@ Gateway
 Yes. This is a delay that waits for a change in data to trigger the Event. The data
 are to be visible to the Participants as it was data of a previously sent Message.
 
-348
+342
 
 Business Process Model and Notation, v2.0
 
@@ -1513,7 +1514,8 @@ Table 11.7 - Use of Intermediate Events in Choreography
 Link: in Normal Flow
 
 Yes. These types of Events merely create a virtual Sequence Flows. Thus, as
-long as a Sequence Flow between two elements is valid (and within a Choreography Process level), then a pair of Link Events can interrupt that
+long as a Sequence Flow between two elements is valid (and within a
+Choreography Process level), then a pair of Link Events can interrupt that
 Sequence Flow.
 
 Signal: in Normal Flow
@@ -1532,9 +1534,11 @@ Yes. These are Catch Events. This would be an interruption in the Choreography t
 might not even be a Participant in the Choreography). There are no specific
 recipients of a Signal. All Participants of the Choreography (to comply) MUST
 be able to see the Signal. This Event MUST NOT be attached to a Participant
-Band or this would suggest that that Participant is a specific recipient of the Signal.
+Band or this would suggest that Participant is a specific recipient of the
+Signal.
 
-Signal: Used in Event Gateway
+Signal: Used in Event
+Gateway
 
 Yes. These are Catch Events. This would be a delay in the Choreography that
 waits for the Signal. The source of the Signal is NOT REQUIRED (and might not
@@ -1544,15 +1548,14 @@ the Signal.
 
 Multiple: in Normal Flow
 
-Yes. But they can only be a collection of valid Catch Events. As in Orchestration, this acts like an OR. Any one of the incoming triggers will continue the Choreography.
+Yes. But they can only be a collection of valid Catch Events. As in Orchestration, this acts like an OR. Any one of the incoming triggers will continue the
+Choreography.
 
-Multiple: Attached to Activity Boundary
+Multiple: Attached to
+Activity Boundary
 
-Yes. But they can only be a collection of valid Catch Events. As in Orchestration, this acts like an OR. Any one of the incoming triggers will interrupt the Choreography Activity.
-
-Business Process Model and Notation, v2.0
-
-349
+Yes. But they can only be a collection of valid Catch Events. As in Orchestration, this acts like an OR. Any one of the incoming triggers will interrupt the
+Choreography Activity.
 
 11.5.3 End Events
 End Events provide a graphical marker for the end of a path within the Choreography.
@@ -1564,22 +1567,33 @@ Usage in Choreography?
 
 None
 
-Yes. This is really just a graphical marker since the sending of the previous Message in the Choreography is really the end of the Choreography. The Participants of the Choreography would understand that they would not expect any
-further Message at that point.
+Yes. This is really just a graphical marker since the sending of the previous
+Message in the Choreography is really the end of the Choreography. The
+Participants of the Choreography would understand that they would not expect
+any further Message at that point.
+
+Business Process Model and Notation, v2.0
+
+343
+
+Table 11.8 – Use of End Events in Choreography
 
 Message
 
 No. A Message End Event, in a stand-alone Choreography, has no way to
-show who the senders or receivers of the Message should be. A Choreography Task should be used instead. Thus, a None End Event should be used as
-a graphical marker for the “end” of the Choreography
+show who the senders or receivers of the Message should be. A
+Choreography Task should be used instead. Thus, a None End Event should
+be used as a graphical marker for the “end” of the Choreography.
 
 Error
 
-No. These are Throw Events and there would be no way to indicate the Participant that is the source of the Error.
+No. These are Throw Events and there would be no way to indicate the
+Participant that is the source of the Error.
 
 Escalation
 
-No. These are Throw Events and there would be no way to indicate the Participant that is the source of the Escalation..
+No. These are Throw Events and there would be no way to indicate the
+Participant that is the source of the Escalation.
 
 Cancel
 
@@ -1603,17 +1617,15 @@ Choreography, there cannot be multiple of them.
 
 Terminate
 
-Yes. However, there would be no specific ability to terminate the Choreography, since there is no controlling system. In this case, all Participants in the
-Choreography would understand that when the Terminate End Event is
-reached (actually when the Message that precedes it occurs), then no further
-messages will be expected in the Choreography, even if there were parallel
-paths. The use of the Terminate End Event really only works when there are
-only two (2) Participants. If there are more than two (2) Participants, then any
-Participant that was not involved in the last Choreography Task would not necessarily know that the Terminate End Event had been reached.
-
-350
-
-Business Process Model and Notation, v2.0
+Yes. However, there would be no specific ability to terminate the
+Choreography, since there is no controlling system. In this case, all
+Participants in the Choreography would understand that when the Terminate
+End Event is reached (actually when the Message that precedes it occurs),
+then no further messages will be expected in the Choreography, even if there
+were parallel paths. The use of the Terminate End Event really only works
+when there are only two Participants. If there are more than two Participants,
+then any Participant that was not involved in the last Choreography Task would
+not necessarily know that the Terminate End Event had been reached.
 
 11.6 Gateways
 In an Orchestration Process, Gateways are used to create alternative and/or parallel paths for that Process.
@@ -1622,18 +1634,22 @@ happen in sequence, in parallel, or through exclusive selection. While the paths
 patterns as that of an Orchestration Process, the lack of a central mechanism to maintain data visibility, and that there
 is no central evaluation, there are constraints as to how the Gateways are used in conjunction with the Choreography
 Activities that precede and follow the Gateways. These constraints are an extension of the basic sequencing constraints
-that was defined on page 341. The six (6) sections that follow will define how the types of Gateways are used in
+that was defined on page 335. The six (6) sections that follow will define how the types of Gateways are used in
 Choreography.
+
+344
+
+Business Process Model and Notation, v2.0
 
 11.6.1 Exclusive Gateway
 Exclusive Gateways (Decisions) are used to create alternative paths within a Process or a Choreography. For
-details of how Exclusive Gateways are used within an Orchestration Process see page 295.
+details of how Exclusive Gateways are used within an Orchestration Process see page 290.
 Exclusive Gateways are used in Choreography, but they are constrained by the lack of a central mechanism to store
 the data that will be used in the Condition expressions of the Gateway’s outgoing Sequence Flows.
 Choreographies MAY contain natural language descriptions of the Gateway’s Conditions to document the alternative
 paths of the Choreography (e.g., “large orders” will go down one path while “small orders” will go down another path),
 but such Choreographies would be underspecified and would not be enforceable. To create an enforceable
-Choreography, the Gateway Conditions MUST be formal Condition Expressions; however:
+Choreography, the Gateway Conditions MUST be formal Condition Expressions. However:
 The data used for Gateway Conditions MUST have been in a Message that was sent prior to (upstream from) the
 Gateway.
 More specifically, all Participants that are directly affected by the Gateway MUST have either sent or received
@@ -1656,7 +1672,7 @@ Gateway (i.e., it does not have to immediately precede Gateway).
 
 Business Process Model and Notation, v2.0
 
-351
+345
 
 P arti ci pan t A
 Y es
@@ -1685,7 +1701,7 @@ Figure 11.34 - An example of the Exclusive Gateway
 Figure 11.35 shows the Collaboration that demonstrates how the above Choreography that includes an Exclusive
 Gateway can be enforced.
 
-352
+346
 
 Business Process Model and Notation, v2.0
 
@@ -1740,28 +1756,26 @@ Figure 11.35 - The relationship of Choreography Activity Participants across the
 shown through a Collaboration
 
 Usually, the initiators for the Choreography Activities that follow the Gateway will be the same Participant. That is,
-there is only one (1) Participant controlling the decision. Often, the receivers of the initiating Message for those
+there is only one Participant controlling the decision. Often, the receivers of the initiating Message for those
 Choreography Activities will be the same Participant. However, it is possible that there could be different Participants
 receiving the initiating Message for each Choreography Activity (see Figure 11.36).
 
 Business Process Model and Notation, v2.0
 
-353
+347
 
 Participant A
 Yes
 
+Choreography
+Task 2
 Participant B
 
 Participant A
-Choreography
-Task 1
-
-Choreography
-Task 2
-
 Decision?
 
+Choreography
+Task 1
 Participant A
 
 Participant B
@@ -1774,14 +1788,14 @@ Participant C
 Figure 11.36 - Different Receiving Choreography Activity Participants on the output sides of the Exclusive Gateway
 
 This configuration can only be valid if all the Participants in the Choreography Activities that follow the Gateway
-have seen the data upon which the decision is made. If either “Participant B” or “Participant C” had not sent or receive a
-Message with the appropriate data, then that Participant would not be able to know if they are suppose to receive a
+have seen the data upon which the decision is made. If either “Participant B” or “Participant C” had not sent or received
+a Message with the appropriate data, then that Participant would not be able to know if they are suppose to receive a
 Message at that point in the Choreography. There is also the assumption that the value of the data is consistent from
 the point of view of all Participants.
 Figure 11.37 displays the corresponding Collaboration view of the above Choreography Exclusive Gateway
 configuration.
 
-354
+348
 
 Business Process Model and Notation, v2.0
 
@@ -1799,6 +1813,7 @@ M1
 
 Send
 Message
+
 M2
 
 Yes
@@ -1808,15 +1823,15 @@ Participant B
 Send
 Message
 
-Receive
-Message
-
 M3
 
 Recieve
 Message
 
 Decision?
+
+Receive
+Message
 
 No
 
@@ -1836,29 +1851,30 @@ The REQUIRED execution behavior of the Gateway and associated Choreography Activ
 the Business Processes of the Participants as follows:
 Each Choreography Activity and the Sequence Flow connections are reflected in each Participant Process.
 The Gateway is reflected in the Process of each Participant Process that is an initiator of Choreography
-Activities that follow the Gateway
+Activities that follow the Gateway.
 For the receivers in Choreography Activities that follow the Gateway, an Event-Based Gateway is used to
-consume the associated Message (sent as an outcome of the Gateway). When a Participant is the receiver of more
-than one of the alternative Messages, the corresponding receives follow the Event-Based Gateway. If the
-Participant is the receiver of only one such Message, that is also consumed through a receive following the EventBased Gateway. This is because the Participant Process does not know whether it will receive a Message
-(since the Gateway entails a choice of outcomes).
+consume the associated Message (sent as an outcome of the Gateway). When a Participant is the receiver of
+more than one of the alternative Messages, the corresponding receives follow the Event-Based Gateway. If
+the Participant is the receiver of only one such Message, that is also consumed through a receive following the
+Event-Based Gateway. This is because the Participant Process does not know whether it will receive a
+Message (since the Gateway entails a choice of outcomes).
 
 Business Process Model and Notation, v2.0
 
-355
+349
 
 11.6.2 Event-Based Gateway
 As described above, the Event-Based Gateway represents a branching point in the Process where the alternatives are
 based on Events that occur at that point in the Process, rather than the evaluation of expressions using Process data.
-For details of how Event-Based Gateways are used within an Orchestration Process see Section “Event-Based
-Gateway” on page 302.
+For details of how Event-Based Gateways are used within an Orchestration Process see “Event-Based Gateway” on
+page 297.
 These Gateways are used in Choreography when the data used to make the decision is only visible to the internal
 Processes of one Participant. That is, there has been no Message sent within the Choreography that would expose
 the data used to make the decision. Thus, the only way that the other Participants can be aware of the results of the
 decision is by the particular Message that arrives next.
 On the right side of the Gateway: either
-The senders MUST to be the same; or
-The receivers MUST to be the same
+the senders MUST to be the same; or
+the receivers MUST to be the same.
 After the first Choreography Activity occurs, the other Choreography Activities for the Gateway
 MUST NOT occur.
 Message Intermediate Events MUST NOT be used in the Event-Based Gateway.
@@ -1867,34 +1883,33 @@ For relative timers: All Participants on the right side of the Gateway MUST be i
 Choreography Activity that immediately precedes the Gateway.
 For absolute timers (full time/date): All Participants on the right side of the Gateway MUST be involved in the
 Choreography Activity that immediately precedes the Gateway.
-Signal Intermediate Events MAY be used (they are visible to all Participants)
+Signal Intermediate Events MAY be used (they are visible to all Participants).
 No other types of Intermediate Events are allowed.
 
-Participant A
-Choreography
+P a rtic ip a n t A
+C h o re o g ra p h y
 Task 2
-Participant B
-Participant A
+P a rtic ip a n t B
+P a rtic ip a n t A
 
-Decicion?
+P a rtic ip a n t A
+D e c ic io n ?
 
-Participant A
-
-Choreography
+C h o re o g ra p h y
 Task 1
 
-Choreography
+C h o re o g ra p h y
 Task 3
 
-Participant B
+P a rtic ip a n t B
 
-Participant B
+P a rtic ip a n t B
 
 Figure 11.38 - An example of an Event Gateway
 
 Figure 11.39 displays the corresponding Collaboration view of the above Choreography Event Gateway configuration.
 
-356
+350
 
 Business Process Model and Notation, v2.0
 
@@ -1912,8 +1927,6 @@ M1
 Receive
 Message
 
-Receive
-Message
 M2
 
 Yes
@@ -1929,6 +1942,9 @@ Send
 Message
 
 Decision?
+
+Receive
+Message
 
 No
 
@@ -1954,7 +1970,7 @@ Gateway does not wait indefinitely.
 
 Business Process Model and Notation, v2.0
 
-357
+351
 
 11.6.3 Inclusive Gateway
 Inclusive Gateways are used for modeling points of synchronization of a number of branches, not all of which are
@@ -1963,14 +1979,14 @@ branches MAY be activated upstream, in parallel, depending on the nature of good
 goods orders, orders belonging to pre-existing shipment contracts), and these are subsequently merged. The point of
 merge results in one or more risk mitigating outcomes (e.g., special insurance protection needed, special packaging
 needed, and different container categories needed). Inclusive Gateways are also used within an Orchestration
-Process see page 297.
+Process see page 292.
 Like Exclusive Gateways, Inclusive Gateways are used in a Choreography, but they are constrained by the lack
 of a central mechanism to store the data that will be used in the Condition expressions of the Gateway’s outgoing
 Sequence Flows. Choreographies MAY contain natural language descriptions of the Gateway’s Conditions to
 document the one more alternative paths of the Choreography (e.g., “special insurance protection needed,” “special
 packaging needed,” and different “container category needed”), but such Choreographies would be underspecified and
 would not be enforceable. To create an enforceable Choreography, the Gateway Conditions MUST be formal
-Condition Expressions. In general the following rules apply for the Expressions:
+Condition Expressions. In general the following rules apply for the Expressions.
 Like the enforceability of the Exclusive Gateway, the Inclusive Gateway in a Choreography requires that the data
 in the Expressions of the outgoing Sequence Flows of the Gateway be available to the initiators of the
 Choreography Activities of outgoing Sequence Flows. This means that the initiators of these Choreography
@@ -1988,8 +2004,8 @@ Gateway.
 Merge: In order to enforce the synchronizing merge of the Gateway, the sender of the Choreography
 Activity after the Gateway MUST participate in the Gateway immediately preceding the Gateway. This
 ensures that the merge can be enforced. (This relies on the assumption of logical atomicity of a Choreography
-Activity, otherwise the rule would require that all receivers are the same so that the Gateway is enforced in the
-receiver’s Process only).
+Activity, otherwise the rule would require that all receivers are the same so that the Gateway is enforced in
+the receiver’s Process only).
 Split: In order to enforce the split side of the Gateway, the initiators of all Choreography Activities
 immediately following the Gateway MUST be the same as the common sender or receiver of Choreography
 Activities preceding the Gateway. The sender(s) of all the Choreography Activities after the Gateway
@@ -1999,7 +2015,7 @@ corresponding Business Processes of the Participants involved. For the merge beh
 of Choreography Activities immediately following the Gateway participates in the Choreography Activities
 immediately preceding the Gateway.
 
-358
+352
 
 Business Process Model and Notation, v2.0
 
@@ -2009,14 +2025,12 @@ Participant A
 Choreography
 Task 1
 Participant B
-
-M2
-
 Participant D
 Choreography
 Task 1
-Participant B
+M2
 
+Participant B
 Participant C
 
 M3
@@ -2028,7 +2042,7 @@ Figure 11.40 - An example of a Choreography Inclusive Gateway configuration
 
 Business Process Model and Notation, v2.0
 
-359
+353
 
 Participant A
 
@@ -2067,24 +2081,22 @@ the split behavior of the Inclusive Gateway. For the split behavior to be enforc
 Activities immediately following the Gateway and the receiver of Choreography Activities immediately preceding
 the Gateway are the same Participant (i.e., A).
 
-360
+354
 
 Business Process Model and Notation, v2.0
 
 Participant A
 Condition 1
 
+Choreography
+Task 2
 Participant C
 
 Participant A
-Choreography
-Task 1
-
-Choreography
-Task 2
-
 Decision?
 
+Choreography
+Task 1
 Participant A
 
 Participant B
@@ -2098,7 +2110,7 @@ Figure 11.42 - An example of a Choreography Inclusive Gateway configuration
 
 Business Process Model and Notation, v2.0
 
-361
+355
 
 Participant A
 
@@ -2114,6 +2126,7 @@ Participant B
 
 Send
 Message
+
 M2
 
 M1
@@ -2142,24 +2155,22 @@ Message
 
 Figure 11.43 - The corresponding Collaboration view of the above Choreography Inclusive Gateway configuration
 
-362
+356
 
 Business Process Model and Notation, v2.0
 
 Participant A
 Condition 1
 
+Choreography
+Task 2
 Participant C
 
 Participant A
-Choreography
-Task 1
-
-Choreography
-Task 2
-
 Decision?
 
+Choreography
+Task 1
 Participant A
 
 Participant B
@@ -2173,7 +2184,7 @@ Figure 11.44 - Another example of a Choreography Inclusive Gateway configuration
 
 Business Process Model and Notation, v2.0
 
-363
+357
 
 Participant D
 
@@ -2200,6 +2211,7 @@ Condition 2
 
 Send
 Message
+
 M2
 
 M1
@@ -2224,13 +2236,13 @@ Message
 
 Figure 11.45 - The corresponding Collaboration view of the above Choreography Inclusive Gateway configuration
 
-364
+358
 
 Business Process Model and Notation, v2.0
 
 11.6.4 Parallel Gateway
 Parallel Gateways are used to create paths and are performed at the same time, within a Choreography flow. For
-details of how Parallel Gateways are used within an Orchestration Process see page 298.
+details of how Parallel Gateways are used within an Orchestration Process see page 293.
 Since there is no conditionality for these Gateways, they are available as-is in Choreography. They create parallel
 paths of the Choreography that all Participants are aware of.
 The sender(s) of all the Activities after the Gateway MUST be involved in all the Activities that immediately
@@ -2239,21 +2251,21 @@ If there is a chain of Gateways with no Choreography Activities in between, the 
 Activity that precedes the chain satisfies the above constraint.
 Figure 11.46 shows the relationship of Choreography Activity Participants across the sides of the Parallel Gateway.
 
-Participa nt A
+Partic ipa nt A
 C hore ograp hy
-T ask 2
+T as k 2
 Pa rticip ant A
 
-Participa nt B
+Partic ipa nt B
 
 C ho reogra phy
-Task 1
+T ask 1
 Pa rticip ant B
 
-Participa nt C
+Partic ipa nt C
 C hore ograp hy
-T ask 3
-Participa nt B
+T as k 3
+Partic ipa nt B
 
 Figure 11.46 - The relationship of Choreography Activity Participants across the sides of the Parallel Gateway
 
@@ -2262,15 +2274,15 @@ configuration.
 
 Business Process Model and Notation, v2.0
 
-365
+359
 
 Participa nt A
 
 Se nd
-Me ssag e
+Me ss ag e
 
-Recei ve
-Message
+R ec ei ve
+M es s age
 
 M1
 
@@ -2280,25 +2292,25 @@ Pa rticip ant B
 
 Y es
 
-R ece ive
-Me ssag e
-
 Sen d
-Message
+M es s age
 
 Decision?
+
+R ece iv e
+Me ss ag e
 
 No
 
 Sen d
-Message
+M es s age
 
 P ar ti cipa nt C
 
 M2
 
-Recei ve
-Message
+R ec ei ve
+M es s age
 
 Figure 11.47 - The corresponding Collaboration view of the above Choreography Parallel Gateway configuration
 
@@ -2306,21 +2318,21 @@ The REQUIRED execution behavior of the Parallel Gateway and associated Choreogra
 through the Business Processes of the Participants as follows:
 Each Choreography Activity and the Sequence Flow connections is reflected in each Participant Process.
 If the senders following the Parallel Gateway are the same, a Parallel Gateway is reflected in the sender’s
-Process followed by Message sending actions to the corresponding receivers
+Process followed by Message sending actions to the corresponding receivers.
 If the senders are different, the Parallel Gateway is manifested by Sequence Flows followed by the sending
 action in each Process.
 
-366
+360
 
 Business Process Model and Notation, v2.0
 
 11.6.5 Complex Gateway
 Complex Gateways can model partial merges in Business Processes where when some but not all of a set of
 preceding branches complete, the Gateway fires. This can be considered the discriminator/n-of-m join pattern1 and is not
-supported through the inclusive OR merge since it is not concerned with sets of branches, but rather branches which have
+supported through the inclusive OR merge since it is not concerned with sets of branches, but rather branches that have
 tokens. Applied in Choreographies, Complex Gateways can model tendering and information canvassing use cases
 where requests are sent to participants who respond at different times.
-Consider an e-tender which sends a request for quote to multiple service providers (e.g., warehouse storage) in a
+Consider an e-tender that sends a request for quote to multiple service providers (e.g., warehouse storage) in a
 marketplace. The e-tender Process sends out requests to each service provider and anticipates their response through
 three Choreography Activities. The response branches merge at a Complex Gateway to model the requirement that
 when 66% responses have arrived, an assessment of the tender can proceed. The assessment occurs after the Complex
@@ -2347,6 +2359,7 @@ Purchaser
 
 No
 Yes
+
 2 of 3
 responses
 recieved
@@ -2367,7 +2380,7 @@ http://www.workflowpatterns.com/patterns/control/advanced_branching/wcp9.php
 
 Business Process Model and Notation, v2.0
 
-367
+361
 
 Service Provider A
 
@@ -2390,10 +2403,6 @@ Quotes
 
 No
 
-Assess the
-Quotes
-
-<
 Quote
 recieved
 
@@ -2424,6 +2433,11 @@ recieved
 
 Yes
 
+Assess the
+Quotes
+
+<
+
 <
 
 Send
@@ -2435,7 +2449,7 @@ Quote recieved
 Figure 11.49 - The corresponding Collaboration view of the above Choreography Complex Gateway configuration
 
 11.6.6 Chaining Gateways
-It is possible to chain Gateways. This means that a modeler can sequence two (2) or more Gateways without any
+It is possible to chain Gateways. This means that a modeler can sequence two or more Gateways without any
 intervening Choreography Activities, however the constraints on what participants can appear before and after the
 chain MUST be observed.
 
@@ -2443,15 +2457,15 @@ chain MUST be observed.
 11.7.1 Participants
 Participants are used in both Collaborations and Choreographies.
 
-368
+362
 
 Business Process Model and Notation, v2.0
 
 11.7.2 Swimlanes
 Swimlanes, both Pools and Lanes, are not used in Choreographies. Pools are used exclusively in
-Collaborations (see page 113). Participants, which can be associated to Pools, however, are used in the Participant
-Bands of Choreography Tasks (see page 329) and Sub-Choreographies (see page 334). Pools can be used with
-Choreography diagrams when in the context of a Collaboration diagram (see page 368).
+Collaborations (see page 114). Participants, which can be associated to Pools, however, are used in the Participant
+Bands of Choreography Tasks (see page 323) and Sub-Choreographies (see page 328). Pools can be used with
+Choreography diagrams when in the context of a Collaboration diagram (see page 362).
 Lanes are not used in Choreography diagrams since Lanes are sub-partitions of a Pool and Choreographies are
 placed in between the Pools (if used in a Collaboration).
 Figure 11.50 shows an example of a Choreography Process combined with Black Box Pools.
@@ -2468,6 +2482,7 @@ medicine
 
 Initiating
 Message
+
 Doctor
 Request
 
@@ -2480,12 +2495,12 @@ Doctor
 Handle
 Prescription
 
+Handle
+Medicine
+
 Pickup your
 medicine, then
 leave
-
-Handle
-Medicine
 
 Here is your
 medicine
@@ -2504,7 +2519,7 @@ Figure 11.51 shows an example of a Choreography Process combined with Pools that
 
 Business Process Model and Notation, v2.0
 
-369
+363
 
 Patient
 
@@ -2520,23 +2535,37 @@ Symptoms
 Illness
 Occurs
 
-I want to see
-the Doctor
-
-Handle
-Symptoms
+Receive
+Prescription
+Pickup
 
 Send
-Appointment
-
-Handle
-Prescription
+Medicine
+Request
 
 Receive
 Medicine
 
 Orchestration
 Process
+I want to see
+the Doctor
+
+I need my
+medicine
+
+I feel sick
+
+Doctor
+Request
+
+Handle
+Symptoms
+
+Doctor’s Office
+
+Send
+Appointment
 
 Handle
 Medicine
@@ -2552,23 +2581,8 @@ Receive
 Doctor
 Request
 
-Send
-Medicine
-Request
-
-I need my
-medicine
-
-I feel sick
-
-Doctor
-Request
-
-Doctor’s Office
-
-Receive
+Handle
 Prescription
-Pickup
 
 Receive
 Symptoms
@@ -2606,7 +2620,7 @@ Table 11.9 – Choreography XML schema
 </xsd:complexContent>
 </xsd:complexType>
 
-370
+364
 
 Business Process Model and Notation, v2.0
 
@@ -2659,7 +2673,7 @@ Table 11.12 – ChoreographyTask XML schema
 </xsd:complexType>
 Business Process Model and Notation, v2.0
 
-371
+365
 
 Table 11.13 – CallChoreography XML schema
 
@@ -2688,7 +2702,7 @@ Table 11.14 – SubChoreography XML schema
 </xsd:complexContent>
 </xsd:complexType>
 
-372
+366
 
 Business Process Model and Notation, v2.0
 

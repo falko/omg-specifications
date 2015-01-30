@@ -80,15 +80,11 @@ are advanced.
 While BPMN shows the flow of data (Messages), and the association of data artifacts to Activities, it is not a data
 flow language. In addition, operational simulation, monitoring and deployment of Business Processes are out of
 scope of this specification.
-BPMN 2.0 can be mapped to more than one platform dependent process modeling language, e.g. WS-BPEL 2.0. This
+BPMN 2.0 can be mapped to more than one platform dependent process modeling language, e.g., WS-BPEL 2.0. This
 document includes a mapping of a subset of BPMN to WS-BPEL 2.0. Mappings to other emerging standards are
 considered to be separate efforts.
 The specification utilizes other standards for defining data types, Expressions and service operations. These standards
 are XML Schema, XPath, and WSDL, respectively.
-
-22
-
-Business Process Model and Notation, v2.0
 
 7.1.1
 
@@ -98,19 +94,31 @@ Business Process modeling is used to communicate a wide variety of information t
 BPMN is designed to cover many types of modeling and allows the creation of end-to-end Business Processes. The
 structural elements of BPMN allow the viewer to be able to easily differentiate between sections of a BPMN Diagram.
 There are three basic types of sub-models within an end-to-end BPMN model:
-• Processes (Orchestration), including:
 
+22
+
+Business Process Model and Notation, v2.0
+
+1.
+
+Processes (Orchestration), including:
 • Private non-executable (internal) Business Processes
 • Private executable (internal) Business Processes
 • Public Processes
-• Choreographies
-• Collaborations, which can include Processes and/or Choreographies
 
+2.
+
+Choreographies
+
+3.
+
+Collaborations, which can include Processes and/or Choreographies
 • A view of Conversations
+
 Private (Internal) Business Processes
 Private Business Processes are those internal to a specific organization. These Processes have been generally
 called workflow or BPM Processes (see Figure 10.4). Another synonym typically used in the Web services area is the
-Orchestration of services. There are two (2) types of private Processes: executable and non-executable. An executable
+Orchestration of services. There are two types of private Processes: executable and non-executable. An executable
 Process is a Process that has been modeled for the purpose of being executed according to the semantics defined in
 Chapter 14. Of course, during the development cycle of the Process, there will be stages where the Process does not
 have enough detail to be “executable.” A non-executable Process is a private Process that has been modeled for the
@@ -152,6 +160,7 @@ Process. Thus, the public Process shows to the outside world the Message Flows a
 Flows that are needed to interact with that Process. Public Processes can be modeled separately or within a
 Collaboration to show the flow of Messages between the public Process Activities and other Participants. Note
 that the public type of Process was named “abstract” in BPMN 1.2.
+
 Business Process Model and Notation, v2.0
 
 23
@@ -194,14 +203,14 @@ Figure 7.2 - Example of a public Process
 
 Collaborations
 A Collaboration depicts the interactions between two or more business entities. A Collaboration usually contains two
-(2) or more Pools, representing the Participants in the Collaboration. The Message exchange between the
-Participants is shown by a Message Flow that connects two (2) Pools (or the objects within the Pools). The
-Messages associated with the Message Flows can also be shown. The Collaboration can be shown as two or more
-public Processes communicating with each other (see Figure 7.3). With a public Process, the Activities for the
-Collaboration participants can be considered the “touch-points” between the participants. The corresponding internal
-(executable) Processes are likely to have much more Activity and detail than what is shown in the public Processes.
-Or a Pool MAY be empty, a “black box.” Choreographies MAY be shown “in between” the Pools as they bisect the
-Message Flows between the Pools. All combinations of Pools, Processes, and a Choreography are allowed in a
+or more Pools, representing the Participants in the Collaboration. The Message exchange between the Participants
+is shown by a Message Flow that connects two Pools (or the objects within the Pools). The Messages associated
+with the Message Flows can also be shown. The Collaboration can be shown as two or more public Processes
+communicating with each other (see Figure 7.3). With a public Process, the Activities for the Collaboration
+participants can be considered the “touch-points” between the participants. The corresponding internal (executable)
+Processes are likely to have much more Activity and detail than what is shown in the public Processes. Or a Pool
+MAY be empty, a “black box.” Choreographies MAY be shown “in between” the Pools as they bisect the Message
+Flows between the Pools. All combinations of Pools, Processes, and a Choreography are allowed in a
 Collaboration.
 
 24
@@ -209,6 +218,9 @@ Collaboration.
 Business Process Model and Notation, v2.0
 
 Patient
+
+Send Doctor
+Request
 
 Receive
 Appt.
@@ -218,48 +230,45 @@ see doctor
 
 Go see doctor
 
+Receive
+Prescription
+Pickup
+
+Send
+Symptoms
+
 Receptionist/
 Doctor
 
 Illness
 Occurs
 
-Send Doctor
-Request
-
 Receive
 Doctor
 Request
 
-Send
-Symptoms
-
 I feel sick
-
-Receive
-Symptoms
-
-Send Appt.
-
-Receive
-Prescription
-Pickup
-
-Send
-Medicine
-Request
 
 Receive
 Medicine
 
 I need my medicine
 Pickup your medicine
-and you can leave
 Here is your medicine
+and you can leave
 
 Send
 Prescription
 Pickup
+
+Receive
+Symptoms
+
+Send Appt.
+
+Send
+Medicine
+Request
 
 Receive
 Medicine
@@ -276,14 +285,14 @@ procedural contract, between interacting Participants. While a normal Process ex
 exists between Pools (or Participants).
 The Choreography looks similar to a private Business Process since it consists of a network of Activities,
 Events, and Gateways (see Figure 7.4). However, a Choreography is different in that the Activities are interactions
-that represent a set (1 or more) of Message exchanges, which involves two (2) or more Participants. In addition, unlike
-a normal Process, there is no central controller, responsible entity or observer of the Process.
+that represent a set (1 or more) of Message exchanges, which involves two or more Participants. In addition, unlike a
+normal Process, there is no central controller, responsible entity or observer of the Process.
 
-I want to see
+I w ant to see
 the Doctor
 
-I need my
-medicine
+I need m y
+m edicine
 
 I feel sick
 
@@ -299,31 +308,31 @@ Doctor
 Request
 
 Handle
-Symptoms
+Sym ptom s
 
 Handle
 Prescription
 
 Handle
-Medicine
+M edicine
 
-Dr. Office
+Dr. O ffice
 
-Dr. Office
+D r. O ffice
 
-Dr. Office
+D r. O ffice
 
-Dr. Office
+D r. Office
 
-Go see the
-Doctor
+G o see the
+D octor
 
 Pickup your
-medicine, then
+m edicine, then
 leave
 
 Here is your
-medicine
+m edicine
 
 Figure 7.4 - An example of a Choreography
 
@@ -338,10 +347,10 @@ between the Pools of a Conversation diagram. A Conversation is the logical relat
 logical relation, in practice, often concerns a business object(s) of interest, e.g., “Order,” “Shipment and Delivery,” or
 “Invoice.”
 Message exchanges are related to each other and reflect distinct business scenarios. For example, in logistics, stock
-replenishments involve the following types scenarios: creation of sales orders; assignment of carriers for shipments
+replenishments involve the following type scenarios: creation of sales orders; assignment of carriers for shipments
 combining different sales orders; crossing customs/quarantine; processing payment and investigating exceptions. Thus, a
 Conversation diagram, as shown in Figure 7.5, shows Conversations (as hexagons) between Participants (Pools).
-This provides a “bird’s eye” perspective of the different Conversations which relate to the domain.
+This provides a “bird’s eye” perspective of the different Conversations that relate to the domain.
 
 Supplier
 
@@ -370,6 +379,8 @@ Plan
 
 Carrier Planning
 
+Shipper
+
 Carrier
 (Land, Sea, Rail, or Air)
 
@@ -377,8 +388,6 @@ Clearance PreNotification
 
 Coverage
 Notification
-
-Shipper
 
 Insurance
 
@@ -436,45 +445,93 @@ mechanism for creating Business Process models, while at the same time being abl
 to Business Processes. The approach taken to handle these two conflicting requirements was to organize the
 graphical aspects of the notation into specific categories. This provides a small set of notation categories so that the reader
 of a BPMN diagram can easily recognize the basic types of elements and understand the diagram. Within the basic
-categories of elements, additional variation and information can be added to support the requirements for complexity
-without dramatically changing the basic look and feel of the diagram. The five (5) basic categories of elements are:
-• Flow Objects
-• Data
-• Connecting Objects
-• Swimlanes
-• Artifacts
+categories of elements, additional va riation and information can be added to support the requirements for complexity
+without dramatically changing the basic look and feel of the diagram. The five basic categories of elements are:
+1.
 
-Flow Objects are the main graphical elements to define the behavior of a Business Process. There are three (3) Flow
+Flow Objects
+
+2.
+
+Data
+
+3.
+
+Connecting Objects
+
+4.
+
+Swimlanes
+
+5.
+
+Artifacts
+
+Flow Objects are the main graphical elements to define the behavior of a Business Process. There are three Flow
 Objects:
-• Events
-• Activities
+1.
+
+Events
+
+2.
+
+Activities
+
+3.
+
+Gateways
 
 Business Process Model and Notation, v2.0
 
 27
 
-• Gateways
+Data is represented with the four elements:
+1.
 
-Data is represented with the four (4) elements:
-• Data Objects
-• Data Inputs
-• Data Outputs
-• Data Stores
+Data Objects
 
-There are four (4) ways of connecting the Flow Objects to each other or other information. There are four (4) Connecting
+2.
+
+Data Inputs
+
+3.
+
+Data Outputs
+
+4.
+
+Data Stores
+
+There are four ways of connecting the Flow Objects to each other or other information. There are four Connecting
 Objects:
-• Sequence Flows
-• Message Flows
-• Associations
-• Data Associations
+1.
 
-There are two (2) ways of grouping the primary modeling elements through “Swimlanes:”
-• Pools
-• Lanes
+Sequence Flows
 
-Artifacts are used to provide additional information about the Process. There are two (2) standardized Artifacts,
-but modelers or modeling tools are free to add as many Artifacts as necessary. There could be additional BPMN
-efforts to standardize a larger set of Artifacts for general use or for vertical markets. The current set of Artifacts
+2.
+
+Message Flows
+
+3.
+
+Associations
+
+4.
+
+Data Associations
+
+There are two ways of grouping the primary modeling elements through “Swimlanes:”
+1.
+
+Pools
+
+2.
+
+Lanes
+
+Artifacts are used to provide additional information about the Process. There are two standardized Artifacts, but
+modelers or modeling tools are free to add as many Artifacts as necessary. There could be additional BPMN efforts
+to standardize a larger set of Artifacts for general use or for vertical markets. The current set of Artifacts
 includes:
 • Group
 • Text Annotation
@@ -491,23 +548,26 @@ Business Process Model and Notation, v2.0
 
 Table 7.1 - Basic Modeling Elements
 
+Element
+
 Description
 
 Event
 
 An Event is something that “happens” during the
-course of a Process (see page 242) or a Choreography (see page 346). These Events affect the flow
-of the model and usually have a cause (trigger) or
-an impact (result). Events are circles with open
-centers to allow internal markers to differentiate
-different triggers or results. There are three types
-of Events, based on when they affect the flow:
-Start, Intermediate, and End.
+course of a Process (see page 238) or a
+Choreography (see page 339). These Events
+affect the flow of the model and usually have a
+cause (trigger) or an impact (result). Events are
+circles with open centers to allow internal markers
+to differentiate different triggers or results. There
+are three types of Events, based on when they
+affect the flow: Start, Intermediate, and End.
 
 Activity
 
 An Activity is a generic term for work that company
-performs (see page 153) in a Process. An Activity
+performs (see page 151) in a Process. An Activity
 can be atomic or non-atomic (compound). The
 types of Activities that are a part of a Process
 Model are: Sub-Process and Task, which are
@@ -518,7 +578,7 @@ Gateway
 
 A Gateway is used to control the divergence and
 convergence of Sequence Flows in a Process (see
-page 147) and in a Choreography (see page 351).
+page 145) and in a Choreography (see page 344).
 Thus, it will determine branching, forking, merging,
 and joining of paths. Internal markers will indicate
 the type of behavior control.
@@ -527,66 +587,81 @@ Sequence Flow
 
 A Sequence Flow is used to show the order that
 Activities will be performed in a Process (see page
-97) and in a Choreography (see page 326).
+97) and in a Choreography (see page 320).
 
 Message Flow
 
-A Message Flow is used to show the flow of Messages between two Participants that are prepared
-to send and receive them (see page 119). In
-BPMN, two separate Pools in a Collaboration Diagram will represent the two Participants (e.g., PartnerEntities and/or PartnerRoles).
+A Message Flow is used to show the flow of
+Messages between two Participants that are
+prepared to send and receive them (see page
+120). In BPMN, two separate Pools in a
+Collaboration Diagram will represent the two
+Participants (e.g., PartnerEntities and/or
+PartnerRoles).
 
 Association
 
-An Association is used to link information and Artifacts with BPMN graphical elements (see page
-67). Text Annotations (see page 72) and other Artifacts (see page 66) can be Associated with the
-graphical elements. An arrowhead on the Association indicates a direction of flow (e.g., data), when
-appropriate.
-
-Pool
-
-A Pool is the graphical representation of a Participant in a Collaboration (see page 110). It also acts
-as a “swimlane” and a graphical container for partitioning a set of Activities from other Pools, usually
-in the context of B2B situations. A Pool MAY have
-internal details, in the form of the Process that will
-be executed. Or a Pool MAY have no internal
-details, i.e., it can be a "black box."
+An Association is used to link information and
+Artifacts with BPMN graphical elements (see page
+67). Text Annotations (see page 71) and other
+Artifacts (see page 66) can be Associated with the
+graphical elements. An arrowhead on the
+Association indicates a direction of flow (e.g.,
+data), when appropriate.
 
 Business Process Model and Notation, v2.0
 
 Notation
 
-Name
-
-Element
-
 29
+
+A Pool is the graphical representation of a
+Participant in a Collaboration (see page 112). It
+also acts as a “swimlane” and a graphical
+container for partitioning a set of Activities from
+other Pools, usually in the context of B2B
+situations. A Pool MAY have internal details, in the
+form of the Process that will be executed. Or a
+Pool MAY have no internal details, i.e., it can be a
+"black box."
 
 Lane
 
-A Lane is a sub-partition within a Process, sometimes within a Pool, and will extend the entire
-length of the Process, either vertically or horizontally (see on page 310). Lanes are used to organize and categorize Activities.
+A Lane is a sub-partition within a Process,
+sometimes within a Pool, and will extend the entire
+length of the Process, either vertically or
+horizontally (see on page 305). Lanes are used to
+organize and categorize Activities.
 
 Data Object
 
-Data Objects provide information about what Activities require to be performed and/or what they produce (see page 209), Data Objects can represent
-a singular object or a collection of objects. Data
-Input and Data Output provide the same information for Processes.
+Data Objects provide information about what
+Activities require to be performed and/or what they
+produce (see page 205), Data Objects can
+represent a singular object or a collection of
+objects. Data Input and Data Output provide the
+same information for Processes.
 
 Message
 
-A Message is used to depict the contents of a communication between two Participants (as defined
-by a business PartnerRole or a business PartnerEntity—see on page 93).
+A Message is used to depict the contents of a
+communication between two Participants (as
+defined by a business PartnerRole or a business
+PartnerEntity—see on page 93).
 
 Group (a box around a
 group of objects within
 the same category)
 
 A Group is a grouping of graphical elements that
-are within the same Category (see page 71). This
+are within the same Category (see page 70). This
 type of grouping does not affect the Sequence
 Flows within the Group. The Category name
-appears on the diagram as the group label. Categories can be used for documentation or analysis
-purposes. Groups are one way in which Categories of objects can be visually displayed on the diagram.
+appears on the diagram as the group label.
+Categories can be used for documentation or
+analysis purposes. Groups are one way in which
+Categories of objects can be visually displayed on
+the diagram.
 
 Text Annotation
 (attached with an
@@ -594,12 +669,16 @@ Association)
 
 Text Annotations are a mechanism for a modeler to
 provide additional text information for the reader of
-a BPMN Diagram (see page 72).
+a BPMN Diagram (see page 71).
 
 7.2.2
 
 Name
 Name Name
+
+Pool
+
+Name
 
 Table 7.1 - Basic Modeling Elements
 
@@ -610,7 +689,6 @@ Extended BPMN Modeling Elements
 
 Table 7.2 displays a more extensive list of the Business Process concepts that could be depicted through a business
 process modeling notation.
-
 30
 
 Business Process Model and Notation, v2.0
@@ -624,12 +702,13 @@ Description
 Event
 
 An Event is something that “happens” during
-the course of a Process (see page 242) or a
-Choreography (see page 346). These Events
+the course of a Process (see page 238) or a
+Choreography (see page 339). These Events
 affect the flow of the model and usually have
 a cause (Trigger) or an impact (Result).
 Events are circles with open centers to allow
-internal markers to differentiate different Triggers or Results. There are three types of
+internal markers to differentiate different
+Triggers or Results. There are three types of
 Events, based on when they affect the flow:
 Start, Intermediate, and End.
 Start
@@ -640,42 +719,54 @@ Start
 
 Intermediate
 
-End
-
-Type Dimension (e.g.,
-None, Message, Timer,
-Error, Cancel, Compensation, Conditional, Link,
-Signal, Multiple, Terminate.)
-
 Notation
 
 As the name implies, the Start Event indicates
-where a particular Process (see page 242) or
-Choreography (see page 346) will start.
-Intermediate Events occur between a Start
-Event and an End Event. They will affect the
-flow of the Process (see page 254) or Choreography (see page 347), but will not start or
-(directly) terminate the Process.
+where a particular Process (see page 238) or
+Choreography (see page 339) will start.
 
 Intermediate
+
+Intermediate Events occur between a Start
+Event and an End Event. They will affect the
+flow of the Process (see page 249) or
+Choreography (see page 341), but will not
+start or (directly) terminate the Process.
+End
 
 End
 
 As the name implies, the End Event indicates
-where a Process (see page 250) or Choreography (see page 350) will end.
+where a Process (see page 246) or
+Choreography (see page 343) will end.
+
+Business Process Model and Notation, v2.0
+
+31
+
+Table 7.2 - BPMN Extended Modeling Elements
+Type Dimension (e.g.,
+None, Message, Timer,
+Error, Cancel,
+Compensation,
+Conditional, Link, Signal,
+Multiple, Terminate.)
 
 The Start and some Intermediate Events have
 “triggers” that define the cause for the Event
 (see section entitled “Start Event” on
-page 242 and section entitled “Intermediate
-Event” on page 254). There are multiple ways
+page 238 and section entitled “Intermediate
+Event” on page 249). There are multiple ways
 that these events can be triggered. End
-Events MAY define a “result” that is a consequence of a Sequence Flow path ending.
-Start Events can only react to (“catch”) a trigger. End Events can only create (“throw”) a
-result. Intermediate Events can catch or throw
-triggers. For the Events, triggers that catch,
-the markers are unfilled, and for triggers and
-results that throw, the markers are filled.
+Events MAY define a “result” that is a
+consequence of a Sequence Flow path
+ending. Start Events can only react to
+(“catch”) a trigger. End Events can only create
+(“throw”) a result. Intermediate Events can
+catch or throw triggers. For the Events,
+triggers that catch, the markers are unfilled,
+and for triggers and results that throw, the
+markers are filled.
 
 “Catching”
 
@@ -697,50 +788,61 @@ Terminate
 Additionally, some Events, which were used
 to interrupt Activities in BPMN 1.1, can now
 be used in a mode that does not interrupt. The
-boundary of these Events is dashed (see figure to the right).
+boundary of these Events is dashed (see
+figure to the right).
+Activity
 
-Business Process Model and Notation, v2.0
+An Activity is a generic term for work that
+company performs (see page 151) in a
+Process. An Activity can be atomic or nonatomic (compound). The types of Activities
+that are a part of a Process Model are: SubProcess and Task, which are rounded
+rectangles. Activities are used in both
+standard Processes and in Choreographies.
+
+Task (Atomic)
+
+A Task is an atomic Activity that is included
+within a Process (see page 156). A Task is
+used when the work in the Process is not
+broken down to a finer level of Process detail.
+
+Choreography Task
+
+32
+
+A Choreography Task is an atomic Activity in
+a Choreography (see page 323). It represents
+a set of one (1) or more Message exchanges.
+Each Choreography Task involves two (2)
+Participants. The name of the Choreography
+Task and each of the Participants are all
+displayed in the different bands that make up
+the shape’s graphical notation. There are two
+(2) or more Participant Bands and one Task
+Name Band.
 
 Multiple
 Parallel
 Multiple
 
-31
+Task
+Name
+
+Participant A
+
+Choreography
+Task Name
+Participant B
+
+Business Process Model and Notation, v2.0
 
 Table 7.2 - BPMN Extended Modeling Elements
-Activity
-
-An Activity is a generic term for work that
-company performs (see page 153) in a Process. An Activity can be atomic or non-atomic
-(compound). The types of Activities that are a
-part of a Process Model are: Sub-Process
-and Task, which are rounded rectangles.
-Activities are used in both standard Processes and in Choreographies.
-
-Task (Atomic)
-
-A Task is an atomic Activity that is included
-within a Process (see page 158). A Task is
-used when the work in the Process is not broken down to a finer level of Process detail.
-
-Choreography Task
-
-A Choreography Task is an atomic Activity in
-a Choreography (see page 329). It represents
-a set of one (1) or more Message exchanges.
-Each Choreography Task involves two (2)
-Participants. The name of the Choreography
-Task and each of the Participants are all displayed in the different bands that make up the
-shape’s graphical notation. There are two (2)
-or more Participant Bands and one Task
-Name Band.
-
 Process/Sub-Process
 (non-atomic)
 
 A Sub-Process is a compound Activity that is
-included within a Process (see page 175) or
-Choreography (see page 334). It is compound
+included within a Process (see page 173) or
+Choreography (see page 328). It is compound
 in that it can be broken down into a finer level
 of detail (a Process or Choreography) through
 a set of sub-Activities.
@@ -748,42 +850,30 @@ a set of sub-Activities.
 Collapsed Sub-Process
 
 The details of the Sub-Process are not visible
-in the Diagram (see page 175). A “plus” sign
+in the Diagram (see page 173). A “plus” sign
 in the lower-center of the shape indicates that
 the Activity is a Sub-Process and has a lowerlevel of detail.
 
 Expanded Sub-Process
 
-32
-
-Task
-Name
-Participant A
-
-Choreography
-Task Name
-Participant B
-
-See Next Four (4) Figures
-
-Sub-Process
-Name
-
 The boundary of the Sub-Process is
-expanded and the details (a Process) are visible within its boundary (see page 175).
+expanded and the details (a Process) are
+visible within its boundary (see page 173).
 Note that Sequence Flows cannot cross the
 boundary of a Sub-Process.
 
-Business Process Model and Notation, v2.0
-
-Table 7.2 - BPMN Extended Modeling Elements
-Collapsed Sub-Choreography
+Collapsed SubChoreography
 
 The details of the Sub-Choreography are not
-visible in the Diagram (see page 334). A
+visible in the Diagram (see page 328). A
 “plus” sign in the lower-center of the Task
 Name Band of the shape indicates that the
 Activity is a Sub-Process and has a lowerlevel of detail.
+
+See Next Four Figures
+
+Sub-Process
+Name
 
 Participant A
 
@@ -791,11 +881,11 @@ SubChoreography
 Name
 Participant B
 
-Expanded Sub-Choreography
+Expanded SubChoreography
 
 The boundary of the Sub-Choreography is
 expanded and the details (a Choreography)
-are visible within its boundary (see page 334)
+are visible within its boundary (see page 328).
 Note that Sequence Flows cannot cross the
 boundary of a Sub-Choreography.
 
@@ -819,22 +909,29 @@ Participant C
 
 Participant B
 
+Business Process Model and Notation, v2.0
+
+33
+
+Table 7.2 - BPMN Extended Modeling Elements
 Gateway
 
 A Gateway is used to control the divergence
 and convergence of Sequence Flows in a
-Process (see page 292) and in a Choreography (see page 351). Thus, it will determine
-branching, forking, merging, and joining of
-paths. Internal markers will indicate the type
-of behavior control (see below).
+Process (see page 287) and in a
+Choreography (see page 344). Thus, it will
+determine branching, forking, merging, and
+joining of paths. Internal markers will indicate
+the type of behavior control (see below).
 
 Gateway Control Types
 
-Icons within the diamond shape of the Gateway will indicate the type of flow control
+Icons within the diamond shape of the
+Gateway will indicate the type of flow control
 behavior. The types of control include:
 • Exclusive decision and merging. Both
-Exclusive (see page 295) and EventBased (see page 302) perform
-exclusive decisions and merging.
+Exclusive (see page 290) and EventBased (see page 297) perform
+exclusive decisions and merging
 Exclusive can be shown with or without
 the “X” marker.
 • Event-Based and Parallel Event-based
@@ -853,38 +950,32 @@ Parallel
 Event-Based
 
 • Inclusive Gateway decision and
-merging (see page 297)
+merging (see page 292).
 
 Inclusive
 
 • Complex Gateway -- complex
 conditions and situations (e.g., 3 out of
-5; page 300)
+5; page 295).
 
 Complex
 
 • Parallel Gateway forking and joining
-(see page 298)
-Each type of control affects both the incoming
-and outgoing flow.
-
-Business Process Model and Notation, v2.0
+(see page 293).
 
 Parallel
-
-33
-
-Table 7.2 - BPMN Extended Modeling Elements
+Each type of control affects both the incoming
+and outgoing flow.
 Sequence Flow
 
 A Sequence Flow is used to show the order
 that Activities will be performed in a Process
 (see page 97) and in a Choreography (see
-page 326).
+page 320).
 
 Normal Flow
 
-Normal flow refers paths of Sequence Flow
+Normal flow refers to paths of Sequence Flow
 that do not start from an Intermediate Event
 attached to the boundary of an Activity.
 
@@ -901,52 +992,56 @@ Sequence Flows a token will flow from the
 source object through the Sequence Flows
 to the target object.
 
+34
+
+See next seven figures
+
+Business Process Model and Notation, v2.0
+
+Table 7.2 - BPMN Extended Modeling Elements
 Conditional flow
 
 A Sequence Flow can have a condition
 Expression that are evaluated at runtime to
 determine whether or not the Sequence Flow
 will be used (i.e., will a token travel down the
-Sequence Flow – see page 97). If the conditional flow is outgoing from an Activity, then
-the Sequence Flow will have a mini-diamond
-at the beginning of the connector (see figure
-to the right). If the conditional flow is outgoing
-from a Gateway, then the line will not have a
-mini-diamond (see figure in the row above).
+Sequence Flow – see page 97). If the
+conditional flow is outgoing from an Activity,
+then the Sequence Flow will have a minidiamond at the beginning of the connector
+(see figure to the right). If the conditional flow
+is outgoing from a Gateway, then the line will
+not have a mini-diamond (see figure in the
+row above).
 
 Default flow
 
-For Data-Based Exclusive Gateways or Inclusive Gateways, one type of flow is the Default
-condition flow (see page 97). This flow will be
-used only if all the other outgoing conditional
-flow is not true at runtime. These Sequence
-Flows will have a diagonal slash will be
-added to the beginning of the connector (see
-the figure to the right).
+For Data-Based Exclusive Gateways or
+Inclusive Gateways, one type of flow is the
+Default condition flow (see page 97). This flow
+will be used only if all the other outgoing
+conditional flow is not true at runtime. These
+Sequence Flows will have a diagonal slash
+will be added to the beginning of the
+connector (see the figure to the right).
 
 Exception Flow
 
 Exception flow occurs outside the normal flow
-of the Process and is based upon an Intermediate Event attached to the boundary of an
-Activity that occurs during the performance of
-the Process (see page 292).
-
-See next seven figures
-
+of the Process and is based upon an
+Intermediate Event attached to the boundary
+of an Activity that occurs during the
+performance of the Process (see page 287).
 Exception
 Flow
 
-34
-
-Business Process Model and Notation, v2.0
-
-Table 7.2 - BPMN Extended Modeling Elements
 Message Flow
 
 A Message Flow is used to show the flow of
 Messages between two Participants that are
 prepared to send and receive them (see page
-119). In BPMN, two separate Pools in a Collaboration Diagram will represent the two Participants (e.g., PartnerEntities and/or
+120). In BPMN, two separate Pools in a
+Collaboration Diagram will represent the two
+Participants (e.g., PartnerEntities and/or
 PartnerRoles).
 
 Compensation
@@ -957,19 +1052,25 @@ normal flow of the Process and is based upon
 a Compensation Intermediate Event that is
 triggered through the failure of a transaction
 or a throw Compensation Event (see page
-308). The target of the Association MUST be
+302). The target of the Association MUST be
 marked as a Compensation Activity.
 
+Business Process Model and Notation, v2.0
+
+Compensation
+Association
+
+35
+
+Table 7.2 - BPMN Extended Modeling Elements
 Data Object
 
 Data Objects provide information about what
 Activities require to be performed and/or what
-they produce (see page 209), Data Objects
+they produce (see page 205), Data Objects
 can represent a singular object or a collection
-of objects. Data Input and Data Output provide the same information for Processes.
-
-Compensation
-Association
+of objects. Data Input and Data Output
+provide the same information for Processes.
 
 Data Object
 
@@ -979,25 +1080,22 @@ Data Input
 
 Message
 
-Data Output
-
 A Message is used to depict the contents of a
 communication between two Participants (as
 defined by a business PartnerRole or a
 business PartnerEntity—see on page 93).
 
-Business Process Model and Notation, v2.0
-
-35
-
-Table 7.2 - BPMN Extended Modeling Elements
 Fork
 
 BPMN uses the term “fork” to refer to the
 dividing of a path into two or more parallel
 paths (also known as an AND-Split). It is a
 place in the Process where activities can be
-performed concurrently, rather than sequentially.
+performed concurrently, rather than
+sequentially.
+
+Data Output
+
 There are two options:
 • Multiple Outgoing Sequence Flows can
 be used (see figure top-right). This
@@ -1008,10 +1106,17 @@ figure bottom-right). This will be used
 rarely, usually in combination with other
 Gateways.
 
+36
+
+Business Process Model and Notation, v2.0
+
+Table 7.2 - BPMN Extended Modeling Elements
 Join
 
-BPMN uses the term “join” to refer to the combining of two or more parallel paths into one
-path (also known as an AND-Join or synchronization).
+BPMN uses the term “join” to refer to the
+combining of two or more parallel paths into
+one path (also known as an AND-Join or
+synchronization).
 A Parallel Gateway is used to show the joining
 of multiple Sequence Flows.
 
@@ -1019,16 +1124,18 @@ Decision, Branching
 Point
 
 Decisions are Gateways within a Process
-(see page 292) or a Choreography (see page
-351) where the flow of control can take one or
+(see page 287) or a Choreography (see page
+344) where the flow of control can take one or
 more alternative paths.
 
 Exclusive
 
 This Decision represents a branching point
 where Alternatives are based on conditional
-Expressions contained within the outgoing Sequence Flows (see page 295 or page
-351). Only one of the Alternatives will be chosen.
+Expressions contained within the
+outgoing Sequence Flows (see page 290 or
+page 345). Only one of the Alternatives will be
+chosen.
 
 See next five rows.
 
@@ -1036,41 +1143,45 @@ Condition 1
 
 Default
 
-36
-
-Business Process Model and Notation, v2.0
-
-Table 7.2 - BPMN Extended Modeling Elements
 Event-Based
 
 This Decision represents a branching point
 where Alternatives are based on an Event
 that occurs at that point in the Process (see
-page 302) or Choreography (see page 356).
+page 297) or Choreography (see page 350).
 The specific Event, usually the receipt of a
 Message, determines which of the paths will
 be taken. Other types of Events can be used,
 such as Timer. Only one of the Alternatives
 will be chosen.
-There are two options for receiving Messages:
+There are two options for receiving
+Messages:
 • Tasks of Type Receive can be used
 (see figure top-right).
 • Intermediate Events of Type Message
 can be used (see figure bottom-right).
 
+Business Process Model and Notation, v2.0
+
+37
+
+Table 7.2 - BPMN Extended Modeling Elements
 Inclusive
 
 This Decision represents a branching point
 where Alternatives are based on conditional
-Expressions contained within the outgoing Sequence Flows (see page 297).
-In some sense it is a grouping of related independent Binary (Yes/No) Decisions. Since
-each path is independent, all combinations of
-the paths MAY be taken, from zero to all.
-However, it should be designed so that at
-least one path is taken. A Default Condition
-could be used to ensure that at least one path
-is taken.
-There are two versions of this type of Decision:
+Expressions contained within the
+outgoing Sequence Flows (see page 292).
+In some sense it is a grouping of related
+independent Binary (Yes/No) Decisions.
+Since each path is independent, all
+combinations of the paths MAY be taken, from
+zero to all. However, it should be designed so
+that at least one path is taken. A Default
+Condition could be used to ensure that at
+least one path is taken.
+There are two versions of this type of
+Decision:
 
 Condition 1
 
@@ -1081,14 +1192,6 @@ Condition 1
 Sequence Flows, marked with minidiamonds (see top-right figure).
 • The second uses an Inclusive Gateway
 (see bottom-right picture).
-
-Business Process Model and Notation, v2.0
-
-Condition 2
-
-37
-
-Table 7.2 - BPMN Extended Modeling Elements
 Merging
 
 BPMN uses the term “merge” to refer to the
@@ -1104,16 +1207,25 @@ figure to the right).
 
 Looping
 
-BPMN provides 2 (two) mechanisms for looping within a Process.
+BPMN provides two mechanisms for looping
+within a Process.
 
+Condition 2
+
+See Next Two Figures
 Activity Looping
 
-The attributes of Tasks and Sub-Processes
-will determine if they are repeated or performed once (see page 194). There are two
-types of loops: Standard and Multi-Instance. A
-small looping indicator will be displayed at the
-bottom-center of the activity.
+38
 
+The attributes of Tasks and Sub-Processes
+will determine if they are repeated or
+performed once (see page 190). There are
+two types of loops: Standard and MultiInstance. A small looping indicator will be
+displayed at the bottom-center of the activity.
+
+Business Process Model and Notation, v2.0
+
+Table 7.2 - BPMN Extended Modeling Elements
 Sequence Flow Looping
 
 Loops can be created by connecting a
@@ -1124,31 +1236,27 @@ leads to a series of other Sequence Flows,
 the last of which is an incoming Sequence
 Flow for the original object.
 
-38
-
-See Next Two Figures
-
-Business Process Model and Notation, v2.0
-
-Table 7.2 - BPMN Extended Modeling Elements
 Multiple Instances
 
 The attributes of Tasks and Sub-Processes
-will determine if they are repeated or performed once (see page 195). A set of three
-(3) horizontal liness will be displayed at the
-bottom-center of the activity for sequentail
+will determine if they are repeated or
+performed once (see page 191). A set of three
+horizontal lines will be displayed at the
+bottom-center of the activity for sequential
 Multi-Instances (see upper figure to the right).
-A set of three (3) vertical liness will be displayed at the bottom-center of the activity for
-sequentail Multi-Instances (see lower figure to
-the right).
+A set of three vertical lines will be displayed at
+the bottom-center of the activity for sequential
+Multi-Instances (see lower figure to the right).
 
-Process Break (something out of the control of
-the process makes the
-process pause)
+Process Break
+(something out of the
+control of the process
+makes the process
+pause)
 
 A Process Break is a location in the Process
 that shows where an expected delay will
-occur within a Process (see page 254). An
+occur within a Process (see page 249). An
 Intermediate Event is used to show the actual
 behavior (see top-right figure). In addition, a
 Process Break Artifact, as designed by a
@@ -1158,11 +1266,15 @@ delay within the flow.
 
 Transaction
 
-A transaction is a Sub-Process that is supported by a special protocol that insures that
-all parties involved have complete agreement
-that the activity should be completed or cancelled (see page 180). The attributes of the
-activity will determine if the activity is a transaction. A double-lined boundary indicates that
-the Sub-Process is a Transaction.
+A transaction is a Sub-Process that is
+supported by a special protocol that insures
+that all parties involved have complete
+agreement that the activity should be
+completed or cancelled (see page 178). The
+attributes of the activity will determine if the
+activity is a transaction. A double-lined
+boundary indicates that the Sub-Process is a
+Transaction.
 
 Business Process Model and Notation, v2.0
 
@@ -1183,17 +1295,20 @@ Response
 Table 7.2 - BPMN Extended Modeling Elements
 A nested (or embedded) Sub-Process is an
 activity that shares the same set of data as its
-parent process (see page 175). This is
-opposed to a Sub-Process that is independent, re-usable, and referenced from the parent process. Data needs to be passed to the
-referenced Sub-Process, but not to the nested
-Sub-Process.
+parent process (see page 173). This is
+opposed to a Sub-Process that is
+independent, re-usable, and referenced from
+the parent process. Data needs to be passed
+to the referenced Sub-Process, but not to the
+nested Sub-Process.
 
 Group (a box around a
 group of objects within
 the same category)
 
-A Group is a grouping of graphical elements that are within the same Category
-(see page 69). This type of grouping does not
+A Group is a grouping of graphical
+elements that are within the same Category
+(see page 68). This type of grouping does not
 affect the Sequence Flows within the Group.
 The Category name appears on the diagram
 as the group label. Categories can be used for
@@ -1213,26 +1328,33 @@ Association
 
 An Association is used to link information and
 Artifacts with BPMN graphical elements (see
-page 67). Text Annotations (see page 72) and
-other Artifacts (see page 66) can be Associated with the graphical elements. An arrowhead on the Association indicates a direction
-of flow (e.g., data), when appropriate.
+page 67). Text Annotations (see page 71) and
+other Artifacts (see page 66) can be
+Associated with the graphical elements. An
+arrowhead on the Association indicates a
+direction of flow (e.g., data), when
+appropriate.
 
 Text Annotation
-(attached with an Association)
+(attached with an
+Association)
 
-Text Annotations are a mechanism for a modeler to provide additional text information for
-the reader of a BPMN Diagram (see page 72).
+Text Annotations are a mechanism for a
+modeler to provide additional text information
+for the reader of a BPMN Diagram (see page
+71).
 
 Pool
 
 A Pool is the graphical representation of a
-Participant in a Collaboration (see page 110).
+Participant in a Collaboration (see page 112).
 It also acts as a “swimlane” and a graphical
 container for partitioning a set of Activities
 from other Pools, usually in the context of B2B
 situations. A Pool MAY have internal details,
-in the form of the Process that will be executed. Or a Pool MAY have no internal details,
-i.e., it can be a "black box."
+in the form of the Process that will be
+executed. Or a Pool MAY have no internal
+details, i.e., it can be a "black box."
 
 40
 
@@ -1253,7 +1375,7 @@ Lanes
 
 A Lane is a sub-partition within a Pool and will
 extend the entire length of the Pool, either
-vertically or horizontally (see on page 310).
+vertically or horizontally (see on page 305).
 Lanes are used to organize and categorize
 Activities.
 
@@ -1298,14 +1420,15 @@ tool vendor.
 The fills that are used for the graphical elements MAY be white or clear.
 The notation MAY be extended to use other fill colors to suit the purpose of the modeler or tool (e.g., to
 highlight the value of an object attribute). However,
-The markers for “throwing” Events MUST have a dark fill (see “End Event” on page 250 and “Intermediate
+
 Business Process Model and Notation, v2.0
 
 41
 
-Event” on page 254 for more details).
+The markers for “throwing” Events MUST have a dark fill (see “End Event” on page 246 and “Intermediate
+Event” on page 249 for more details).
 Participant Bands for Choreography Tasks and Sub-Choreographies that are not the initiator of the Activity
-MUST have a light fill (see “Choreography Task” on page 329 and “Sub-Choreography” on page 334 for
+MUST have a light fill (see “Choreography Task” on page 323 and “Sub-Choreography” on page 328 for
 more details).
 Flow objects and markers MAY be of any size that suits the purposes of the modeler or modeling tool.
 The lines that are used to draw the graphical elements MAY be black.
@@ -1340,15 +1463,14 @@ connections into and out of an object is subject to various configuration depend
 sections in the next chapter for each individual object for more detailed information on the appropriate connection rules.
 Note that if a Sub-Process has been expanded within a Diagram, the objects within the Sub-Process cannot be
 connected to objects outside of the Sub-Process. Nor can Sequence Flows cross a Pool boundary.
-
-42
-
-Business Process Model and Notation, v2.0
-
 Table 7.3 – Sequence Flow Connection Rules
 
 From\To
 ‰
+
+42
+
+Business Process Model and Notation, v2.0
 
 ‰
 
@@ -1368,11 +1490,11 @@ Choreography.
 Message Flow Connection Rules
 
 Table 7.4 displays the BPMN modeling objects and shows how these objects can connect to one another through
-symbol indicates that
 Message Flows. These rules apply to the connections within a Collaboration Diagram. The
+symbol indicates that
 the object listed in the row can connect to the object listed in the column. The quantity of connections into and out of an
-object is subject to various configuration dependencies are not specified here. Refer to the sections in the next chapter for
-each individual object for more detailed information on the appropriate connection rules. Note that Message Flows
+object is subject to various configuration dependencies that are not specified here. Refer to the sections in the next chapter
+for each individual object for more detailed information on the appropriate connection rules. Note that Message Flows
 cannot connect to objects that are within the same Pool.
 
 Business Process Model and Notation, v2.0
@@ -1465,19 +1587,19 @@ C u stom er
 
 C usto me r
 
-C us tom er
+Custom er
 
 Ord er
-C onfirma tio n
+Confirma tio n
 
 D el iver Orde r
 
 M an ufa cturer
 
-M anufacture r
+M anufac ture r
 Shipme nt
 
-Confirmation
+Confirm ation
 
 C ustom er
 
@@ -1485,54 +1607,54 @@ Ca n Fulfill
 Order ?
 
 Order
-R ej ectio n
+R ej ec tio n
 
 No
 
-Order R eque st
+Order Reque st
 
 No
 
-Ma nufacturer
+Ma nufac turer
 
 Part
 Req uest
 
-Ye s
-
 M an ufa cturer
-
-Capacity OK,
-Part s Mu st
-be Ordered
 
 A
 A ll Part s
 Available ?
 
 P rocure P arts
+Capacity OK,
+Part s Mu st
+be Ordered
 
-P art
-Response
+Ma nufacturer
+
+Ye s
 
 Rejec tion
 
 Part
 Request
 
-M anu factu re r
+M anu fac tu re r
 
 Su ppl ier
 
-Ma nufacturer
+All Parts
+Obt ained ?
 
 Part Au ction
+
+P art
+Response
 No
 
 B idd er
 
-All Parts
-Obt ained ?
 Yes
 
 A
