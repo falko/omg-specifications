@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema elementFormDefault="qualified" 
             attributeFormDefault="unqualified"
-	    xmlns="http://www.omg.org/spec/CMMN/20131201/MODEL" 
+	    xmlns="http://www.omg.org/spec/CMMN/20150516/MODEL" 
 	    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-	    targetNamespace="http://www.omg.org/spec/CMMN/20131201/MODEL">
+	    targetNamespace="http://www.omg.org/spec/CMMN/20150516/MODEL">
+  <!-- Extension points -->
+  <xsd:element name="extensionElements" type="tExtensionElements"/>
+  <xsd:complexType name="tExtensionElements">
+      <xsd:sequence>
+        <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <!-- 
+    Relationships
+  --> 
+  <xsd:element name="relationship" type="tRelationship" /> 
+  <xsd:complexType name="tRelationship">
+    <xsd:complexContent>
+      <xsd:extension base="tCmmnElement">
+        <xsd:sequence>
+          <xsd:element name="source" type="xsd:QName" minOccurs="1" maxOccurs="unbounded" /> 
+          <xsd:element name="target" type="xsd:QName" minOccurs="1" maxOccurs="unbounded" /> 
+        </xsd:sequence>
+        <xsd:attribute name="type" type="xsd:string" use="required" /> 
+        <xsd:attribute name="direction" type="tRelationshipDirection" /> 
+      </xsd:extension>
+   </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:simpleType name="tRelationshipDirection">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="None" /> 
+      <xsd:enumeration value="Forward" /> 
+      <xsd:enumeration value="Backward" /> 
+      <xsd:enumeration value="Both" /> 
+    </xsd:restriction>
+  </xsd:simpleType>  
 
   <!--
     CMMN Base declarations
@@ -14,8 +46,11 @@
         tCmmnElement is the base type for ALL CMMN complex types except tExpression.
       </xsd:documentation>
     </xsd:annotation>
-    <xsd:attribute name="id" type="xsd:ID" use="optional"/>
-    <xsd:attribute name="description" type="xsd:string" use="optional"/>
+    <xsd:sequence>
+      <xsd:element ref="documentation" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element ref="extensionElements" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID" use="optional"/>    
     <xsd:anyAttribute namespace="##other" processContents="lax"/>
   </xsd:complexType>
 	
@@ -23,15 +58,31 @@
   <xsd:complexType name="tCmmnElementWithMixedContent" abstract="true" mixed="true">
     <xsd:annotation>
       <xsd:documentation>
-        tCmmnElementWithMixedContent is the base type for complex type tExpression. It is
-        identical to tCmmnElement except that it allows for mixed content.
+        tCmmnElementWithMixedContent is the base type for complex type tExpression 
+        and tDocumentation. It is identical to tCmmnElement except that it allows 
+        for mixed content.
       </xsd:documentation>
     </xsd:annotation>
-      <xsd:attribute name="id" type="xsd:ID" use="optional"/>
-      <xsd:attribute name="description" type="xsd:string" use="optional"/>
-      <xsd:anyAttribute namespace="##other" processContents="lax"/>
+    <xsd:sequence>
+      <xsd:element ref="documentation" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element ref="extensionElements" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID" use="optional"/>    
+    <xsd:anyAttribute namespace="##other" processContents="lax"/>
   </xsd:complexType>
 	  
+  <xsd:element name="documentation" type="tDocumentation"/>
+  <xsd:complexType name="tDocumentation" mixed="true">
+    <xsd:complexContent>
+      <xsd:extension base="tCmmnElementWithMixedContent">
+      <xsd:sequence>
+        <xsd:any namespace="##any" processContents="lax" minOccurs="0"/>
+      </xsd:sequence>
+      <xsd:attribute name="id" type="xsd:ID" use="optional"/>
+      <xsd:attribute name="textFormat" type="xsd:string" default="text/plain"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+
   <!--
     CMMN Case elements
   -->
@@ -54,7 +105,7 @@
         <xsd:sequence>
           <xsd:element name="caseFileModel" type="tCaseFile" minOccurs="0" maxOccurs="1"/>
           <xsd:element name="casePlanModel" type="tStage" minOccurs="0" maxOccurs="1"/>
-          <xsd:element name="caseRoles" type="tRole" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="caseRoles" type="tCaseRoles" minOccurs="0" maxOccurs="1"/>
           <xsd:element name="input" type="tCaseParameter" minOccurs="0" maxOccurs="unbounded"/>
           <xsd:element name="output" type="tCaseParameter" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
@@ -63,6 +114,21 @@
     </xsd:complexContent>
   </xsd:complexType>
 
+  <xsd:complexType name="tCaseRoles">
+    <xsd:annotation>
+      <xsd:documentation>
+        tCaseRoles defines the type of element "caseRoles inside tCase".
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexContent>
+      <xsd:extension base="tCmmnElement">
+        <xsd:sequence>
+          <xsd:element ref="role" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
   <xsd:element name="role" type="tRole">
     <xsd:annotation>
       <xsd:documentation>
@@ -251,7 +317,7 @@
         </xsd:sequence>
         <xsd:attribute name="name" type="xsd:string" use="optional"/>
         <xsd:attribute name="multiplicity" type="MultiplicityEnum" use="optional" default="Unspecified"/>
-        <xsd:attribute name="definitionRef" type="xsd:QName">
+        <xsd:attribute name="definitionRef" type="xsd:QName" use="optional">
           <xsd:annotation>
             <xsd:documentation>
               definitinRef MUST refer to a "caseFileItemDefinition" element. Since
@@ -339,10 +405,42 @@
     <xsd:complexContent>
       <xsd:extension base="tCmmnElement">
         <xsd:attribute name="name" type="xsd:string" use="optional"/>
-        <xsd:attribute name="type" type="xsd:string" use="optional"/>
+        <xsd:attribute name="type" type="PropertyTypeEnum" use="optional"
+                       default="http://www.omg.org/spec/CMMN/PropertyType/Unspecified"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
+  
+    <xsd:simpleType name="PropertyTypeEnum">
+    <xsd:union memberTypes="xsd:anyURI">
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:anyURI">
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/boolean"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/integer"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/float"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/decimal"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/double"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/duration"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/dateTime"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/time"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/date"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/gYearMonth"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/gYear"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/gMonthDay"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/gDay"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/gMonth"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/hexBinary"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/base64Binary"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/anyURI"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/QName"/>
+          <xsd:enumeration value="http://www.omg.org/spec/CMMN/PropertyType/Unspecified"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:union>
+  </xsd:simpleType>
+
+
   
   <xsd:simpleType name="MultiplicityEnum">
     <xsd:restriction base="xsd:string">
@@ -379,11 +477,7 @@
   <xsd:complexType name="tExpression" mixed="true">
     <xsd:complexContent>
       <xsd:extension base="tCmmnElementWithMixedContent">
-        <xsd:sequence>
-          <xsd:element name="body" type="xsd:string" minOccurs="0" maxOccurs="1"/>
-        </xsd:sequence>
-        <xsd:attribute name="language" type="xsd:anyURI" use="optional" 
-                       default="http://www.w3.org/1999/XPath"/>
+        <xsd:attribute name="language" type="xsd:anyURI" use="optional"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -426,14 +520,14 @@
     </xsd:complexContent>
   </xsd:complexType>
   
-  <xsd:element name="event" type="tEvent" substitutionGroup="planItemDefinition">
+  <xsd:element name="eventListener" type="tEventListener" substitutionGroup="planItemDefinition">
     <xsd:annotation>
       <xsd:documentation>
         event represents an (abstract) Event in the Case Model.
       </xsd:documentation>
     </xsd:annotation>
   </xsd:element>
-  <xsd:complexType name="tEvent">
+  <xsd:complexType name="tEventListener">
     <xsd:complexContent>
       <xsd:extension base="tPlanItemDefinition">
       </xsd:extension>
@@ -505,7 +599,7 @@
     <xsd:complexContent>
       <xsd:extension base="tTask">
         <xsd:sequence>
-          <xsd:element name="planningTable" type="tPlanningTable" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="planningTable" type="tPlanningTable" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
         <xsd:attribute name="performerRef" type="xsd:IDREF">
           <xsd:annotation>
@@ -536,12 +630,20 @@
       <xsd:extension base="tTask">
         <xsd:sequence>
           <xsd:element ref="parameterMapping" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="processRefExpression" type="tExpression" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>
+                processRefExpression is mutually exclusive to processRef. It allows the selection of a
+                process at runtime via an expression rather then at design time with processRef.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
         </xsd:sequence>
         <xsd:attribute name="processRef" type="xsd:QName">
           <xsd:annotation>
             <xsd:documentation>
               processRef refers a "process" element which is re-usable and can
-              be imported via some other file.
+              be imported via some other file. processRef is mutually exclusive to processRefExpression
             </xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -615,12 +717,20 @@
       <xsd:extension base="tTask">
         <xsd:sequence>
           <xsd:element ref="parameterMapping" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="caseRefExpression" type="tExpression" minOccurs="0" maxOccurs="1">
+            <xsd:annotation>
+              <xsd:documentation>
+                caseRefExpression is mutualy exclusive to caseRef and can be used to select a case 
+                at runtime rather then specifying caseRef at design-time.
+              </xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
         </xsd:sequence>
         <xsd:attribute name="caseRef" type="xsd:QName">
           <xsd:annotation>
             <xsd:documentation>
               caseRef refers a "case" element which is re-usable and can 
-              be imported via some other file.
+              be imported via some other file. caseRef is mutually exclusive to "caseRefExpression"
             </xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
@@ -656,18 +766,18 @@
   <!--
     Event elements
   -->
-  <xsd:element name="userEvent" type="tUserEvent" substitutionGroup="event"/>
-  <xsd:complexType name="tUserEvent">
+  <xsd:element name="userEventListener" type="tUserEventListener" substitutionGroup="eventListener"/>
+  <xsd:complexType name="tUserEventListener">
     <xsd:complexContent>
-      <xsd:extension base="tEvent">
+      <xsd:extension base="tEventListener">
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
   
-  <xsd:element name="timerEvent" type="tTimerEvent" substitutionGroup="event"/>
-  <xsd:complexType name="tTimerEvent">
+  <xsd:element name="timerEventListener" type="tTimerEventListener" substitutionGroup="eventListener"/>
+  <xsd:complexType name="tTimerEventListener">
     <xsd:complexContent>
-      <xsd:extension base="tEvent">
+      <xsd:extension base="tEventListener">
         <xsd:sequence>
           <xsd:element name="timerExpression" type="tExpression" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
@@ -1011,9 +1121,10 @@
   <xsd:complexType name="tDiscretionaryItem">
     <xsd:complexContent>
       <xsd:extension base="tTableItem">
-         <xsd:sequence>
-           <xsd:element name="itemControl" type="tPlanItemControl" minOccurs="0" maxOccurs="1"/>
-         </xsd:sequence>
+        <xsd:sequence>
+          <xsd:element name="itemControl" type="tPlanItemControl" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+        <xsd:attribute name="name" type="xsd:string" use="optional"/>
         <xsd:attribute name="definitionRef" type="xsd:IDREF">
           <xsd:annotation>
             <xsd:documentation>
