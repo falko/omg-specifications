@@ -149,7 +149,6 @@
           <xsd:element name="caseRoles" type="tCaseRoles" minOccurs="0" maxOccurs="1"/>
           <xsd:element name="input" type="tCaseParameter" minOccurs="0" maxOccurs="unbounded"/>
           <xsd:element name="output" type="tCaseParameter" minOccurs="0" maxOccurs="unbounded"/>
-          <xsd:element ref="artifact" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
         <xsd:attribute name="name" type="xsd:string" use="optional"/>
       </xsd:extension>
@@ -1204,7 +1203,6 @@
         <xsd:sequence>
           <xsd:element ref="planItem" minOccurs="0" maxOccurs="unbounded"/>
           <xsd:element ref="sentry" minOccurs="0" maxOccurs="unbounded"/>
-          <xsd:element ref="artifact" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
       </xsd:extension>
     </xsd:complexContent>
