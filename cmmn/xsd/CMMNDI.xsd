@@ -50,7 +50,7 @@
 				</xsd:sequence>
 				<xsd:attribute name="cmmnElementRef" type="xsd:QName"/>
 				<xsd:attribute name="sourceCMMNElementRef" type="xsd:QName"/>
-				<xsd:attribute name="targetCMMNElementRef" type="xsd:QName" use="required"/>
+				<xsd:attribute name="targetCMMNElementRef" type="xsd:QName"/>
 				<xsd:attribute name="isStandardEventVisible" type="xsd:boolean"/>
 			</xsd:extension>
 		</xsd:complexContent>
