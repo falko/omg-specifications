@@ -28,6 +28,7 @@
       </xsd:extension>
    </xsd:complexContent>
   </xsd:complexType>
+  
   <xsd:simpleType name="tRelationshipDirection">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="None" /> 
@@ -36,6 +37,49 @@
       <xsd:enumeration value="Both" /> 
     </xsd:restriction>
   </xsd:simpleType>  
+  
+  <!--
+    Artifacts
+  -->
+  <xsd:element name="artifact" type="tArtifact"/>
+  <xsd:complexType name="tArtifact" abstract="true">
+    <xsd:complexContent>
+      <xsd:extension base="tCmmnElement">
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <xsd:element name="association" type="tAssociation" substitutionGroup="artifact"/>
+  <xsd:complexType name="tAssociation">
+    <xsd:complexContent>
+      <xsd:extension base="tArtifact">
+        <xsd:attribute name="sourceRef" type="xsd:IDREF"/>
+        <xsd:attribute name="targetRef" type="xsd:IDREF"/>
+        <xsd:attribute name="associationDirection" type="tAssociationDirection"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <xsd:simpleType name="tAssociationDirection">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="None"/>
+      <xsd:enumeration value="One"/>
+      <xsd:enumeration value="Both"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:element name="textAnnotation" type="tTextAnnotation" substitutionGroup="artifact"/>
+  <xsd:complexType name="tTextAnnotation">
+    <xsd:complexContent>
+      <xsd:extension base="tArtifact">
+        <xsd:sequence>
+          <xsd:element name="text" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+        <xsd:attribute name="textFormat" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
 
   <!--
     CMMN Base declarations
@@ -73,15 +117,11 @@
 	  
   <xsd:element name="documentation" type="tDocumentation"/>
   <xsd:complexType name="tDocumentation" mixed="true">
-    <xsd:complexContent>
-      <xsd:extension base="tCmmnElementWithMixedContent">
-        <xsd:sequence>
-          <xsd:any namespace="##any" processContents="lax" minOccurs="0"/>
-        </xsd:sequence>
-        <xsd:attribute name="id" type="xsd:ID" use="optional"/>
-        <xsd:attribute name="textFormat" type="xsd:string" default="text/plain"/>
-      </xsd:extension>
-    </xsd:complexContent>
+    <xsd:sequence>
+      <xsd:any namespace="##any" processContents="lax" minOccurs="0"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID" use="optional"/>
+    <xsd:attribute name="textFormat" type="xsd:string" default="text/plain"/>
   </xsd:complexType>
 
   <!--
@@ -505,7 +545,7 @@
     <xsd:annotation>
       <xsd:documentation>
         task represents an (abstract) Task in the Case Model and comprises
-        of inputs, outputs and a flag if the task is blocking or not.
+        of input, output and a flag if the task is blocking or not.
       </xsd:documentation>
     </xsd:annotation>
   </xsd:element>
@@ -513,8 +553,8 @@
     <xsd:complexContent>
       <xsd:extension base="tPlanItemDefinition">
         <xsd:sequence>
-          <xsd:element name="inputs" type="tCaseParameter" minOccurs="0" maxOccurs="unbounded"/>
-          <xsd:element name="outputs" type="tCaseParameter" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="input" type="tCaseParameter" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element name="output" type="tCaseParameter" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
         <xsd:attribute name="isBlocking" type="xsd:boolean" use="optional" default="true"/>
       </xsd:extension>
@@ -664,7 +704,7 @@
     <xsd:annotation>
       <xsd:documentation>
         process represents an (abstract) Business Process in CMMN. It has
-        an implementationType, inputs and outputs and can be referred from
+        an implementationType, input and output and can be referred from
         a ProcessTask.
       </xsd:documentation>
     </xsd:annotation>
@@ -791,7 +831,7 @@
     <xsd:annotation>
       <xsd:documentation>
         decision represents an (abstract) Decision in CMMN. It has
-        an implementationType, inputs and outputs and can be referred from
+        an implementationType, input and output and can be referred from
         a DecisionTask.
       </xsd:documentation>
     </xsd:annotation>
@@ -865,7 +905,15 @@
   <xsd:complexType name="tUserEventListener">
     <xsd:complexContent>
       <xsd:extension base="tEventListener">
+        <xsd:attribute name="authorizedRoleRefs" type="xsd:IDREFS">
+          <xsd:annotation>
+            <xsd:documentation>
+              authorizedRoleRefs refers zero or more "role" elements.
+            </xsd:documentation> 
+          </xsd:annotation>
+        </xsd:attribute>
       </xsd:extension>
+      
     </xsd:complexContent>
   </xsd:complexType>
   
@@ -1183,6 +1231,7 @@
           <xsd:element ref="planningTable" minOccurs="0" maxOccurs="1"/>
           <xsd:element ref="planItemDefinition" minOccurs="0" maxOccurs="unbounded"/>
           <xsd:element ref="exitCriterion" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:element ref="artifact" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
         <xsd:attribute name="autoComplete" type="xsd:boolean" use="optional" default="false"/>
       </xsd:extension>      
@@ -1275,6 +1324,7 @@
         <xsd:sequence>
           <xsd:element name="condition" type="tExpression" minOccurs="0" maxOccurs="1"/>
         </xsd:sequence>
+        <xsd:attribute name="name" type="xsd:string"/>
         <xsd:attribute name="contextRef" type="xsd:IDREF">
           <xsd:annotation>
             <xsd:documentation>

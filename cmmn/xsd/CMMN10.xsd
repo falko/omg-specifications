@@ -3,6 +3,7 @@
             attributeFormDefault="unqualified"
             xmlns="http://www.omg.org/spec/CMMN/20150516/MODEL" 
             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:cmmndi="http://www.omg.org/spec/CMMN/20150516/CMMNDI"
             targetNamespace="http://www.omg.org/spec/CMMN/20150516/MODEL">
 
   <xsd:include schemaLocation="CMMN10CaseModel.xsd">
@@ -12,6 +13,15 @@
       </xsd:documentation>
     </xsd:annotation>
   </xsd:include>
+  
+  <xsd:import namespace="http://www.omg.org/spec/CMMN/20150516/CMMNDI" 
+              schemaLocation="CMMNDI.xsd">
+    <xsd:annotation>
+      <xsd:documentation>
+        Include the CMMN 1.0 Diagram Interchange (DI) schema
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:import>
 
   <!--
     CMMN Definitions
@@ -39,6 +49,7 @@
       <xsd:element ref="decision" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element ref="extensionElements" minOccurs="0" maxOccurs="1"/>
       <xsd:element ref="relationship" minOccurs="0" maxOccurs="unbounded" />
+      <xsd:element ref="cmmndi:CMMNDI" minOccurs="0" maxOccurs="1"/>
     </xsd:sequence>
     <xsd:attribute name="id" type="xsd:ID"/>
     <xsd:attribute name="name" type="xsd:string"/>
