@@ -47,6 +47,7 @@
       <xsd:element ref="case" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element ref="process" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element ref="decision" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element ref="extension" minOccurs="0" maxOccurs="unbounded"/>
       <xsd:element ref="extensionElements" minOccurs="0" maxOccurs="1"/>
       <xsd:element ref="relationship" minOccurs="0" maxOccurs="unbounded" />
       <xsd:element ref="artifact" minOccurs="0" maxOccurs="unbounded"/>
