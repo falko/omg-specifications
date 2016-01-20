@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema elementFormDefault="qualified" 
             attributeFormDefault="unqualified"
-	    xmlns="http://www.omg.org/spec/CMMN/20150516/MODEL" 
+	    xmlns="http://www.omg.org/spec/CMMN/20151109/MODEL" 
 	    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-	    targetNamespace="http://www.omg.org/spec/CMMN/20150516/MODEL">
+	    targetNamespace="http://www.omg.org/spec/CMMN/20151109/MODEL">
   <!-- Extension points -->
   <xsd:element name="extensionElements" type="tExtensionElements"/>
   <xsd:complexType name="tExtensionElements">
@@ -732,7 +732,7 @@
   <xsd:simpleType name="ProcessTypeEnum">
     <xsd:annotation>
       <xsd:documentation>
-        Enumeration of Business Process standards known to CMMN 1.0
+        Enumeration of Business Process standards known to CMMN 1.1
       </xsd:documentation>
     </xsd:annotation>
     <xsd:union memberTypes="xsd:anyURI">
@@ -859,7 +859,7 @@
   <xsd:simpleType name="DecisionTypeEnum">
     <xsd:annotation>
       <xsd:documentation>
-        Enumeration of Decision standards known to CMMN 1.0
+        Enumeration of Decision standards known to CMMN 1.1
       </xsd:documentation>
     </xsd:annotation>
     <xsd:union memberTypes="xsd:anyURI">

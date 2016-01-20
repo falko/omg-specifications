@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema elementFormDefault="qualified" 
             attributeFormDefault="unqualified"
-            xmlns="http://www.omg.org/spec/CMMN/20150516/MODEL" 
+            xmlns="http://www.omg.org/spec/CMMN/20151109/MODEL" 
             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-            xmlns:cmmndi="http://www.omg.org/spec/CMMN/20150516/CMMNDI"
-            targetNamespace="http://www.omg.org/spec/CMMN/20150516/MODEL">
+            xmlns:cmmndi="http://www.omg.org/spec/CMMN/20151109/CMMNDI"
+            targetNamespace="http://www.omg.org/spec/CMMN/20151109/MODEL">
 
-  <xsd:include schemaLocation="CMMN10CaseModel.xsd">
+  <xsd:include schemaLocation="CMMN11CaseModel.xsd">
     <xsd:annotation>
       <xsd:documentation>
-        Include the CMMN 1.0 Case Model XML-Schema in the same namespace.
+        Include the CMMN 1.1 Case Model XML-Schema in the same namespace.
       </xsd:documentation>
     </xsd:annotation>
   </xsd:include>
   
-  <xsd:import namespace="http://www.omg.org/spec/CMMN/20150516/CMMNDI" 
-              schemaLocation="CMMNDI.xsd">
+  <xsd:import namespace="http://www.omg.org/spec/CMMN/20151109/CMMNDI" 
+              schemaLocation="CMMNDI11.xsd">
     <xsd:annotation>
       <xsd:documentation>
-        Include the CMMN 1.0 Diagram Interchange (DI) schema
+        Include the CMMN 1.1 Diagram Interchange (DI) schema
       </xsd:documentation>
     </xsd:annotation>
   </xsd:import>

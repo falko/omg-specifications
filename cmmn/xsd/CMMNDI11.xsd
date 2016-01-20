@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cmmndi="http://www.omg.org/spec/CMMN/20150516/CMMNDI" xmlns:dc="http://www.omg.org/spec/CMMN/20150516/DC" xmlns:di="http://www.omg.org/spec/CMMN/20150516/DI" targetNamespace="http://www.omg.org/spec/CMMN/20150516/CMMNDI" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xsd:import namespace="http://www.omg.org/spec/CMMN/20150516/DC" schemaLocation="DC.xsd"/>
-	<xsd:import namespace="http://www.omg.org/spec/CMMN/20150516/DI" schemaLocation="DI.xsd"/>	
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:cmmndi="http://www.omg.org/spec/CMMN/20151109/CMMNDI" 
+            xmlns:dc="http://www.omg.org/spec/CMMN/20151109/DC" 
+            xmlns:di="http://www.omg.org/spec/CMMN/20151109/DI" 
+            targetNamespace="http://www.omg.org/spec/CMMN/20151109/CMMNDI" 
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="http://www.omg.org/spec/CMMN/20151109/DC" 
+                    schemaLocation="DC.xsd"/>
+	<xsd:import namespace="http://www.omg.org/spec/CMMN/20151109/DI"
+                    schemaLocation="DI.xsd"/>	
 	<xsd:element name="CMMNDI" type="cmmndi:CMMNDI"/>
 	<xsd:element name="CMMNDiagram" type="cmmndi:CMMNDiagram"/>
 	<xsd:element name="CMMNDiagramElement" type="di:DiagramElement">
