@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cmmn:definitions author="" exporter="CMMN Modeler" id="_d0e3a62c-24e8-456d-a18e-4a0f4c26f72b" name="Henk example 4 sept" targetNamespace="http://www.trisotech.com/cmmn/definitions/_d0e3a62c-24e8-456d-a18e-4a0f4c26f72b" xmlns:dc="http://www.omg.org/spec/CMMN/20150516/DC" xmlns:triso="http://www.trisotech.com/2015/triso/modeling" xmlns:di="http://www.omg.org/spec/CMMN/20150516/DI" xmlns:trisob="http://www.trisotech.com/2014/triso/bpmn" xmlns:cmmndi="http://www.omg.org/spec/CMMN/20150516/CMMNDI" xmlns:cmmn="http://www.omg.org/spec/CMMN/20150516/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:trisocmmn="http://www.trisotech.com/2014/triso/cmmn">
+    <cmmn:case name="" id="Case_0079415c-9504-4f47-9fab-d352f76415bc">
+        <cmmn:casePlanModel autoComplete="false" name="" id="_0079415c-9504-4f47-9fab-d352f76415bc">
+            <cmmn:planItem definitionRef="_3aecc590-6236-41fb-8db7-3766e76fdfba" id="PI_3aecc590-6236-41fb-8db7-3766e76fdfba"/>
+            <cmmn:stage autoComplete="false" name="Denis Stage" id="_3aecc590-6236-41fb-8db7-3766e76fdfba">
+                <cmmn:planItem definitionRef="_5abff17c-04b6-47ba-9b32-c68e5ea76015" id="PI_5abff17c-04b6-47ba-9b32-c68e5ea76015"/>
+                <cmmn:planItem definitionRef="_58f72d5b-60b0-4dbd-9478-7a89b7f409b9" id="PI_58f72d5b-60b0-4dbd-9478-7a89b7f409b9"/>
+                <cmmn:planningTable id="_43d84ae9-4529-4ab8-bae2-f34c592699b4">
+                    <cmmn:discretionaryItem definitionRef="_64af29e3-0f22-49cd-8e3a-e002326111e4" id="DI__64af29e3-0f22-49cd-8e3a-e002326111e4"/>
+                </cmmn:planningTable>
+                <cmmn:stage autoComplete="false" name="A" id="_5abff17c-04b6-47ba-9b32-c68e5ea76015">
+                    <cmmn:planningTable id="_29ee43ca-5f71-4f61-9e63-cb921194e08a"/>
+                </cmmn:stage>
+                <cmmn:humanTask isBlocking="false" name="HT" id="_3d79f256-5519-427f-9e59-ad5ce2d11e1d">
+                    <cmmn:planningTable id="bec9c569-01d8-4811-a47f-d7e199ac0697">
+                        <cmmn:discretionaryItem definitionRef="_a0baa074-9b9a-4c6f-8d48-0578fe299c04" id="DI__a0baa074-9b9a-4c6f-8d48-0578fe299c04"/>
+                    </cmmn:planningTable>
+                </cmmn:humanTask>
+                <cmmn:task isBlocking="false" name="Dix" id="_a0baa074-9b9a-4c6f-8d48-0578fe299c04"/>
+                <cmmn:planFragment name="Plan Frag" id="_64af29e3-0f22-49cd-8e3a-e002326111e4">
+                    <cmmn:planItem definitionRef="_3d79f256-5519-427f-9e59-ad5ce2d11e1d" id="PI_3d79f256-5519-427f-9e59-ad5ce2d11e1d"/>
+                    <cmmn:planItem definitionRef="_a0baa074-9b9a-4c6f-8d48-0578fe299c04" id="PI_41d9acfa-b5b3-40c2-81e9-c52c77fa8bf9"/>
+                </cmmn:planFragment>
+                <cmmn:stage autoComplete="false" name="B" id="_58f72d5b-60b0-4dbd-9478-7a89b7f409b9">
+                    <cmmn:planningTable id="_371d6b26-924e-4a74-8ce6-3c9c96d85364"/>
+                </cmmn:stage>
+            </cmmn:stage>
+        </cmmn:casePlanModel>
+    </cmmn:case>
+    <cmmndi:CMMNDI>
+        <cmmndi:CMMNDiagram name="Untitled Diagram" id="_a14d311e-d393-4192-9a15-aa213dd9fc4d" sharedStyle="_99f295ff-da6b-49ff-8d74-22bdcfac76bd">
+            <cmmndi:Size height="1122.0" width="1520.5"/>
+            <cmmndi:CMMNShape cmmnElementRef="_0079415c-9504-4f47-9fab-d352f76415bc" id="_95c86d8c-1bcb-47e8-ac28-10d943371b97">
+                <dc:Bounds height="950.3355712890625" width="1459.828369140625" x="24.13380241394043" y="145.14486694335938"/>
+                <cmmndi:CMMNLabel/>
+            </cmmndi:CMMNShape>
+            <cmmndi:CMMNShape cmmnElementRef="PI_5abff17c-04b6-47ba-9b32-c68e5ea76015" isCollapsed="false" isPlanningTableCollapsed="false" id="_f6e85368-7403-4421-92f4-d9c5cb6a4ea7">
+                <dc:Bounds height="375.0" width="481.9999694824219" x="162.4014129638672" y="269.716796875"/>
+                <cmmndi:CMMNLabel/>
+            </cmmndi:CMMNShape>
+            <cmmndi:CMMNShape cmmnElementRef="PI_3d79f256-5519-427f-9e59-ad5ce2d11e1d" isPlanningTableCollapsed="false" id="_ea5f9053-2fe8-469a-a74b-1041de778aa2">
+                <dc:Bounds height="76.0" width="97.0" x="618.1466064453125" y="754.9876098632812"/>
+                <cmmndi:CMMNLabel/>
+            </cmmndi:CMMNShape>
+            <cmmndi:CMMNShape cmmnElementRef="DI__a0baa074-9b9a-4c6f-8d48-0578fe299c04" id="_c3523ecc-2590-4ecf-8fc6-24949a0a4d9a">
+                <dc:Bounds height="76.0" width="97.0" x="759.1466064453125" y="754.9876098632812"/>
+                <cmmndi:CMMNLabel/>
+            </cmmndi:CMMNShape>
+            <cmmndi:CMMNEdge sourceCMMNElementRef="PI_3d79f256-5519-427f-9e59-ad5ce2d11e1d" targetCMMNElementRef="DI__a0baa074-9b9a-4c6f-8d48-0578fe299c04" id="C_2a07031c-64c3-4891-9c02-b80fe73a6bc5">
+                <di:waypoint x="714.1466064453125" y="792.9876098632812"/>
+                <di:waypoint x="761.1466064453125" y="792.9876098632812"/>
+                <cmmndi:CMMNLabel/>
+            </cmmndi:CMMNEdge>
+            <cmmndi:CMMNShape cmmnElementRef="DI__64af29e3-0f22-49cd-8e3a-e002326111e4" isCollapsed="false" id="_a391f0d2-0631-47ef-b2ff-df343c5047e1">
+                <dc:Bounds height="228.0" width="364.0000305175781" x="555.1466064453125" y="678.9876098632812"/>
+                <cmmndi:CMMNLabel/>
+            </cmmndi:CMMNShape>
+            <cmmndi:CMMNShape cmmnElementRef="PI_58f72d5b-60b0-4dbd-9478-7a89b7f409b9" isCollapsed="false" isPlanningTableCollapsed="false" id="_a5c4eb95-bd99-4c4e-ba3a-3c31f68b8546">
+                <dc:Bounds height="370.0" width="542.5" x="727.492919921875" y="272.216796875"/>
+                <cmmndi:CMMNLabel/>
+            </cmmndi:CMMNShape>
+            <cmmndi:CMMNShape cmmnElementRef="PI_3aecc590-6236-41fb-8db7-3766e76fdfba" isCollapsed="false" isPlanningTableCollapsed="false" id="_5236484e-d55d-4005-8ce5-296496b83f97">
+                <dc:Bounds height="859.731201171875" width="1310.2110595703125" x="63.25502014160156" y="186.38348388671875"/>
+                <cmmndi:CMMNLabel/>
+            </cmmndi:CMMNShape>
+        </cmmndi:CMMNDiagram>
+        <cmmndi:CMMNStyle fontFamily="Arial,Helvetica,sans-serif" id="_99f295ff-da6b-49ff-8d74-22bdcfac76bd"/>
+    </cmmndi:CMMNDI>
+</cmmn:definitions>
+
