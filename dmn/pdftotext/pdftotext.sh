@@ -11,9 +11,9 @@ $ {
         g
         # do the search and replace
         # first remove left page footer to avoid conflicts with chapter numbers
-        s/\n[0-9]\+\n\nDecision Model and Notation 1.1 FTF Convenience Document\n//g
+        s/\n[0-9]\+\n\nDecision Model and Notation, v1.1\n//g
         # then remove right page footer
-        s/\nDecision Model and Notation 1.1 FTF Convenience Document\n\n[0-9]\+\n//g
+        s/\nDecision Model and Notation, v1.1\n\n[0-9]\+\n//g
         # print
         p
 }
