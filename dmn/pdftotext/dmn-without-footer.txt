@@ -2,10 +2,10 @@ Date: May 2016
 
 OBJECT MANAGEMENT GROUP
 
-Decision Modeling and Notation (DMN)
-V1.1 with change bars
+Decision Model and Notation (DMN)
+V1.1
 __________________________________________________
-OMG Document Number: formal/
+OMG Document Number: formal/2016-06-01
 Standard document URL: http://www.omg.org/spec/DMN/1.1
 Normative Machine Consumable File(s):
 http://www.omg.org/spec/DMN/20151101/dmn.xmi
@@ -55,7 +55,6 @@ PATENTS
 The attention of adopters is directed to the possibility that compliance with or adoption of OMG specifications
 may require use of an invention covered by patent rights. OMG shall not be responsible for identifying patents
 for which a license may be required by any OMG specification, or for conducting legal inquiries into the legal
-
 validity or scope of those patents that are brought to its attention. OMG specifications are prospective and
 advisory only. Prospective users are responsible for protecting themselves against liability for infringement of
 patents.
@@ -68,7 +67,6 @@ means--graphic, electronic, or mechanical, including photocopying, recording, ta
 and retrieval systems--without permission of the copyright owner.
 
 DISCLAIMER OF WARRANTY
-
 WHILE THIS PUBLICATION IS BELIEVED TO BE ACCURATE, IT IS PROVIDED "AS IS" AND MAY
 CONTAIN ERRORS OR MISPRINTS. THE OBJECT MANAGEMENT GROUP AND THE COMPANIES
 LISTED ABOVE MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH REGARD TO
@@ -106,6 +104,7 @@ The copyright holders listed above acknowledge that the Object Management Group 
 designees) is and shall at all times be the sole entity that may authorize developers, suppliers and sellers of
 computer software to use certification marks, trademarks or other special designations to indicate compliance
 with these materials.
+
 Software developed under the terms of this license may claim compliance or conformance with this
 specification if and only if the software compliance is of a nature fully matching the applicable compliance
 points as stated in the specification. Software developed only partially matching the applicable compliance
@@ -437,7 +436,7 @@ forth in Clauses 6 (Decision Requirements), 7 (Decision Logic), and 8 (Decision 
 implementation claiming conformance to Conformance Level 1 is never required to interpret expressions (modeled as an
 Expression elements) in decision models. However, to the extent that an implementation claiming conformance to
 Conformance Level 1 provides an interpretation to an expression, that interpretation SHALL be consistent with the
-semantics of expressions as specified in Clause 7.
+semantics of expressions as specified in clause 7.
 An implementation claiming conformance to Conformance Level 2 SHALL comply with all of the specifications set
 forth in clauses 6 (Decision Requirements), 7 (Decision Logic), and 8 (Decision Table) of this document. In addition it is
 required to interpret expressions in the simple expression language (S-FEEL) specified in Clause 9.
@@ -1509,7 +1508,7 @@ Description
 
 namespace: anyURI [1]
 
-The attribute identifies the namespace associated with this
+This attribute identifies the namespace associated with this
 Definitions and follows the convention established by XML
 Schema.
 
@@ -2012,7 +2011,7 @@ Attribute
 
 Description
 
-variable: InformationtionItem
+variable: InformationItem
 
 The instance of InformationItem that stores the result of
 this InputData.
@@ -2712,12 +2711,12 @@ type of this ItemDefinition. This value overrides the type
 language specified in the Definitions element. The language
 SHALL be specified in a URI format.
 
-AllowedValues: UnaryTests [0..1]
+allowedValues: UnaryTests [0..1]
 
 This attribute lists the possible values or ranges of values in the base
 type that are allowed in this ItemDefinition.
 
-ItemComponent: ItemDefinition[*]
+itemComponent: ItemDefinition[*]
 
 This attribute defines zero or more nested ItemDefinitions that
 compose this ItemDefinition.
@@ -2828,7 +2827,7 @@ language specified for the containing instance of
 DecisionRequirementDiagram. The language SHALL
 be specified in a URI format.
 
-ImportedValues: ImportedValues [0..1]
+importedValues: ImportedValues [0..1]
 
 The instance of ImportedValues that specifies where the
 text of this LiteralExpression is located.
@@ -3328,7 +3327,7 @@ The list of input values is optional. If provided, it is a list of unary tests t
 
 8.2.5 Information Item names, output labels, and output component names
 A decision table with multiple output components SHALL specify a name for each output component.
-A decision table that is the value expression of an InformationItem (e.g., a Decision's logic or a boxed Invocation's
+A decision table that is the value expression of an InformationItem (e.g,. a Decision's logic or a boxed Invocation's
 binding formula) SHALL specify the name of the InformationItem as its Information Item name. A decision table that is
 not contained in another boxed expression shall place the Information Item name in a name box just above and adjoining
 the table.
@@ -3858,8 +3857,8 @@ of output values;
 
 
 
-if the the associated hitPolicy is ANY, the value of an instance of DecisionTable is the value of any of
-the applicable rules;
+if the associated hitPolicy is ANY, the value of an instance of DecisionTable is the value of any of the
+applicable rules;
 
 
 
@@ -3962,7 +3961,7 @@ Attribute
 
 Description
 
-typeRef: Qname [0..1]
+typeRef: QName [0..1]
 
 The OutputClause of a single output decision table SHALL
 NOT specify a typeRef. OutputClauses of a multiple
@@ -4014,7 +4013,7 @@ Description
 
 inputEntry: UnaryTests[0..*]
 
-The Instances of UnaryTests that specify the input conditions
+The instances of UnaryTests that specify the input conditions
 that this DecisionRule must match for the corresponding (by
 index) inputExpression.
 
@@ -4551,7 +4550,7 @@ S-FEEL does not support FEEL date and time. However, it supports the date type, 
 hour, minute, and second required to be absent. The lexical and value spaces of FEEL date are the literal and value
 spaces of the XML Schema date datatype.
 S-FEEL supports the FEEL days and time duration and years and months duration datatypes. FEEL days and time
-duration and years and months duration have the same literal and value spaces as the Xpath /data Model
+duration and years and months duration have the same literal and value spaces as the Xpath Data Model
 dayTimeDuration and yearMonthDuration datatypes, respectively. That is, FEEL days and time duration is derived from
 the XML Schema duration datatype by restricting its lexical representation to contain only the days, hours, minutes and
 seconds components, and FEEL years and months duration is derived from the XML Schema duration datatype by
@@ -4757,7 +4756,7 @@ e
 Figure 54: Boxed FEEL expression
 
 The meaning of a boxed expression containing e is FEEL(e, s), where s is the scope. The scope includes the context
-derived from the containing DRD as described in 10.4 Execution Semantics of Decision Services , and any boxed
+derived from the containing DRD as described in 10.4 Execution Semantics of Decision Services, and any boxed
 contexts containing e.
 It is usually good practice to make e relatively simple, and compose small boxed expressions into larger boxed
 expressions.
@@ -5025,7 +5024,7 @@ Figure 62: Use of boxed expressions with a decision table
 Formally, the meaning of a boxed context is { “Name 1”: Value 1, “Name 2”: Value 2, …, “Name n”: Value n } if no
 Result is specified. Otherwise, the meaning is { “Name 1”: Value 1, “Name 2”: Value 2, …, “Name n”: Value n,
 “result”: Result }.result. Recall that the bold face indicates elements in the FEEL Semantic Domain. The scope includes
-the context derived from the containing DRG as described in 10.4 Execution Semantics of Decision Services .
+the context derived from the containing DRG as described in 10.4 Execution Semantics of Decision Services.
 
 10.2.1.5 Boxed List
 A boxed list is a list of n items. Cells SHALL be arranged in one of the following ways (see Figure 63, Figure 64):
@@ -5040,7 +5039,7 @@ Figure 64: Horizontal list
 
 Line styles are normative. The items are boxed expressions. Formally, the meaning of a boxed list is just the meaning of
 the list, i.e., [ Item 1, Item 2, …, Item n ]. The scope includes the context derived from the containing DRG as
-described in 10.4 Execution Semantics of Decision Services .
+described in 10.4 Execution Semantics of Decision Services.
 10.2.1.6 Relation
 A vertical list of homogeneous horizontal contexts (with no result cells) can be displayed with the names appearing just
 once at the top of the list, like a relational table, as shown in Figure 65:
@@ -5069,7 +5068,7 @@ Value 2m
 
 Value nm
 
-Figure 65: Relations
+Figure 65: Relation
 
 10.2.1.7 Boxed Function
 A Boxed Function Definition is the notation for parameterized boxed expressions.
@@ -5101,7 +5100,7 @@ the form of the mapping information SHALL be the pmml form.
 Formally, the meaning of a boxed function is just the meaning of the function, i.e., FEEL(function(Parameter1,
 Parameter2, …) Body) if the Kind is FEEL, and FEEL(function(Parameter1, Parameter2, …) external Body) otherwise.
 The scope includes the context derived from the containing DRG as described in 10.4 Execution Semantics of Decision
-Services .
+Services.
 
 10.2.2 FEEL
 A subset of FEEL, defined in the next section, serves as the notation "in the boxes" of boxed expressions. A FEEL object
@@ -5167,7 +5166,7 @@ decimal(1, 2)
 
 3.0000
 
-1 + 3/2*2 – 2**3
+1 + 3/2*2 - 2**3
 
 -4.0
 
@@ -5272,24 +5271,24 @@ Note that the character range that includes all Unicode characters is [\u0-\u10F
 The complete FEEL grammar is specified below. Grammar rules are numbered, and in some cases alternatives are
 lettered, for later reference. Boxed expression syntax (rule 55) is used to give execution semantics to boxed expressions.
 1.
-a.
-b.
+1.a
+1.b
 2.
-a.
-b.
-c.
-d.
-e.
-f.
-g.
-h.
-i.
+2.a
+2.b
+2.c
+2.d
+2.e
+2.f
+2.g
+2.h
+2.i
 3.
 4.
-a.
-b.
-c.
-d.
+4.a
+4.b
+4.c
+4.d
 5.
 6.
 7.
@@ -5317,8 +5316,8 @@ simple expression = arithmetic expression | simple value ;
 simple expressions = simple expression , { "," , simple expression } ;
 simple positive unary test =
 
-a.
-b.
+7.a
+7.b
 8.
 9.
 10.
@@ -5326,15 +5325,15 @@ b.
 12.
 13.
 14.
-a.
-b.
-c.
+14.a
+14.b
+14.c
 15.
 16.
 17.
-a.
-b.
-c.
+17.a
+17.b
+17.c
 18.
 19.
 20.
@@ -5451,10 +5450,10 @@ date time literal = ( "date" | "time" | "date and time" | "duration" ) , "(" , s
 49.
 50.
 51.
-a.
-b.
-c.
-d.
+51.a
+51.b
+51.c
+51.d
 52.
 53.
 54.
@@ -6616,13 +6615,13 @@ Input Domain and Result
 
 23
 
-e1 + e2
+e1 * e2
 
 See below
 
 24
 
-e1 – e2
+e1 / e2
 
 See below
 
@@ -6743,9 +6742,10 @@ defined in 10.3.2.3.7 days and time
 duration.
 
 If value(e2)=0, the result is null.
-Else the result is valuedtd1
-(valuedtd(e1) * value(e2)) where
-valuedtd and valuedtd-1 are defined in
+Else the result is
+valuedtd-1(valuedtd(e1) * value(e2))
+where valuedtd and valuedtd-1 are
+defined in
 10.3.2.3.7 days and time duration.
 
 days and
@@ -7991,7 +7991,7 @@ c. else DTI=FEEL(o[1]).
 Sort a list using an ordering function. For example,
 sort(list: [3,1,4,5,2], precedes: function(x,y) x < y) = [1,2,3,4,5]
 
-Table 64: Semantics of soft functions
+Table 64: Semantics of sort functions
 
 Parameter name (* means optional)
 
@@ -8027,10 +8027,10 @@ C is the context
 {
 bkm1.n : bkm1.f, bkm2.n : bkm2.f, ...,
 de1.n : de1.e, de2.n : de2.e, ...,
-result: {do1.n : do1.e, do2.n : do2:e, ...…}
+result: {do1.n : do1.e, do2.n : do2:e, ...}
 },
 
-such that bkmi, dei and doi are partially ordered by requirements (e.g. the context entry for a required decision comes
+such that bkmi, dei and doi are partially ordered by requirements (e.g., the context entry for a required decision comes
 before a decision that requires it).
 The execution semantics of D is FEEL(F): a function that when invoked with values from the FEEL semantic domain
 bound to the parameters representing input data and input decisions, returns a context consisting of all the output
@@ -8163,7 +8163,7 @@ an element in the FEEL semantic domain.
 10.6.1 Context
 Figure 68 shows the boxed context used for the examples. Such a context could arise in several ways. It could be part of
 the decision logic for a single, complex decision. Or, it could be a context that is equivalent to part of a DRG as defined
-in 10.4 Execution Semantics of Decision Services , where applicant, requested product, and credit history are input data
+in 10.4 Execution Semantics of Decision Services, where applicant, requested product, and credit history are input data
 instances, monthly income and monthly outgoings are sub-decisions, and PMT is a business knowledge model.
 
 applicant
@@ -9238,7 +9238,7 @@ Expenses
 
 3,000.00
 
-Figure 95: Applicant Data input date sample
+Figure 95: Applicant Data input data sample
 
 Requested product
 ProductType
@@ -9257,7 +9257,7 @@ Amount
 
 100,000.00
 
-Figure 96: Requested Product input date sample
+Figure 96: Requested Product input data sample
 
 Bureau data
 Bankrupt
@@ -9268,7 +9268,7 @@ CreditScore
 
 600
 
-Figure 97: Bureau Data input date sample
+Figure 97: Bureau Data input data sample
 
 When the Bureau Strategy Decision Service is called with the Applicant data and Requested product case data, it returns
 the context shown in Figure 98:
@@ -9511,7 +9511,7 @@ Script Task
 A future version of BPMN may choose to clarify and extend the definitions of task to better match decision modeling
 requirements and DMN – to wit, to define a BPMN Decision Task as some task used to make a decision modeled with
 DMN. In the meantime, the Business Rule Task is the most natural way to express this functionality. However, as noted in
-clauses 5.2.2 Modeling requirements for automated decision-making and 6.3.6 Artifact metamodel , a Decision in DMN
+clauses 5.2.2 Modeling requirements for automated decision-making and 6.3.6 Artifact metamodel, a Decision in DMN
 can be associated with any Task, allowing for flexibility in implementation.
 
 4. Process gateways and Decisions
@@ -9527,7 +9527,7 @@ DMN offers two approaches to linking business process models in BPMN with decisi
 
 other non-normative:
 a) Associating Decisions with Tasks and Processes
-As described in 6.3.6 Artifact metamodel , in DMN 1.1, the process context for an instance of Decision is defined by
+As described in 6.3.6 Artifact metamodel, in DMN 1.1, the process context for an instance of Decision is defined by
 its association with any number of usingProcesses, which are instances of Process as defined in OMG BPMN 2,
 and any number of usingTasks, which are instances of Task as defined in OMG BPMN 2. Each decision may
 therefore be associated with one or more business processes (to indicate that the decision is taken during those
